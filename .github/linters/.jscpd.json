@@ -1,0 +1,12 @@
+{
+    "threshold": 15,
+    "reporters": [
+      "consoleFull"
+    ],
+    "ignore": [
+      "**/__snapshots__/**",
+      "**/Properties/**",
+      "**/UDS.Net.API/Data/**"
+    ],
+    "absolute": true
+  }
