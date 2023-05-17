@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UDS.Net.API.Client", "UDS.N
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UDS.Net.Dto", "UDS.Net.Dto\UDS.Net.Dto.csproj", "{E620B892-269C-423B-9AEF-375131FA6B0C}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{615B9CD6-4AFF-48DF-A57F-2FA08AA31CEB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{E620B892-269C-423B-9AEF-375131FA6B0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E620B892-269C-423B-9AEF-375131FA6B0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E620B892-269C-423B-9AEF-375131FA6B0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{615B9CD6-4AFF-48DF-A57F-2FA08AA31CEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{615B9CD6-4AFF-48DF-A57F-2FA08AA31CEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{615B9CD6-4AFF-48DF-A57F-2FA08AA31CEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{615B9CD6-4AFF-48DF-A57F-2FA08AA31CEB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
