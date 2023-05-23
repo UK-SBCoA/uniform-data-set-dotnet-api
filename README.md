@@ -1,6 +1,6 @@
 # UDS for .NET - Web API
 
-This repository includes all necessary tools back-end service to collect data for UDS including
+This repository includes all necessary tools backend service to collect data for UDS including
 
 * Class libraries for data-transer objects and API client wrapper
 * Data persistence
@@ -26,6 +26,6 @@ Thank you for interest in contributing to our project! There are many ways you c
 Read our [wiki](https://github.com/UK-SBCoA/uniform-data-set-dotnet/wiki) for more detailed information on each of these topics.
 
 ## License
-The forms included in this repository are copyrighted. Detailed copyright statements and usage restrictions are available on each form and on the [NACC website](https://naccdata.org/data-collection/guidelines-copyright). Non-ADRC researchers who wish to use the forms in this repository should [complete and return a permission request](https://files.alz.washington.edu/nacc-permission-form.pdf).
+The forms included in this repository are copyrighted. Detailed copyright statements and usage restrictions are available on each form and on the [NACC site](https://naccdata.org/data-collection/guidelines-copyright). Non-ADRC researchers who wish to use the forms in this repository should [complete and return a permission request](https://files.alz.washington.edu/nacc-permission-form.pdf).
 
 Code in this repository is Copyright (c) University of Kentucky Sanders-Brown Center on Aging. All rights reserved. Licensed under the BSD 2-Clause "Simplified" License.
