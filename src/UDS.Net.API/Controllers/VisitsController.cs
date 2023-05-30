@@ -127,6 +127,9 @@ namespace UDS.Net.API.Controllers
             var visit = new Visit
             {
                 Kind = dto.Kind,
+                Number = dto.Number,
+                Version = dto.Version,
+                StartDateTime = dto.StartDateTime,
                 CreatedBy = dto.CreatedBy,
                 CreatedAt = dto.CreatedAt,
                 ModifiedBy = dto.ModifiedBy,
