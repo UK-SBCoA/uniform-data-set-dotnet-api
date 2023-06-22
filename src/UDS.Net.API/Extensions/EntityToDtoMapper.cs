@@ -87,6 +87,42 @@ namespace UDS.Net.API.Extensions
 
                         if (formKind == "A5" && visit.A5 != null)
                             formDto = visit.A5.ToFullDto();
+
+                        if (formKind == "B1" && visit.B1 != null)
+                            formDto = visit.B1.ToFullDto();
+
+                        if (formKind == "B4" && visit.B4 != null)
+                            formDto = visit.B4.ToFullDto();
+
+                        if (formKind == "B5" && visit.B5 != null)
+                            formDto = visit.B5.ToFullDto();
+
+                        if (formKind == "B6" && visit.B6 != null)
+                            formDto = visit.B6.ToFullDto();
+
+                        if (formKind == "B7" && visit.B7 != null)
+                            formDto = visit.B7.ToFullDto();
+
+                        if (formKind == "B8" && visit.B8 != null)
+                            formDto = visit.B8.ToFullDto();
+
+                        if (formKind == "B9" && visit.B9 != null)
+                            formDto = visit.B9.ToFullDto();
+
+                        if (formKind == "C1" && visit.C1 != null)
+                            formDto = visit.C1.ToFullDto();
+
+                        if (formKind == "C2" && visit.C2 != null)
+                            formDto = visit.C2.ToFullDto();
+
+                        if (formKind == "D1" && visit.D1 != null)
+                            formDto = visit.D1.ToFullDto();
+
+                        if (formKind == "D2" && visit.D2 != null)
+                            formDto = visit.D2.ToFullDto();
+
+                        if (formKind == "T1" && visit.T1 != null)
+                            formDto = visit.T1.ToFullDto();
                     }
                     else
                     {
@@ -108,9 +144,6 @@ namespace UDS.Net.API.Extensions
                     }
                     dto.Forms.Add(formDto);
                 }
-
-
-
 
             }
 
@@ -228,6 +261,7 @@ namespace UDS.Net.API.Extensions
                 DADMOE = a3.DADMOE,
                 DADAGEO = a3.DADAGEO,
                 SIBS = a3.SIBS,
+                NWINFSIB = a3.NWINFSIB,
                 SIB1 = a3.SIB1.ToFullDto(a3.Id),
                 SIB2 = a3.SIB2.ToFullDto(a3.Id),
                 SIB3 = a3.SIB3.ToFullDto(a3.Id),
@@ -249,6 +283,7 @@ namespace UDS.Net.API.Extensions
                 SIB19 = a3.SIB19.ToFullDto(a3.Id),
                 SIB20 = a3.SIB20.ToFullDto(a3.Id),
                 KIDS = a3.KIDS,
+                NWINFKID = a3.NWINFKID,
                 KID1 = a3.KID1.ToFullDto(a3.Id),
                 KID2 = a3.KID2.ToFullDto(a3.Id),
                 KID3 = a3.KID3.ToFullDto(a3.Id),
@@ -384,6 +419,577 @@ namespace UDS.Net.API.Extensions
                 PSYCDISX = a5.PSYCDISX
             };
             dto.SetBaseFormProperties(a5);
+            return dto;
+        }
+
+        public static B1Dto ToFullDto(this B1 b1)
+        {
+            B1Dto dto = new B1Dto
+            {
+                HEIGHT = b1.HEIGHT,
+                WEIGHT = b1.WEIGHT,
+                BPSYS = b1.BPSYS,
+                BPDIAS = b1.BPDIAS,
+                HRATE = b1.HRATE,
+                VISION = b1.VISION,
+                VISCORR = b1.VISCORR,
+                VISWCORR = b1.VISWCORR,
+                HEARING = b1.HEARING,
+                HEARAID = b1.HEARAID,
+                HEARWAID = b1.HEARWAID
+            };
+            dto.SetBaseFormProperties(b1);
+            return dto;
+        }
+
+        public static B4Dto ToFullDto(this B4 b4)
+        {
+            B4Dto dto = new B4Dto
+            {
+                MEMORY = b4.MEMORY,
+                ORIENT = b4.ORIENT,
+                JUDGMENT = b4.JUDGMENT,
+                COMMUN = b4.COMMUN,
+                HOMEHOBB = b4.HOMEHOBB,
+                PERSCARE = b4.PERSCARE,
+                CDRSUM = b4.CDRSUM,
+                CDRGLOB = b4.CDRGLOB,
+                COMPORT = b4.COMPORT,
+                CDRLANG = b4.CDRLANG
+            };
+            dto.SetBaseFormProperties(b4);
+            return dto;
+        }
+
+        public static B5Dto ToFullDto(this B5 b5)
+        {
+            B5Dto dto = new B5Dto
+            {
+                NPIQINF = b5.NPIQINF,
+                NPIQINFX = b5.NPIQINFX,
+                DEL = b5.DEL,
+                DELSEV = b5.DELSEV,
+                HALL = b5.HALL,
+                HALLSEV = b5.HALLSEV,
+                AGIT = b5.AGIT,
+                AGITSEV = b5.AGITSEV,
+                DEPD = b5.DEPD,
+                DEPDSEV = b5.DEPDSEV,
+                ANX = b5.ANX,
+                ANXSEV = b5.ANXSEV,
+                ELAT = b5.ELAT,
+                ELATSEV = b5.ELATSEV,
+                APA = b5.APA,
+                APASEV = b5.APASEV,
+                DISN = b5.DISN,
+                DISNSEV = b5.DISNSEV,
+                IRR = b5.IRR,
+                IRRSEV = b5.IRRSEV,
+                MOT = b5.MOT,
+                MOTSEV = b5.MOTSEV,
+                NITE = b5.NITE,
+                NITESEV = b5.NITESEV,
+                APP = b5.APP,
+                APPSEV = b5.APPSEV
+            };
+            dto.SetBaseFormProperties(b5);
+            return dto;
+        }
+
+        public static B6Dto ToFullDto(this B6 b6)
+        {
+            B6Dto dto = new B6Dto
+            {
+                NOGDS = b6.NOGDS,
+                SATIS = b6.SATIS,
+                DROPACT = b6.DROPACT,
+                EMPTY = b6.EMPTY,
+                BORED = b6.BORED,
+                SPIRITS = b6.SPIRITS,
+                AFRAID = b6.AFRAID,
+                HAPPY = b6.HAPPY,
+                HELPLESS = b6.HELPLESS,
+                STAYHOME = b6.STAYHOME,
+                MEMPROB = b6.MEMPROB,
+                WONDRFUL = b6.WONDRFUL,
+                WRTHLESS = b6.WRTHLESS,
+                ENERGY = b6.ENERGY,
+                HOPELESS = b6.HOPELESS,
+                BETTER = b6.BETTER,
+                GDS = b6.GDS
+            };
+            dto.SetBaseFormProperties(b6);
+            return dto;
+        }
+
+        public static B7Dto ToFullDto(this B7 b7)
+        {
+            B7Dto dto = new B7Dto
+            {
+                BILLS = b7.BILLS,
+                TAXES = b7.TAXES,
+                SHOPPING = b7.SHOPPING,
+                GAMES = b7.GAMES,
+                STOVE = b7.STOVE,
+                MEALPREP = b7.MEALPREP,
+                EVENTS = b7.EVENTS,
+                PAYATTN = b7.PAYATTN,
+                REMDATES = b7.REMDATES,
+                TRAVEL = b7.TRAVEL
+            };
+            dto.SetBaseFormProperties(b7);
+            return dto;
+        }
+
+        public static B8Dto ToFullDto(this B8 b8)
+        {
+            B8Dto dto = new B8Dto
+            {
+                NORMEXAM = b8.NORMEXAM,
+                PARKSIGN = b8.PARKSIGN,
+                RESTTRL = b8.RESTTRL,
+                RESTTRR = b8.RESTTRR,
+                SLOWINGL = b8.SLOWINGL,
+                SLOWINGR = b8.SLOWINGR,
+                RIGIDL = b8.RIGIDL,
+                RIGIDR = b8.RIGIDR,
+                BRADY = b8.BRADY,
+                PARKGAIT = b8.PARKGAIT,
+                POSTINST = b8.POSTINST,
+                CVDSIGNS = b8.CVDSIGNS,
+                CORTDEF = b8.CORTDEF,
+                SIVDFIND = b8.SIVDFIND,
+                CVDMOTL = b8.CVDMOTL,
+                CVDMOTR = b8.CVDMOTR,
+                CORTVISL = b8.CORTVISL,
+                CORTVISR = b8.CORTVISR,
+                SOMATL = b8.SOMATL,
+                SOMATR = b8.SOMATR,
+                POSTCORT = b8.POSTCORT,
+                PSPCBS = b8.PSPCBS,
+                EYEPSP = b8.EYEPSP,
+                DYSPSP = b8.DYSPSP,
+                AXIALPSP = b8.AXIALPSP,
+                GAITPSP = b8.GAITPSP,
+                APRAXSP = b8.APRAXSP,
+                APRAXL = b8.APRAXL,
+                APRAXR = b8.APRAXR,
+                CORTSENL = b8.CORTSENL,
+                CORTSENR = b8.CORTSENR,
+                ATAXL = b8.ATAXL,
+                ATAXR = b8.ATAXR,
+                ALIENLML = b8.ALIENLML,
+                ALIENLMR = b8.ALIENLMR,
+                DYSTONL = b8.DYSTONL,
+                DYSTONR = b8.DYSTONR,
+                MYOCLLT = b8.MYOCLLT,
+                MYOCLRT = b8.MYOCLRT,
+                ALSFIND = b8.ALSFIND,
+                GAITNPH = b8.GAITNPH,
+                OTHNEUR = b8.OTHNEUR,
+                OTHNEURX = b8.OTHNEURX
+            };
+            dto.SetBaseFormProperties(b8);
+            return dto;
+        }
+
+        public static B9Dto ToFullDto(this B9 b9)
+        {
+            B9Dto dto = new B9Dto
+            {
+                DECSUB = b9.DECSUB,
+                DECIN = b9.DECIN,
+                DECCLCOG = b9.DECCLCOG,
+                COGMEM = b9.COGMEM,
+                COGORI = b9.COGORI,
+                COGJUDG = b9.COGJUDG,
+                COGLANG = b9.COGLANG,
+                COGVIS = b9.COGVIS,
+                COGATTN = b9.COGATTN,
+                COGFLUC = b9.COGFLUC,
+                COGFLAGO = b9.COGFLAGO,
+                COGOTHR = b9.COGOTHR,
+                COGOTHRX = b9.COGOTHRX,
+                COGFPRED = b9.COGFPRED,
+                COGFPREX = b9.COGFPREX,
+                COGMODE = b9.COGMODE,
+                COGMODEX = b9.COGMODEX,
+                DECAGE = b9.DECAGE,
+                DECCLBE = b9.DECCLBE,
+                BEAPATHY = b9.BEAPATHY,
+                BEDEP = b9.BEDEP,
+                BEVHALL = b9.BEVHALL,
+                BEVWELL = b9.BEVWELL,
+                BEVHAGO = b9.BEVHAGO,
+                BEAHALL = b9.BEAHALL,
+                BEDEL = b9.BEDEL,
+                BEDISIN = b9.BEDISIN,
+                BEIRRIT = b9.BEIRRIT,
+                BEAGIT = b9.BEAGIT,
+                BEPERCH = b9.BEPERCH,
+                BEREM = b9.BEREM,
+                BEREMAGO = b9.BEREMAGO,
+                BEANX = b9.BEANX,
+                BEOTHR = b9.BEOTHR,
+                BEOTHRX = b9.BEOTHRX,
+                BEFPRED = b9.BEFPRED,
+                BEFPREDX = b9.BEFPREDX,
+                BEMODE = b9.BEMODE,
+                BEMODEX = b9.BEMODEX,
+                BEAGE = b9.BEAGE,
+                DECCLMOT = b9.DECCLMOT,
+                MOGAIT = b9.MOGAIT,
+                MOFALLS = b9.MOFALLS,
+                MOTREM = b9.MOTREM,
+                MOSLOW = b9.MOSLOW,
+                MOFRST = b9.MOFRST,
+                MOMODE = b9.MOMODE,
+                MOMODEX = b9.MOMODEX,
+                MOMOPARK = b9.MOMOPARK,
+                PARKAGE = b9.PARKAGE,
+                MOMOALS = b9.MOMOALS,
+                ALSAGE = b9.ALSAGE,
+                MOAGE = b9.MOAGE,
+                COURSE = b9.COURSE,
+                FRSTCHG = b9.FRSTCHG,
+                LBDEVAL = b9.LBDEVAL,
+                FTLDEVAL = b9.FTLDEVAL
+            };
+            dto.SetBaseFormProperties(b9);
+            return dto;
+        }
+
+        public static C1Dto ToFullDto(this C1 c1)
+        {
+            C1Dto dto = new C1Dto
+            {
+                MMSECOMP = c1.MMSECOMP,
+                MMSEREAS = c1.MMSEREAS,
+                MMSELOC = c1.MMSELOC,
+                MMSELAN = c1.MMSELAN,
+                MMSELANX = c1.MMSELANX,
+                MMSEVIS = c1.MMSEVIS,
+                MMSEHEAR = c1.MMSEHEAR,
+                MMSEORDA = c1.MMSEORDA,
+                MMSEORLO = c1.MMSEORLO,
+                PENTAGON = c1.PENTAGON,
+                MMSE = c1.MMSE,
+                NPSYCLOC = c1.NPSYCLOC,
+                NPSYLAN = c1.NPSYLAN,
+                NPSYLANX = c1.NPSYLANX,
+                LOGIMO = c1.LOGIMO,
+                LOGIDAY = c1.LOGIDAY,
+                LOGIYR = c1.LOGIYR,
+                LOGIPREV = c1.LOGIPREV,
+                LOGIMEM = c1.LOGIMEM,
+                UDSBENTC = c1.UDSBENTC,
+                DIGIF = c1.DIGIF,
+                DIGIFLEN = c1.DIGIFLEN,
+                DIGIB = c1.DIGIB,
+                DIGIBLEN = c1.DIGIBLEN,
+                ANIMALS = c1.ANIMALS,
+                VEG = c1.VEG,
+                TRAILA = c1.TRAILA,
+                TRAILARR = c1.TRAILARR,
+                TRAILALI = c1.TRAILALI,
+                TRAILBRR = c1.TRAILBRR,
+                TRAILBLI = c1.TRAILBLI,
+                MEMUNITS = c1.MEMUNITS,
+                MEMTIME = c1.MEMTIME,
+                UDSBENTD = c1.UDSBENTD,
+                UDSBENRS = c1.UDSBENRS,
+                BOSTON = c1.BOSTON,
+                UDSVERFC = c1.UDSVERFC,
+                UDSVERFN = c1.UDSVERFN,
+                UDSVERNF = c1.UDSVERNF,
+                UDSVERLC = c1.UDSVERLC,
+                UDSVERLR = c1.UDSVERLR,
+                UDSVERLN = c1.UDSVERLN,
+                UDSVERTN = c1.UDSVERTN,
+                UDSVERTE = c1.UDSVERTE,
+                UDSVERTI = c1.UDSVERTI,
+                COGSTAT = c1.COGSTAT
+            };
+            dto.SetBaseFormProperties(c1);
+            return dto;
+        }
+
+        public static C2Dto ToFullDto(this C2 c2)
+        {
+            C2Dto dto = new C2Dto
+            {
+                MOCACOMP = c2.MOCACOMP,
+                MOCAREAS = c2.MOCAREAS,
+                MOCALOC = c2.MOCALOC,
+                MOCALAN = c2.MOCALAN,
+                MOCALANX = c2.MOCALANX,
+                MOCAVIS = c2.MOCAVIS,
+                MOCAHEAR = c2.MOCAHEAR,
+                MOCATOTS = c2.MOCATOTS,
+                MOCATRAI = c2.MOCATRAI,
+                MOCACUBE = c2.MOCACUBE,
+                MOCACLOC = c2.MOCACLOC,
+                MOCACLON = c2.MOCACLON,
+                MOCACLOH = c2.MOCACLOH,
+                MOCANAMI = c2.MOCANAMI,
+                MOCAREGI = c2.MOCAREGI,
+                MOCADIGI = c2.MOCADIGI,
+                MOCALETT = c2.MOCALETT,
+                MOCASER7 = c2.MOCASER7,
+                MOCAREPE = c2.MOCAREPE,
+                MOCAFLUE = c2.MOCAFLUE,
+                MOCAABST = c2.MOCAABST,
+                MOCARECN = c2.MOCARECN,
+                MOCARECC = c2.MOCARECC,
+                MOCARECR = c2.MOCARECR,
+                MOCAORDT = c2.MOCAORDT,
+                MOCAORMO = c2.MOCAORMO,
+                MOCAORYR = c2.MOCAORYR,
+                MOCAORDY = c2.MOCAORDY,
+                MOCAORPL = c2.MOCAORPL,
+                MOCAORCT = c2.MOCAORCT,
+                NPSYCLOC = c2.NPSYCLOC,
+                NPSYLAN = c2.NPSYLAN,
+                NPSYLANX = c2.NPSYLANX,
+                CRAFTVRS = c2.CRAFTVRS,
+                CRAFTURS = c2.CRAFTURS,
+                UDSBENTC = c2.UDSBENTC,
+                DIGFORCT = c2.DIGFORCT,
+                DIGFORSL = c2.DIGFORSL,
+                DIGBACCT = c2.DIGBACCT,
+                DIGBACLS = c2.DIGBACLS,
+                ANIMALS = c2.ANIMALS,
+                VEG = c2.VEG,
+                TRAILA = c2.TRAILA,
+                TRAILARR = c2.TRAILARR,
+                TRAILALI = c2.TRAILALI,
+                TRAILB = c2.TRAILB,
+                TRAILBRR = c2.TRAILBRR,
+                TRAILBLI = c2.TRAILBLI,
+                CRAFTDVR = c2.CRAFTDVR,
+                CRAFTDRE = c2.CRAFTDRE,
+                CRAFTDTI = c2.CRAFTDTI,
+                CRAFTCUE = c2.CRAFTCUE,
+                UDSBENTD = c2.UDSBENTD,
+                UDSBENRS = c2.UDSBENRS,
+                MINTTOTS = c2.MINTTOTS,
+                MINTTOTW = c2.MINTTOTW,
+                MINTSCNG = c2.MINTSCNG,
+                MINTSCNC = c2.MINTSCNC,
+                MINTPCNG = c2.MINTPCNG,
+                MINTPCNC = c2.MINTPCNC,
+                UDSVERFC = c2.UDSVERFC,
+                UDSVERFN = c2.UDSVERFN,
+                UDSVERNF = c2.UDSVERNF,
+                UDSVERLC = c2.UDSVERLC,
+                UDSVERLR = c2.UDSVERLR,
+                UDSVERLN = c2.UDSVERLN,
+                UDSVERTN = c2.UDSVERTN,
+                UDSVERTE = c2.UDSVERTE,
+                UDSVERTI = c2.UDSVERTI,
+                COGSTAT = c2.COGSTAT
+            };
+            dto.SetBaseFormProperties(c2);
+            return dto;
+        }
+
+        public static D1Dto ToFullDto(this D1 d1)
+        {
+            D1Dto dto = new D1Dto
+            {
+                DXMETHOD = d1.DXMETHOD,
+                NORMCOG = d1.NORMCOG,
+                DEMENTED = d1.DEMENTED,
+                AMNDEM = d1.AMNDEM,
+                PCA = d1.PCA,
+                PPASYN = d1.PPASYN,
+                PPASYNT = d1.PPASYNT,
+                FTDSYN = d1.FTDSYN,
+                LBDSYN = d1.LBDSYN,
+                NAMNDEM = d1.NAMNDEM,
+                MCIAMEM = d1.MCIAMEM,
+                MCIAPLUS = d1.MCIAPLUS,
+                MCIAPLAN = d1.MCIAPLAN,
+                MCIAPATT = d1.MCIAPATT,
+                MCIAPEX = d1.MCIAPEX,
+                MCIAPVIS = d1.MCIAPVIS,
+                MCINON1 = d1.MCINON1,
+                MCIN1LAN = d1.MCIN1LAN,
+                MCIN1ATT = d1.MCIN1ATT,
+                MCIN1EX = d1.MCIN1EX,
+                MCIN1VIS = d1.MCIN1VIS,
+                MCINON2 = d1.MCINON2,
+                MCIN2LAN = d1.MCIN2LAN,
+                MCIN2ATT = d1.MCIN2ATT,
+                MCIN2EX = d1.MCIN2EX,
+                MCIN2VIS = d1.MCIN2VIS,
+                IMPNOMCI = d1.IMPNOMCI,
+                AMYLPET = d1.AMYLPET,
+                AMYLCSF = d1.AMYLCSF,
+                FDGAD = d1.FDGAD,
+                HIPPATR = d1.HIPPATR,
+                TAUPETAD = d1.TAUPETAD,
+                CSFTAU = d1.CSFTAU,
+                FDGFTLD = d1.FDGFTLD,
+                TPETFTLD = d1.TPETFTLD,
+                MRFTLD = d1.MRFTLD,
+                DATSCAN = d1.DATSCAN,
+                OTHBIOM = d1.OTHBIOM,
+                OTHBIOMX = d1.OTHBIOMX,
+                IMAGLINF = d1.IMAGLINF,
+                IMAGLAC = d1.IMAGLAC,
+                IMAGMACH = d1.IMAGMACH,
+                IMAGMICH = d1.IMAGMICH,
+                IMAGMWMH = d1.IMAGMWMH,
+                IMAGEWMH = d1.IMAGEWMH,
+                ADMUT = d1.ADMUT,
+                FTLDMUT = d1.FTLDMUT,
+                OTHMUT = d1.OTHMUT,
+                OTHMUTX = d1.OTHMUTX,
+                ALZDIS = d1.ALZDIS,
+                ALZDISIF = d1.ALZDISIF,
+                LBDIS = d1.LBDIS,
+                LBDIF = d1.LBDIF,
+                PARK = d1.PARK,
+                MSA = d1.MSA,
+                MSAIF = d1.MSAIF,
+                PSP = d1.PSP,
+                PSPIF = d1.PSPIF,
+                CORT = d1.CORT,
+                CORTIF = d1.CORTIF,
+                FTLDMO = d1.FTLDMO,
+                FTLDMOIF = d1.FTLDMOIF,
+                FTLDNOS = d1.FTLDNOS,
+                FTLDNOIF = d1.FTLDNOIF,
+                FTLDSUBT = d1.FTLDSUBT,
+                FTLDSUBX = d1.FTLDSUBX,
+                CVD = d1.CVD,
+                CVDIF = d1.CVDIF,
+                PREVSTK = d1.PREVSTK,
+                STROKDEC = d1.STROKDEC,
+                STKIMAG = d1.STKIMAG,
+                INFNETW = d1.INFNETW,
+                INFWMH = d1.INFWMH,
+                ESSTREM = d1.ESSTREM,
+                ESSTREIF = d1.ESSTREIF,
+                DOWNS = d1.DOWNS,
+                DOWNSIF = d1.DOWNSIF,
+                HUNT = d1.HUNT,
+                HUNTIF = d1.HUNTIF,
+                PRION = d1.PRION,
+                PRIONIF = d1.PRIONIF,
+                BRNINJ = d1.BRNINJ,
+                BRNINJIF = d1.BRNINJIF,
+                BRNINCTE = d1.BRNINCTE,
+                HYCEPH = d1.HYCEPH,
+                HYCEPHIF = d1.HYCEPHIF,
+                EPILEP = d1.EPILEP,
+                EPILEPIF = d1.EPILEPIF,
+                NEOP = d1.NEOP,
+                NEOPIF = d1.NEOPIF,
+                NEOPSTAT = d1.NEOPSTAT,
+                HIV = d1.HIV,
+                HIVIF = d1.HIVIF,
+                OTHCOG = d1.OTHCOG,
+                OTHCOGIF = d1.OTHCOGIF,
+                OTHCOGX = d1.OTHCOGX,
+                DEP = d1.DEP,
+                DEPIF = d1.DEPIF,
+                DEPTREAT = d1.DEPTREAT,
+                BIPOLDX = d1.BIPOLDX,
+                BIPOLDIF = d1.BIPOLDIF,
+                SCHIZOP = d1.SCHIZOP,
+                SCHIZOIF = d1.SCHIZOIF,
+                ANXIET = d1.ANXIET,
+                ANXIETIF = d1.ANXIETIF,
+                DELIR = d1.DELIR,
+                DELIRIF = d1.DELIRIF,
+                PTSDDX = d1.PTSDDX,
+                PTSDDXIF = d1.PTSDDXIF,
+                OTHPSY = d1.OTHPSY,
+                OTHPSYIF = d1.OTHPSYIF,
+                OTHPSYX = d1.OTHPSYX,
+                ALCDEM = d1.ALCDEM,
+                ALCDEMIF = d1.ALCDEMIF,
+                ALCABUSE = d1.ALCABUSE,
+                IMPSUB = d1.IMPSUB,
+                IMPSUBIF = d1.IMPSUBIF,
+                DYSILL = d1.DYSILL,
+                DYSILLIF = d1.DYSILLIF,
+                MEDS = d1.MEDS,
+                MEDSIF = d1.MEDSIF,
+                COGOTH = d1.COGOTH,
+                COGOTHIF = d1.COGOTHIF,
+                COGOTHX = d1.COGOTHX,
+                COGOTH2 = d1.COGOTH2,
+                COGOTH2F = d1.COGOTH2F,
+                COGOTH2X = d1.COGOTH2X,
+                COGOTH3 = d1.COGOTH3,
+                COGOTH3F = d1.COGOTH3F,
+                COGOTH3X = d1.COGOTH3X
+            };
+            dto.SetBaseFormProperties(d1);
+            return dto;
+        }
+
+        public static D2Dto ToFullDto(this D2 d2)
+        {
+            D2Dto dto = new D2Dto
+            {
+                CANCER = d2.CANCER,
+                CANCSITE = d2.CANCSITE,
+                DIABET = d2.DIABET,
+                MYOINF = d2.MYOINF,
+                CONGHRT = d2.CONGHRT,
+                AFIBRILL = d2.AFIBRILL,
+                HYPERT = d2.HYPERT,
+                ANGINA = d2.ANGINA,
+                HYPCHOL = d2.HYPCHOL,
+                VB12DEF = d2.VB12DEF,
+                THYDIS = d2.THYDIS,
+                ARTH = d2.ARTH,
+                ARTYPE = d2.ARTYPE,
+                ARTYPEX = d2.ARTYPEX,
+                ARTUPEX = d2.ARTUPEX,
+                ARTLOEX = d2.ARTLOEX,
+                ARTSPIN = d2.ARTSPIN,
+                ARTUNKN = d2.ARTUNKN,
+                URINEINC = d2.URINEINC,
+                BOWLINC = d2.BOWLINC,
+                SLEEPAP = d2.SLEEPAP,
+                REMDIS = d2.REMDIS,
+                HYPOSOM = d2.HYPOSOM,
+                SLEEPOTH = d2.SLEEPOTH,
+                SLEEPOTX = d2.SLEEPOTX,
+                ANGIOCP = d2.ANGIOCP,
+                ANGIOPCI = d2.ANGIOPCI,
+                PACEMAKE = d2.PACEMAKE,
+                HVALVE = d2.HVALVE,
+                ANTIENC = d2.ANTIENC,
+                ANTIENCX = d2.ANTIENCX,
+                OTHCOND = d2.OTHCOND,
+                OTHCONDX = d2.OTHCONDX
+            };
+            dto.SetBaseFormProperties(d2);
+            return dto;
+        }
+
+        public static T1Dto ToFullDto(this T1 t1)
+        {
+            T1Dto dto = new T1Dto
+            {
+                TELCOG = t1.TELCOG,
+                TELILL = t1.TELILL,
+                TELHOME = t1.TELHOME,
+                TELREFU = t1.TELREFU,
+                TELCOV = t1.TELCOV,
+                TELOTHR = t1.TELOTHR,
+                TELOTHRX = t1.TELOTHRX,
+                TELMOD = t1.TELMOD,
+                TELINPER = t1.TELINPER,
+                TELMILE = t1.TELMILE
+            };
+            dto.SetBaseFormProperties(t1);
             return dto;
         }
 
