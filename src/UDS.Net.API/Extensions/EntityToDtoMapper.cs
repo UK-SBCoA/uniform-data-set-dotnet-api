@@ -993,6 +993,49 @@ namespace UDS.Net.API.Extensions
             return dto;
         }
 
+        public static M1Dto ToDto(this M1 m1)
+        {
+            M1Dto dto = new M1Dto
+            {
+                ParticipationId = m1.ParticipationId,
+                FormId = m1.FormId,
+                Status = m1.Status,
+                CHANGEMO = m1.CHANGEMO,
+                CHANGEDY = m1.CHANGEDY,
+                CHANGEYR = m1.CHANGEYR,
+                PROTOCOL = m1.PROTOCOL,
+                ACONSENT = m1.ACONSENT,
+                RECOGIM = m1.RECOGIM,
+                REPHYILL = m1.REPHYILL,
+                REREFUSE = m1.REREFUSE,
+                RENAVAIL = m1.RENAVAIL,
+                RENURSE = m1.RENURSE,
+                NURSEMO = m1.NURSEMO,
+                NURSEDY = m1.NURSEDY,
+                NURSEYR = m1.NURSEYR,
+                REJOIN = m1.REJOIN,
+                FTLDDISC = m1.FTLDDISC,
+                FTLDREAS = m1.FTLDREAS,
+                FTLDREAX = m1.FTLDREAX,
+                DECEASED = m1.DECEASED,
+                DISCONT = m1.DISCONT,
+                DEATHMO = m1.DEATHMO,
+                DEATHDY = m1.DEATHDY,
+                DEATHYR = m1.DEATHYR,
+                AUTOPSY = m1.AUTOPSY,
+                DISCMO = m1.DISCMO,
+                DISCDAY = m1.DISCDAY,
+                DISCYR = m1.DISCYR,
+                DROPREAS = m1.DROPREAS,
+                CreatedAt = m1.CreatedAt,
+                CreatedBy = m1.CreatedBy,
+                ModifiedBy = m1.ModifiedBy,
+                DeletedBy = m1.DeletedBy,
+                IsDeleted = m1.IsDeleted
+            };
+            return dto;
+        }
+
         public static ParticipationDto ToDto(this Participation participation)
         {
             var dto = new ParticipationDto()

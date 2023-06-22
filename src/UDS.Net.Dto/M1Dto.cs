@@ -1,8 +1,19 @@
 ﻿using System;
+using System.Text.Json.Serialization;
+
 namespace UDS.Net.Dto
 {
     public class M1Dto : BaseDto
     {
+        [JsonIgnore]
+        public new int Id
+        {
+            get
+            {
+                return FormId;
+            }
+        }
+
         public int FormId { get; set; }
         public int ParticipationId { get; set; }
         public string Status { get; set; } = default!;

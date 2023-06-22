@@ -4,7 +4,7 @@
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
     <ProjectGuid>{615B9CD6-4AFF-48DF-A57F-2FA08AA31CEB}</ProjectGuid>
-    <ReleaseVersion>1.0.2</ReleaseVersion>
+    <ReleaseVersion>1.1.0</ReleaseVersion>
     <DockerLaunchBrowser>True</DockerLaunchBrowser>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
     <DockerServiceName>uds.net.api</DockerServiceName>

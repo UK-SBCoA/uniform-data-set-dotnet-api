@@ -93,5 +93,44 @@ namespace UDS.Net.API.Controllers
 
             await _context.SaveChangesAsync();
         }
+
+        [HttpGet("{id}/Milestones", Name = "GetMilestones")]
+        public async Task<List<M1Dto>> GetMilestones(int id)
+        {
+            var milestones = await _context.M1s.Where(m => m.ParticipationId == id).Select(m => m.ToDto()).ToListAsync();
+
+            return milestones;
+        }
+
+        [HttpPost("{id}/Milestones", Name = "PostMilestone")]
+        public async Task PostMilestone(int id, [FromBody] M1Dto dto)
+        {
+            if (id == dto.ParticipationId)
+            {
+                var participation = await _context.Participations.FindAsync(id);
+
+                if (participation != null)
+                {
+                    var milestone = dto.ToEntity();
+                    participation.M1s.Add(milestone);
+
+                    await _context.SaveChangesAsync();
+                }
+            }
+        }
+
+        [HttpPut("{id}/Milestones/{formId}", Name = "PutMilestone")]
+        public async Task PutMilestone(int id, int formId, [FromBody] M1Dto dto)
+        {
+            if (formId == dto.Id)
+            {
+                var milestone = dto.ToEntity();
+
+                _context.M1s.Update(milestone);
+
+                await _context.SaveChangesAsync();
+            }
+        }
+
     }
 }

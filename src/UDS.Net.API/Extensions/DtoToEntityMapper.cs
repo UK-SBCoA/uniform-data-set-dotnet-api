@@ -50,14 +50,6 @@ namespace UDS.Net.API.Extensions
             }
         }
 
-        public static A1 ToEntity(this A1Dto dto)
-        {
-            return new A1
-            {
-
-            };
-        }
-
         public static A4D ToEntity(this A4DDto dto)
         {
             var a4 = new A4D
@@ -68,6 +60,48 @@ namespace UDS.Net.API.Extensions
             a4.SetBaseProperties(dto);
 
             return a4;
+        }
+
+        public static M1 ToEntity(this M1Dto dto)
+        {
+            return new M1
+            {
+                ParticipationId = dto.ParticipationId,
+                FormId = dto.FormId,
+                Status = dto.Status,
+                CHANGEMO = dto.CHANGEMO,
+                CHANGEDY = dto.CHANGEDY,
+                CHANGEYR = dto.CHANGEYR,
+                PROTOCOL = dto.PROTOCOL,
+                ACONSENT = dto.ACONSENT,
+                RECOGIM = dto.RECOGIM,
+                REPHYILL = dto.REPHYILL,
+                REREFUSE = dto.REREFUSE,
+                RENAVAIL = dto.RENAVAIL,
+                RENURSE = dto.RENURSE,
+                NURSEMO = dto.NURSEMO,
+                NURSEDY = dto.NURSEDY,
+                NURSEYR = dto.NURSEYR,
+                REJOIN = dto.REJOIN,
+                FTLDDISC = dto.FTLDDISC,
+                FTLDREAS = dto.FTLDREAS,
+                FTLDREAX = dto.FTLDREAX,
+                DECEASED = dto.DECEASED,
+                DISCONT = dto.DISCONT,
+                DEATHMO = dto.DEATHMO,
+                DEATHDY = dto.DEATHDY,
+                DEATHYR = dto.DEATHYR,
+                AUTOPSY = dto.AUTOPSY,
+                DISCMO = dto.DISCMO,
+                DISCDAY = dto.DISCDAY,
+                DISCYR = dto.DISCYR,
+                DROPREAS = dto.DROPREAS,
+                CreatedAt = dto.CreatedAt,
+                CreatedBy = dto.CreatedBy,
+                ModifiedBy = dto.ModifiedBy,
+                DeletedBy = dto.DeletedBy,
+                IsDeleted = dto.IsDeleted
+            };
         }
 
         public static bool Update(this A1 entity, A1Dto dto)

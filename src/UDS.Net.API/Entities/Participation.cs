@@ -22,7 +22,7 @@ namespace UDS.Net.API.Entities
 
         public virtual IEnumerable<Visit> Visits { get; set; } = new List<Visit>();
 
-        public virtual IEnumerable<M1> M1s { get; set; } = new List<M1>();
+        public virtual List<M1> M1s { get; set; } = new List<M1>();
     }
 }
 
