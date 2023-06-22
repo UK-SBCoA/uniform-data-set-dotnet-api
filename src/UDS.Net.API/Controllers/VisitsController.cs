@@ -258,10 +258,8 @@ namespace UDS.Net.API.Controllers
             await _context.SaveChangesAsync();
         }
 
-        [HttpPut("{id}")]
-        public async Task Put(int id, [FromBody] VisitDto dto)
+        private string GetFormKind(VisitDto dto)
         {
-            // check to see if the dto has a full form
             string formKind = "";
             if (dto.Forms != null && dto.Forms.Count() > 0)
             {
@@ -303,6 +301,174 @@ namespace UDS.Net.API.Controllers
                         formKind = "T1";
                 }
             }
+            return formKind;
+        }
+
+        private void CreateOrUpdateFormInModel(Visit visit, FormDto formDto)
+        {
+            if (formDto is A1Dto)
+            {
+                if (visit.A1 == null)
+                    visit.A1 = new A1();
+                visit.A1.Update((A1Dto)formDto);
+            }
+            else if (formDto is A2Dto)
+            {
+                if (visit.A2 == null)
+                    visit.A2 = new A2();
+                visit.A2.Update((A2Dto)formDto);
+            }
+            else if (formDto is A3Dto)
+            {
+                if (visit.A3 == null)
+                    visit.A3 = new A3();
+                visit.A3.Update((A3Dto)formDto);
+            }
+            else if (formDto is A4GDto)
+            {
+                if (visit.A4G == null)
+                    visit.A4G = new A4G();
+
+                var a4GDto = (A4GDto)formDto;
+                visit.A4G.Update(a4GDto);
+
+                if (a4GDto.A4Dtos.Count > 0)
+                {
+                    // we're using soft deletes, so all medications should be returned
+                    // even if they currently aren't selected
+                    foreach (var detail in a4GDto.A4Dtos)
+                    {
+                        if (detail.Id <= 0)
+                        {
+                            // it's new
+                            _context.A4Ds.Add(detail.ToEntity());
+                        }
+                        else
+                        {
+                            // it's an update
+                            var entity = visit.A4Ds.Where(a => a.Id == detail.Id).FirstOrDefault();
+
+                            if (entity != null)
+                                entity.Update(detail);
+                        }
+                    }
+                }
+            }
+            else if (formDto is A5Dto)
+            {
+                if (visit.A5 == null)
+                    visit.A5 = new A5();
+                visit.A5.Update((A5Dto)formDto);
+            }
+            else if (formDto is B1Dto)
+            {
+                if (visit.B1 == null)
+                    visit.B1 = new B1();
+                visit.B1.Update((B1Dto)formDto);
+            }
+            else if (formDto is B4Dto)
+            {
+                if (visit.B4 == null)
+                    visit.B4 = new B4();
+                visit.B4.Update((B4Dto)formDto);
+            }
+            else if (formDto is B5Dto)
+            {
+                if (visit.B5 == null)
+                    visit.B5 = new B5();
+                visit.B5.Update((B5Dto)formDto);
+            }
+            else if (formDto is B6Dto)
+            {
+                if (visit.B6 == null)
+                    visit.B6 = new B6();
+                visit.B6.Update((B6Dto)formDto);
+            }
+            else if (formDto is B7Dto)
+            {
+                if (visit.B7 == null)
+                    visit.B7 = new B7();
+                visit.B7.Update((B7Dto)formDto);
+            }
+            else if (formDto is B8Dto)
+            {
+                if (visit.B8 == null)
+                    visit.B8 = new B8();
+                visit.B8.Update((B8Dto)formDto);
+            }
+            else if (formDto is B9Dto)
+            {
+                if (visit.B9 == null)
+                    visit.B9 = new B9();
+                visit.B9.Update((B9Dto)formDto);
+            }
+            else if (formDto is C1Dto)
+            {
+                if (visit.C1 == null)
+                    visit.C1 = new C1();
+                visit.C1.Update((C1Dto)formDto);
+            }
+            else if (formDto is C2Dto)
+            {
+                if (visit.C2 == null)
+                    visit.C2 = new C2();
+                visit.C2.Update((C2Dto)formDto);
+            }
+            else if (formDto is D1Dto)
+            {
+                if (visit.D1 == null)
+                    visit.D1 = new D1();
+                visit.D1.Update((D1Dto)formDto);
+            }
+            else if (formDto is D2Dto)
+            {
+                if (visit.D2 == null)
+                    visit.D2 = new D2();
+                visit.D2.Update((D2Dto)formDto);
+            }
+            else if (formDto is T1Dto)
+            {
+                if (visit.T1 == null)
+                    visit.T1 = new T1();
+                visit.T1.Update((T1Dto)formDto);
+            }
+        }
+
+        [HttpPost("{id}/Forms/{formKind}", Name = "PostWithForm")]
+        public async Task PostWithForm(int id, string formKind, [FromBody] VisitDto dto)
+        {
+            if (!String.IsNullOrWhiteSpace(formKind))
+            {
+                // check to see if the dto has a full form
+                string formKindInVisit = GetFormKind(dto);
+                if (formKind.Trim() == formKindInVisit)
+                {
+                    Visit? visit = await Get(id, formKind);
+
+                    if (visit != null)
+                    {
+                        var formDto = dto.Forms.Where(f => f.Kind == formKind).FirstOrDefault();
+
+                        CreateOrUpdateFormInModel(visit, formDto);
+
+                        _context.Visits.Update(visit);
+                        await _context.SaveChangesAsync();
+                    }
+                    else
+                        throw new Exception("Must create visit before creating form.");
+                }
+                else
+                    throw new Exception("Form kind attempting to be created does not match form found in visit.");
+            }
+            else
+                throw new Exception("Must include a form kind to create.");
+        }
+
+        [HttpPut("{id}")]
+        public async Task Put(int id, [FromBody] VisitDto dto)
+        {
+            // check to see if the dto has a full form
+            string formKind = GetFormKind(dto);
 
             Visit? visit;
             if (String.IsNullOrEmpty(formKind))
@@ -336,97 +502,7 @@ namespace UDS.Net.API.Controllers
                 {
                     var formDto = dto.Forms.Where(f => f.Kind == formKind).FirstOrDefault();
 
-                    if (formDto is A1Dto)
-                    {
-                        visit.A1.Update((A1Dto)formDto);
-                    }
-                    else if (formDto is A2Dto)
-                    {
-                        visit.A2.Update((A2Dto)formDto);
-                    }
-                    else if (formDto is A3Dto)
-                    {
-                        visit.A3.Update((A3Dto)formDto);
-                    }
-                    else if (formDto is A4GDto)
-                    {
-                        var a4GDto = (A4GDto)formDto;
-                        visit.A4G.Update(a4GDto);
-
-                        if (a4GDto.A4Dtos.Count > 0)
-                        {
-                            // we're using soft deletes, so all medications should be returned
-                            // even if they currently aren't selected
-                            foreach (var detail in a4GDto.A4Dtos)
-                            {
-                                if (detail.Id <= 0)
-                                {
-                                    // it's new
-                                    _context.A4Ds.Add(detail.ToEntity());
-                                }
-                                else
-                                {
-                                    // it's an update
-                                    var entity = visit.A4Ds.Where(a => a.Id == detail.Id).FirstOrDefault();
-
-                                    if (entity != null)
-                                        entity.Update(detail);
-                                }
-                            }
-                        }
-                    }
-                    else if (formDto is A5Dto)
-                    {
-                        visit.A5.Update((A5Dto)formDto);
-                    }
-                    else if (formDto is B1Dto)
-                    {
-                        visit.B1.Update((B1Dto)formDto);
-                    }
-                    else if (formDto is B4Dto)
-                    {
-                        visit.B4.Update((B4Dto)formDto);
-                    }
-                    else if (formDto is B5Dto)
-                    {
-                        visit.B5.Update((B5Dto)formDto);
-                    }
-                    else if (formDto is B6Dto)
-                    {
-                        visit.B6.Update((B6Dto)formDto);
-                    }
-                    else if (formDto is B7Dto)
-                    {
-                        visit.B7.Update((B7Dto)formDto);
-                    }
-                    else if (formDto is B8Dto)
-                    {
-                        visit.B8.Update((B8Dto)formDto);
-                    }
-                    else if (formDto is B9Dto)
-                    {
-                        visit.B9.Update((B9Dto)formDto);
-                    }
-                    else if (formDto is C1Dto)
-                    {
-                        visit.C1.Update((C1Dto)formDto);
-                    }
-                    else if (formDto is C2Dto)
-                    {
-                        visit.C2.Update((C2Dto)formDto);
-                    }
-                    else if (formDto is D1Dto)
-                    {
-                        visit.D1.Update((D1Dto)formDto);
-                    }
-                    else if (formDto is D2Dto)
-                    {
-                        visit.D2.Update((D2Dto)formDto);
-                    }
-                    else if (formDto is T1Dto)
-                    {
-                        visit.T1.Update((T1Dto)formDto);
-                    }
+                    CreateOrUpdateFormInModel(visit, formDto);
                 }
 
                 _context.Visits.Update(visit);

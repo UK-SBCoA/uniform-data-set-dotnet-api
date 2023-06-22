@@ -25,6 +25,13 @@ namespace UDS.Net.API.Client
 
             return dto;
         }
+
+        public async Task PostWithForm(int id, string formId, VisitDto dto)
+        {
+            string json = JsonSerializer.Serialize(dto);
+
+            var response = await PostRequest($"{_BasePath}/{id}/Forms/{formId}", json);
+        }
     }
 }
 
