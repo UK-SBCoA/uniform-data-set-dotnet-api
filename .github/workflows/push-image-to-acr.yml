@@ -25,4 +25,4 @@ jobs:
         - name: Build and push image
           id: build-image
           run: |
-           az acr build --image ${{ secrets.REGISTRY_LOGIN_SERVER }}/uniformdatasetdotnetapi:release --registry ${{ secrets.REGISTRY_LOGIN_SERVER }} --file "Dockerfile" src/UDS.Net.API/Dockerfile
+           az acr build --image ${{ secrets.REGISTRY_LOGIN_SERVER }}/uniformdatasetdotnetapi:release --registry ${{ secrets.REGISTRY_LOGIN_SERVER }} --file src/UDS.Net.API/Dockerfile
