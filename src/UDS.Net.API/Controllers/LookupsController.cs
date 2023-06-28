@@ -41,7 +41,7 @@ namespace UDS.Net.API.Controllers
             return drugCodeQuery;
         }
 
-        [HttpGet("/DrugCodes", Name = "LookupDrugCodes")]
+        [HttpGet("DrugCodes", Name = "LookupDrugCodes")]
         public async Task<LookupDrugCodeDto> LookupDrugCodes(int pageSize = 10, int pageIndex = 1)
         {
             var query = GetDrugCodeQuery();
@@ -67,7 +67,7 @@ namespace UDS.Net.API.Controllers
             };
         }
 
-        [HttpGet("/DrugCodes/Search", Name = "SearchDrugCodes")]
+        [HttpGet("DrugCodes/Search", Name = "SearchDrugCodes")]
         public async Task<LookupDrugCodeDto> SearchDrugCodes(int pageSize = 10, int pageIndex = 1, bool onlyPopular = true, string searchTerm = "")
         {
             var query = GetDrugCodeQuery(onlyPopular, searchTerm);
