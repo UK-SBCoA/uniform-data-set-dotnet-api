@@ -9,16 +9,26 @@ namespace UDS.Net.API.Entities
     [Table("tbl_B4s")]
     public class B4 : Form
     {
-        public int? MEMORY { get; set; }
-        public int? ORIENT { get; set; }
-        public int? JUDGMENT { get; set; }
-        public int? COMMUN { get; set; }
-        public int? HOMEHOBB { get; set; }
-        public int? PERSCARE { get; set; }
-        public int? CDRSUM { get; set; }
-        public int? CDRGLOB { get; set; }
-        public int? COMPORT { get; set; }
-        public int? CDRLANG { get; set; }
+        [Column(TypeName = "decimal(2,1)")]
+        public double? MEMORY { get; set; }
+        [Column(TypeName = "decimal(2,1)")]
+        public double? ORIENT { get; set; }
+        [Column(TypeName = "decimal(2,1)")]
+        public double? JUDGMENT { get; set; }
+        [Column(TypeName = "decimal(2,1)")]
+        public double? COMMUN { get; set; }
+        [Column(TypeName = "decimal(2,1)")]
+        public double? HOMEHOBB { get; set; }
+        [Column(TypeName = "decimal(2,1)")]
+        public double? PERSCARE { get; set; }
+        [Column(TypeName = "decimal(3,1)")]
+        public double? CDRSUM { get; set; }
+        [Column(TypeName = "decimal(2,1)")]
+        public double? CDRGLOB { get; set; }
+        [Column(TypeName = "decimal(2,1)")]
+        public double? COMPORT { get; set; }
+        [Column(TypeName = "decimal(2,1)")]
+        public double? CDRLANG { get; set; }
     }
 }
 

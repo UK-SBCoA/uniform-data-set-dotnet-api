@@ -9,7 +9,9 @@ namespace UDS.Net.API.Entities
     [Table("tbl_B1s")]
     public class B1 : Form
     {
-        public int? HEIGHT { get; set; }
+        // Height range 36.0 to 87.9, 88.8
+        [Column(TypeName = "decimal(3,1)")]
+        public double? HEIGHT { get; set; }
         public int? WEIGHT { get; set; }
         public int? BPSYS { get; set; }
         public int? BPDIAS { get; set; }

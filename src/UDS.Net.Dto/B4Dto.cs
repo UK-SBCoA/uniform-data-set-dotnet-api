@@ -3,16 +3,16 @@ namespace UDS.Net.Dto
 {
     public class B4Dto : FormDto
     {
-        public int? MEMORY { get; set; }
-        public int? ORIENT { get; set; }
-        public int? JUDGMENT { get; set; }
-        public int? COMMUN { get; set; }
-        public int? HOMEHOBB { get; set; }
-        public int? PERSCARE { get; set; }
-        public int? CDRSUM { get; set; }
-        public int? CDRGLOB { get; set; }
-        public int? COMPORT { get; set; }
-        public int? CDRLANG { get; set; }
+        public double? MEMORY { get; set; }
+        public double? ORIENT { get; set; }
+        public double? JUDGMENT { get; set; }
+        public double? COMMUN { get; set; }
+        public double? HOMEHOBB { get; set; }
+        public double? PERSCARE { get; set; }
+        public double? CDRSUM { get; set; }
+        public double? CDRGLOB { get; set; }
+        public double? COMPORT { get; set; }
+        public double? CDRLANG { get; set; }
     }
 }
 

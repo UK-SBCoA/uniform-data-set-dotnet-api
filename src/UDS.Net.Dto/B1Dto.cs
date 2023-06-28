@@ -3,7 +3,7 @@ namespace UDS.Net.Dto
 {
     public class B1Dto : FormDto
     {
-        public int? HEIGHT { get; set; }
+        public double? HEIGHT { get; set; }
         public int? WEIGHT { get; set; }
         public int? BPSYS { get; set; }
         public int? BPDIAS { get; set; }
