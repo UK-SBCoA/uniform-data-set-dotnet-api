@@ -9,6 +9,10 @@
 
 name: Create and publish a Docker image
 
+permissions:
+  id-token: write
+  contents: read
+
 on:
   push:
     branches: ['release']
