@@ -66,6 +66,5 @@ jobs:
             context: src/
             file: src/UDS.Net.API/Dockerfile
             push: true
-            tags: ${{ steps.meta.outputs.tags }}
-            labels: ${{ secrets.REGISTRY_LOGIN_SERVER }}/${{ steps.meta.outputs.labels }}
+            tags: ${{ secrets.REGISTRY_LOGIN_SERVER }}/uniform-data-set-dotnet-api:release
 
