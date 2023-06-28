@@ -63,7 +63,6 @@ jobs:
       - name: Build and push Docker image to ACR
         uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
         with:
-            registry-login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
             context: src/
             file: src/UDS.Net.API/Dockerfile
             push: true
