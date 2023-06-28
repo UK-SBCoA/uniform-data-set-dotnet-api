@@ -5,6 +5,7 @@ namespace UDS.Net.API.Client
     {
         IVisitClient VisitClient { get; }
         IParticipationClient ParticipationClient { get; }
+        ILookupClient LookupClient { get; }
     }
 }
 

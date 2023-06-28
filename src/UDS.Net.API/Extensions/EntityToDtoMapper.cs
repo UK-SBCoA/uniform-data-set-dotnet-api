@@ -1052,6 +1052,18 @@ namespace UDS.Net.API.Extensions
 
             return dto;
         }
+
+        public static DrugCodeDto ToDto(this DrugCodeLookup drugCode)
+        {
+            return new DrugCodeDto
+            {
+                DrugId = drugCode.DrugId,
+                DrugName = drugCode.DrugName,
+                BrandName = drugCode.BrandName,
+                IsOverTheCounter = drugCode.IsOverTheCounter,
+                IsPopular = drugCode.IsPopular
+            };
+        }
     }
 }
 

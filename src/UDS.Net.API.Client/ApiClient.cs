@@ -37,11 +37,13 @@ namespace UDS.Net.API.Client
     {
         public IVisitClient VisitClient { get; }
         public IParticipationClient ParticipationClient { get; }
+        public ILookupClient LookupClient { get; }
 
-        public ApiClient(IVisitClient visitClient, IParticipationClient participationClient)
+        public ApiClient(IVisitClient visitClient, IParticipationClient participationClient, ILookupClient lookupClient)
         {
             VisitClient = visitClient;
             ParticipationClient = participationClient;
+            LookupClient = lookupClient;
         }
 
 
