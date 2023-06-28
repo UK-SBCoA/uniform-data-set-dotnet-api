@@ -24,6 +24,11 @@ namespace UDS.Net.API.Client
                 options.BaseAddress = new Uri(baseAddress);
             });
 
+            services.AddHttpClient<ILookupClient, LookupClient>(options =>
+            {
+                options.BaseAddress = new Uri(baseAddress);
+            });
+
             // API client registered last
             services.AddSingleton<IApiClient, ApiClient>();
         }
