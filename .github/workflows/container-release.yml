@@ -9,10 +9,6 @@
 
 name: Create and publish a Docker image
 
-permissions:
-  id-token: write
-  contents: read
-
 on:
   push:
     branches: ['release']
@@ -28,6 +24,7 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
 
     steps:
       - name: Checkout repository
