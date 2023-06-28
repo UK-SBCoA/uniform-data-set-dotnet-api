@@ -52,7 +52,7 @@ jobs:
           context: src/
           file: src/UDS.Net.API/Dockerfile
           push: true
-          tags: ${{ .metstepsa.outputs.tags }}
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           
       #the next 3 steps update the acr image to trigger update in azure container
