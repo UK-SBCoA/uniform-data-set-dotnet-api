@@ -341,7 +341,14 @@ namespace UDS.Net.API.Controllers
                         if (detail.Id <= 0)
                         {
                             // it's new
-                            _context.A4Ds.Add(detail.ToEntity());
+                            _context.A4Ds.Add(new A4D
+                            {
+                                DRUGID = detail.DRUGID,
+                                CreatedAt = detail.CreatedAt,
+                                CreatedBy = detail.CreatedBy,
+                                VisitId = detail.VisitId,
+                                Status = detail.Status
+                            });
                         }
                         else
                         {
