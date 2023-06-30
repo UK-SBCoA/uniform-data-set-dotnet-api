@@ -341,9 +341,20 @@ namespace UDS.Net.API.Extensions
 
         public static A4DDto ToFullDto(this A4D a4D)
         {
+            var drugCodeDto = new DrugCodeDto();
+            if (a4D.DrugCode != null)
+            {
+                drugCodeDto.DrugId = a4D.DrugCode.DrugId;
+                drugCodeDto.DrugName = a4D.DrugCode.DrugName;
+                drugCodeDto.BrandName = a4D.DrugCode.BrandName;
+                drugCodeDto.IsOverTheCounter = a4D.DrugCode.IsOverTheCounter;
+                drugCodeDto.IsPopular = a4D.DrugCode.IsPopular;
+            }
+
             A4DDto dto = new A4DDto
             {
-                DRUGID = a4D.DRUGID
+                DRUGID = a4D.DRUGID,
+                DrugCodeLookup = drugCodeDto
             };
             dto.SetBaseFormProperties(a4D);
             return dto;

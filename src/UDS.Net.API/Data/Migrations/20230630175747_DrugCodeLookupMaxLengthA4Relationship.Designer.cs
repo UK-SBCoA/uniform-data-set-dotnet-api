@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UDS.Net.API.Data;
 
@@ -11,9 +12,11 @@ using UDS.Net.API.Data;
 namespace UDS.Net.API.Data.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    partial class ApiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230630175747_DrugCodeLookupMaxLengthA4Relationship")]
+    partial class DrugCodeLookupMaxLengthA4Relationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -483,8 +486,6 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DRUGID");
 
                     b.HasIndex("VisitId");
 
@@ -4481,19 +4482,11 @@ namespace UDS.Net.API.Data.Migrations
 
             modelBuilder.Entity("UDS.Net.API.Entities.A4D", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                        .WithMany()
-                        .HasForeignKey("DRUGID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("UDS.Net.API.Entities.Visit", "Visit")
                         .WithMany("A4Ds")
                         .HasForeignKey("VisitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("DrugCode");
 
                     b.Navigation("Visit");
                 });

@@ -72,6 +72,7 @@ namespace UDS.Net.API.Controllers
                         visit.A4G = a4;
 
                     var a4details = await _context.A4Ds
+                        .Include(a => a.DrugCode)
                         .Where(a => a.VisitId == id)
                         .ToListAsync();
 

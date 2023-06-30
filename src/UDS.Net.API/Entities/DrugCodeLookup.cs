@@ -10,6 +10,7 @@ namespace UDS.Net.API.Entities
     public class DrugCodeLookup
     {
         [Key]
+        [MaxLength(6)]
         public string DrugId { get; set; }
 
         [MaxLength(500)]

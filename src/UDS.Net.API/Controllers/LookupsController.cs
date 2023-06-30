@@ -34,8 +34,7 @@ namespace UDS.Net.API.Controllers
                 string cleanedSearchTerm = searchTerm.Trim().ToLower();
 
                 drugCodeQuery = drugCodeQuery
-                    .Where(d => d.DrugName.StartsWith(cleanedSearchTerm) || d.BrandName.StartsWith(cleanedSearchTerm))
-                    .Distinct();
+                    .Where(d => d.DrugName.StartsWith(cleanedSearchTerm) || d.BrandName.Contains(cleanedSearchTerm));
             }
 
             return drugCodeQuery;
@@ -73,12 +72,7 @@ namespace UDS.Net.API.Controllers
             var query = GetDrugCodeQuery(onlyPopular, searchTerm);
             var totalRecords = await query.CountAsync();
 
-            var results = await query
-                .Skip((pageIndex - 1) * pageSize)
-                .Take(pageSize)
-                .OrderBy(d => d.DrugName)
-                .Select(d => d.ToDto())
-                .ToListAsync();
+            var results = await query.ToListAsync();
 
             return new LookupDrugCodeDto
             {
@@ -87,7 +81,7 @@ namespace UDS.Net.API.Controllers
                 PageSize = pageSize,
                 PageIndex = pageSize,
                 TotalResultsCount = totalRecords,
-                Results = results,
+                Results = results.Select(d => d.ToDto()).ToList(),
                 LookupParameters = new { OnlyPopular = onlyPopular, SearchTerm = searchTerm },
                 Error = new ErrorDto()
             };
