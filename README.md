@@ -1,4 +1,4 @@
-[![BSD-2 "Simplified" License](https://img.shields.io/github/license/UK-SBCoA/uniform-data-set-dotnet-api)](https://github.com/UK-SBCoA/uniform-data-set-dotnet-api/LICENSE) ![GitHub Super-Linter](https://github.com/UK-SBCoA/uniform-data-set-dotnet-api/actions/workflows/super-linter.yml/badge.svg) ![UDS.Net.Forms Unit Tests](https://github.com/UK-SBCoA/uniform-data-set-dotnet-api/actions/workflows/unit-tests.yml/badge.svg)
+[![BSD-2 "Simplified" License](https://img.shields.io/github/license/UK-SBCoA/uniform-data-set-dotnet-api)](https://github.com/UK-SBCoA/uniform-data-set-dotnet-api/LICENSE) ![GitHub Super-Linter](https://github.com/UK-SBCoA/uniform-data-set-dotnet-api/actions/workflows/super-linter.yml/badge.svg)
 # UDS for .NET - Web API
 
 This repository includes all necessary tools backend service to collect data for UDS including
