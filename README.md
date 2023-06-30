@@ -1,10 +1,11 @@
+[![BSD-2 "Simplified" License](https://img.shields.io/github/license/UK-SBCoA/uniform-data-set-dotnet-api)](https://github.com/UK-SBCoA/uniform-data-set-dotnet-api/LICENSE) ![GitHub Super-Linter](https://github.com/UK-SBCoA/uniform-data-set-dotnet-api/actions/workflows/super-linter.yml/badge.svg) ![UDS.Net.Forms Unit Tests](https://github.com/UK-SBCoA/uniform-data-set-dotnet-api/actions/workflows/unit-tests.yml/badge.svg)
 # UDS for .NET - Web API
 
 This repository includes all necessary tools backend service to collect data for UDS including
 
 * Class libraries for data-transer objects and API client wrapper
-* Data persistence
-* Docker containers
+* Data persistence via web api
+* Builds for Docker image [![Docker image build](https://github.com/UK-SBCoA/uniform-data-set-dotnet-api/actions/workflows/container-release.yml/badge.svg?branch=release)](https://github.com/orgs/UK-SBCoA/packages/container/package/uniform-data-set-dotnet-api)
 
 This software is intended for use by [National Institute on Aging (NIA) Alzheimer's Disease Research Centers](https://www.nia.nih.gov/research/dn/national-alzheimers-coordinating-center-nacc) (ADRCs) to collect data for submission to the National Alzheimer's Coordinating Center ([NACC](https://naccdata.org/)) centralized database. 
 
