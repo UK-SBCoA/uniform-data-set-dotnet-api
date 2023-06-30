@@ -4,10 +4,10 @@
 This repository includes all necessary tools backend service to collect data for UDS including
 
 * Class libraries for data-transer objects and API client wrapper
-* Data persistence via web api
+* Data persistence via web API
 * Builds for Docker image [![Docker image build](https://github.com/UK-SBCoA/uniform-data-set-dotnet-api/actions/workflows/container-release.yml/badge.svg?branch=release)](https://github.com/orgs/UK-SBCoA/packages/container/package/uniform-data-set-dotnet-api)
 
-This software is intended for use by [National Institute on Aging (NIA) Alzheimer's Disease Research Centers](https://www.nia.nih.gov/research/dn/national-alzheimers-coordinating-center-nacc) (ADRCs) to collect data for submission to the National Alzheimer's Coordinating Center ([NACC](https://naccdata.org/)) centralized database. 
+This software is intended for use by [National Institute on Aging (NIA) Alzheimer's Disease Research Centers](https://www.nia.nih.gov/research/dn/national-alzheimers-coordinating-center-nacc) (ADRCs) to collect data for submission to the National Alzheimer's Coordinating Center ([NACC](https://naccdata.org/)) centralized database.
 
 These data are called Uniform Data Set (UDS). All ADRC's submit this data frequently to contribute to the NIA's Alzheimer's Disease Longitudinal Study. Subsequent data can be requested by researchers across the world.
 
