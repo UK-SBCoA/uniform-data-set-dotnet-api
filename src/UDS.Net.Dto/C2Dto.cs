@@ -3,6 +3,7 @@ namespace UDS.Net.Dto
 {
     public class C2Dto : FormDto
     {
+        public int? MODCOMM { get; set; }
         public int? MOCACOMP { get; set; }
         public int? MOCAREAS { get; set; }
         public int? MOCALOC { get; set; }

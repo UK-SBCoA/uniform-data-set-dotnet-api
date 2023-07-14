@@ -732,6 +732,7 @@ namespace UDS.Net.API.Extensions
         {
             C2Dto dto = new C2Dto
             {
+                MODCOMM = c2.MODCOMM,
                 MOCACOMP = c2.MOCACOMP,
                 MOCAREAS = c2.MOCAREAS,
                 MOCALOC = c2.MOCALOC,

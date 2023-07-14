@@ -679,6 +679,7 @@ namespace UDS.Net.API.Extensions
             {
                 entity.SetBaseProperties(dto);
 
+                entity.MODCOMM = dto.MODCOMM;
                 entity.MOCACOMP = dto.MOCACOMP;
                 entity.MOCAREAS = dto.MOCAREAS;
                 entity.MOCALOC = dto.MOCALOC;
