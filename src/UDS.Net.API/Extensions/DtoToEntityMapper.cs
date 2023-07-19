@@ -767,7 +767,7 @@ namespace UDS.Net.API.Extensions
                 entity.UDSVERTN = dto.UDSVERTN;
                 entity.UDSVERTE = dto.UDSVERTE;
                 entity.UDSVERTI = dto.UDSVERTI;
-                entity.REYDREC =  dto.REYDREC;
+                entity.REYDREC = dto.REYDREC;
                 entity.REYDINT = dto.REYDINT;
                 entity.REYTCOR = dto.REYTCOR;
                 entity.REYFPOS = dto.REYFPOS;
