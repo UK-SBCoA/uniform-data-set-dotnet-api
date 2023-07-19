@@ -9,7 +9,7 @@ namespace UDS.Net.API.Entities
     /// </summary>
     [Table("tbl_C2s")]
     public class C2 : Form
-	{
+    {
         public int? MODCOMM { get; set; }
         public int? MOCACOMP { get; set; }
         public int? MOCAREAS { get; set; }
@@ -113,9 +113,9 @@ namespace UDS.Net.API.Entities
         public int? RESPINTR { get; set; }
         public int? RESPDISN { get; set; }
         public int? RESPFATG { get; set; }
-        public int? RESPEMOT { get; set;}
+        public int? RESPEMOT { get; set; }
         public int? RESPASST { get; set; }
-        public int? RESPOTH {get; set; }
+        public int? RESPOTH { get; set; }
         public int? RESPOTHX { get; set; }
     }
 }

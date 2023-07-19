@@ -837,7 +837,7 @@ namespace UDS.Net.API.Extensions
                 RESPASST = c2.RESPASST,
                 RESPOTH = c2.RESPOTH,
                 RESPOTHX = c2.RESPOTHX,
-    };
+            };
             dto.SetBaseFormProperties(c2);
             return dto;
         }
