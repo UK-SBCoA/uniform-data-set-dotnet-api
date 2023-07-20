@@ -191,6 +191,7 @@ namespace UDS.Net.API.Extensions
                 entity.MOMYOB = dto.MOMYOB;
                 entity.MOMDAGE = dto.MOMDAGE;
                 entity.MOMNEUR = dto.MOMNEUR;
+                entity.MOMPRDX = dto.MOMPRDX;
                 entity.MOMMOE = dto.MOMMOE;
                 entity.MOMAGEO = dto.MOMAGEO;
                 entity.DADMOB = dto.DADMOB;

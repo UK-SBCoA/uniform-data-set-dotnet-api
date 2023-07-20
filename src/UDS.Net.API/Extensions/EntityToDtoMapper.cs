@@ -254,6 +254,7 @@ namespace UDS.Net.API.Extensions
                 MOMYOB = a3.MOMYOB,
                 MOMDAGE = a3.MOMDAGE,
                 MOMNEUR = a3.MOMNEUR,
+                MOMPRDX = a3.MOMPRDX,
                 MOMMOE = a3.MOMMOE,
                 MOMAGEO = a3.MOMAGEO,
                 DADMOB = a3.DADMOB,
