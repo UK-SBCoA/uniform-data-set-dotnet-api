@@ -21,6 +21,7 @@ namespace UDS.Net.Dto
         public int? MOMYOB { get; set; }
         public int? MOMDAGE { get; set; }
         public int? MOMNEUR { get; set; }
+        public int? MOMPRDX { get; set; }
         public int? MOMMOE { get; set; }
         public int? MOMAGEO { get; set; }
         public int? DADMOB { get; set; }
