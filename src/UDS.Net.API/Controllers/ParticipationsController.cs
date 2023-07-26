@@ -47,20 +47,28 @@ namespace UDS.Net.API.Controllers
         [HttpPost]
         public async Task Post([FromBody] ParticipationDto dto)
         {
-            var participation = new Participation
+            var existingLegacyid = await _context.Participations.FirstOrDefaultAsync(p => p.LegacyId == dto.LegacyId);
+
+            if (existingLegacyid != null)
             {
-                CreatedBy = dto.CreatedBy,
-                CreatedAt = dto.CreatedAt,
-                ModifiedBy = dto.ModifiedBy,
-                IsDeleted = dto.IsDeleted,
-                DeletedBy = dto.DeletedBy,
-                LegacyId = dto.LegacyId
-            };
+                return;
 
-            _context.Participations.Add(participation);
-            await _context.SaveChangesAsync();
+            }
+            else
+            {
+                var newParticipation = new Participation
+                {
+                    CreatedBy = dto.CreatedBy,
+                    CreatedAt = dto.CreatedAt,
+                    ModifiedBy = dto.ModifiedBy,
+                    IsDeleted = dto.IsDeleted,
+                    DeletedBy = dto.DeletedBy,
+                    LegacyId = dto.LegacyId
+                };
+                _context.Participations.Add(newParticipation);
+                await _context.SaveChangesAsync();
+            }
         }
-
         [HttpPut("{id}")]
         public async Task Put(int id, [FromBody] ParticipationDto dto)
         {
