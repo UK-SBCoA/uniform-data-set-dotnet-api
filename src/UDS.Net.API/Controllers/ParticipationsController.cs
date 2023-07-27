@@ -47,9 +47,9 @@ namespace UDS.Net.API.Controllers
         [HttpPost]
         public async Task Post([FromBody] ParticipationDto dto)
         {
-            var existingLegacyid = await _context.Participations.FirstOrDefaultAsync(p => p.LegacyId == dto.LegacyId);
+            var existingLegacyid = _context.Participations.Any(p => p.LegacyId == dto.LegacyId);
 
-            if (existingLegacyid != null)
+            if (existingLegacyid)
             {
                 return;
 
