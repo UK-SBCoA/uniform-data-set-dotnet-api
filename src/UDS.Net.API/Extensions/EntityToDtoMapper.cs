@@ -47,9 +47,9 @@ namespace UDS.Net.API.Extensions
                         CreatedBy = formStatus.CreatedBy,
                         CreatedAt = formStatus.CreatedAt,
                         IsIncluded = formStatus.IsIncluded,
-                        Language = formStatus.Language.HasValue ? formStatus.Language.Value.ToString() : "",
+                        Language = formStatus.Language.HasValue ? ((int)formStatus.Language).ToString() : "",
                         ModifiedBy = formStatus.ModifiedBy,
-                        ReasonCode = formStatus.ReasonCode.HasValue ? formStatus.ReasonCode.Value.ToString() : ""
+                        ReasonCode = formStatus.ReasonCode.HasValue ? ((int)formStatus.ReasonCode).ToString() : ""
                     });
                 }
             }
@@ -138,8 +138,8 @@ namespace UDS.Net.API.Extensions
                             DeletedBy = form.DeletedBy,
                             IsDeleted = form.IsDeleted,
                             IsIncluded = form.IsIncluded,
-                            Language = form.Language.HasValue ? form.Language.Value.ToString() : "",
-                            ReasonCode = form.ReasonCode.HasValue ? form.ReasonCode.Value.ToString() : ""
+                            Language = form.Language.HasValue ? ((int)form.Language).ToString() : "",
+                            ReasonCode = form.ReasonCode.HasValue ? ((int)form.ReasonCode).ToString() : ""
                         };
                     }
                     dto.Forms.Add(formDto);
@@ -167,9 +167,9 @@ namespace UDS.Net.API.Extensions
                 dto.IsDeleted = form.IsDeleted;
                 dto.VisitId = form.VisitId;
                 dto.Status = form.Status;
-                dto.Language = form.Language.HasValue ? form.Language.Value.ToString() : "";
+                dto.Language = form.Language.HasValue ? ((int)form.Language).ToString() : "";
                 dto.IsIncluded = form.IsIncluded;
-                dto.ReasonCode = form.ReasonCode.HasValue ? form.ReasonCode.Value.ToString() : "";
+                dto.ReasonCode = form.ReasonCode.HasValue ? ((int)form.ReasonCode).ToString() : "";
             }
         }
 
