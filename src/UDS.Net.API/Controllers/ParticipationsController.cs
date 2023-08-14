@@ -139,6 +139,17 @@ namespace UDS.Net.API.Controllers
                 await _context.SaveChangesAsync();
             }
         }
+        [HttpGet("LegacyId/{legacyId}", Name = "GetByLegacyId")]
+
+        public async Task<ParticipationDto> GetByLegacyId(string legacyId)
+        {
+            var participation = await _context.Participations
+                .Where(p => p.LegacyId == legacyId)
+                .Select(p => p.ToDto())
+                .FirstOrDefaultAsync();
+
+            return participation;
+        }
 
     }
 }

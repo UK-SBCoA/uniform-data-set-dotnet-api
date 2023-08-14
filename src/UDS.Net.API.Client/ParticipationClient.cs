@@ -37,6 +37,15 @@ namespace UDS.Net.API.Client
 
             var response = await PutRequest($"{_BasePath}/{id}/Milestones/{formId}", json);
         }
+
+        public async Task<ParticipationDto> GetByLegacyId(string legacyId)
+        {
+            var response = await GetRequest($"{_BasePath}/LegacyId/{legacyId}");
+
+            ParticipationDto id = JsonSerializer.Deserialize<ParticipationDto>(response, options);
+
+            return id;
+        }
     }
 }
 
