@@ -42,9 +42,8 @@ namespace UDS.Net.API.Client
         {
             var response = await GetRequest($"{_BasePath}/LegacyId/{legacyId}");
 
-            ParticipationDto id = JsonSerializer.Deserialize<ParticipationDto>(response, options);
-
-            return id;
+            return JsonSerializer.Deserialize<ParticipationDto>(response, options);
+            
         }
     }
 }
