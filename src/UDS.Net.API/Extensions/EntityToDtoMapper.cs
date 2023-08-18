@@ -1100,8 +1100,7 @@ namespace UDS.Net.API.Extensions
                 Visits = participation.Visits.Select(v => v.ToDto()).ToList(),
                 VisitCount = participation.Visits != null ? participation.Visits.Count() : 0,
                 LastVisitNumber = participation.Visits != null ? (participation.Visits.Any() ? participation.Visits.OrderByDescending(v => v.Number).Select(v => v.Number).First() : 0) : 0
-
-        };
+            };
 
             return dto;
         }
