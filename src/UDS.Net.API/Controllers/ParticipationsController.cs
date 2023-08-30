@@ -25,7 +25,11 @@ namespace UDS.Net.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<ParticipationDto>> Get()
         {
-            return await _context.Participations.Select(p => p.ToDto()).ToListAsync();
+            return await _context.Participations
+               .Include(p => p.Visits)
+               .Select(p => p.ToDto())
+               .ToListAsync();
+
         }
 
         [HttpGet("Count", Name = "ParticipationsCount")]

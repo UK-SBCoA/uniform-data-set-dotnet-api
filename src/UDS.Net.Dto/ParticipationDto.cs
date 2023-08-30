@@ -8,6 +8,10 @@ namespace UDS.Net.Dto
         public string LegacyId { get; set; }
 
         public IEnumerable<VisitDto> Visits { get; set; }
+
+        public int LastVisitNumber { get; set; }
+
+        public int VisitCount { get; set; }
     }
 }
 
