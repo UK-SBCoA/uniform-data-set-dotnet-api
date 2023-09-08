@@ -230,7 +230,8 @@ namespace UDS.Net.API.Extensions
                 INLIVWTH = a2.INLIVWTH,
                 INVISITS = a2.INVISITS,
                 INCALLS = a2.INCALLS,
-                INRELY = a2.INRELY
+                INRELY = a2.INRELY,
+                NEWINF = a2.NEWINF
             };
             dto.SetBaseFormProperties(a2);
             return dto;

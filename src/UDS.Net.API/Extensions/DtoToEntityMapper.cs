@@ -165,6 +165,7 @@ namespace UDS.Net.API.Extensions
                 entity.INVISITS = dto.INVISITS;
                 entity.INCALLS = dto.INCALLS;
                 entity.INRELY = dto.INRELY;
+                entity.NEWINF = dto.NEWINF;
 
                 return true;
             }
