@@ -107,7 +107,7 @@ namespace UDS.Net.Dto
         public int? RESPEMOT { get; set; }
         public int? RESPASST { get; set; }
         public int? RESPOTH { get; set; }
-        public int? RESPOTHX { get; set; }
+        public string RESPOTHX { get; set; }
     }
 }
 
