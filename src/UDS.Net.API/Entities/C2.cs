@@ -116,7 +116,8 @@ namespace UDS.Net.API.Entities
         public int? RESPEMOT { get; set; }
         public int? RESPASST { get; set; }
         public int? RESPOTH { get; set; }
-        public int? RESPOTHX { get; set; }
+        [MaxLength(60)]
+        public string? RESPOTHX { get; set; }
     }
 }
 
