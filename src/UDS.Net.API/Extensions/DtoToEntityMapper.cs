@@ -306,6 +306,7 @@ namespace UDS.Net.API.Extensions
                 entity.CVOTHRX = dto.CVOTHRX;
                 entity.CBSTROKE = dto.CBSTROKE;
                 entity.STROKMUL = dto.STROKMUL;
+                entity.STROKYR = dto.STROKYR;
                 entity.CBTIA = dto.CBTIA;
                 entity.TIAMULT = dto.TIAMULT;
                 entity.TIAYEAR = dto.TIAYEAR;

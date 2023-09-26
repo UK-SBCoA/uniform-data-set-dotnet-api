@@ -387,6 +387,7 @@ namespace UDS.Net.API.Extensions
                 CVOTHRX = a5.CVOTHRX,
                 CBSTROKE = a5.CBSTROKE,
                 STROKMUL = a5.STROKMUL,
+                STROKYR = a5.STROKYR,
                 CBTIA = a5.CBTIA,
                 TIAMULT = a5.TIAMULT,
                 TIAYEAR = a5.TIAYEAR,
