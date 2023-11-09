@@ -653,6 +653,7 @@ namespace UDS.Net.API.Extensions
                 entity.TRAILA = dto.TRAILA;
                 entity.TRAILARR = dto.TRAILARR;
                 entity.TRAILALI = dto.TRAILALI;
+                entity.TRAILB = dto.TRAILB;
                 entity.TRAILBRR = dto.TRAILBRR;
                 entity.TRAILBLI = dto.TRAILBLI;
                 entity.MEMUNITS = dto.MEMUNITS;

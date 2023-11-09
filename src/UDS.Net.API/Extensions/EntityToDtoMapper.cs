@@ -709,6 +709,7 @@ namespace UDS.Net.API.Extensions
                 TRAILA = c1.TRAILA,
                 TRAILARR = c1.TRAILARR,
                 TRAILALI = c1.TRAILALI,
+                TRAILB = c1.TRAILB,
                 TRAILBRR = c1.TRAILBRR,
                 TRAILBLI = c1.TRAILBLI,
                 MEMUNITS = c1.MEMUNITS,
