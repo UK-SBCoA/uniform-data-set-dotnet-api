@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace UDS.Net.Dto
 {
-    public class M1Dto : BaseDto
+    public class M1Dto : FormDto
     {
         [JsonIgnore]
         public new int Id
@@ -16,7 +16,6 @@ namespace UDS.Net.Dto
 
         public int FormId { get; set; }
         public int ParticipationId { get; set; }
-        public string Status { get; set; } = default!;
         public int? CHANGEMO { get; set; }
         public int? CHANGEDY { get; set; }
         public int? CHANGEYR { get; set; }
