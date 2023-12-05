@@ -132,9 +132,9 @@ namespace UDS.Net.API.Controllers
         }
 
         [HttpPut("{id}/Milestones/{formId}", Name = "PutMilestone")]
-        public async Task PutMilestone(int id, int formId, [FromBody] M1Dto dto)
+        public async Task PutMilestone(int id, int milestoneId, [FromBody] M1Dto dto)
         {
-            if (formId == dto.Id)
+            if (milestoneId == dto.Id)
             {
                 var milestone = dto.ToEntity();
 
@@ -143,8 +143,8 @@ namespace UDS.Net.API.Controllers
                 await _context.SaveChangesAsync();
             }
         }
-        [HttpGet("LegacyId/{legacyId}", Name = "GetByLegacyId")]
 
+        [HttpGet("LegacyId/{legacyId}", Name = "GetByLegacyId")]
         public async Task<ParticipationDto> GetByLegacyId(string legacyId)
         {
             var participation = await _context.Participations
