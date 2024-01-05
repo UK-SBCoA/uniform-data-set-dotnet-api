@@ -132,9 +132,9 @@ namespace UDS.Net.API.Controllers
         }
 
         [HttpPut("{id}/Milestones/{formId}", Name = "PutMilestone")]
-        public async Task PutMilestone(int id, int milestoneId, [FromBody] M1Dto dto)
+        public async Task PutMilestone(int id, int formId, [FromBody] M1Dto dto)
         {
-            if (milestoneId == dto.Id)
+            if (formId == dto.Id)
             {
                 var milestone = dto.ToEntity();
 
