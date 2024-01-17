@@ -131,6 +131,12 @@ namespace UDS.Net.API.Controllers
             }
         }
 
+        [HttpGet("{id}/Milestones/{formId}", Name = "GetMilestone")]
+        public async Task<M1Dto> GetMilestone(int id, int formId)
+        {
+            return await _context.M1s.Where(m => m.FormId == formId).Select(m => m.ToDto()).FirstOrDefaultAsync();
+        }
+
         [HttpPut("{id}/Milestones/{formId}", Name = "PutMilestone")]
         public async Task PutMilestone(int id, int formId, [FromBody] M1Dto dto)
         {

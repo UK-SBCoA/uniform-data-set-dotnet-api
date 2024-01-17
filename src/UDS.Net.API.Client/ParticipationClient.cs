@@ -31,6 +31,15 @@ namespace UDS.Net.API.Client
             var response = await PostRequest($"{_BasePath}/{id}/Milestones", json);
         }
 
+        public async Task<M1Dto> GetMilestone(int id, int formId)
+        {
+            var response = await GetRequest($"{_BasePath}/{id}/Milestones/{formId}");
+
+            M1Dto m1 = JsonSerializer.Deserialize<M1Dto>(response, options);
+
+            return m1;
+        }
+
         public async Task PutMilestone(int id, int formId, M1Dto dto)
         {
             string json = JsonSerializer.Serialize(dto);
