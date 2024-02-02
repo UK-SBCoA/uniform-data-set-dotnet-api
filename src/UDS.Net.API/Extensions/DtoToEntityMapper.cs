@@ -247,13 +247,16 @@ namespace UDS.Net.API.Extensions
 
         public static bool Update(this A3FamilyMember entity, A3FamilyMemberDto dto)
         {
-            entity.MOB = dto.MOB;
-            entity.YOB = dto.YOB;
-            entity.AGD = dto.AGD;
-            entity.NEU = dto.NEU;
-            entity.PDX = dto.PDX;
-            entity.MOE = dto.MOE;
-            entity.AGO = dto.AGO;
+            if (dto != null)
+            {
+                entity.MOB = dto.MOB;
+                entity.YOB = dto.YOB;
+                entity.AGD = dto.AGD;
+                entity.NEU = dto.NEU;
+                entity.PDX = dto.PDX;
+                entity.MOE = dto.MOE;
+                entity.AGO = dto.AGO;
+            }
 
             return true;
         }
