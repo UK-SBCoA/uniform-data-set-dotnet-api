@@ -11,6 +11,8 @@ namespace UDS.Net.API.Client
 
         Task PostMilestone(int id, M1Dto dto);
 
+        Task<M1Dto> GetMilestone(int id, int formId);
+
         Task PutMilestone(int id, int formId, M1Dto dto);
 
         Task<ParticipationDto> GetByLegacyId(string LegacyId);
