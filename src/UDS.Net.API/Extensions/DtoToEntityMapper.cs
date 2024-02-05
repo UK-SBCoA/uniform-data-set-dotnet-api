@@ -146,26 +146,18 @@ namespace UDS.Net.API.Extensions
             {
                 entity.SetBaseProperties(dto);
 
-                entity.INBIRMO = dto.INBIRMO;
-                entity.INBIRYR = dto.INBIRYR;
-                entity.INSEX = dto.INSEX;
-                entity.INHISP = dto.INHISP;
-                entity.INHISPOR = dto.INHISPOR;
-                entity.INHISPOX = dto.INHISPOX;
-                entity.INRACE = dto.INRACE;
-                entity.INRACEX = dto.INRACEX;
-                entity.INRASEC = dto.INRASEC;
-                entity.INRASECX = dto.INRASECX;
-                entity.INRATER = dto.INRATER;
-                entity.INRATERX = dto.INRATERX;
-                entity.INEDUC = dto.INEDUC;
                 entity.INRELTO = dto.INRELTO;
                 entity.INKNOWN = dto.INKNOWN;
                 entity.INLIVWTH = dto.INLIVWTH;
-                entity.INVISITS = dto.INVISITS;
-                entity.INCALLS = dto.INCALLS;
+                entity.INCNTMOD = dto.INCNTMOD;
+                entity.INCNTMDX = dto.INCNTMDX;
+                entity.INCNTFRQ = dto.INCNTFRQ;
+                entity.INCNTTIM = dto.INCNTTIM;
                 entity.INRELY = dto.INRELY;
-                entity.NEWINF = dto.NEWINF;
+                entity.INMEMWORS = dto.INMEMWORS;
+                entity.INMEMTROUB = dto.INMEMTROUB;
+                entity.INMEMTEN = dto.INMEMTEN;
+
 
                 return true;
             }

@@ -7,7 +7,7 @@ namespace UDS.Net.Dto
         public int? INKNOWN { get; set; }
         public int? INLIVWTH { get; set; }
         public int? INCNTMOD { get; set; }
-        public string? INCNTMDX { get; set; }
+        public string INCNTMDX { get; set; }
         public int? INCNTFRQ { get; set; }
         public int? INCNTTIM { get; set; }
         public int? INRELY { get; set; }
