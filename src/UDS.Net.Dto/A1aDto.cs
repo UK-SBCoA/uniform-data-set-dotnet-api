@@ -1,8 +1,8 @@
 ﻿using System;
 namespace UDS.Net.Dto
 {
-	public class A1aDto : FormDto
-	{
+    public class A1aDto : FormDto
+    {
         public int? OWNSCAR { get; set; }
         public int? TRSPACCESS { get; set; }
         public int? TRANSPROB { get; set; }
