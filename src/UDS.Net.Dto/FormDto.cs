@@ -5,6 +5,7 @@ namespace UDS.Net.Dto
 {
     [JsonDerivedType(typeof(FormDto), "FormDto")]
     [JsonDerivedType(typeof(A1Dto), "A1Dto")]
+    [JsonDerivedType(typeof(A1aDto), "A1aDto")]
     [JsonDerivedType(typeof(A2Dto), "A2Dto")]
     [JsonDerivedType(typeof(A3Dto), "A3Dto")]
     [JsonDerivedType(typeof(A4DDto), "A4DDto")]
