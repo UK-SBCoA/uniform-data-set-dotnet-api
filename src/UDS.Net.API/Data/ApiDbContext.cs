@@ -28,6 +28,7 @@ namespace UDS.Net.API.Data
         public DbSet<D1> D1s { get; set; }
         public DbSet<D2> D2s { get; set; }
         public DbSet<T1> T1s { get; set; }
+        public DbSet<A1a> A1as { get; set; }
 
         /* Lookup/reference tables */
         public DbSet<DrugCodeLookup> DrugCodesLookup { get; set; }
