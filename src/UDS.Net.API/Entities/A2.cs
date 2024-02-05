@@ -13,30 +13,18 @@ namespace UDS.Net.API.Entities
     [Table("tbl_A2s")]
     public class A2 : Form
     {
-        public int? INBIRMO { get; set; }
-        public int? INBIRYR { get; set; }
-        public int? INSEX { get; set; }
-        public int? NEWINF { get; set; }
-        public int? INHISP { get; set; }
-        public int? INHISPOR { get; set; }
-        [MaxLength(60)]
-        public string? INHISPOX { get; set; }
-        public int? INRACE { get; set; }
-        [MaxLength(60)]
-        public string? INRACEX { get; set; }
-        public int? INRASEC { get; set; }
-        [MaxLength(60)]
-        public string? INRASECX { get; set; }
-        public int? INRATER { get; set; }
-        [MaxLength(60)]
-        public string? INRATERX { get; set; }
-        public int? INEDUC { get; set; }
         public int? INRELTO { get; set; }
         public int? INKNOWN { get; set; }
         public int? INLIVWTH { get; set; }
-        public int? INVISITS { get; set; }
-        public int? INCALLS { get; set; }
+        public int? INCNTMOD { get; set; }
+        [MaxLength(60)]
+        public string? INCNTMDX { get; set; }
+        public int? INCNTFRQ { get; set; }
+        public int? INCNTTIM { get; set; }
         public int? INRELY { get; set; }
+        public int? INMEMWORS { get; set; }
+        public int? INMEMTROUB { get; set; }
+        public int? INMEMTEN { get; set; }
 
     }
 }
