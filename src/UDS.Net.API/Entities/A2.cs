@@ -6,8 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace UDS.Net.API.Entities
 {
     /// <summary>
-    /// IVP data template https://files.alz.washington.edu/documentation/uds3-ivp-template.pdf
-    /// FVP data template https://files.alz.washington.edu/documentation/uds3-fvp-template.pdf
+    /// UDS 4 https://github.com/naccdata/uniform-data-set/blob/main/forms/uds/a2/form_a2_ivp_questions_and%20vars.csv
     /// Form A2: Co-participant demographics
     /// </summary>
     [Table("tbl_A2s")]
