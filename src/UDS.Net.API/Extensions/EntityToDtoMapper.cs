@@ -212,6 +212,7 @@ namespace UDS.Net.API.Extensions
         {
             A2Dto dto = new A2Dto
             {
+                NEWINF = a2.NEWINF,
                 INRELTO = a2.INRELTO,
                 INKNOWN = a2.INKNOWN,
                 INLIVWTH = a2.INLIVWTH,

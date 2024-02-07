@@ -13,6 +13,7 @@ namespace UDS.Net.API.Entities
     [Table("tbl_A2s")]
     public class A2 : Form
     {
+        public int? NEWINF { get; set; }
         public int? INRELTO { get; set; }
         public int? INKNOWN { get; set; }
         public int? INLIVWTH { get; set; }

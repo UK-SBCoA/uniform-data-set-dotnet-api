@@ -146,6 +146,7 @@ namespace UDS.Net.API.Extensions
             {
                 entity.SetBaseProperties(dto);
 
+                entity.NEWINF = dto.NEWINF;
                 entity.INRELTO = dto.INRELTO;
                 entity.INKNOWN = dto.INKNOWN;
                 entity.INLIVWTH = dto.INLIVWTH;
