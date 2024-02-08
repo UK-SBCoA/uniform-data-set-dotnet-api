@@ -212,26 +212,19 @@ namespace UDS.Net.API.Extensions
         {
             A2Dto dto = new A2Dto
             {
-                INBIRMO = a2.INBIRMO,
-                INBIRYR = a2.INBIRYR,
-                INSEX = a2.INSEX,
-                INHISP = a2.INHISP,
-                INHISPOR = a2.INHISPOR,
-                INHISPOX = a2.INHISPOX,
-                INRACE = a2.INRACE,
-                INRACEX = a2.INRACEX,
-                INRASEC = a2.INRASEC,
-                INRASECX = a2.INRASECX,
-                INRATER = a2.INRATER,
-                INRATERX = a2.INRATERX,
-                INEDUC = a2.INEDUC,
+                NEWINF = a2.NEWINF,
                 INRELTO = a2.INRELTO,
                 INKNOWN = a2.INKNOWN,
                 INLIVWTH = a2.INLIVWTH,
-                INVISITS = a2.INVISITS,
-                INCALLS = a2.INCALLS,
+                INCNTMOD = a2.INCNTMOD,
+                INCNTMDX = a2.INCNTMDX,
+                INCNTFRQ = a2.INCNTFRQ,
+                INCNTTIM = a2.INCNTTIM,
                 INRELY = a2.INRELY,
-                NEWINF = a2.NEWINF
+                INMEMWORS = a2.INMEMWORS,
+                INMEMTROUB = a2.INMEMTROUB,
+                INMEMTEN = a2.INMEMTEN
+
             };
             dto.SetBaseFormProperties(a2);
             return dto;
