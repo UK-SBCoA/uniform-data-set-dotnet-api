@@ -91,7 +91,7 @@ namespace UDS.Net.Dto
         public int? MARISTAT { get; set; }
         public int? LIVSITUA { get; set; }
         public int? RESIDENC { get; set; }
-        public string ZIP { get; set; } 
+        public string ZIP { get; set; }
         public int? SERVED { get; set; }
         public int? MEDVA { get; set; }
         public int? EXRTIME { get; set; }
