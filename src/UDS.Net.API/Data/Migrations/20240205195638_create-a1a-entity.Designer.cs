@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UDS.Net.API.Data;
 
@@ -11,9 +12,11 @@ using UDS.Net.API.Data;
 namespace UDS.Net.API.Data.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    partial class ApiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240205195638_create-a1a-entity")]
+    partial class createa1aentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -482,18 +485,27 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<string>("DeletedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("INCNTFRQ")
+                    b.Property<int?>("INBIRMO")
                         .HasColumnType("int");
 
-                    b.Property<string>("INCNTMDX")
+                    b.Property<int?>("INBIRYR")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("INCALLS")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("INEDUC")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("INHISP")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("INHISPOR")
+                        .HasColumnType("int");
+
+                    b.Property<string>("INHISPOX")
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
-
-                    b.Property<int?>("INCNTMOD")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("INCNTTIM")
-                        .HasColumnType("int");
 
                     b.Property<int?>("INKNOWN")
                         .HasColumnType("int");
@@ -501,19 +513,37 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int?>("INLIVWTH")
                         .HasColumnType("int");
 
-                    b.Property<int?>("INMEMTEN")
+                    b.Property<int?>("INRACE")
                         .HasColumnType("int");
 
-                    b.Property<int?>("INMEMTROUB")
+                    b.Property<string>("INRACEX")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<int?>("INRASEC")
                         .HasColumnType("int");
 
-                    b.Property<int?>("INMEMWORS")
+                    b.Property<string>("INRASECX")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<int?>("INRATER")
                         .HasColumnType("int");
+
+                    b.Property<string>("INRATERX")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<int?>("INRELTO")
                         .HasColumnType("int");
 
                     b.Property<int?>("INRELY")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("INSEX")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("INVISITS")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
