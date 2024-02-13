@@ -13,7 +13,7 @@ namespace UDS.Net.API.Entities
     {
         public int? BIRTHMO { get; set; }
         public int? BIRTHYR { get; set; }
-        [MaxLength(60)]
+        [MaxLength(3)]
         public string? CHLDHDCTRY { get; set; }
         public int? RACEWHITE { get; set; }
         public int? ETHGERMAN { get; set; }
