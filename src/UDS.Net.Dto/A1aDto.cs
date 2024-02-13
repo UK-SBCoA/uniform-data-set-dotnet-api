@@ -22,10 +22,10 @@ namespace UDS.Net.Dto
         public int? FAMCOMP { get; set; }
         public int? GUARDEDU { get; set; }
         public int? GUARDREL { get; set; }
-        public string? GUARDRELX { get; set; }
+        public string GUARDRELX { get; set; }
         public int? GUARD2EDU { get; set; }
         public int? GUARD2REL { get; set; }
-        public string? GUARD2RELX { get; set; }
+        public string GUARD2RELX { get; set; }
         public int? EMPTINESS { get; set; }
         public int? MISSPEOPLE { get; set; }
         public int? FRIENDS { get; set; }
