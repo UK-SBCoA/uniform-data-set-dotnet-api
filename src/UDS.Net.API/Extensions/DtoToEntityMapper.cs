@@ -140,6 +140,79 @@ namespace UDS.Net.API.Extensions
             return false;
         }
 
+        public static bool Update(this A1a entity, A1aDto dto)
+        {
+            if (entity.Id == dto.Id)
+            {
+                entity.SetBaseProperties(dto);
+
+                entity.OWNSCAR = dto.OWNSCAR;
+                entity.TRSPACCESS = dto.TRSPACCESS;
+                entity.TRANSPROB = dto.TRANSPROB;
+                entity.TRANSWORRY = dto.TRANSWORRY;
+                entity.TRSPLONGER = dto.TRSPLONGER;
+                entity.TRSPMED = dto.TRSPMED;
+                entity.INCOMEYR = dto.INCOMEYR;
+                entity.FINSATIS = dto.FINSATIS;
+                entity.BILLPAY = dto.BILLPAY;
+                entity.FINUPSET = dto.FINUPSET;
+                entity.EATLESS = dto.EATLESS;
+                entity.EATLESSYR = dto.EATLESSYR;
+                entity.LESSMEDS = dto.LESSMEDS;
+                entity.LESSMEDSYR = dto.LESSMEDSYR;
+                entity.COMPCOMM = dto.COMPCOMM;
+                entity.COMPUSA = dto.COMPUSA;
+                entity.FAMCOMP = dto.FAMCOMP;
+                entity.GUARDEDU = dto.GUARDEDU;
+                entity.GUARDREL = dto.GUARDREL;
+                entity.GUARDRELX = dto.GUARDRELX;
+                entity.GUARD2EDU = dto.GUARD2EDU;
+                entity.GUARD2REL = dto.GUARD2REL;
+                entity.GUARD2RELX = dto.GUARD2RELX;
+                entity.EMPTINESS = dto.EMPTINESS;
+                entity.MISSPEOPLE = dto.MISSPEOPLE;
+                entity.FRIENDS = dto.FRIENDS;
+                entity.ABANDONED = dto.ABANDONED;
+                entity.CLOSEFRND = dto.CLOSEFRND;
+                entity.PARENTCOMM = dto.PARENTCOMM;
+                entity.CHILDCOMM = dto.CHILDCOMM;
+                entity.FRIENDCOMM = dto.FRIENDCOMM;
+                entity.PARTICIPATE = dto.PARTICIPATE;
+                entity.SAFEHOME = dto.SAFEHOME;
+                entity.SAFECOMM = dto.SAFECOMM;
+                entity.DELAYMED = dto.DELAYMED;
+                entity.SCRIPTPROB = dto.SCRIPTPROB;
+                entity.MISSEDFUP = dto.MISSEDFUP;
+                entity.DOCADVICE = dto.DOCADVICE;
+                entity.HEALTHACC = dto.HEALTHACC;
+                entity.LESSCOURT = dto.LESSCOURT;
+                entity.POORSERV = dto.POORSERV;
+                entity.NOTSMART = dto.NOTSMART;
+                entity.ACTAFRAID = dto.ACTAFRAID;
+                entity.THREATENED = dto.THREATENED;
+                entity.POORMEDTRT = dto.POORMEDTRT;
+                entity.EXPANCEST = dto.EXPANCEST;
+                entity.EXPGENDER = dto.EXPGENDER;
+                entity.EXPRACE = dto.EXPRACE;
+                entity.EXPAGE = dto.EXPAGE;
+                entity.EXPRELIG = dto.EXPRELIG;
+                entity.EXPHEIGHT = dto.EXPHEIGHT;
+                entity.EXPWEIGHT = dto.EXPWEIGHT;
+                entity.EXPAPPEAR = dto.EXPAPPEAR;
+                entity.EXPSEXORN = dto.EXPSEXORN;
+                entity.EXPEDUCINC = dto.EXPEDUCINC;
+                entity.EXPDISAB = dto.EXPDISAB;
+                entity.EXPSKIN = dto.EXPSKIN;
+                entity.EXPOTHER = dto.EXPOTHER;
+                entity.EXPNOTAPP = dto.EXPNOTAPP;
+                entity.EXPNOANS = dto.EXPNOANS;
+                entity.EXPSTRS = dto.EXPSTRS;
+
+                return true;
+            }
+            return false;
+        }
+
         public static bool Update(this A2 entity, A2Dto dto)
         {
             if (entity.Id == dto.Id)

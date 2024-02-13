@@ -33,6 +33,8 @@ namespace UDS.Net.API.Entities
 
         public virtual A1 A1 { get; set; } = default!; // A1 required for all visit kinds
 
+        public virtual A1a A1a { get; set; } = default!;
+
         public virtual A2 A2 { get; set; } = default!;
 
         public virtual A3 A3 { get; set; } = default!;

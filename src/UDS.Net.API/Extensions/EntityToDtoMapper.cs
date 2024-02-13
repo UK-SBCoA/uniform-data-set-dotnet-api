@@ -73,6 +73,9 @@ namespace UDS.Net.API.Extensions
                         if (formKind == "A1" && visit.A1 != null)
                             formDto = visit.A1.ToFullDto();
 
+                        if (formKind == "A1a" && visit.A1a != null)
+                            formDto = visit.A1a.ToFullDto();
+
                         if (formKind == "A2" && visit.A2 != null)
                             formDto = visit.A2.ToFullDto();
 
@@ -204,6 +207,77 @@ namespace UDS.Net.API.Extensions
                 HANDED = a1.HANDED
             };
             dto.SetBaseFormProperties(a1);
+
+            return dto;
+        }
+
+        public static A1aDto ToFullDto(this A1a a1a)
+        {
+            A1aDto dto = new A1aDto
+            {
+                OWNSCAR = a1a.OWNSCAR,
+                TRSPACCESS = a1a.TRSPACCESS,
+                TRANSPROB = a1a.TRANSPROB,
+                TRANSWORRY = a1a.TRANSWORRY,
+                TRSPLONGER = a1a.TRSPLONGER,
+                TRSPMED = a1a.TRSPMED,
+                INCOMEYR = a1a.INCOMEYR,
+                FINSATIS = a1a.FINSATIS,
+                BILLPAY = a1a.BILLPAY,
+                FINUPSET = a1a.FINUPSET,
+                EATLESS = a1a.EATLESS,
+                EATLESSYR = a1a.EATLESSYR,
+                LESSMEDS = a1a.LESSMEDS,
+                LESSMEDSYR = a1a.LESSMEDSYR,
+                COMPCOMM = a1a.COMPCOMM,
+                COMPUSA = a1a.COMPUSA,
+                FAMCOMP = a1a.FAMCOMP,
+                GUARDEDU = a1a.GUARDEDU,
+                GUARDREL = a1a.GUARDREL,
+                GUARDRELX = a1a.GUARDRELX,
+                GUARD2EDU = a1a.GUARD2EDU,
+                GUARD2REL = a1a.GUARD2REL,
+                GUARD2RELX = a1a.GUARD2RELX,
+                EMPTINESS = a1a.EMPTINESS,
+                MISSPEOPLE = a1a.MISSPEOPLE,
+                FRIENDS = a1a.FRIENDS,
+                ABANDONED = a1a.ABANDONED,
+                CLOSEFRND = a1a.CLOSEFRND,
+                PARENTCOMM = a1a.PARENTCOMM,
+                CHILDCOMM = a1a.CHILDCOMM,
+                FRIENDCOMM = a1a.FRIENDCOMM,
+                PARTICIPATE = a1a.PARTICIPATE,
+                SAFEHOME = a1a.SAFEHOME,
+                SAFECOMM = a1a.SAFECOMM,
+                DELAYMED = a1a.DELAYMED,
+                SCRIPTPROB = a1a.SCRIPTPROB,
+                MISSEDFUP = a1a.MISSEDFUP,
+                DOCADVICE = a1a.DOCADVICE,
+                HEALTHACC = a1a.HEALTHACC,
+                LESSCOURT = a1a.LESSCOURT,
+                POORSERV = a1a.POORSERV,
+                NOTSMART = a1a.NOTSMART,
+                ACTAFRAID = a1a.ACTAFRAID,
+                THREATENED = a1a.THREATENED,
+                POORMEDTRT = a1a.POORMEDTRT,
+                EXPANCEST = a1a.EXPANCEST,
+                EXPGENDER = a1a.EXPGENDER,
+                EXPRACE = a1a.EXPRACE,
+                EXPAGE = a1a.EXPAGE,
+                EXPRELIG = a1a.EXPRELIG,
+                EXPHEIGHT = a1a.EXPHEIGHT,
+                EXPWEIGHT = a1a.EXPWEIGHT,
+                EXPAPPEAR = a1a.EXPAPPEAR,
+                EXPSEXORN = a1a.EXPSEXORN,
+                EXPEDUCINC = a1a.EXPEDUCINC,
+                EXPDISAB = a1a.EXPDISAB,
+                EXPSKIN = a1a.EXPSKIN,
+                EXPOTHER = a1a.EXPOTHER,
+                EXPNOTAPP = a1a.EXPNOTAPP,
+                EXPNOANS = a1a.EXPNOANS,
+                EXPSTRS = a1a.EXPSTRS
+            };
+            dto.SetBaseFormProperties(a1a);
 
             return dto;
         }
