@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UDS.Net.API.Data;
 
@@ -11,9 +12,11 @@ using UDS.Net.API.Data;
 namespace UDS.Net.API.Data.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    partial class ApiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240205195638_create-a1a-entity")]
+    partial class createa1aentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,24 +34,11 @@ namespace UDS.Net.API.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("ADINAT")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ADISTATE")
-                        .HasColumnType("int");
-
                     b.Property<int?>("BIRTHMO")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("BIRTHSEX")
                         .HasColumnType("int");
 
                     b.Property<int?>("BIRTHYR")
                         .HasColumnType("int");
-
-                    b.Property<string>("CHLDHDCTRY")
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -63,197 +53,20 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int?>("EDUC")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ETHAFAMER")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHASNOTH")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ETHASNOTHX")
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
-
-                    b.Property<int?>("ETHBLKOTH")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ETHBLKOTHX")
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
-
-                    b.Property<int?>("ETHCHAMOR")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHCHINESE")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHCOLOM")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHCUBAN")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHDOMIN")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHEGYPT")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHENGLISH")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHETHIOP")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHFIJIAN")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHFILIP")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHFRENCH")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHGERMAN")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHHAITIAN")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHHAWAII")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHHISOTH")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ETHHISOTHX")
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
-
-                    b.Property<int?>("ETHINDIA")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHIRAN")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHIRISH")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHISPANIC")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHISRAEL")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHITALIAN")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHJAMAICA")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHJAPAN")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHKOREAN")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHLEBANON")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHMARSHAL")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHMENAOTH")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ETHMENAOTX")
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
-
-                    b.Property<int?>("ETHMEXICAN")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHMOROCCO")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHNHPIOTH")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ETHNHPIOTX")
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
-
-                    b.Property<int?>("ETHNIGERIA")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHPOLISH")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHPUERTO")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHSALVA")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHSAMOAN")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHSOMALI")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHSYRIA")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHTONGAN")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHVIETNAM")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ETHWHIOTH")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ETHWHIOTHX")
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
-
-                    b.Property<int?>("EXRTIME")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("GENDKN")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("GENMAN")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("GENNOANS")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("GENNONBI")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("GENOTH")
-                        .HasColumnType("int");
-
-                    b.Property<string>("GENOTHX")
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
-
-                    b.Property<int?>("GENTRMAN")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("GENTRWOMAN")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("GENTWOSPIR")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("GENWOMAN")
-                        .HasColumnType("int");
-
                     b.Property<int?>("HANDED")
                         .HasColumnType("int");
 
-                    b.Property<int?>("INTERSEX")
+                    b.Property<int?>("HISPANIC")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("HISPOR")
+                        .HasColumnType("int");
+
+                    b.Property<string>("HISPORX")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<int?>("INDEPEND")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
@@ -266,10 +79,10 @@ namespace UDS.Net.API.Data.Migrations
                         .HasDefaultValue(true)
                         .HasColumnName("SUB");
 
-                    b.Property<int?>("LIVSITUA")
+                    b.Property<int?>("LEARNED")
                         .HasColumnType("int");
 
-                    b.Property<int?>("LVLEDUC")
+                    b.Property<int?>("LIVSITUA")
                         .HasColumnType("int");
 
                     b.Property<int?>("Language")
@@ -279,89 +92,48 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int?>("MARISTAT")
                         .HasColumnType("int");
 
-                    b.Property<int?>("MEDVA")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MEMTEN")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MEMTROUB")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MEMWORS")
-                        .HasColumnType("int");
-
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PREDOMLAN")
+                    b.Property<int?>("PRESPART")
                         .HasColumnType("int");
 
-                    b.Property<string>("PREDOMLANX")
+                    b.Property<int?>("PRESTAT")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PRIMLANG")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PRIMLANX")
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
 
-                    b.Property<int?>("PRIOCC")
+                    b.Property<int?>("RACE")
                         .HasColumnType("int");
 
-                    b.Property<int?>("RACEAIAN")
+                    b.Property<int?>("RACESEC")
                         .HasColumnType("int");
 
-                    b.Property<string>("RACEAIANX")
+                    b.Property<string>("RACESECX")
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
 
-                    b.Property<int?>("RACEASIAN")
+                    b.Property<int?>("RACETER")
                         .HasColumnType("int");
 
-                    b.Property<int?>("RACEBLACK")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RACEMENA")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RACENHPI")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RACEUNKN")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RACEWHITE")
-                        .HasColumnType("int");
-
-                    b.Property<string>("REFCTRREGX")
+                    b.Property<string>("RACETERX")
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
 
-                    b.Property<string>("REFCTRSOCX")
+                    b.Property<string>("RACEX")
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
+
+                    b.Property<int?>("REASON")
+                        .HasColumnType("int");
 
                     b.Property<int?>("REFERSC")
                         .HasColumnType("int");
-
-                    b.Property<string>("REFERSCX")
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
-
-                    b.Property<int?>("REFLEARNED")
-                        .HasColumnType("int");
-
-                    b.Property<string>("REFOTHMEDX")
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
-
-                    b.Property<string>("REFOTHREGX")
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
-
-                    b.Property<string>("REFOTHWEBX")
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
-
-                    b.Property<string>("REFOTHX")
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
 
                     b.Property<int?>("RESIDENC")
                         .HasColumnType("int");
@@ -370,32 +142,7 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("int")
                         .HasColumnName("NOT");
 
-                    b.Property<int?>("SERVED")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SEXORNBI")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SEXORNDNK")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SEXORNGAY")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SEXORNHET")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SEXORNNOAN")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SEXORNOTH")
-                        .HasColumnType("int");
-
-                    b.Property<string>("SEXORNOTHX")
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
-
-                    b.Property<int?>("SEXORNTWOS")
+                    b.Property<int?>("SEX")
                         .HasColumnType("int");
 
                     b.Property<int?>("SOURCENW")
@@ -738,18 +485,27 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<string>("DeletedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("INCNTFRQ")
+                    b.Property<int?>("INBIRMO")
                         .HasColumnType("int");
 
-                    b.Property<string>("INCNTMDX")
+                    b.Property<int?>("INBIRYR")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("INCALLS")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("INEDUC")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("INHISP")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("INHISPOR")
+                        .HasColumnType("int");
+
+                    b.Property<string>("INHISPOX")
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
-
-                    b.Property<int?>("INCNTMOD")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("INCNTTIM")
-                        .HasColumnType("int");
 
                     b.Property<int?>("INKNOWN")
                         .HasColumnType("int");
@@ -757,19 +513,37 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int?>("INLIVWTH")
                         .HasColumnType("int");
 
-                    b.Property<int?>("INMEMTEN")
+                    b.Property<int?>("INRACE")
                         .HasColumnType("int");
 
-                    b.Property<int?>("INMEMTROUB")
+                    b.Property<string>("INRACEX")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<int?>("INRASEC")
                         .HasColumnType("int");
 
-                    b.Property<int?>("INMEMWORS")
+                    b.Property<string>("INRASECX")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<int?>("INRATER")
                         .HasColumnType("int");
+
+                    b.Property<string>("INRATERX")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<int?>("INRELTO")
                         .HasColumnType("int");
 
                     b.Property<int?>("INRELY")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("INSEX")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("INVISITS")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
