@@ -467,12 +467,11 @@ namespace UDS.Net.API.Extensions
                 return new A3FamilyMemberDto
                 {
                     FormId = formId,
-                    MOB = a3FamilyMember.MOB,
                     YOB = a3FamilyMember.YOB,
                     AGD = a3FamilyMember.AGD,
-                    NEU = a3FamilyMember.NEU,
-                    PDX = a3FamilyMember.PDX,
-                    MOE = a3FamilyMember.MOE,
+                    ETPR = a3FamilyMember.ETPR,
+                    ETSEC = a3FamilyMember.ETSEC,
+                    MEVAL = a3FamilyMember.MEVAL,
                     AGO = a3FamilyMember.AGO
                 };
             }

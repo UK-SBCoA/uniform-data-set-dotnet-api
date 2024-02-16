@@ -10,9 +10,9 @@ namespace UDS.Net.API.Entities
     [Table("tbl_A3s")]
     public class A3 : Form
     {
-        public int? AFFFAMM { get; set; } // initial visits
+        public int? AFFFAMM { get; set; } // Assuming these variables will remain in UDS4
 
-        public int? NWINFMUT { get; set; } // follow-up visits
+        public int? NWINFMUT { get; set; } // Assuming these variables will remain in UDS4
 
         public int? FADMUT { get; set; }
 

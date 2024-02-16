@@ -399,12 +399,11 @@ namespace UDS.Net.API.Extensions
         {
             if (dto != null)
             {
-                entity.MOB = dto.MOB;
                 entity.YOB = dto.YOB;
                 entity.AGD = dto.AGD;
-                entity.NEU = dto.NEU;
-                entity.PDX = dto.PDX;
-                entity.MOE = dto.MOE;
+                entity.ETPR = dto.ETPR;
+                entity.ETSEC = dto.ETSEC;
+                entity.MEVAL = dto.MEVAL;
                 entity.AGO = dto.AGO;
             }
 
