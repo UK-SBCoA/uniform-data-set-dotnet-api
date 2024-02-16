@@ -14,56 +14,28 @@ namespace UDS.Net.API.Entities
 
         public int? NWINFMUT { get; set; } // Assuming these variables will remain in UDS4
 
-        public int? FADMUT { get; set; }
-
-        [MaxLength(60)]
-        public string? FADMUTX { get; set; }
-
-        public int? FADMUSO { get; set; }
-
-        public string? FADMUSOX { get; set; }
-
-        public int? FFTDMUT { get; set; }
-
-        public string? FFTDMUTX { get; set; }
-
-        public int? FFTDMUSO { get; set; }
-
-        public string? FFTDMUSX { get; set; }
-
-        public int? FOTHMUT { get; set; }
-
-        public string? FOTHMUTX { get; set; }
-
-        public int? FOTHMUSO { get; set; }
-
-        public string? FOTHMUSX { get; set; }
-
-        public int? MOMMOB { get; set; }
-
         public int? MOMYOB { get; set; }
 
         public int? MOMDAGE { get; set; }
 
-        public int? MOMNEUR { get; set; }
+        public int? MOMETPR { get; set; }
 
-        public int? MOMPRDX { get; set; }
+        public int? MOMETSEC { get; set; }
 
-        public int? MOMMOE { get; set; }
+        public int? MOMMEVAL { get; set; }
 
         public int? MOMAGEO { get; set; }
 
-        public int? DADMOB { get; set; }
 
         public int? DADYOB { get; set; }
 
         public int? DADDAGE { get; set; }
 
-        public int? DADNEUR { get; set; }
+        public int? DADETPR { get; set; }
 
-        public int? DADPRDX { get; set; }
+        public int? DADETSEC { get; set; }
 
-        public int? DADMOE { get; set; }
+        public int? DADMEVAL { get; set; }
 
         public int? DADAGEO { get; set; }
 
