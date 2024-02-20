@@ -44,6 +44,15 @@ namespace UDS.Net.API.Controllers
                     if (a1 != null)
                         visit.A1 = a1;
                 }
+                else if (formKind == "A1a") // social determinants
+                {
+                    var a1a = await _context.A1as
+                        .Where(a => a.VisitId == id)
+                        .FirstOrDefaultAsync();
+
+                    if (a1a != null)
+                        visit.A1a = a1a;
+                }
                 else if (formKind == "A2") // co-participant demogrpahics
                 {
                     var a2 = await _context.A2s
@@ -268,6 +277,8 @@ namespace UDS.Net.API.Controllers
                 {
                     if (form is A1Dto)
                         formKind = "A1";
+                    else if (form is A1aDto)
+                        formKind = "A1a";
                     else if (form is A2Dto)
                         formKind = "A2";
                     else if (form is A3Dto)
@@ -312,6 +323,12 @@ namespace UDS.Net.API.Controllers
                 if (visit.A1 == null)
                     visit.A1 = new A1();
                 visit.A1.Update((A1Dto)formDto);
+            }
+            else if (formDto is A1aDto)
+            {
+                if (visit.A1a == null)
+                    visit.A1a = new A1a();
+                visit.A1a.Update((A1aDto)formDto);
             }
             else if (formDto is A2Dto)
             {
