@@ -421,6 +421,52 @@ namespace UDS.Net.API.Extensions
             return false;
         }
 
+        public static bool Update(this A4a entity, A4aDto dto)
+        {
+            if (entity.Id == dto.Id)
+            {
+                entity.SetBaseProperties(dto);
+                entity.TRTBIOMARK = dto.TRTBIOMARK;
+                entity.ADVEVENT = dto.ADVEVENT;
+                entity.ARIAE = dto.ARIAE;
+                entity.ARIAH = dto.ARIAH;
+                entity.ADVERSEOTH = dto.ADVERSEOTH;
+                entity.ADVERSEOTX = dto.ADVERSEOTX;
+
+                entity.Treatment1.Update(dto.Treatment1);
+                entity.Treatment2.Update(dto.Treatment2);
+                entity.Treatment3.Update(dto.Treatment3);
+                entity.Treatment4.Update(dto.Treatment4);
+                entity.Treatment5.Update(dto.Treatment5);
+                entity.Treatment6.Update(dto.Treatment6);
+                entity.Treatment7.Update(dto.Treatment7);
+                entity.Treatment8.Update(dto.Treatment8);
+            }
+            return false;
+        }
+
+        public static bool Update(this A4aTreatment entity, A4aTreatmentDto dto)
+        {
+            if (dto != null)
+            {
+                entity.TARGETAB = dto.TARGETAB;
+                entity.TARGETTAU = dto.TARGETTAU;
+                entity.TARGETINF = dto.TARGETINF;
+                entity.TARGETSYN = dto.TARGETSYN;
+                entity.TARGETOTH = dto.TARGETOTH;
+                entity.TARGETOTX = dto.TARGETOTX;
+                entity.TRTTRIAL = dto.TRTTRIAL;
+                entity.NCTNUM = dto.NCTNUM;
+                entity.STARTMO = dto.STARTMO;
+                entity.STARTYEAR = dto.STARTYEAR;
+                entity.ENDMO = dto.ENDMO;
+                entity.ENDYEAR = dto.ENDYEAR;
+                entity.CARETRIAL = dto.CARETRIAL;
+                entity.TRIALGRP = dto.TRIALGRP;
+            }
+            return true;
+        }
+
         public static bool Update(this A5 entity, A5Dto dto)
         {
             if (entity.Id == dto.Id)

@@ -85,6 +85,9 @@ namespace UDS.Net.API.Extensions
                         if (formKind == "A4" && visit.A4 != null)
                             formDto = visit.A4.ToFullDto();
 
+                        if (formKind == "A4a" && visit.A4a != null)
+                            formDto = visit.A4a.ToFullDto();
+
                         if (formKind == "A5" && visit.A5 != null)
                             formDto = visit.A5.ToFullDto();
 
@@ -156,6 +159,7 @@ namespace UDS.Net.API.Extensions
             {
                 dto.Kind = form.GetType().Name;
 
+                // TODO remove this?
                 if (form.GetType().Name == "A4G") // workaround for form name
                     dto.Kind = "A4";
 
@@ -499,6 +503,57 @@ namespace UDS.Net.API.Extensions
 
             dto.SetBaseFormProperties(a4);
             return dto;
+        }
+
+        public static A4aDto ToFullDto(this A4a a4a)
+        {
+            A4aDto dto = new A4aDto
+            {
+                TRTBIOMARK = a4a.TRTBIOMARK,
+                Treatment1 = a4a.Treatment1.ToFullDto(a4a.Id),
+                Treatment2 = a4a.Treatment2.ToFullDto(a4a.Id),
+                Treatment3 = a4a.Treatment3.ToFullDto(a4a.Id),
+                Treatment4 = a4a.Treatment4.ToFullDto(a4a.Id),
+                Treatment5 = a4a.Treatment5.ToFullDto(a4a.Id),
+                Treatment6 = a4a.Treatment6.ToFullDto(a4a.Id),
+                Treatment7 = a4a.Treatment7.ToFullDto(a4a.Id),
+                Treatment8 = a4a.Treatment8.ToFullDto(a4a.Id),
+                ADVEVENT = a4a.ADVEVENT,
+                ARIAE = a4a.ARIAE,
+                ARIAH = a4a.ARIAH,
+                ADVERSEOTH = a4a.ADVERSEOTH,
+                ADVERSEOTX = a4a.ADVERSEOTX
+            };
+            dto.SetBaseFormProperties(a4a);
+
+            return dto;
+        }
+
+        public static A4aTreatmentDto ToFullDto(this A4aTreatment treatment, int formId)
+        {
+            if (treatment != null)
+            {
+                return new A4aTreatmentDto
+                {
+                    FormId = formId,
+                    TARGETAB = treatment.TARGETAB,
+                    TARGETTAU = treatment.TARGETTAU,
+                    TARGETINF = treatment.TARGETINF,
+                    TARGETSYN = treatment.TARGETSYN,
+                    TARGETOTH = treatment.TARGETOTH,
+                    TARGETOTX = treatment.TARGETOTX,
+                    TRTTRIAL = treatment.TRTTRIAL,
+                    NCTNUM = treatment.NCTNUM,
+                    STARTMO = treatment.STARTMO,
+                    STARTYEAR = treatment.STARTYEAR,
+                    ENDMO = treatment.ENDMO,
+                    ENDYEAR = treatment.ENDYEAR,
+                    CARETRIAL = treatment.CARETRIAL,
+                    TRIALGRP = treatment.TRIALGRP
+                };
+            }
+            else
+                return new A4aTreatmentDto();
         }
 
         public static A5Dto ToFullDto(this A5 a5)

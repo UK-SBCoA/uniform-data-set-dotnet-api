@@ -80,6 +80,15 @@ namespace UDS.Net.API.Controllers
                     if (a4 != null)
                         visit.A4 = a4;
                 }
+                else if (formKind == "A4a") // ADRD-specific treatment
+                {
+                    var a4a = await _context.A4as
+                        .Where(a => a.VisitId == id)
+                        .FirstOrDefaultAsync();
+
+                    if (a4a != null)
+                        visit.A4a = a4a;
+                }
                 else if (formKind == "A5") // health history
                 {
                     var a5 = await _context.A5s
@@ -277,6 +286,8 @@ namespace UDS.Net.API.Controllers
                         formKind = "A3";
                     else if (form is A4Dto)
                         formKind = "A4";
+                    else if (form is A4aDto)
+                        formKind = "A4a";
                     else if (form is A5Dto)
                         formKind = "A5";
                     else if (form is B1Dto)
@@ -339,6 +350,12 @@ namespace UDS.Net.API.Controllers
                 if (visit.A4 == null)
                     visit.A4 = new A4();
                 visit.A4.Update((A4Dto)formDto);
+            }
+            else if (formDto is A4aDto)
+            {
+                if (visit.A4a == null)
+                    visit.A4a = new A4a();
+                visit.A4a.Update((A4aDto)formDto);
             }
             else if (formDto is A5Dto)
             {
