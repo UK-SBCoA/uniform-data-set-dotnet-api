@@ -158,11 +158,6 @@ namespace UDS.Net.API.Extensions
             if (form != null)
             {
                 dto.Kind = form.GetType().Name;
-
-                // TODO remove this?
-                if (form.GetType().Name == "A4G") // workaround for form name
-                    dto.Kind = "A4";
-
                 dto.Id = form.Id;
                 dto.CreatedAt = form.CreatedAt;
                 dto.CreatedBy = form.CreatedBy;
