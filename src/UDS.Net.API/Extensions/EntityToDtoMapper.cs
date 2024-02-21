@@ -488,21 +488,100 @@ namespace UDS.Net.API.Extensions
                 ANYMEDS = a4.ANYMEDS
             };
 
-            for (int i = 1; i <= 40; i++)
-            {
-                var details = a4.GetType().GetProperty("RXNORMID" + i)?.GetValue(a4);
-
-                if (details != null && a4.RXNORMID1.RxNormId.HasValue)
-                {
-                    var rxNormId = details.GetType().GetProperty("RxNormId")?.GetValue(details);
-
-                    if (rxNormId != null)
-                        dto.A4DetailsDtos.Add((int)rxNormId);
-                }
-            }
+            if (a4.RXNORMID1.ToFullDto(out int rxNormId1))
+                dto.A4DetailsDtos.Add(rxNormId1);
+            if (a4.RXNORMID2.ToFullDto(out int rxNormId2))
+                dto.A4DetailsDtos.Add(rxNormId2);
+            if (a4.RXNORMID3.ToFullDto(out int rxNormId3))
+                dto.A4DetailsDtos.Add(rxNormId3);
+            if (a4.RXNORMID4.ToFullDto(out int rxNormId4))
+                dto.A4DetailsDtos.Add(rxNormId4);
+            if (a4.RXNORMID5.ToFullDto(out int rxNormId5))
+                dto.A4DetailsDtos.Add(rxNormId5);
+            if (a4.RXNORMID6.ToFullDto(out int rxNormId6))
+                dto.A4DetailsDtos.Add(rxNormId6);
+            if (a4.RXNORMID7.ToFullDto(out int rxNormId7))
+                dto.A4DetailsDtos.Add(rxNormId7);
+            if (a4.RXNORMID8.ToFullDto(out int rxNormId8))
+                dto.A4DetailsDtos.Add(rxNormId8);
+            if (a4.RXNORMID9.ToFullDto(out int rxNormId9))
+                dto.A4DetailsDtos.Add(rxNormId9);
+            if (a4.RXNORMID10.ToFullDto(out int rxNormId10))
+                dto.A4DetailsDtos.Add(rxNormId10);
+            if (a4.RXNORMID11.ToFullDto(out int rxNormId11))
+                dto.A4DetailsDtos.Add(rxNormId11);
+            if (a4.RXNORMID12.ToFullDto(out int rxNormId12))
+                dto.A4DetailsDtos.Add(rxNormId12);
+            if (a4.RXNORMID13.ToFullDto(out int rxNormId13))
+                dto.A4DetailsDtos.Add(rxNormId13);
+            if (a4.RXNORMID14.ToFullDto(out int rxNormId14))
+                dto.A4DetailsDtos.Add(rxNormId14);
+            if (a4.RXNORMID15.ToFullDto(out int rxNormId15))
+                dto.A4DetailsDtos.Add(rxNormId15);
+            if (a4.RXNORMID16.ToFullDto(out int rxNormId16))
+                dto.A4DetailsDtos.Add(rxNormId16);
+            if (a4.RXNORMID17.ToFullDto(out int rxNormId17))
+                dto.A4DetailsDtos.Add(rxNormId17);
+            if (a4.RXNORMID18.ToFullDto(out int rxNormId18))
+                dto.A4DetailsDtos.Add(rxNormId18);
+            if (a4.RXNORMID19.ToFullDto(out int rxNormId19))
+                dto.A4DetailsDtos.Add(rxNormId19);
+            if (a4.RXNORMID20.ToFullDto(out int rxNormId20))
+                dto.A4DetailsDtos.Add(rxNormId20);
+            if (a4.RXNORMID21.ToFullDto(out int rxNormId21))
+                dto.A4DetailsDtos.Add(rxNormId21);
+            if (a4.RXNORMID22.ToFullDto(out int rxNormId22))
+                dto.A4DetailsDtos.Add(rxNormId22);
+            if (a4.RXNORMID23.ToFullDto(out int rxNormId23))
+                dto.A4DetailsDtos.Add(rxNormId23);
+            if (a4.RXNORMID24.ToFullDto(out int rxNormId24))
+                dto.A4DetailsDtos.Add(rxNormId24);
+            if (a4.RXNORMID25.ToFullDto(out int rxNormId25))
+                dto.A4DetailsDtos.Add(rxNormId25);
+            if (a4.RXNORMID26.ToFullDto(out int rxNormId26))
+                dto.A4DetailsDtos.Add(rxNormId26);
+            if (a4.RXNORMID27.ToFullDto(out int rxNormId27))
+                dto.A4DetailsDtos.Add(rxNormId27);
+            if (a4.RXNORMID28.ToFullDto(out int rxNormId28))
+                dto.A4DetailsDtos.Add(rxNormId28);
+            if (a4.RXNORMID29.ToFullDto(out int rxNormId29))
+                dto.A4DetailsDtos.Add(rxNormId29);
+            if (a4.RXNORMID30.ToFullDto(out int rxNormId30))
+                dto.A4DetailsDtos.Add(rxNormId30);
+            if (a4.RXNORMID31.ToFullDto(out int rxNormId31))
+                dto.A4DetailsDtos.Add(rxNormId31);
+            if (a4.RXNORMID32.ToFullDto(out int rxNormId32))
+                dto.A4DetailsDtos.Add(rxNormId32);
+            if (a4.RXNORMID33.ToFullDto(out int rxNormId33))
+                dto.A4DetailsDtos.Add(rxNormId33);
+            if (a4.RXNORMID34.ToFullDto(out int rxNormId34))
+                dto.A4DetailsDtos.Add(rxNormId34);
+            if (a4.RXNORMID35.ToFullDto(out int rxNormId35))
+                dto.A4DetailsDtos.Add(rxNormId35);
+            if (a4.RXNORMID36.ToFullDto(out int rxNormId36))
+                dto.A4DetailsDtos.Add(rxNormId36);
+            if (a4.RXNORMID37.ToFullDto(out int rxNormId37))
+                dto.A4DetailsDtos.Add(rxNormId37);
+            if (a4.RXNORMID38.ToFullDto(out int rxNormId38))
+                dto.A4DetailsDtos.Add(rxNormId38);
+            if (a4.RXNORMID39.ToFullDto(out int rxNormId39))
+                dto.A4DetailsDtos.Add(rxNormId39);
+            if (a4.RXNORMID40.ToFullDto(out int rxNormId40))
+                dto.A4DetailsDtos.Add(rxNormId40);
 
             dto.SetBaseFormProperties(a4);
             return dto;
+        }
+
+        public static bool ToFullDto(this A4D a4d, out int rxNormId)
+        {
+            if (a4d != null && a4d.RxNormId.HasValue)
+            {
+                rxNormId = a4d.RxNormId.Value;
+                return true;
+            }
+            rxNormId = 0;
+            return false;
         }
 
         public static A4aDto ToFullDto(this A4a a4a)

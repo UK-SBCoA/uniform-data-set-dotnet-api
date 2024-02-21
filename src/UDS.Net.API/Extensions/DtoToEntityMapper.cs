@@ -389,16 +389,57 @@ namespace UDS.Net.API.Extensions
             {
                 entity.SetBaseProperties(dto);
                 entity.ANYMEDS = dto.ANYMEDS;
-                if (entity.ANYMEDS.HasValue && entity.ANYMEDS.Value == 1)
+
+                // reset entity
+                entity.RXNORMID1.RxNormId = null;
+                entity.RXNORMID2.RxNormId = null;
+                entity.RXNORMID3.RxNormId = null;
+                entity.RXNORMID4.RxNormId = null;
+                entity.RXNORMID5.RxNormId = null;
+                entity.RXNORMID6.RxNormId = null;
+                entity.RXNORMID7.RxNormId = null;
+                entity.RXNORMID8.RxNormId = null;
+                entity.RXNORMID9.RxNormId = null;
+                entity.RXNORMID10.RxNormId = null;
+                entity.RXNORMID11.RxNormId = null;
+                entity.RXNORMID12.RxNormId = null;
+                entity.RXNORMID13.RxNormId = null;
+                entity.RXNORMID14.RxNormId = null;
+                entity.RXNORMID15.RxNormId = null;
+                entity.RXNORMID16.RxNormId = null;
+                entity.RXNORMID17.RxNormId = null;
+                entity.RXNORMID18.RxNormId = null;
+                entity.RXNORMID19.RxNormId = null;
+                entity.RXNORMID20.RxNormId = null;
+                entity.RXNORMID21.RxNormId = null;
+                entity.RXNORMID22.RxNormId = null;
+                entity.RXNORMID23.RxNormId = null;
+                entity.RXNORMID24.RxNormId = null;
+                entity.RXNORMID25.RxNormId = null;
+                entity.RXNORMID26.RxNormId = null;
+                entity.RXNORMID27.RxNormId = null;
+                entity.RXNORMID28.RxNormId = null;
+                entity.RXNORMID29.RxNormId = null;
+                entity.RXNORMID30.RxNormId = null;
+                entity.RXNORMID31.RxNormId = null;
+                entity.RXNORMID32.RxNormId = null;
+                entity.RXNORMID33.RxNormId = null;
+                entity.RXNORMID34.RxNormId = null;
+                entity.RXNORMID35.RxNormId = null;
+                entity.RXNORMID36.RxNormId = null;
+                entity.RXNORMID37.RxNormId = null;
+                entity.RXNORMID38.RxNormId = null;
+                entity.RXNORMID39.RxNormId = null;
+                entity.RXNORMID40.RxNormId = null;
+
+                const int MAXINUMRECORDCOUNT = 40; // dto allows an infinite list, but we can only persist and send 40 to NACC
+                if (dto.ANYMEDS.HasValue && dto.ANYMEDS.Value == 1)
                 {
-                    int i = 1;
-                    foreach (int rxNormId in dto.A4DetailsDtos)
+                    for (int i = 0; i < dto.A4DetailsDtos.Count && i < MAXINUMRECORDCOUNT; i++)
                     {
-                        var details = entity.GetType().GetProperty("RXNORMID" + i)?.GetValue(entity);
+                        var details = entity.GetType().GetProperty("RXNORMID" + (i + 1))?.GetValue(entity);
 
-                        details.GetType().GetProperty("RxNormId").SetValue(details, rxNormId);
-
-                        i++;
+                        details.GetType().GetProperty("RxNormId").SetValue(details, dto.A4DetailsDtos[i]);
                     }
                 }
             }
