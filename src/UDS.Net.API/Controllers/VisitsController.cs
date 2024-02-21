@@ -73,20 +73,12 @@ namespace UDS.Net.API.Controllers
                 }
                 else if (formKind == "A4") // medications
                 {
-                    var a4 = await _context.A4Gs
+                    var a4 = await _context.A4s
                         .Where(a => a.VisitId == id)
                         .FirstOrDefaultAsync();
 
                     if (a4 != null)
-                        visit.A4G = a4;
-
-                    var a4details = await _context.A4Ds
-                        .Include(a => a.DrugCode)
-                        .Where(a => a.VisitId == id)
-                        .ToListAsync();
-
-                    if (a4details != null)
-                        visit.A4Ds = a4details;
+                        visit.A4 = a4;
                 }
                 else if (formKind == "A5") // health history
                 {
@@ -283,7 +275,7 @@ namespace UDS.Net.API.Controllers
                         formKind = "A2";
                     else if (form is A3Dto)
                         formKind = "A3";
-                    else if (form is A4GDto)
+                    else if (form is A4Dto)
                         formKind = "A4";
                     else if (form is A5Dto)
                         formKind = "A5";
@@ -342,42 +334,11 @@ namespace UDS.Net.API.Controllers
                     visit.A3 = new A3();
                 visit.A3.Update((A3Dto)formDto);
             }
-            else if (formDto is A4GDto)
+            else if (formDto is A4Dto)
             {
-                if (visit.A4G == null)
-                    visit.A4G = new A4G();
-
-                var a4GDto = (A4GDto)formDto;
-                visit.A4G.Update(a4GDto);
-
-                if (a4GDto.A4Dtos.Count > 0)
-                {
-                    // we're using soft deletes, so all medications should be returned
-                    // even if they currently aren't selected
-                    foreach (var detail in a4GDto.A4Dtos)
-                    {
-                        if (detail.Id <= 0)
-                        {
-                            // it's new
-                            _context.A4Ds.Add(new A4D
-                            {
-                                DRUGID = detail.DRUGID,
-                                CreatedAt = detail.CreatedAt,
-                                CreatedBy = detail.CreatedBy,
-                                VisitId = detail.VisitId,
-                                Status = detail.Status
-                            });
-                        }
-                        else
-                        {
-                            // it's an update
-                            var entity = visit.A4Ds.Where(a => a.Id == detail.Id).FirstOrDefault();
-
-                            if (entity != null)
-                                entity.Update(detail);
-                        }
-                    }
-                }
+                if (visit.A4 == null)
+                    visit.A4 = new A4();
+                visit.A4.Update((A4Dto)formDto);
             }
             else if (formDto is A5Dto)
             {

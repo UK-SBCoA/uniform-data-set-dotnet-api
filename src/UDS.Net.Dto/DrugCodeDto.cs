@@ -3,7 +3,7 @@ namespace UDS.Net.Dto
 {
     public class DrugCodeDto
     {
-        public string DrugId { get; set; }
+        public int RxNormId { get; set; }
 
         public string DrugName { get; set; }
 

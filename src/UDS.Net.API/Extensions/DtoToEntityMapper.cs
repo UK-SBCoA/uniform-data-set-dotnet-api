@@ -50,18 +50,6 @@ namespace UDS.Net.API.Extensions
             }
         }
 
-        public static A4D ToEntity(this A4DDto dto)
-        {
-            var a4 = new A4D
-            {
-                DRUGID = dto.DRUGID
-            };
-
-            a4.SetBaseProperties(dto);
-
-            return a4;
-        }
-
         public static M1 ToEntity(this M1Dto dto)
         {
             return new M1
@@ -411,23 +399,24 @@ namespace UDS.Net.API.Extensions
             return true;
         }
 
-        public static bool Update(this A4G entity, A4GDto dto)
+        public static bool Update(this A4 entity, A4Dto dto)
         {
             if (entity.Id == dto.Id)
             {
                 entity.SetBaseProperties(dto);
                 entity.ANYMEDS = dto.ANYMEDS;
-            }
-            return false;
-        }
+                if (entity.ANYMEDS.HasValue && entity.ANYMEDS.Value == 1)
+                {
+                    int i = 1;
+                    foreach (int rxNormId in dto.A4DetailsDtos)
+                    {
+                        var details = entity.GetType().GetProperty("RXNORMID" + i)?.GetValue(entity);
 
-        public static bool Update(this A4D entity, A4DDto dto)
-        {
-            if (entity.Id == dto.Id)
-            {
-                entity.SetBaseProperties(dto);
-                entity.DRUGID = dto.DRUGID;
-                return true;
+                        details.GetType().GetProperty("RxNormId").SetValue(details, rxNormId);
+
+                        i++;
+                    }
+                }
             }
             return false;
         }

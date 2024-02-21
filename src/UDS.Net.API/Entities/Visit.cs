@@ -39,9 +39,7 @@ namespace UDS.Net.API.Entities
 
         public virtual A3 A3 { get; set; } = default!;
 
-        public virtual IEnumerable<A4D> A4Ds { get; set; } = new List<A4D>();
-
-        public virtual A4G A4G { get; set; } = default!;
+        public virtual A4 A4 { get; set; } = default!;
 
         public virtual A5 A5 { get; set; } = default!;
 

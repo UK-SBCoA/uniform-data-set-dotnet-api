@@ -1,18 +1,17 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace UDS.Net.API.Entities
 {
-    [Table("tbl_A4Ds")]
-    public class A4D : Form
+    [Owned]
+    public class A4D
     {
-        [Required]
-        [MaxLength(6)]
-        public string DRUGID { get; set; } = "";
+        public int? RxNormId { get; set; }
 
-        [ForeignKey("DRUGID")]
-        public DrugCodeLookup DrugCode { get; set; }
+        [ForeignKey("RxNormId")]
+        public DrugCodeLookup DrugCode { get; set; } = default!;
     }
 }
 

@@ -34,7 +34,7 @@ namespace UDS.Net.API.Controllers
                 string cleanedSearchTerm = searchTerm.Trim().ToLower();
 
                 drugCodeQuery = drugCodeQuery
-                    .Where(d => d.DrugName.StartsWith(cleanedSearchTerm) || d.BrandName.Contains(cleanedSearchTerm));
+                    .Where(d => d.DrugName.StartsWith(cleanedSearchTerm) || d.BrandNames.Contains(cleanedSearchTerm));
             }
 
             return drugCodeQuery;

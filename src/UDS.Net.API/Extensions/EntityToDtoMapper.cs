@@ -82,11 +82,8 @@ namespace UDS.Net.API.Extensions
                         if (formKind == "A3" && visit.A3 != null)
                             formDto = visit.A3.ToFullDto();
 
-                        if (formKind == "A4")
-                        {
-                            if (visit.A4G != null && visit.A4Ds != null)
-                                formDto = visit.A4G.ToFullDto(visit.A4Ds);
-                        }
+                        if (formKind == "A4" && visit.A4 != null)
+                            formDto = visit.A4.ToFullDto();
 
                         if (formKind == "A5" && visit.A5 != null)
                             formDto = visit.A5.ToFullDto();
@@ -480,35 +477,27 @@ namespace UDS.Net.API.Extensions
                 return new A3FamilyMemberDto();
         }
 
-        public static A4GDto ToFullDto(this A4G a4G, IEnumerable<A4D> a4Ds)
+        public static A4Dto ToFullDto(this A4 a4)
         {
-            A4GDto dto = new A4GDto
+            A4Dto dto = new A4Dto
             {
-                ANYMEDS = a4G.ANYMEDS,
-                A4Dtos = a4Ds.Select(a => a.ToFullDto()).ToList()
+                ANYMEDS = a4.ANYMEDS
             };
-            dto.SetBaseFormProperties(a4G);
-            return dto;
-        }
 
-        public static A4DDto ToFullDto(this A4D a4D)
-        {
-            var drugCodeDto = new DrugCodeDto();
-            if (a4D.DrugCode != null)
+            for (int i = 1; i <= 40; i++)
             {
-                drugCodeDto.DrugId = a4D.DrugCode.DrugId;
-                drugCodeDto.DrugName = a4D.DrugCode.DrugName;
-                drugCodeDto.BrandName = a4D.DrugCode.BrandName;
-                drugCodeDto.IsOverTheCounter = a4D.DrugCode.IsOverTheCounter;
-                drugCodeDto.IsPopular = a4D.DrugCode.IsPopular;
+                var details = a4.GetType().GetProperty("RXNORMID" + i)?.GetValue(a4);
+
+                if (details != null && a4.RXNORMID1.RxNormId.HasValue)
+                {
+                    var rxNormId = details.GetType().GetProperty("RxNormId")?.GetValue(details);
+
+                    if (rxNormId != null)
+                        dto.A4DetailsDtos.Add((int)rxNormId);
+                }
             }
 
-            A4DDto dto = new A4DDto
-            {
-                DRUGID = a4D.DRUGID,
-                DrugCodeLookup = drugCodeDto
-            };
-            dto.SetBaseFormProperties(a4D);
+            dto.SetBaseFormProperties(a4);
             return dto;
         }
 
@@ -1262,9 +1251,9 @@ namespace UDS.Net.API.Extensions
         {
             return new DrugCodeDto
             {
-                DrugId = drugCode.DrugId,
+                RxNormId = drugCode.RxNormId,
                 DrugName = drugCode.DrugName,
-                BrandName = drugCode.BrandName,
+                BrandName = drugCode.BrandNames,
                 IsOverTheCounter = drugCode.IsOverTheCounter,
                 IsPopular = drugCode.IsPopular
             };

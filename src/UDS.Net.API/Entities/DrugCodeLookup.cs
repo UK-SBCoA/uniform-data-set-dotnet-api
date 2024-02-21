@@ -1,23 +1,24 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UDS.Net.API.Entities
 {
     /// <summary>
-    /// Use NACC's website to download the Excel drug list and insert into this lookup table
-    /// https://www.alz.washington.edu/MEMBER/DrugCodeLookUp.html
+    /// RxNav should be used to find a drug and determine its RxNorm code
+    /// https://lhncbc.nlm.nih.gov/RxNav/
     /// </summary>
     public class DrugCodeLookup
     {
         [Key]
-        [MaxLength(6)]
-        public string DrugId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int RxNormId { get; set; }
 
         [MaxLength(500)]
         public string DrugName { get; set; }
 
         [MaxLength(500)]
-        public string? BrandName { get; set; }
+        public string? BrandNames { get; set; }
 
         /// <summary>
         /// Indicates that the drug is available over the counter (it could also be available by prescription)
