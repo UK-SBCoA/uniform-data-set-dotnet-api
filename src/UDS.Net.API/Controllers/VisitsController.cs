@@ -89,14 +89,14 @@ namespace UDS.Net.API.Controllers
                     if (a4a != null)
                         visit.A4a = a4a;
                 }
-                else if (formKind == "A5") // health history
+                else if (formKind == "A5D2") // health history and clinician-assessed medical conditions
                 {
-                    var a5 = await _context.A5s
+                    var a5d2 = await _context.A5D2s
                         .Where(a => a.VisitId == id)
                         .FirstOrDefaultAsync();
 
-                    if (a5 != null)
-                        visit.A5 = a5;
+                    if (a5d2 != null)
+                        visit.A5D2 = a5d2;
                 }
                 else if (formKind == "B1") // evaluation form - physical
                 {
@@ -187,15 +187,6 @@ namespace UDS.Net.API.Controllers
 
                     if (d1 != null)
                         visit.D1 = d1;
-                }
-                else if (formKind == "D2") // medical conditions
-                {
-                    var d2 = await _context.D2s
-                        .Where(a => a.VisitId == id)
-                        .FirstOrDefaultAsync();
-
-                    if (d2 != null)
-                        visit.D2 = d2;
                 }
                 else if (formKind == "T1") // telephone inclusion
                 {
@@ -288,8 +279,8 @@ namespace UDS.Net.API.Controllers
                         formKind = "A4";
                     else if (form is A4aDto)
                         formKind = "A4a";
-                    else if (form is A5Dto)
-                        formKind = "A5";
+                    else if (form is A5D2Dto)
+                        formKind = "A5D2";
                     else if (form is B1Dto)
                         formKind = "B1";
                     else if (form is B4Dto)
@@ -310,8 +301,6 @@ namespace UDS.Net.API.Controllers
                         formKind = "C2";
                     else if (form is D1Dto)
                         formKind = "D1";
-                    else if (form is D2Dto)
-                        formKind = "D2";
                     else if (form is T1Dto)
                         formKind = "T1";
                 }
@@ -357,11 +346,11 @@ namespace UDS.Net.API.Controllers
                     visit.A4a = new A4a();
                 visit.A4a.Update((A4aDto)formDto);
             }
-            else if (formDto is A5Dto)
+            else if (formDto is A5D2Dto)
             {
-                if (visit.A5 == null)
-                    visit.A5 = new A5();
-                visit.A5.Update((A5Dto)formDto);
+                if (visit.A5D2 == null)
+                    visit.A5D2 = new A5D2();
+                visit.A5D2.Update((A5D2Dto)formDto);
             }
             else if (formDto is B1Dto)
             {
@@ -422,12 +411,6 @@ namespace UDS.Net.API.Controllers
                 if (visit.D1 == null)
                     visit.D1 = new D1();
                 visit.D1.Update((D1Dto)formDto);
-            }
-            else if (formDto is D2Dto)
-            {
-                if (visit.D2 == null)
-                    visit.D2 = new D2();
-                visit.D2.Update((D2Dto)formDto);
             }
             else if (formDto is T1Dto)
             {

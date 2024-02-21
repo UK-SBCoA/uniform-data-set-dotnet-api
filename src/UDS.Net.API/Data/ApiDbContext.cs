@@ -16,7 +16,7 @@ namespace UDS.Net.API.Data
         public DbSet<A3> A3s { get; set; }
         public DbSet<A4> A4s { get; set; }
         public DbSet<A4a> A4as { get; set; }
-        public DbSet<A5> A5s { get; set; }
+        public DbSet<A5D2> A5D2s { get; set; }
         public DbSet<B1> B1s { get; set; }
         public DbSet<B4> B4s { get; set; }
         public DbSet<B5> B5s { get; set; }
@@ -27,7 +27,6 @@ namespace UDS.Net.API.Data
         public DbSet<C1> C1s { get; set; }
         public DbSet<C2> C2s { get; set; }
         public DbSet<D1> D1s { get; set; }
-        public DbSet<D2> D2s { get; set; }
         public DbSet<T1> T1s { get; set; }
 
         /* Lookup/reference tables */

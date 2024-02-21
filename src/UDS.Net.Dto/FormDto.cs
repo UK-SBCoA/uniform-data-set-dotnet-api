@@ -8,8 +8,9 @@ namespace UDS.Net.Dto
     [JsonDerivedType(typeof(A1aDto), "A1aDto")]
     [JsonDerivedType(typeof(A2Dto), "A2Dto")]
     [JsonDerivedType(typeof(A3Dto), "A3Dto")]
-    [JsonDerivedType(typeof(A4Dto), "A4GDto")]
-    [JsonDerivedType(typeof(A5Dto), "A5Dto")]
+    [JsonDerivedType(typeof(A4Dto), "A4Dto")]
+    [JsonDerivedType(typeof(A4aDto), "A4aDto")]
+    [JsonDerivedType(typeof(A5D2Dto), "A5D2Dto")]
     [JsonDerivedType(typeof(B1Dto), "B1Dto")]
     [JsonDerivedType(typeof(B4Dto), "B4Dto")]
     [JsonDerivedType(typeof(B5Dto), "B5Dto")]
@@ -20,7 +21,6 @@ namespace UDS.Net.Dto
     [JsonDerivedType(typeof(C1Dto), "C1Dto")]
     [JsonDerivedType(typeof(C2Dto), "C2Dto")]
     [JsonDerivedType(typeof(D1Dto), "D1Dto")]
-    [JsonDerivedType(typeof(D2Dto), "D2Dto")]
     [JsonDerivedType(typeof(T1Dto), "T1Dto")]
     public class FormDto : BaseDto
     {

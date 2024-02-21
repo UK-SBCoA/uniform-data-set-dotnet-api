@@ -25,7 +25,7 @@ namespace UDS.Net.API.Entities
         public string Kind { get; set; } = ""; // IVP, FVP, TIP, TFP
 
         [MaxLength(10)]
-        public string Version { get; set; } = ""; // 3.0.0
+        public string Version { get; set; } = ""; // 4.0.0
 
         public DateTime StartDateTime { get; set; }
 
@@ -43,7 +43,7 @@ namespace UDS.Net.API.Entities
 
         public virtual A4a A4a { get; set; } = default!;
 
-        public virtual A5 A5 { get; set; } = default!;
+        public virtual A5D2 A5D2 { get; set; } = default!;
 
         public virtual B1 B1 { get; set; } = default!;
 
@@ -64,8 +64,6 @@ namespace UDS.Net.API.Entities
         public virtual C2 C2 { get; set; } = default!;
 
         public virtual D1 D1 { get; set; } = default!;
-
-        public virtual D2 D2 { get; set; } = default!;
 
         public virtual T1? T1 { get; set; } // T1 only required for TIP, TFP visits
     }

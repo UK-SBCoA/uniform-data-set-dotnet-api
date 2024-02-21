@@ -88,8 +88,8 @@ namespace UDS.Net.API.Extensions
                         if (formKind == "A4a" && visit.A4a != null)
                             formDto = visit.A4a.ToFullDto();
 
-                        if (formKind == "A5" && visit.A5 != null)
-                            formDto = visit.A5.ToFullDto();
+                        if (formKind == "A5D2" && visit.A5D2 != null)
+                            formDto = visit.A5D2.ToFullDto();
 
                         if (formKind == "B1" && visit.B1 != null)
                             formDto = visit.B1.ToFullDto();
@@ -120,9 +120,6 @@ namespace UDS.Net.API.Extensions
 
                         if (formKind == "D1" && visit.D1 != null)
                             formDto = visit.D1.ToFullDto();
-
-                        if (formKind == "D2" && visit.D2 != null)
-                            formDto = visit.D2.ToFullDto();
 
                         if (formKind == "T1" && visit.T1 != null)
                             formDto = visit.T1.ToFullDto();
@@ -556,54 +553,90 @@ namespace UDS.Net.API.Extensions
                 return new A4aTreatmentDto();
         }
 
-        public static A5Dto ToFullDto(this A5 a5)
+        public static A5D2Dto ToFullDto(this A5D2 a5)
         {
-            A5Dto dto = new A5Dto
+            A5D2Dto dto = new A5D2Dto
             {
-                TOBAC30 = a5.TOBAC30,
                 TOBAC100 = a5.TOBAC100,
                 SMOKYRS = a5.SMOKYRS,
                 PACKSPER = a5.PACKSPER,
+                TOBAC30 = a5.TOBAC30,
                 QUITSMOK = a5.QUITSMOK,
-                ALCOCCAS = a5.ALCOCCAS,
-                ALCFREQ = a5.ALCFREQ,
-                CVHATT = a5.CVHATT,
-                HATTMULT = a5.HATTMULT,
-                HATTYEAR = a5.HATTYEAR,
+                ALCFREQYR = a5.ALCFREQYR,
+                ALCDRINKS = a5.ALCDRINKS,
+                ALCBINGE = a5.ALCBINGE,
+                SUBSTYEAR = a5.SUBSTYEAR,
+                SUBSTPAST = a5.SUBSTPAST,
+                CANNABIS = a5.CANNABIS,
+                HRTATTACK = a5.HRTATTACK,
+                HRTATTMULT = a5.HRTATTMULT,
+                HRTATTAGE = a5.HRTATTAGE,
+                CARDARREST = a5.CARDARREST,
+                CARDARRAGE = a5.CARDARRAGE,
                 CVAFIB = a5.CVAFIB,
                 CVANGIO = a5.CVANGIO,
                 CVBYPASS = a5.CVBYPASS,
+                BYPASSAGE = a5.BYPASSAGE,
                 CVPACDEF = a5.CVPACDEF,
+                PACDEFAGE = a5.PACDEFAGE,
                 CVCHF = a5.CVCHF,
-                CVANGINA = a5.CVANGINA,
                 CVHVALVE = a5.CVHVALVE,
                 CVOTHR = a5.CVOTHR,
                 CVOTHRX = a5.CVOTHRX,
                 CBSTROKE = a5.CBSTROKE,
                 STROKMUL = a5.STROKMUL,
-                STROKYR = a5.STROKYR,
+                STROKAGE = a5.STROKAGE,
+                STROKSTAT = a5.STROKSTAT,
+                ANGIOCP = a5.ANGIOCP,
+                CAROTIDAGE = a5.CAROTIDAGE,
                 CBTIA = a5.CBTIA,
-                TIAMULT = a5.TIAMULT,
-                TIAYEAR = a5.TIAYEAR,
+                TIAAGE = a5.TIAAGE,
                 PD = a5.PD,
-                PDYR = a5.PDYR,
+                PDAGE = a5.PDAGE,
                 PDOTHR = a5.PDOTHR,
-                PDOTHRYR = a5.PDOTHRYR,
+                PDOTHRAGE = a5.PDOTHRAGE,
                 SEIZURES = a5.SEIZURES,
-                TBI = a5.TBI,
-                TBIBRIEF = a5.TBIBRIEF,
-                TBIEXTEN = a5.TBIEXTEN,
-                TBIWOLOS = a5.TBIWOLOS,
-                TBIYEAR = a5.TBIYEAR,
+                SEIZNUM = a5.SEIZNUM,
+                SEIZAGE = a5.SEIZAGE,
+                HEADACHE = a5.HEADACHE,
+                MS = a5.MS,
+                HYDROCEPH = a5.HYDROCEPH,
+                HEADIMP = a5.HEADIMP,
+                IMPAMFOOT = a5.IMPAMFOOT,
+                IMPSOCCER = a5.IMPSOCCER,
+                IMPHOCKEY = a5.IMPHOCKEY,
+                IMPBOXING = a5.IMPBOXING,
+                IMPSPORT = a5.IMPSPORT,
+                IMPIPV = a5.IMPIPV,
+                IMPASSAULT = a5.IMPASSAULT,
+                IMPOTHER = a5.IMPOTHER,
+                IMPOTHERX = a5.IMPOTHERX,
+                IMPYEARS = a5.IMPYEARS,
+                HEADINJURY = a5.HEADINJURY,
+                HEADINJUNC = a5.HEADINJUNC,
+                HEADINJCON = a5.HEADINJCON,
+                HEADINJNUM = a5.HEADINJNUM,
+                FIRSTTBI = a5.FIRSTTBI,
+                LASTTBI = a5.LASTTBI,
                 DIABETES = a5.DIABETES,
                 DIABTYPE = a5.DIABTYPE,
+                DIABINS = a5.DIABINS,
+                DIABMEDS = a5.DIABMEDS,
+                DIABDIET = a5.DIABDIET,
+                DIABUNK = a5.DIABUNK,
+                DIABAGE = a5.DIABAGE,
                 HYPERTEN = a5.HYPERTEN,
+                HYPERTAGE = a5.HYPERTAGE,
                 HYPERCHO = a5.HYPERCHO,
+                HYPERCHAGE = a5.HYPERCHAGE,
                 B12DEF = a5.B12DEF,
                 THYROID = a5.THYROID,
                 ARTHRIT = a5.ARTHRIT,
-                ARTHTYPE = a5.ARTHTYPE,
+                ARTHRRHEUM = a5.ARTHRRHEUM,
+                ARTHROSTEO = a5.ARTHROSTEO,
+                ARTHROTHR = a5.ARTHROTHR,
                 ARTHTYPX = a5.ARTHTYPX,
+                ARTHTYPUNK = a5.ARTHTYPUNK,
                 ARTHUPEX = a5.ARTHUPEX,
                 ARTHLOEX = a5.ARTHLOEX,
                 ARTHSPIN = a5.ARTHSPIN,
@@ -611,23 +644,82 @@ namespace UDS.Net.API.Extensions
                 INCONTU = a5.INCONTU,
                 INCONTF = a5.INCONTF,
                 APNEA = a5.APNEA,
+                CPAP = a5.CPAP,
+                APNEAORAL = a5.APNEAORAL,
                 RBD = a5.RBD,
                 INSOMN = a5.INSOMN,
                 OTHSLEEP = a5.OTHSLEEP,
                 OTHSLEEX = a5.OTHSLEEX,
-                ALCOHOL = a5.ALCOHOL,
-                ABUSOTHR = a5.ABUSOTHR,
-                ABUSX = a5.ABUSX,
-                PTSD = a5.PTSD,
+                CANCER = a5.CANCER,
+                CANCERPRIM = a5.CANCERPRIM,
+                CANCERMETA = a5.CANCERMETA,
+                CANCMETBR = a5.CANCMETBR,
+                CANCMETOTH = a5.CANCMETOTH,
+                CANCERUNK = a5.CANCERUNK,
+                CANCBLOOD = a5.CANCBLOOD,
+                CANCBREAST = a5.CANCBREAST,
+                CANCCOLON = a5.CANCCOLON,
+                CANCLUNG = a5.CANCLUNG,
+                CANCPROST = a5.CANCPROST,
+                CANCOTHER = a5.CANCOTHER,
+                CANCOTHERX = a5.CANCOTHERX,
+                CANCRAD = a5.CANCRAD,
+                CANCRESECT = a5.CANCRESECT,
+                CANCIMMUNO = a5.CANCIMMUNO,
+                CANCBONE = a5.CANCBONE,
+                CANCCHEMO = a5.CANCCHEMO,
+                CANCHORM = a5.CANCHORM,
+                CANCTROTH = a5.CANCTROTH,
+                CANCTROTHX = a5.CANCTROTHX,
+                CANCERAGE = a5.CANCERAGE,
+                COVID19 = a5.COVID19,
+                COVIDHOSP = a5.COVIDHOSP,
+                PULMONARY = a5.PULMONARY,
+                KIDNEY = a5.KIDNEY,
+                KIDNEYAGE = a5.KIDNEYAGE,
+                LIVER = a5.LIVER,
+                LIVERAGE = a5.LIVERAGE,
+                PVD = a5.PVD,
+                PVDAGE = a5.PVDAGE,
+                HIVDIAG = a5.HIVDIAG,
+                HIVAGE = a5.HIVAGE,
+                OTHCOND = a5.OTHCOND,
+                OTHCONDX = a5.OTHCONDX,
+                MAJORDEP = a5.MAJORDEP,
+                OTHERDEP = a5.OTHERDEP,
+                DEPRTREAT = a5.DEPRTREAT,
                 BIPOLAR = a5.BIPOLAR,
                 SCHIZ = a5.SCHIZ,
-                DEP2YRS = a5.DEP2YRS,
-                DEPOTHR = a5.DEPOTHR,
                 ANXIETY = a5.ANXIETY,
+                GENERALANX = a5.GENERALANX,
+                PANICDIS = a5.PANICDIS,
                 OCD = a5.OCD,
+                OTHANXDIS = a5.OTHANXDIS,
+                OTHANXDISX = a5.OTHANXDISX,
+                PTSD = a5.PTSD,
                 NPSYDEV = a5.NPSYDEV,
                 PSYCDIS = a5.PSYCDIS,
-                PSYCDISX = a5.PSYCDISX
+                PSYCDISX = a5.PSYCDISX,
+                MENARCHE = a5.MENARCHE,
+                NOMENSAGE = a5.NOMENSAGE,
+                NOMENSNAT = a5.NOMENSNAT,
+                NOMENSHYST = a5.NOMENSHYST,
+                NOMENSSURG = a5.NOMENSSURG,
+                NOMENSCHEM = a5.NOMENSCHEM,
+                NOMENSRAD = a5.NOMENSRAD,
+                NOMENSHORM = a5.NOMENSHORM,
+                NOMENSESTR = a5.NOMENSESTR,
+                NOMENSUNK = a5.NOMENSUNK,
+                NOMENSOTH = a5.NOMENSOTH,
+                NOMENSOTHX = a5.NOMENSOTHX,
+                HRT = a5.HRT,
+                HRTYEARS = a5.HRTYEARS,
+                HRTSTRTAGE = a5.HRTSTRTAGE,
+                HRTENDAGE = a5.HRTENDAGE,
+                BCPILLS = a5.BCPILLS,
+                BCPILLSYR = a5.BCPILLSYR,
+                BCSTARTAGE = a5.BCSTARTAGE,
+                BCENDAGE = a5.BCENDAGE
             };
             dto.SetBaseFormProperties(a5);
             return dto;
@@ -1176,48 +1268,6 @@ namespace UDS.Net.API.Extensions
                 COGOTH3X = d1.COGOTH3X
             };
             dto.SetBaseFormProperties(d1);
-            return dto;
-        }
-
-        public static D2Dto ToFullDto(this D2 d2)
-        {
-            D2Dto dto = new D2Dto
-            {
-                CANCER = d2.CANCER,
-                CANCSITE = d2.CANCSITE,
-                DIABET = d2.DIABET,
-                MYOINF = d2.MYOINF,
-                CONGHRT = d2.CONGHRT,
-                AFIBRILL = d2.AFIBRILL,
-                HYPERT = d2.HYPERT,
-                ANGINA = d2.ANGINA,
-                HYPCHOL = d2.HYPCHOL,
-                VB12DEF = d2.VB12DEF,
-                THYDIS = d2.THYDIS,
-                ARTH = d2.ARTH,
-                ARTYPE = d2.ARTYPE,
-                ARTYPEX = d2.ARTYPEX,
-                ARTUPEX = d2.ARTUPEX,
-                ARTLOEX = d2.ARTLOEX,
-                ARTSPIN = d2.ARTSPIN,
-                ARTUNKN = d2.ARTUNKN,
-                URINEINC = d2.URINEINC,
-                BOWLINC = d2.BOWLINC,
-                SLEEPAP = d2.SLEEPAP,
-                REMDIS = d2.REMDIS,
-                HYPOSOM = d2.HYPOSOM,
-                SLEEPOTH = d2.SLEEPOTH,
-                SLEEPOTX = d2.SLEEPOTX,
-                ANGIOCP = d2.ANGIOCP,
-                ANGIOPCI = d2.ANGIOPCI,
-                PACEMAKE = d2.PACEMAKE,
-                HVALVE = d2.HVALVE,
-                ANTIENC = d2.ANTIENC,
-                ANTIENCX = d2.ANTIENCX,
-                OTHCOND = d2.OTHCOND,
-                OTHCONDX = d2.OTHCONDX
-            };
-            dto.SetBaseFormProperties(d2);
             return dto;
         }
 

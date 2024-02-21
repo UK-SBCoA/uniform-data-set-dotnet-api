@@ -467,80 +467,206 @@ namespace UDS.Net.API.Extensions
             return true;
         }
 
-        public static bool Update(this A5 entity, A5Dto dto)
+        public static bool Update(this A5D2 entity, A5D2Dto dto)
         {
             if (entity.Id == dto.Id)
             {
                 entity.SetBaseProperties(dto);
 
-                entity.TOBAC30 = dto.TOBAC30;
                 entity.TOBAC100 = dto.TOBAC100;
                 entity.SMOKYRS = dto.SMOKYRS;
                 entity.PACKSPER = dto.PACKSPER;
+                entity.TOBAC30 = dto.TOBAC30;
                 entity.QUITSMOK = dto.QUITSMOK;
-                entity.ALCOCCAS = dto.ALCOCCAS;
-                entity.ALCFREQ = dto.ALCFREQ;
-                entity.CVHATT = dto.CVHATT;
-                entity.HATTMULT = dto.HATTMULT;
-                entity.HATTYEAR = dto.HATTYEAR;
+
+                entity.ALCFREQYR = dto.ALCFREQYR;
+                entity.ALCDRINKS = dto.ALCDRINKS;
+                entity.ALCBINGE = dto.ALCBINGE;
+
+                entity.SUBSTYEAR = dto.SUBSTYEAR;
+                entity.SUBSTPAST = dto.SUBSTPAST;
+                entity.CANNABIS = dto.CANNABIS;
+
+                entity.HRTATTACK = dto.HRTATTACK;
+                entity.HRTATTMULT = dto.HRTATTMULT;
+                entity.HRTATTAGE = dto.HRTATTAGE;
+                entity.CARDARREST = dto.CARDARREST;
+                entity.CARDARRAGE = dto.CARDARRAGE;
+
                 entity.CVAFIB = dto.CVAFIB;
                 entity.CVANGIO = dto.CVANGIO;
                 entity.CVBYPASS = dto.CVBYPASS;
+                entity.BYPASSAGE = dto.BYPASSAGE;
                 entity.CVPACDEF = dto.CVPACDEF;
+                entity.PACDEFAGE = dto.PACDEFAGE;
+
                 entity.CVCHF = dto.CVCHF;
-                entity.CVANGINA = dto.CVANGINA;
+
                 entity.CVHVALVE = dto.CVHVALVE;
+                entity.VALVEAGE = dto.VALVEAGE;
+
                 entity.CVOTHR = dto.CVOTHR;
                 entity.CVOTHRX = dto.CVOTHRX;
+
                 entity.CBSTROKE = dto.CBSTROKE;
                 entity.STROKMUL = dto.STROKMUL;
-                entity.STROKYR = dto.STROKYR;
+                entity.STROKAGE = dto.STROKAGE;
+                entity.STROKSTAT = dto.STROKSTAT;
+
+                entity.ANGIOCP = dto.ANGIOCP;
+                entity.CAROTIDAGE = dto.CAROTIDAGE;
+
                 entity.CBTIA = dto.CBTIA;
-                entity.TIAMULT = dto.TIAMULT;
-                entity.TIAYEAR = dto.TIAYEAR;
+                entity.TIAAGE = dto.TIAAGE;
+
                 entity.PD = dto.PD;
-                entity.PDYR = dto.PDYR;
+                entity.PDAGE = dto.PDAGE;
                 entity.PDOTHR = dto.PDOTHR;
-                entity.PDOTHRYR = dto.PDOTHRYR;
+                entity.PDOTHRAGE = dto.PDOTHRAGE;
+
                 entity.SEIZURES = dto.SEIZURES;
-                entity.TBI = dto.TBI;
-                entity.TBIBRIEF = dto.TBIBRIEF;
-                entity.TBIEXTEN = dto.TBIEXTEN;
-                entity.TBIWOLOS = dto.TBIWOLOS;
-                entity.TBIYEAR = dto.TBIYEAR;
+                entity.SEIZNUM = dto.SEIZNUM;
+                entity.SEIZAGE = dto.SEIZAGE;
+
+                entity.HEADACHE = dto.HEADACHE;
+                entity.MS = dto.MS;
+                entity.HYDROCEPH = dto.HYDROCEPH;
+                entity.HEADIMP = dto.HEADIMP;
+                entity.IMPAMFOOT = dto.IMPAMFOOT;
+                entity.IMPSOCCER = dto.IMPSOCCER;
+                entity.IMPHOCKEY = dto.IMPHOCKEY;
+                entity.IMPBOXING = dto.IMPBOXING;
+                entity.IMPSPORT = dto.IMPSPORT;
+                entity.IMPIPV = dto.IMPIPV;
+                entity.IMPMILIT = dto.IMPMILIT;
+                entity.IMPASSAULT = dto.IMPASSAULT;
+                entity.IMPOTHER = dto.IMPOTHER;
+                entity.IMPOTHERX = dto.IMPOTHERX;
+                entity.IMPYEARS = dto.IMPYEARS;
+
+                entity.HEADINJURY = dto.HEADINJURY;
+                entity.HEADINJUNC = dto.HEADINJUNC;
+                entity.HEADINJCON = dto.HEADINJCON;
+                entity.HEADINJNUM = dto.HEADINJNUM;
+
+                entity.FIRSTTBI = dto.FIRSTTBI;
+                entity.LASTTBI = dto.LASTTBI;
+
+
                 entity.DIABETES = dto.DIABETES;
                 entity.DIABTYPE = dto.DIABTYPE;
+                entity.DIABINS = dto.DIABINS;
+                entity.DIABMEDS = dto.DIABMEDS;
+                entity.DIABDIET = dto.DIABDIET;
+                entity.DIABUNK = dto.DIABUNK;
+                entity.DIABAGE = dto.DIABAGE;
+
                 entity.HYPERTEN = dto.HYPERTEN;
+                entity.HYPERTAGE = dto.HYPERTAGE;
                 entity.HYPERCHO = dto.HYPERCHO;
+                entity.HYPERCHAGE = dto.HYPERCHAGE;
+
                 entity.B12DEF = dto.B12DEF;
                 entity.THYROID = dto.THYROID;
+
                 entity.ARTHRIT = dto.ARTHRIT;
-                entity.ARTHTYPE = dto.ARTHTYPE;
+                entity.ARTHRRHEUM = dto.ARTHRRHEUM;
+                entity.ARTHROSTEO = dto.ARTHROSTEO;
+                entity.ARTHROTHR = dto.ARTHROTHR;
                 entity.ARTHTYPX = dto.ARTHTYPX;
+                entity.ARTHTYPUNK = dto.ARTHTYPUNK;
                 entity.ARTHUPEX = dto.ARTHUPEX;
                 entity.ARTHLOEX = dto.ARTHLOEX;
                 entity.ARTHSPIN = dto.ARTHSPIN;
                 entity.ARTHUNK = dto.ARTHUNK;
+
                 entity.INCONTU = dto.INCONTU;
                 entity.INCONTF = dto.INCONTF;
                 entity.APNEA = dto.APNEA;
+                entity.CPAP = dto.CPAP;
+                entity.APNEAORAL = dto.APNEAORAL;
                 entity.RBD = dto.RBD;
                 entity.INSOMN = dto.INSOMN;
                 entity.OTHSLEEP = dto.OTHSLEEP;
                 entity.OTHSLEEX = dto.OTHSLEEX;
-                entity.ALCOHOL = dto.ALCOHOL;
-                entity.ABUSOTHR = dto.ABUSOTHR;
-                entity.ABUSX = dto.ABUSX;
-                entity.PTSD = dto.PTSD;
+
+                entity.CANCER = dto.CANCER;
+                entity.CANCERPRIM = dto.CANCERPRIM;
+                entity.CANCERMETA = dto.CANCERMETA;
+                entity.CANCMETBR = dto.CANCMETBR;
+                entity.CANCMETOTH = dto.CANCMETOTH;
+                entity.CANCERUNK = dto.CANCERUNK;
+                entity.CANCBLOOD = dto.CANCBLOOD;
+                entity.CANCBREAST = dto.CANCBREAST;
+                entity.CANCCOLON = dto.CANCCOLON;
+                entity.CANCLUNG = dto.CANCLUNG;
+                entity.CANCPROST = dto.CANCPROST;
+                entity.CANCOTHER = dto.CANCOTHER;
+                entity.CANCOTHERX = dto.CANCOTHERX;
+                entity.CANCRAD = dto.CANCRAD;
+                entity.CANCRESECT = dto.CANCRESECT;
+                entity.CANCIMMUNO = dto.CANCIMMUNO;
+                entity.CANCBONE = dto.CANCBONE;
+                entity.CANCCHEMO = dto.CANCCHEMO;
+                entity.CANCHORM = dto.CANCHORM;
+                entity.CANCTROTH = dto.CANCTROTH;
+                entity.CANCTROTHX = dto.CANCTROTHX;
+                entity.CANCERAGE = dto.CANCERAGE;
+
+                entity.COVID19 = dto.COVID19;
+                entity.COVIDHOSP = dto.COVIDHOSP;
+                entity.PULMONARY = dto.PULMONARY;
+                entity.KIDNEY = dto.KIDNEY;
+                entity.KIDNEYAGE = dto.KIDNEYAGE;
+                entity.LIVER = dto.LIVER;
+                entity.LIVERAGE = dto.LIVERAGE;
+
+                entity.PVD = dto.PVD;
+                entity.PVDAGE = dto.PVDAGE;
+                entity.HIVDIAG = dto.HIVDIAG;
+                entity.HIVAGE = dto.HIVAGE;
+
+                entity.OTHCOND = dto.OTHCOND;
+                entity.OTHCONDX = dto.OTHCONDX;
+
+                entity.MAJORDEP = dto.MAJORDEP;
+                entity.OTHERDEP = dto.OTHERDEP;
+                entity.DEPRTREAT = dto.DEPRTREAT;
                 entity.BIPOLAR = dto.BIPOLAR;
                 entity.SCHIZ = dto.SCHIZ;
-                entity.DEP2YRS = dto.DEP2YRS;
-                entity.DEPOTHR = dto.DEPOTHR;
                 entity.ANXIETY = dto.ANXIETY;
+                entity.GENERALANX = dto.GENERALANX;
+                entity.PANICDIS = dto.PANICDIS;
                 entity.OCD = dto.OCD;
+                entity.OTHANXDIS = dto.OTHANXDIS;
+                entity.OTHANXDISX = dto.OTHANXDISX;
+
+                entity.PTSD = dto.PTSD;
                 entity.NPSYDEV = dto.NPSYDEV;
                 entity.PSYCDIS = dto.PSYCDIS;
                 entity.PSYCDISX = dto.PSYCDISX;
+
+                entity.MENARCHE = dto.MENARCHE;
+                entity.NOMENSAGE = dto.NOMENSAGE;
+                entity.NOMENSNAT = dto.NOMENSNAT;
+                entity.NOMENSHYST = dto.NOMENSHYST;
+                entity.NOMENSSURG = dto.NOMENSSURG;
+                entity.NOMENSCHEM = dto.NOMENSCHEM;
+                entity.NOMENSRAD = dto.NOMENSRAD;
+                entity.NOMENSHORM = dto.NOMENSHORM;
+                entity.NOMENSESTR = dto.NOMENSESTR;
+                entity.NOMENSUNK = dto.NOMENSUNK;
+                entity.NOMENSOTH = dto.NOMENSOTH;
+                entity.NOMENSOTHX = dto.NOMENSOTHX;
+
+                entity.HRT = dto.HRT;
+                entity.HRTYEARS = dto.HRTYEARS;
+                entity.HRTSTRTAGE = dto.HRTSTRTAGE;
+                entity.HRTENDAGE = dto.HRTENDAGE;
+                entity.BCPILLS = dto.BCPILLS;
+                entity.BCPILLSYR = dto.BCPILLSYR;
+                entity.BCSTARTAGE = dto.BCSTARTAGE;
+                entity.BCENDAGE = dto.BCENDAGE;
 
                 return true;
             }
@@ -1118,51 +1244,6 @@ namespace UDS.Net.API.Extensions
                 entity.COGOTH3 = dto.COGOTH3;
                 entity.COGOTH3F = dto.COGOTH3F;
                 entity.COGOTH3X = dto.COGOTH3X;
-
-                return true;
-            }
-            return false;
-        }
-
-        public static bool Update(this D2 entity, D2Dto dto)
-        {
-            if (entity.Id == dto.Id)
-            {
-                entity.SetBaseProperties(dto);
-
-                entity.CANCER = dto.CANCER;
-                entity.CANCSITE = dto.CANCSITE;
-                entity.DIABET = dto.DIABET;
-                entity.MYOINF = dto.MYOINF;
-                entity.CONGHRT = dto.CONGHRT;
-                entity.AFIBRILL = dto.AFIBRILL;
-                entity.HYPERT = dto.HYPERT;
-                entity.ANGINA = dto.ANGINA;
-                entity.HYPCHOL = dto.HYPCHOL;
-                entity.VB12DEF = dto.VB12DEF;
-                entity.THYDIS = dto.THYDIS;
-                entity.ARTH = dto.ARTH;
-                entity.ARTYPE = dto.ARTYPE;
-                entity.ARTYPEX = dto.ARTYPEX;
-                entity.ARTUPEX = dto.ARTUPEX;
-                entity.ARTLOEX = dto.ARTLOEX;
-                entity.ARTSPIN = dto.ARTSPIN;
-                entity.ARTUNKN = dto.ARTUNKN;
-                entity.URINEINC = dto.URINEINC;
-                entity.BOWLINC = dto.BOWLINC;
-                entity.SLEEPAP = dto.SLEEPAP;
-                entity.REMDIS = dto.REMDIS;
-                entity.HYPOSOM = dto.HYPOSOM;
-                entity.SLEEPOTH = dto.SLEEPOTH;
-                entity.SLEEPOTX = dto.SLEEPOTX;
-                entity.ANGIOCP = dto.ANGIOCP;
-                entity.ANGIOPCI = dto.ANGIOPCI;
-                entity.PACEMAKE = dto.PACEMAKE;
-                entity.HVALVE = dto.HVALVE;
-                entity.ANTIENC = dto.ANTIENC;
-                entity.ANTIENCX = dto.ANTIENCX;
-                entity.OTHCOND = dto.OTHCOND;
-                entity.OTHCONDX = dto.OTHCONDX;
 
                 return true;
             }
