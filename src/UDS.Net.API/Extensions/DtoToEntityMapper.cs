@@ -682,15 +682,19 @@ namespace UDS.Net.API.Extensions
 
                 entity.HEIGHT = dto.HEIGHT;
                 entity.WEIGHT = dto.WEIGHT;
-                entity.BPSYS = dto.BPSYS;
-                entity.BPDIAS = dto.BPDIAS;
+                entity.WAIST1 = dto.WAIST1;
+                entity.WAIST2 = dto.WAIST2;
+                entity.HIP1 = dto.HIP1;
+                entity.HIP2 = dto.HIP2;
+                entity.BPSYSL1 = dto.BPSYSL1;
+                entity.BPDIASL1 = dto.BPDIASL1;
+                entity.BPSYSL2 = dto.BPSYSL2;
+                entity.BPDIASL2 = dto.BPDIASL2;
+                entity.BPSYSR1 = dto.BPSYSR1;
+                entity.BPDIASR1 = dto.BPDIASR1;
+                entity.BPSYSR2 = dto.BPSYSR2;
+                entity.BPDIASR2 = dto.BPDIASR2;
                 entity.HRATE = dto.HRATE;
-                entity.VISION = dto.VISION;
-                entity.VISCORR = dto.VISCORR;
-                entity.VISWCORR = dto.VISWCORR;
-                entity.HEARING = dto.HEARING;
-                entity.HEARAID = dto.HEARAID;
-                entity.HEARWAID = dto.HEARWAID;
 
                 return true;
             }

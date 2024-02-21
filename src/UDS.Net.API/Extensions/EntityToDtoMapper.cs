@@ -731,15 +731,19 @@ namespace UDS.Net.API.Extensions
             {
                 HEIGHT = b1.HEIGHT,
                 WEIGHT = b1.WEIGHT,
-                BPSYS = b1.BPSYS,
-                BPDIAS = b1.BPDIAS,
-                HRATE = b1.HRATE,
-                VISION = b1.VISION,
-                VISCORR = b1.VISCORR,
-                VISWCORR = b1.VISWCORR,
-                HEARING = b1.HEARING,
-                HEARAID = b1.HEARAID,
-                HEARWAID = b1.HEARWAID
+                WAIST1 = b1.WAIST1,
+                WAIST2 = b1.WAIST2,
+                HIP1 = b1.HIP1,
+                HIP2 = b1.HIP2,
+                BPSYSL1 = b1.BPSYSL1,
+                BPDIASL1 = b1.BPDIASL1,
+                BPSYSL2 = b1.BPSYSL2,
+                BPDIASL2 = b1.BPDIASL2,
+                BPSYSR1 = b1.BPSYSR1,
+                BPDIASR1 = b1.BPDIASR1,
+                BPSYSR2 = b1.BPSYSR2,
+                BPDIASR2 = b1.BPDIASR2,
+                HRATE = b1.HRATE
             };
             dto.SetBaseFormProperties(b1);
             return dto;
