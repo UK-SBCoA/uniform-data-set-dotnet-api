@@ -3,7 +3,6 @@ namespace UDS.Net.Dto
 {
     public class C2Dto : FormDto
     {
-        public int? MODCOMM { get; set; }
         public int? MOCACOMP { get; set; }
         public int? MOCAREAS { get; set; }
         public int? MOCALOC { get; set; }
@@ -39,6 +38,35 @@ namespace UDS.Net.Dto
         public string NPSYLANX { get; set; }
         public int? CRAFTVRS { get; set; }
         public int? CRAFTURS { get; set; }
+        public int? UDSBENTC { get; set; }
+        public int? DIGFORCT { get; set; }
+        public int? DIGFORSL { get; set; }
+        public int? DIGBACCT { get; set; }
+        public int? DIGBACLS { get; set; }
+        public int? ANIMALS { get; set; }
+        public int? VEG { get; set; }
+        public int? TRAILA { get; set; }
+        public int? TRAILARR { get; set; }
+        public int? TRAILALI { get; set; }
+        public int? TRAILB { get; set; }
+        public int? TRAILBRR { get; set; }
+        public int? TRAILBLI { get; set; }
+        public int? UDSBENTD { get; set; }
+        public int? UDSBENRS { get; set; }
+        public int? CRAFTDVR { get; set; }
+        public int? CRAFTDRE { get; set; }
+        public int? CRAFTDTI { get; set; }
+        public int? CRAFTCUE { get; set; }
+        public int? UDSVERFC { get; set; }
+        public int? UDSVERFN { get; set; }
+        public int? UDSVERNF { get; set; }
+        public int? UDSVERLC { get; set; }
+        public int? UDSVERLR { get; set; }
+        public int? UDSVERLN { get; set; }
+        public int? UDSVERTN { get; set; }
+        public int? UDSVERTE { get; set; }
+        public int? UDSVERTI { get; set; }
+        public int? VERBALTEST { get; set; }
         public int? REY1REC { get; set; }
         public int? REY1INT { get; set; }
         public int? REY2REC { get; set; }
@@ -51,52 +79,32 @@ namespace UDS.Net.Dto
         public int? REY5INT { get; set; }
         public int? REY6REC { get; set; }
         public int? REY6INT { get; set; }
-        public int? UDSBENTC { get; set; }
-        public int? DIGFORCT { get; set; }
-        public int? DIGFORSL { get; set; }
-        public int? DIGBACCT { get; set; }
-        public int? DIGBACLS { get; set; }
-        public int? OTRAILA { get; set; }
-        public int? OTRLARR { get; set; }
-        public int? OTRLALI { get; set; }
-        public int? OTRAILB { get; set; }
-        public int? OTRLBRR { get; set; }
-        public int? OTRLBLI { get; set; }
-        public int? ANIMALS { get; set; }
-        public int? VEG { get; set; }
-        public int? TRAILA { get; set; }
-        public int? TRAILARR { get; set; }
-        public int? TRAILALI { get; set; }
-        public int? TRAILB { get; set; }
-        public int? TRAILBRR { get; set; }
-        public int? TRAILBLI { get; set; }
-        public int? CRAFTDVR { get; set; }
-        public int? CRAFTDRE { get; set; }
-        public int? CRAFTDTI { get; set; }
-        public int? CRAFTCUE { get; set; }
-        public int? UDSBENTD { get; set; }
-        public int? UDSBENRS { get; set; }
+        public int? REYDREC { get; set; }
+        public int? REYDINT { get; set; }
+        public int? REYDTI { get; set; }
+        public int? REYMETHOD { get; set; }
+        public int? REYTCOR { get; set; }
+        public int? REYFPOS { get; set; }
+        public int? CERAD1REC { get; set; }
+        public int? CERAD1READ { get; set; }
+        public int? CERAD1INT { get; set; }
+        public int? CERAD2REC { get; set; }
+        public int? CERAD2READ { get; set; }
+        public int? CERAD2INT { get; set; }
+        public int? CERAD3REC { get; set; }
+        public int? CERAD3READ { get; set; }
+        public int? CERAD3INT { get; set; }
+        public int? CERADDTI { get; set; }
+        public int? CERADJ6REC { get; set; }
+        public int? CERADJ6INT { get; set; }
+        public int? CERADJ7YES { get; set; }
+        public int? CERADJ7NO { get; set; }
         public int? MINTTOTS { get; set; }
         public int? MINTTOTW { get; set; }
         public int? MINTSCNG { get; set; }
         public int? MINTSCNC { get; set; }
         public int? MINTPCNG { get; set; }
         public int? MINTPCNC { get; set; }
-        public int? UDSVERFC { get; set; }
-        public int? UDSVERFN { get; set; }
-        public int? UDSVERNF { get; set; }
-        public int? UDSVERLC { get; set; }
-        public int? UDSVERLR { get; set; }
-        public int? UDSVERLN { get; set; }
-        public int? UDSVERTN { get; set; }
-        public int? UDSVERTE { get; set; }
-        public int? UDSVERTI { get; set; }
-        public int? REYDREC { get; set; }
-        public int? REYDINT { get; set; }
-        public int? REYTCOR { get; set; }
-        public int? REYFPOS { get; set; }
-        public int? VNTTOTW { get; set; }
-        public int? VNTPCNC { get; set; }
         public int? COGSTAT { get; set; }
         public int? RESPVAL { get; set; }
         public int? RESPHEAR { get; set; }
