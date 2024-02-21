@@ -701,6 +701,72 @@ namespace UDS.Net.API.Extensions
             return false;
         }
 
+        public static bool Update(this B3 entity, B3Dto dto)
+        {
+            if (entity.Id == dto.Id)
+            {
+                entity.SetBaseProperties(dto);
+
+                entity.PDNORMAL = dto.PDNORMAL;
+                entity.SPEECH = dto.SPEECH;
+                entity.SPEECHX = dto.SPEECHX;
+                entity.FACEXP = dto.FACEXP;
+                entity.FACEXPX = dto.FACEXPX;
+                entity.TRESTFAC = dto.TRESTFAC;
+                entity.TRESTFAX = dto.TRESTFAX;
+                entity.TRESTRHD = dto.TRESTRHD;
+                entity.TRESTRHX = dto.TRESTRHX;
+                entity.TRESTLHD = dto.TRESTLHD;
+                entity.TRESTLHX = dto.TRESTLHX;
+                entity.TRESTRFT = dto.TRESTRFT;
+                entity.TRESTRFX = dto.TRESTRFX;
+                entity.TRESTLFT = dto.TRESTLFT;
+                entity.TRESTLFX = dto.TRESTLFX;
+                entity.TRACTRHD = dto.TRACTRHD;
+                entity.TRACTRHX = dto.TRACTRHX;
+                entity.TRACTLHD = dto.TRACTLHD;
+                entity.TRACTLHX = dto.TRACTLHX;
+                entity.RIGDNECK = dto.RIGDNECK;
+                entity.RIGDNEX = dto.RIGDNEX;
+                entity.RIGDUPRT = dto.RIGDUPRT;
+                entity.RIGDUPRX = dto.RIGDUPRX;
+                entity.RIGDUPLF = dto.RIGDUPLF;
+                entity.RIGDUPLX = dto.RIGDUPLX;
+                entity.RIGDLORT = dto.RIGDLORT;
+                entity.RIGDLORX = dto.RIGDLORX;
+                entity.RIGDLOLF = dto.RIGDLOLF;
+                entity.RIGDLOLX = dto.RIGDLOLX;
+                entity.TAPSRT = dto.TAPSRT;
+                entity.TAPSLFX = dto.TAPSLFX;
+                entity.HANDMOVR = dto.HANDMOVR;
+                entity.HANDMVRX = dto.HANDMVRX;
+                entity.HANDMOVL = dto.HANDMOVL;
+                entity.HANDMVLX = dto.HANDMVLX;
+                entity.HANDALTR = dto.HANDALTR;
+                entity.HANDATRX = dto.HANDATRX;
+                entity.HANDALTL = dto.HANDALTL;
+                entity.HANDATLX = dto.HANDATLX;
+                entity.LEGRT = dto.LEGRT;
+                entity.LEGRTX = dto.LEGRTX;
+                entity.LEGLF = dto.LEGLF;
+                entity.LEGLFX = dto.LEGLFX;
+                entity.ARISING = dto.ARISING;
+                entity.ARISINGX = dto.ARISINGX;
+                entity.POSTURE = dto.POSTURE;
+                entity.POSTUREX = dto.POSTUREX;
+                entity.GAIT = dto.GAIT;
+                entity.GAITX = dto.GAITX;
+                entity.POSSTAB = dto.POSSTAB;
+                entity.POSSTABX = dto.POSSTABX;
+                entity.BRADYKIN = dto.BRADYKIN;
+                entity.BRADYKIX = dto.BRADYKIX;
+                entity.TOTALUPDRS = dto.TOTALUPDRS;
+
+                return true;
+            }
+            return false;
+        }
+
         public static bool Update(this B4 entity, B4Dto dto)
         {
             if (entity.Id == dto.Id)

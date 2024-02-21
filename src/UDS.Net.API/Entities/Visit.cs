@@ -47,6 +47,8 @@ namespace UDS.Net.API.Entities
 
         public virtual B1 B1 { get; set; } = default!;
 
+        public virtual B3 B3 { get; set; } = default!;
+
         public virtual B4 B4 { get; set; } = default!;
 
         public virtual B5 B5 { get; set; } = default!;

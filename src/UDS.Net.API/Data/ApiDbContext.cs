@@ -18,6 +18,7 @@ namespace UDS.Net.API.Data
         public DbSet<A4a> A4as { get; set; }
         public DbSet<A5D2> A5D2s { get; set; }
         public DbSet<B1> B1s { get; set; }
+        public DbSet<B3> B3s { get; set; }
         public DbSet<B4> B4s { get; set; }
         public DbSet<B5> B5s { get; set; }
         public DbSet<B6> B6s { get; set; }

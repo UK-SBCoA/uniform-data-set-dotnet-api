@@ -107,6 +107,15 @@ namespace UDS.Net.API.Controllers
                     if (b1 != null)
                         visit.B1 = b1;
                 }
+                else if (formKind == "B3") // updrs
+                {
+                    var b3 = await _context.B3s
+                        .Where(b => b.VisitId == id)
+                        .FirstOrDefaultAsync();
+
+                    if (b3 != null)
+                        visit.B3 = b3;
+                }
                 else if (formKind == "B4") // cdr plus ftld
                 {
                     var b4 = await _context.B4s
@@ -283,6 +292,8 @@ namespace UDS.Net.API.Controllers
                         formKind = "A5D2";
                     else if (form is B1Dto)
                         formKind = "B1";
+                    else if (form is B3Dto)
+                        formKind = "B3";
                     else if (form is B4Dto)
                         formKind = "B4";
                     else if (form is B5Dto)
@@ -357,6 +368,12 @@ namespace UDS.Net.API.Controllers
                 if (visit.B1 == null)
                     visit.B1 = new B1();
                 visit.B1.Update((B1Dto)formDto);
+            }
+            else if (formDto is B3Dto)
+            {
+                if (visit.B3 == null)
+                    visit.B3 = new B3();
+                visit.B3.Update((B3Dto)formDto);
             }
             else if (formDto is B4Dto)
             {

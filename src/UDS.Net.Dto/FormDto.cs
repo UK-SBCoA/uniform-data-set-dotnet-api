@@ -12,6 +12,7 @@ namespace UDS.Net.Dto
     [JsonDerivedType(typeof(A4aDto), "A4aDto")]
     [JsonDerivedType(typeof(A5D2Dto), "A5D2Dto")]
     [JsonDerivedType(typeof(B1Dto), "B1Dto")]
+    [JsonDerivedType(typeof(B3Dto), "B3Dto")]
     [JsonDerivedType(typeof(B4Dto), "B4Dto")]
     [JsonDerivedType(typeof(B5Dto), "B5Dto")]
     [JsonDerivedType(typeof(B6Dto), "B6Dto")]

@@ -94,6 +94,9 @@ namespace UDS.Net.API.Extensions
                         if (formKind == "B1" && visit.B1 != null)
                             formDto = visit.B1.ToFullDto();
 
+                        if (formKind == "B3" && visit.B3 != null)
+                            formDto = visit.B3.ToFullDto();
+
                         if (formKind == "B4" && visit.B4 != null)
                             formDto = visit.B4.ToFullDto();
 
@@ -746,6 +749,68 @@ namespace UDS.Net.API.Extensions
                 HRATE = b1.HRATE
             };
             dto.SetBaseFormProperties(b1);
+            return dto;
+        }
+
+        public static B3Dto ToFullDto(this B3 b3)
+        {
+            B3Dto dto = new B3Dto
+            {
+                PDNORMAL = b3.PDNORMAL,
+                SPEECH = b3.SPEECH,
+                SPEECHX = b3.SPEECHX,
+                FACEXP = b3.FACEXP,
+                FACEXPX = b3.FACEXPX,
+                TRESTFAC = b3.TRESTFAC,
+                TRESTFAX = b3.TRESTFAX,
+                TRESTRHD = b3.TRESTRHD,
+                TRESTRHX = b3.TRESTRHX,
+                TRESTLHD = b3.TRESTLHD,
+                TRESTLHX = b3.TRESTLHX,
+                TRESTRFT = b3.TRESTRFT,
+                TRESTRFX = b3.TRESTRFX,
+                TRESTLFT = b3.TRESTLFT,
+                TRESTLFX = b3.TRESTLFX,
+                TRACTRHD = b3.TRACTRHD,
+                TRACTRHX = b3.TRACTRHX,
+                TRACTLHD = b3.TRACTLHD,
+                TRACTLHX = b3.TRACTLHX,
+                RIGDNECK = b3.RIGDNECK,
+                RIGDNEX = b3.RIGDNEX,
+                RIGDUPRT = b3.RIGDUPRT,
+                RIGDUPRX = b3.RIGDUPRX,
+                RIGDUPLF = b3.RIGDUPLF,
+                RIGDUPLX = b3.RIGDUPLX,
+                RIGDLORT = b3.RIGDLORT,
+                RIGDLORX = b3.RIGDLORX,
+                RIGDLOLF = b3.RIGDLOLF,
+                RIGDLOLX = b3.RIGDLOLX,
+                TAPSRT = b3.TAPSRT,
+                TAPSLFX = b3.TAPSLFX,
+                HANDMOVR = b3.HANDMOVR,
+                HANDMVRX = b3.HANDMVRX,
+                HANDMOVL = b3.HANDMOVL,
+                HANDMVLX = b3.HANDMVLX,
+                HANDALTR = b3.HANDALTR,
+                HANDATRX = b3.HANDATRX,
+                HANDALTL = b3.HANDALTL,
+                HANDATLX = b3.HANDATLX,
+                LEGRT = b3.LEGRT,
+                LEGRTX = b3.LEGRTX,
+                LEGLF = b3.LEGLF,
+                LEGLFX = b3.LEGLFX,
+                ARISING = b3.ARISING,
+                ARISINGX = b3.ARISINGX,
+                POSTURE = b3.POSTURE,
+                POSTUREX = b3.POSTUREX,
+                GAIT = b3.GAIT,
+                GAITX = b3.GAITX,
+                POSSTAB = b3.POSSTAB,
+                POSSTABX = b3.POSSTABX,
+                BRADYKIN = b3.BRADYKIN,
+                BRADYKIX = b3.BRADYKIX,
+                TOTALUPDRS = b3.TOTALUPDRS
+            };
             return dto;
         }
 
