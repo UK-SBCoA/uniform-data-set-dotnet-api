@@ -77,6 +77,8 @@ namespace UDS.Net.Dto
         public int? REY4INT { get; set; }
         public int? REY5REC { get; set; }
         public int? REY5INT { get; set; }
+        public int? REYBREC { get; set; }
+        public int? REYBINT { get; set; }
         public int? REY6REC { get; set; }
         public int? REY6INT { get; set; }
         public int? REYDREC { get; set; }

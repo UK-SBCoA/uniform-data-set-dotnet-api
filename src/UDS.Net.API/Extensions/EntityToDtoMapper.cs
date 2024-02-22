@@ -1242,6 +1242,8 @@ namespace UDS.Net.API.Extensions
                 REY4INT = c2.REY4INT,
                 REY5REC = c2.REY5REC,
                 REY5INT = c2.REY5INT,
+                REYBINT = c2.REYBINT,
+                REYBREC = c2.REYBREC,
                 REY6REC = c2.REY6REC,
                 REY6INT = c2.REY6INT,
                 REYDREC = c2.REYDREC,

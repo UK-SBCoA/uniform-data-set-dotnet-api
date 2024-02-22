@@ -1138,6 +1138,8 @@ namespace UDS.Net.API.Extensions
                 entity.REY4INT = dto.REY4INT;
                 entity.REY5REC = dto.REY5REC;
                 entity.REY5INT = dto.REY5INT;
+                entity.REYBINT = dto.REYBINT;
+                entity.REYBREC = dto.REYBREC;
                 entity.REY6REC = dto.REY6REC;
                 entity.REY6INT = dto.REY6INT;
                 entity.REYDREC = dto.REYDREC;
