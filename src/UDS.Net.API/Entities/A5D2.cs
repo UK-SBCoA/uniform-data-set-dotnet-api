@@ -310,46 +310,46 @@ namespace UDS.Net.API.Entities
         [Comment("Specify other psychiatric disorders")]
         [MaxLength(60)]
         public string? PSYCDISX { get; set; }
-        [Comment("")]
+        [Comment("How old was the participant when they had their first menstrual period?")]
         public int? MENARCHE { get; set; }
-        [Comment("")]
+        [Comment("How old was the participant when they had their last menstrual period?")]
         public int? NOMENSAGE { get; set; }
-        [Comment("")]
+        [Comment("Participant has stopped having menstrual periods due to natural menopause")]
         public bool? NOMENSNAT { get; set; }
-        [Comment("")]
+        [Comment("Participant has stopped having menstrual periods due to hysterectomy (surgical removal of uterus)")]
         public bool? NOMENSHYST { get; set; }
-        [Comment("")]
+        [Comment("Participant has stopped having menstrual periods due to surgical removal of both ovaries")]
         public bool? NOMENSSURG { get; set; }
-        [Comment("")]
+        [Comment("Participant has stopped having menstrual periods due to chemotherapy for cancer or another condition")]
         public bool? NOMENSCHEM { get; set; }
-        [Comment("")]
+        [Comment("Participant has stopped having menstrual periods due to radiation treatment or other damage/injury to reproductive organs")]
         public bool? NOMENSRAD { get; set; }
-        [Comment("")]
+        [Comment("Participant has stopped having menstrual periods due to hormonal supplements (e.g. the Pill, injections, Mirena, HRT)")]
         public bool? NOMENSHORM { get; set; }
-        [Comment("")]
+        [Comment("Participant has stopped having menstrual periods due to anti-estrogen medication")]
         public bool? NOMENSESTR { get; set; }
-        [Comment("")]
+        [Comment("Unsure of reason participant has stopped having menstrual periods")]
         public bool? NOMENSUNK { get; set; }
-        [Comment("")]
+        [Comment("Other reason participant has stopped having menstrual periods")]
         public bool? NOMENSOTH { get; set; }
-        [Comment("")]
+        [Comment("Specify other reason participant has stopped having menstrual periods")]
         [MaxLength(60)]
         public string? NOMENSOTHX { get; set; }
-        [Comment("")]
+        [Comment("Has the participant taken female hormone replacement pills or patches (e.g. estrogen)?")]
         public int? HRT { get; set; }
-        [Comment("")]
+        [Comment("Total number of years participant has taken female hormone replacement pills")]
         public int? HRTYEARS { get; set; }
-        [Comment("")]
+        [Comment("Age at first use of female hormone replacement pills")]
         public int? HRTSTRTAGE { get; set; }
-        [Comment("")]
+        [Comment("Age at last use of female hormone replacement pills")]
         public int? HRTENDAGE { get; set; }
-        [Comment("")]
+        [Comment("Has the participant ever taken birth control pills?")]
         public int? BCPILLS { get; set; }
-        [Comment("")]
+        [Comment("Total number of years participant has taken birth control pills")]
         public int? BCPILLSYR { get; set; }
-        [Comment("")]
+        [Comment("Age at first use of birth control pills")]
         public int? BCSTARTAGE { get; set; }
-        [Comment("")]
+        [Comment("Age at last use of birth control pills")]
         public int? BCENDAGE { get; set; }
 
     }
