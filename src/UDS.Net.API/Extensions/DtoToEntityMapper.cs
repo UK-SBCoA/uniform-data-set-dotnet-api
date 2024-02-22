@@ -941,7 +941,6 @@ namespace UDS.Net.API.Extensions
                 entity.DECCLIN = dto.DECCLIN;
                 entity.DECCLCOG = dto.DECCLCOG;
                 entity.COGMEM = dto.COGMEM;
-                entity.DECIN = dto.DECIN;
                 entity.COGORI = dto.COGORI;
                 entity.COGJUDG = dto.COGJUDG;
                 entity.COGLANG = dto.COGLANG;
@@ -962,12 +961,14 @@ namespace UDS.Net.API.Extensions
                 entity.BEAGIT = dto.BEAGIT;
                 entity.BEHAGE = dto.BEHAGE;
                 entity.BEVHALL = dto.BEVHALL;
+                entity.BEVPATT = dto.BEVPATT;
                 entity.BEVWELL = dto.BEVWELL;
                 entity.BEAHALL = dto.BEAHALL;
                 entity.BEAHSIMP = dto.BEAHSIMP;
                 entity.BEAHCOMP = dto.BEAHCOMP;
                 entity.BEDEL = dto.BEDEL;
                 entity.BEAGGRS = dto.BEAGGRS;
+                entity.PSYCHAGE = dto.PSYCHAGE;
                 entity.BEDISIN = dto.BEDISIN;
                 entity.BEPERCH = dto.BEPERCH;
                 entity.BEEMPATH = dto.BEEMPATH;
@@ -982,6 +983,27 @@ namespace UDS.Net.API.Extensions
                 entity.OTHSUBUSEX = dto.OTHSUBUSEX;
                 entity.PERCHAGE = dto.PERCHAGE;
                 entity.BEREM = dto.BEREM;
+                entity.BEREMAGO = dto.BEREMAGO;
+                entity.BEREMCONF = dto.BEREMCONF;
+                entity.BEOTHR = dto.BEOTHR;
+                entity.BEOTHRX = dto.BEOTHRX;
+                entity.BEMODE = dto.BEMODE;
+                entity.BEMODEX = dto.BEMODEX;
+                entity.DECCLMOT = dto.DECCLMOT;
+                entity.MOGAIT = dto.MOGAIT;
+                entity.MOFALLS = dto.MOFALLS;
+                entity.MOSLOW = dto.MOSLOW;
+                entity.MOTREM = dto.MOTREM;
+                entity.MOLIMB = dto.MOLIMB;
+                entity.MOFACE = dto.MOFACE;
+                entity.MOSPEECH = dto.MOSPEECH;
+                entity.MOTORAGE = dto.MOTORAGE;
+                entity.MOMODE = dto.MOMODE;
+                entity.MOMODEX = dto.MOMODEX;
+                entity.MOMOPARK = dto.MOMOPARK;
+                entity.MOMOALS = dto.MOMOALS;
+                entity.COURSE = dto.COURSE;
+                entity.FRSTCHG = dto.FRSTCHG;
 
                 return true;
             }

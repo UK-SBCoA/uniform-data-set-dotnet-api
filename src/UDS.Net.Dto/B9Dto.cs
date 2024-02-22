@@ -12,7 +12,6 @@ namespace UDS.Net.Dto
         public bool? DECCLIN { get; set; }
         public bool? DECCLCOG { get; set; }
         public int? COGMEM { get; set; }
-        public int? DECIN { get; set; }
         public int? COGORI { get; set; }
         public int? COGJUDG { get; set; }
         public int? COGLANG { get; set; }
@@ -20,10 +19,10 @@ namespace UDS.Net.Dto
         public int? COGATTN { get; set; }
         public int? COGFLUC { get; set; }
         public int? COGOTHR { get; set; }
-        public string COGOTHRX { get; set; }
+        public string? COGOTHRX { get; set; }
         public int? COGAGE { get; set; }
         public int? COGMODE { get; set; }
-        public string COGMODEX { get; set; }
+        public string? COGMODEX { get; set; }
         public int? DECCLBE { get; set; }
         public int? BEAPATHY { get; set; }
         public int? BEDEP { get; set; }
@@ -40,6 +39,7 @@ namespace UDS.Net.Dto
         public int? BEAHCOMP { get; set; }
         public int? BEDEL { get; set; }
         public int? BEAGGRS { get; set; }
+        public int? PSYCHAGE { get; set; }
         public int? BEDISIN { get; set; }
         public int? BEPERCH { get; set; }
         public int? BEEMPATH { get; set; }
@@ -51,9 +51,30 @@ namespace UDS.Net.Dto
         public bool? OPIATEUSE { get; set; }
         public bool? COCAINEUSE { get; set; }
         public bool? OTHSUBUSE { get; set; }
-        public string OTHSUBUSEX { get; set; }
+        public string? OTHSUBUSEX { get; set; }
         public int? PERCHAGE { get; set; }
         public int? BEREM { get; set; }
+        public int? BEREMAGO { get; set; }
+        public int? BEREMCONF { get; set; }
+        public int? BEOTHR { get; set; }
+        public string? BEOTHRX { get; set; }
+        public int? BEMODE { get; set; }
+        public string? BEMODEX { get; set; }
+        public bool? DECCLMOT { get; set; }
+        public int? MOGAIT { get; set; }
+        public int? MOFALLS { get; set; }
+        public int? MOSLOW { get; set; }
+        public int? MOTREM { get; set; }
+        public int? MOLIMB { get; set; }
+        public int? MOFACE { get; set; }
+        public int? MOSPEECH { get; set; }
+        public int? MOTORAGE { get; set; }
+        public int? MOMODE { get; set; }
+        public string? MOMODEX { get; set; }
+        public int? MOMOPARK { get; set; }
+        public int? MOMOALS { get; set; }
+        public int? COURSE { get; set; }
+        public int? FRSTCHG { get; set; }
     }
 }
 
