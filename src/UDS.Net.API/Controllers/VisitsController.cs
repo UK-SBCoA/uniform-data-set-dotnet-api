@@ -214,9 +214,14 @@ namespace UDS.Net.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<VisitDto>> Get()
+        public async Task<IEnumerable<VisitDto>> Get(int pageSize = 10, int pageIndex = 1)
         {
-            return await _context.Visits.Select(v => v.ToDto()).ToListAsync();
+            return await _context.Visits
+                        .AsNoTracking()
+                        .Skip((pageIndex - 1) * pageSize)
+                        .Take(pageSize)
+                        .Select(v => v.ToDto())
+                        .ToListAsync();
         }
 
         [HttpGet("Count", Name = "VisitsCount")]

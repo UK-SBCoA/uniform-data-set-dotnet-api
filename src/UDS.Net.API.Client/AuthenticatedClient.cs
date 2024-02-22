@@ -99,9 +99,9 @@ namespace UDS.Net.API.Client
             throw new HttpRequestException($"Invalid status code in the HttpResponseMessage: {response.StatusCode}.");
         }
 
-        public async Task<IEnumerable<T>> Get()
+        public async Task<IEnumerable<T>> Get(int pageSize = 10, int pageIndex = 1)
         {
-            string response = await GetRequest(_BasePath);
+            string response = await GetRequest($"{_BasePath}?pageSize={pageSize}&pageIndex={pageIndex}");
 
             List<T> values = JsonSerializer.Deserialize<List<T>>(response, options);
 

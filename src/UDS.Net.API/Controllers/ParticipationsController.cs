@@ -23,13 +23,15 @@ namespace UDS.Net.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<ParticipationDto>> Get()
+        public async Task<IEnumerable<ParticipationDto>> Get(int pageSize = 10, int pageIndex = 1)
         {
             return await _context.Participations
-               .Include(p => p.Visits)
-               .Select(p => p.ToDto())
-               .ToListAsync();
-
+                .Include(p => p.Visits)
+                .AsNoTracking()
+                .Skip((pageIndex - 1) * pageSize)
+                .Take(pageSize)
+                .Select(p => p.ToDto())
+                .ToListAsync();
         }
 
         [HttpGet("Count", Name = "ParticipationsCount")]

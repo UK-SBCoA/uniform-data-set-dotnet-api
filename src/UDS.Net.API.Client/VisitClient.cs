@@ -17,20 +17,20 @@ namespace UDS.Net.API.Client
         {
         }
 
-        public async Task<VisitDto> GetWithForm(int id, string formId)
+        public async Task<VisitDto> GetWithForm(int id, string formKind)
         {
-            var response = await GetRequest($"{_BasePath}/{id}/Forms/{formId}");
+            var response = await GetRequest($"{_BasePath}/{id}/Forms/{formKind}");
 
             VisitDto? dto = JsonSerializer.Deserialize<VisitDto>(response, options);
 
             return dto;
         }
 
-        public async Task PostWithForm(int id, string formId, VisitDto dto)
+        public async Task PostWithForm(int id, string formKind, VisitDto dto)
         {
             string json = JsonSerializer.Serialize(dto);
 
-            var response = await PostRequest($"{_BasePath}/{id}/Forms/{formId}", json);
+            var response = await PostRequest($"{_BasePath}/{id}/Forms/{formKind}", json);
         }
     }
 }

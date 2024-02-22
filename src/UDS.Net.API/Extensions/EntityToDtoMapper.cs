@@ -153,6 +153,25 @@ namespace UDS.Net.API.Extensions
             return dto;
         }
 
+        public static FormDto ToSummaryDto(this Form form, string formKind)
+        {
+            return new FormDto
+            {
+                Id = form.Id,
+                VisitId = form.VisitId,
+                Status = form.Status,
+                Kind = formKind,
+                IsDeleted = form.IsDeleted,
+                DeletedBy = form.DeletedBy,
+                CreatedBy = form.CreatedBy,
+                CreatedAt = form.CreatedAt,
+                IsIncluded = form.IsIncluded,
+                Language = form.Language.HasValue ? ((int)form.Language).ToString() : "",
+                ModifiedBy = form.ModifiedBy,
+                ReasonCode = form.ReasonCode.HasValue ? ((int)form.ReasonCode).ToString() : ""
+            };
+        }
+
         private static void SetBaseFormProperties(this FormDto dto, Form form)
         {
             if (form != null)

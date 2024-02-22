@@ -94,7 +94,7 @@ namespace UDS.Net.API.Controllers
         }
 
         [HttpGet]
-        public Task<IEnumerable<LookupDto>> Get()
+        public Task<IEnumerable<LookupDto>> Get(int pageSize = 10, int pageIndex = 1)
         {
             throw new NotImplementedException();
         }

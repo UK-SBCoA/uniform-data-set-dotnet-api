@@ -6,9 +6,9 @@ namespace UDS.Net.API.Client
 {
     public interface IVisitClient : IBaseClient<VisitDto>
     {
-        Task<VisitDto> GetWithForm(int id, string formId);
+        Task<VisitDto> GetWithForm(int id, string formKind);
 
-        Task PostWithForm(int id, string formId, VisitDto dto);
+        Task PostWithForm(int id, string formKind, VisitDto dto);
     }
 }
 
