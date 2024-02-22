@@ -302,27 +302,17 @@ namespace UDS.Net.API.Extensions
 
                 entity.AFFFAMM = dto.AFFFAMM;
                 entity.NWINFMUT = dto.NWINFMUT;
-                entity.FADMUT = dto.FADMUT;
-                entity.FADMUTX = dto.FADMUTX;
-                entity.FADMUSO = dto.FADMUSO;
-                entity.FADMUSOX = dto.FADMUSOX;
-                entity.FFTDMUT = dto.FFTDMUT;
-                entity.FFTDMUTX = dto.FFTDMUTX;
-                entity.FOTHMUT = dto.FOTHMUT;
-                entity.FOTHMUTX = dto.FOTHMUTX;
-                entity.MOMMOB = dto.MOMMOB;
                 entity.MOMYOB = dto.MOMYOB;
                 entity.MOMDAGE = dto.MOMDAGE;
-                entity.MOMNEUR = dto.MOMNEUR;
-                entity.MOMPRDX = dto.MOMPRDX;
-                entity.MOMMOE = dto.MOMMOE;
+                entity.MOMETPR = dto.MOMETPR;
+                entity.MOMETSEC = dto.MOMETSEC;
+                entity.MOMMEVAL = dto.MOMMEVAL;
                 entity.MOMAGEO = dto.MOMAGEO;
-                entity.DADMOB = dto.DADMOB;
                 entity.DADYOB = dto.DADYOB;
                 entity.DADDAGE = dto.DADDAGE;
-                entity.DADNEUR = dto.DADNEUR;
-                entity.DADPRDX = dto.DADPRDX;
-                entity.DADMOE = dto.DADMOE;
+                entity.DADETPR = dto.DADETPR;
+                entity.DADETSEC = dto.DADETSEC;
+                entity.DADMEVAL = dto.DADMEVAL;
                 entity.DADAGEO = dto.DADAGEO;
                 entity.SIBS = dto.SIBS;
                 entity.NWINFSIB = dto.NWINFSIB;
@@ -371,12 +361,11 @@ namespace UDS.Net.API.Extensions
         {
             if (dto != null)
             {
-                entity.MOB = dto.MOB;
                 entity.YOB = dto.YOB;
                 entity.AGD = dto.AGD;
-                entity.NEU = dto.NEU;
-                entity.PDX = dto.PDX;
-                entity.MOE = dto.MOE;
+                entity.ETPR = dto.ETPR;
+                entity.ETSEC = dto.ETSEC;
+                entity.MEVAL = dto.MEVAL;
                 entity.AGO = dto.AGO;
             }
 

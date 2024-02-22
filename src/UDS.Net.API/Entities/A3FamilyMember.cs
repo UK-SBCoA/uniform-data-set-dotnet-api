@@ -8,17 +8,18 @@ namespace UDS.Net.API.Entities
     [Owned]
     public class A3FamilyMember
     {
-        public int? MOB { get; set; }
 
         public int? YOB { get; set; }
 
         public int? AGD { get; set; }
 
-        public int? NEU { get; set; }
+        [MaxLength(2)]
+        public string? ETPR { get; set; }
 
-        public int? PDX { get; set; }
+        [MaxLength(2)]
+        public string? ETSEC { get; set; }
 
-        public int? MOE { get; set; }
+        public int? MEVAL { get; set; }
 
         public int? AGO { get; set; }
     }
