@@ -17,7 +17,6 @@ namespace UDS.Net.Dto
         public int? DADETSEC { get; set; }
         public int? DADMEVAL { get; set; }
         public int? DADAGEO { get; set; }
-
         public int? SIBS { get; set; }
         public int? NWINFSIB { get; set; }
 
