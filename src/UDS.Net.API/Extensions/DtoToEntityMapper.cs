@@ -503,56 +503,43 @@ namespace UDS.Net.API.Extensions
                 entity.PACKSPER = dto.PACKSPER;
                 entity.TOBAC30 = dto.TOBAC30;
                 entity.QUITSMOK = dto.QUITSMOK;
-
                 entity.ALCFREQYR = dto.ALCFREQYR;
                 entity.ALCDRINKS = dto.ALCDRINKS;
                 entity.ALCBINGE = dto.ALCBINGE;
-
                 entity.SUBSTYEAR = dto.SUBSTYEAR;
                 entity.SUBSTPAST = dto.SUBSTPAST;
                 entity.CANNABIS = dto.CANNABIS;
-
                 entity.HRTATTACK = dto.HRTATTACK;
                 entity.HRTATTMULT = dto.HRTATTMULT;
                 entity.HRTATTAGE = dto.HRTATTAGE;
                 entity.CARDARREST = dto.CARDARREST;
                 entity.CARDARRAGE = dto.CARDARRAGE;
-
                 entity.CVAFIB = dto.CVAFIB;
                 entity.CVANGIO = dto.CVANGIO;
                 entity.CVBYPASS = dto.CVBYPASS;
                 entity.BYPASSAGE = dto.BYPASSAGE;
                 entity.CVPACDEF = dto.CVPACDEF;
                 entity.PACDEFAGE = dto.PACDEFAGE;
-
                 entity.CVCHF = dto.CVCHF;
-
                 entity.CVHVALVE = dto.CVHVALVE;
                 entity.VALVEAGE = dto.VALVEAGE;
-
                 entity.CVOTHR = dto.CVOTHR;
                 entity.CVOTHRX = dto.CVOTHRX;
-
                 entity.CBSTROKE = dto.CBSTROKE;
                 entity.STROKMUL = dto.STROKMUL;
                 entity.STROKAGE = dto.STROKAGE;
                 entity.STROKSTAT = dto.STROKSTAT;
-
                 entity.ANGIOCP = dto.ANGIOCP;
                 entity.CAROTIDAGE = dto.CAROTIDAGE;
-
                 entity.CBTIA = dto.CBTIA;
                 entity.TIAAGE = dto.TIAAGE;
-
                 entity.PD = dto.PD;
                 entity.PDAGE = dto.PDAGE;
                 entity.PDOTHR = dto.PDOTHR;
                 entity.PDOTHRAGE = dto.PDOTHRAGE;
-
                 entity.SEIZURES = dto.SEIZURES;
                 entity.SEIZNUM = dto.SEIZNUM;
                 entity.SEIZAGE = dto.SEIZAGE;
-
                 entity.HEADACHE = dto.HEADACHE;
                 entity.MS = dto.MS;
                 entity.HYDROCEPH = dto.HYDROCEPH;
@@ -568,16 +555,12 @@ namespace UDS.Net.API.Extensions
                 entity.IMPOTHER = dto.IMPOTHER;
                 entity.IMPOTHERX = dto.IMPOTHERX;
                 entity.IMPYEARS = dto.IMPYEARS;
-
                 entity.HEADINJURY = dto.HEADINJURY;
                 entity.HEADINJUNC = dto.HEADINJUNC;
                 entity.HEADINJCON = dto.HEADINJCON;
                 entity.HEADINJNUM = dto.HEADINJNUM;
-
                 entity.FIRSTTBI = dto.FIRSTTBI;
                 entity.LASTTBI = dto.LASTTBI;
-
-
                 entity.DIABETES = dto.DIABETES;
                 entity.DIABTYPE = dto.DIABTYPE;
                 entity.DIABINS = dto.DIABINS;
@@ -585,15 +568,12 @@ namespace UDS.Net.API.Extensions
                 entity.DIABDIET = dto.DIABDIET;
                 entity.DIABUNK = dto.DIABUNK;
                 entity.DIABAGE = dto.DIABAGE;
-
                 entity.HYPERTEN = dto.HYPERTEN;
                 entity.HYPERTAGE = dto.HYPERTAGE;
                 entity.HYPERCHO = dto.HYPERCHO;
                 entity.HYPERCHAGE = dto.HYPERCHAGE;
-
                 entity.B12DEF = dto.B12DEF;
                 entity.THYROID = dto.THYROID;
-
                 entity.ARTHRIT = dto.ARTHRIT;
                 entity.ARTHRRHEUM = dto.ARTHRRHEUM;
                 entity.ARTHROSTEO = dto.ARTHROSTEO;
@@ -604,7 +584,6 @@ namespace UDS.Net.API.Extensions
                 entity.ARTHLOEX = dto.ARTHLOEX;
                 entity.ARTHSPIN = dto.ARTHSPIN;
                 entity.ARTHUNK = dto.ARTHUNK;
-
                 entity.INCONTU = dto.INCONTU;
                 entity.INCONTF = dto.INCONTF;
                 entity.APNEA = dto.APNEA;
@@ -614,7 +593,6 @@ namespace UDS.Net.API.Extensions
                 entity.INSOMN = dto.INSOMN;
                 entity.OTHSLEEP = dto.OTHSLEEP;
                 entity.OTHSLEEX = dto.OTHSLEEX;
-
                 entity.CANCER = dto.CANCER;
                 entity.CANCERPRIM = dto.CANCERPRIM;
                 entity.CANCERMETA = dto.CANCERMETA;
@@ -637,7 +615,6 @@ namespace UDS.Net.API.Extensions
                 entity.CANCTROTH = dto.CANCTROTH;
                 entity.CANCTROTHX = dto.CANCTROTHX;
                 entity.CANCERAGE = dto.CANCERAGE;
-
                 entity.COVID19 = dto.COVID19;
                 entity.COVIDHOSP = dto.COVIDHOSP;
                 entity.PULMONARY = dto.PULMONARY;
@@ -645,15 +622,12 @@ namespace UDS.Net.API.Extensions
                 entity.KIDNEYAGE = dto.KIDNEYAGE;
                 entity.LIVER = dto.LIVER;
                 entity.LIVERAGE = dto.LIVERAGE;
-
                 entity.PVD = dto.PVD;
                 entity.PVDAGE = dto.PVDAGE;
                 entity.HIVDIAG = dto.HIVDIAG;
                 entity.HIVAGE = dto.HIVAGE;
-
                 entity.OTHCOND = dto.OTHCOND;
                 entity.OTHCONDX = dto.OTHCONDX;
-
                 entity.MAJORDEP = dto.MAJORDEP;
                 entity.OTHERDEP = dto.OTHERDEP;
                 entity.DEPRTREAT = dto.DEPRTREAT;
@@ -665,12 +639,10 @@ namespace UDS.Net.API.Extensions
                 entity.OCD = dto.OCD;
                 entity.OTHANXDIS = dto.OTHANXDIS;
                 entity.OTHANXDISX = dto.OTHANXDISX;
-
                 entity.PTSD = dto.PTSD;
                 entity.NPSYDEV = dto.NPSYDEV;
                 entity.PSYCDIS = dto.PSYCDIS;
                 entity.PSYCDISX = dto.PSYCDISX;
-
                 entity.MENARCHE = dto.MENARCHE;
                 entity.NOMENSAGE = dto.NOMENSAGE;
                 entity.NOMENSNAT = dto.NOMENSNAT;
@@ -683,7 +655,6 @@ namespace UDS.Net.API.Extensions
                 entity.NOMENSUNK = dto.NOMENSUNK;
                 entity.NOMENSOTH = dto.NOMENSOTH;
                 entity.NOMENSOTHX = dto.NOMENSOTHX;
-
                 entity.HRT = dto.HRT;
                 entity.HRTYEARS = dto.HRTYEARS;
                 entity.HRTSTRTAGE = dto.HRTSTRTAGE;

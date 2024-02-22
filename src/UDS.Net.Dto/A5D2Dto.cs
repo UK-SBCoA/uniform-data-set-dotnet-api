@@ -8,58 +8,43 @@ namespace UDS.Net.Dto
         public int? PACKSPER { get; set; }
         public int? TOBAC30 { get; set; }
         public int? QUITSMOK { get; set; }
-
         public int? ALCFREQYR { get; set; }
         public int? ALCDRINKS { get; set; }
         public int? ALCBINGE { get; set; }
-
         public int? SUBSTYEAR { get; set; }
         public int? SUBSTPAST { get; set; }
-
         public int? CANNABIS { get; set; }
-
         public int? HRTATTACK { get; set; }
         public int? HRTATTMULT { get; set; }
         public int? HRTATTAGE { get; set; }
-
         public int? CARDARREST { get; set; }
         public int? CARDARRAGE { get; set; }
-
         public int? CVAFIB { get; set; }
         public int? CVANGIO { get; set; }
         public int? CVBYPASS { get; set; }
         public int? BYPASSAGE { get; set; }
         public int? CVPACDEF { get; set; }
         public int? PACDEFAGE { get; set; }
-
         public int? CVCHF { get; set; }
-
         public int? CVHVALVE { get; set; }
         public int? VALVEAGE { get; set; }
-
         public int? CVOTHR { get; set; }
         public string CVOTHRX { get; set; }
-
         public int? CBSTROKE { get; set; }
         public int? STROKMUL { get; set; }
         public int? STROKAGE { get; set; }
         public int? STROKSTAT { get; set; }
-
         public int? ANGIOCP { get; set; }
         public int? CAROTIDAGE { get; set; }
-
         public int? CBTIA { get; set; }
         public int? TIAAGE { get; set; }
-
         public int? PD { get; set; }
         public int? PDAGE { get; set; }
         public int? PDOTHR { get; set; }
         public int? PDOTHRAGE { get; set; }
-
         public int? SEIZURES { get; set; }
         public int? SEIZNUM { get; set; }
         public int? SEIZAGE { get; set; }
-
         public int? HEADACHE { get; set; }
         public int? MS { get; set; }
         public int? HYDROCEPH { get; set; }
@@ -75,15 +60,12 @@ namespace UDS.Net.Dto
         public bool? IMPOTHER { get; set; }
         public string IMPOTHERX { get; set; }
         public int? IMPYEARS { get; set; }
-
         public int? HEADINJURY { get; set; }
         public int? HEADINJUNC { get; set; }
         public int? HEADINJCON { get; set; }
         public int? HEADINJNUM { get; set; }
-
         public int? FIRSTTBI { get; set; }
         public int? LASTTBI { get; set; }
-
         public int? DIABETES { get; set; }
         public int? DIABTYPE { get; set; }
         public bool? DIABINS { get; set; }
@@ -91,15 +73,12 @@ namespace UDS.Net.Dto
         public bool? DIABDIET { get; set; }
         public bool? DIABUNK { get; set; }
         public int? DIABAGE { get; set; }
-
         public int? HYPERTEN { get; set; }
         public int? HYPERTAGE { get; set; }
         public int? HYPERCHO { get; set; }
         public int? HYPERCHAGE { get; set; }
-
         public int? B12DEF { get; set; }
         public int? THYROID { get; set; }
-
         public int? ARTHRIT { get; set; }
         public bool? ARTHRRHEUM { get; set; }
         public bool? ARTHROSTEO { get; set; }
@@ -110,7 +89,6 @@ namespace UDS.Net.Dto
         public bool? ARTHLOEX { get; set; }
         public bool? ARTHSPIN { get; set; }
         public bool? ARTHUNK { get; set; }
-
         public int? INCONTU { get; set; }
         public int? INCONTF { get; set; }
         public int? APNEA { get; set; }
@@ -120,7 +98,6 @@ namespace UDS.Net.Dto
         public int? INSOMN { get; set; }
         public int? OTHSLEEP { get; set; }
         public string OTHSLEEX { get; set; }
-
         public int? CANCER { get; set; }
         public bool? CANCERPRIM { get; set; }
         public bool? CANCERMETA { get; set; }
@@ -143,25 +120,19 @@ namespace UDS.Net.Dto
         public bool? CANCTROTH { get; set; }
         public string CANCTROTHX { get; set; }
         public int? CANCERAGE { get; set; }
-
         public int? COVID19 { get; set; }
         public int? COVIDHOSP { get; set; }
-
         public int? PULMONARY { get; set; }
         public int? KIDNEY { get; set; }
         public int? KIDNEYAGE { get; set; }
         public int? LIVER { get; set; }
         public int? LIVERAGE { get; set; }
-
         public int? PVD { get; set; }
         public int? PVDAGE { get; set; }
-
         public int? HIVDIAG { get; set; }
         public int? HIVAGE { get; set; }
-
         public int? OTHCOND { get; set; }
         public string OTHCONDX { get; set; }
-
         public int? MAJORDEP { get; set; }
         public int? OTHERDEP { get; set; }
         public bool? DEPRTREAT { get; set; }
@@ -173,12 +144,10 @@ namespace UDS.Net.Dto
         public int? OCD { get; set; }
         public int? OTHANXDIS { get; set; }
         public string OTHANXDISX { get; set; }
-
         public int? PTSD { get; set; }
         public int? NPSYDEV { get; set; }
         public int? PSYCDIS { get; set; }
         public string PSYCDISX { get; set; }
-
         public int? MENARCHE { get; set; }
         public int? NOMENSAGE { get; set; }
         public bool? NOMENSNAT { get; set; }
@@ -191,7 +160,6 @@ namespace UDS.Net.Dto
         public bool? NOMENSUNK { get; set; }
         public bool? NOMENSOTH { get; set; }
         public string NOMENSOTHX { get; set; }
-
         public int? HRT { get; set; }
         public int? HRTYEARS { get; set; }
         public int? HRTSTRTAGE { get; set; }
