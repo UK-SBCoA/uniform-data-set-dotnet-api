@@ -862,6 +862,8 @@ namespace UDS.Net.API.Extensions
                 RIGDLOLF = b3.RIGDLOLF,
                 RIGDLOLX = b3.RIGDLOLX,
                 TAPSRT = b3.TAPSRT,
+                TAPSRTX = b3.TAPSRTX,
+                TAPSLF = b3.TAPSLF,
                 TAPSLFX = b3.TAPSLFX,
                 HANDMOVR = b3.HANDMOVR,
                 HANDMVRX = b3.HANDMVRX,

@@ -733,6 +733,8 @@ namespace UDS.Net.API.Extensions
                 entity.RIGDLOLF = dto.RIGDLOLF;
                 entity.RIGDLOLX = dto.RIGDLOLX;
                 entity.TAPSRT = dto.TAPSRT;
+                entity.TAPSRTX = dto.TAPSRTX;
+                entity.TAPSLF = dto.TAPSLF;
                 entity.TAPSLFX = dto.TAPSLFX;
                 entity.HANDMOVR = dto.HANDMOVR;
                 entity.HANDMVRX = dto.HANDMVRX;
