@@ -903,6 +903,7 @@ namespace UDS.Net.API.Extensions
                 entity.LIMBAPRAX = dto.LIMBAPRAX;
                 entity.UMNDIST = dto.UMNDIST;
                 entity.LMNDIST = dto.LMNDIST;
+                entity.VFIELDCUT = dto.VFIELDCUT;
                 entity.LIMBATAX = dto.LIMBATAX;
                 entity.MYOCLON = dto.MYOCLON;
                 entity.UNISOMATO = dto.UNISOMATO;

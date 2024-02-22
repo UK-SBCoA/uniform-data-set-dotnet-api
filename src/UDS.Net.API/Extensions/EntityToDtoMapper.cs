@@ -1016,6 +1016,7 @@ namespace UDS.Net.API.Extensions
                 LIMBAPRAX = b8.LIMBAPRAX,
                 UMNDIST = b8.UMNDIST,
                 LMNDIST = b8.LMNDIST,
+                VFIELDCUT = b8.VFIELDCUT,
                 LIMBATAX = b8.LIMBATAX,
                 MYOCLON = b8.MYOCLON,
                 UNISOMATO = b8.UNISOMATO,
