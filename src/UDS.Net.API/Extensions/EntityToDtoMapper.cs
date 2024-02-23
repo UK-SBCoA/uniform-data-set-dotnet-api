@@ -153,25 +153,6 @@ namespace UDS.Net.API.Extensions
             return dto;
         }
 
-        public static FormDto ToSummaryDto(this Form form, string formKind)
-        {
-            return new FormDto
-            {
-                Id = form.Id,
-                VisitId = form.VisitId,
-                Status = form.Status,
-                Kind = formKind,
-                IsDeleted = form.IsDeleted,
-                DeletedBy = form.DeletedBy,
-                CreatedBy = form.CreatedBy,
-                CreatedAt = form.CreatedAt,
-                IsIncluded = form.IsIncluded,
-                Language = form.Language.HasValue ? ((int)form.Language).ToString() : "",
-                ModifiedBy = form.ModifiedBy,
-                ReasonCode = form.ReasonCode.HasValue ? ((int)form.ReasonCode).ToString() : ""
-            };
-        }
-
         private static void SetBaseFormProperties(this FormDto dto, Form form)
         {
             if (form != null)
@@ -186,9 +167,19 @@ namespace UDS.Net.API.Extensions
                 dto.VisitId = form.VisitId;
                 dto.Status = form.Status;
                 dto.Language = form.Language.HasValue ? ((int)form.Language).ToString() : "";
+                dto.Mode = form.Mode.HasValue ? ((int)form.Mode).ToString() : "";
+                dto.RemoteMode = form.RemoteMode.HasValue ? ((int)form.RemoteMode).ToString() : "";
+                dto.RemoteReasonCode = form.RemoteReasonCode.HasValue ? ((int)form.RemoteReasonCode).ToString() : "";
                 dto.IsIncluded = form.IsIncluded;
                 dto.ReasonCode = form.ReasonCode.HasValue ? ((int)form.ReasonCode).ToString() : "";
             }
+        }
+
+        public static FormDto ToSummaryDto(this Form form, string formKind)
+        {
+            var dto = new FormDto();
+            dto.SetBaseFormProperties(form);
+            return dto;
         }
 
         public static A1Dto ToFullDto(this A1 a1)

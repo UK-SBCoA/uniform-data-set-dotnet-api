@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace UDS.Net.API.Entities
 {
     /// <summary>
-    /// Physical
+    /// Vital Signs and Anthropometrics
     /// </summary>
     [Table("tbl_B1s")]
     public class B1 : Form

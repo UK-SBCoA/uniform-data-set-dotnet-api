@@ -33,6 +33,12 @@ namespace UDS.Net.Dto
 
         public string Language { get; set; }
 
+        public string Mode { get; set; }
+
+        public string RemoteMode { get; set; }
+
+        public string RemoteReasonCode { get; set; }
+
         public bool? IsIncluded { get; set; }
 
         public string ReasonCode { get; set; }

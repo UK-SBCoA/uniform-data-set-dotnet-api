@@ -23,6 +23,30 @@ namespace UDS.Net.API.Extensions
                     entity.Language = language;
             }
 
+            if (String.IsNullOrWhiteSpace(dto.Mode))
+                entity.Mode = null;
+            else
+            {
+                if (Enum.TryParse(dto.Mode, true, out FormMode mode))
+                    entity.Mode = mode;
+            }
+
+            if (String.IsNullOrWhiteSpace(dto.RemoteMode))
+                entity.RemoteMode = null;
+            else
+            {
+                if (Enum.TryParse(dto.RemoteMode, true, out RemoteMode remoteMode))
+                    entity.RemoteMode = remoteMode;
+            }
+
+            if (String.IsNullOrWhiteSpace(dto.RemoteReasonCode))
+                entity.RemoteReasonCode = null;
+            else
+            {
+                if (Enum.TryParse(dto.RemoteReasonCode, true, out RemoteReasonCode code))
+                    entity.RemoteReasonCode = code;
+            }
+
             entity.IsIncluded = dto.IsIncluded;
 
             if (String.IsNullOrWhiteSpace(dto.ReasonCode))

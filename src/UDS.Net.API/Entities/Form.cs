@@ -8,23 +8,33 @@ namespace UDS.Net.API.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("FormId")]
+        [Column("FormId", Order = 0)]
         public int Id { get; set; }
 
+        // CenterOnAging.studies.tbl_Visits
+        [Column(Order = 1)]
         public int VisitId { get; set; }
 
-        public virtual Visit Visit { get; set; } = default!;
-
         [MaxLength(20)]
+        [Column(Order = 2)]
         public string Status { get; set; } = default!;
 
-        [Column("LANG")]
+        [Column("LANG", Order = 3)]
         public Language? Language { get; set; }
 
-        [Column("SUB")]
+        [Column("MODE", Order = 4)] // TODO update variable name
+        public FormMode? Mode { get; set; }
+
+        [Column("REMOTEMODE", Order = 5)] // TODO update variable name
+        public RemoteMode? RemoteMode { get; set; }
+
+        [Column("REMOTEREASON", Order = 6)] // TODO update variable name
+        public RemoteReasonCode? RemoteReasonCode { get; set; }
+
+        [Column("SUB", Order = 7)]
         public bool? IsIncluded { get; set; }
 
-        [Column("NOT")]
+        [Column("NOT", Order = 8)]
         public ReasonCode? ReasonCode { get; set; }
     }
 }

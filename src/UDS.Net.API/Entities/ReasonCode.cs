@@ -7,6 +7,7 @@ namespace UDS.Net.API.Entities
         CognitiveOrBehavioralProblem = 96,
         OtherProblem = 97,
         VerbalRefusal = 98,
+        [Obsolete]
         UnknownOrInadequateInformation = 99
     }
 }

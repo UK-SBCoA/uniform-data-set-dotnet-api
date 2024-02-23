@@ -12,8 +12,8 @@ using UDS.Net.API.Data;
 namespace UDS.Net.API.Data.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    [Migration("20240222172231_AddSQLViewForFormSummaries")]
-    partial class AddSQLViewForFormSummaries
+    [Migration("20240223172157_InitialMigrationsForUDS4")]
+    partial class InitialMigrationsForUDS4
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,7 +30,8 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("FormId");
+                        .HasColumnName("FormId")
+                        .HasColumnOrder(0);
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -267,7 +268,8 @@ namespace UDS.Net.API.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
                         .HasDefaultValue(true)
-                        .HasColumnName("SUB");
+                        .HasColumnName("SUB")
+                        .HasColumnOrder(7);
 
                     b.Property<int?>("LIVSITUA")
                         .HasColumnType("int");
@@ -277,7 +279,8 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<int?>("Language")
                         .HasColumnType("int")
-                        .HasColumnName("LANG");
+                        .HasColumnName("LANG")
+                        .HasColumnOrder(3);
 
                     b.Property<int?>("MARISTAT")
                         .HasColumnType("int");
@@ -293,6 +296,11 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<int?>("MEMWORS")
                         .HasColumnType("int");
+
+                    b.Property<int?>("Mode")
+                        .HasColumnType("int")
+                        .HasColumnName("MODE")
+                        .HasColumnOrder(4);
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
@@ -371,7 +379,18 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<int?>("ReasonCode")
                         .HasColumnType("int")
-                        .HasColumnName("NOT");
+                        .HasColumnName("NOT")
+                        .HasColumnOrder(8);
+
+                    b.Property<int?>("RemoteMode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEMODE")
+                        .HasColumnOrder(5);
+
+                    b.Property<int?>("RemoteReasonCode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEREASON")
+                        .HasColumnOrder(6);
 
                     b.Property<int?>("SERVED")
                         .HasColumnType("int");
@@ -407,10 +426,12 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnOrder(2);
 
                     b.Property<int>("VisitId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
 
                     b.Property<string>("ZIP")
                         .HasMaxLength(3)
@@ -429,7 +450,8 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("FormId");
+                        .HasColumnName("FormId")
+                        .HasColumnOrder(0);
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -614,7 +636,8 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<bool?>("IsIncluded")
                         .HasColumnType("bit")
-                        .HasColumnName("SUB");
+                        .HasColumnName("SUB")
+                        .HasColumnOrder(7);
 
                     b.Property<int?>("LESSCOURT")
                         .HasColumnType("int")
@@ -630,7 +653,8 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<int?>("Language")
                         .HasColumnType("int")
-                        .HasColumnName("LANG");
+                        .HasColumnName("LANG")
+                        .HasColumnOrder(3);
 
                     b.Property<int?>("MISSEDFUP")
                         .HasColumnType("int")
@@ -639,6 +663,11 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int?>("MISSPEOPLE")
                         .HasColumnType("int")
                         .HasComment("19. I miss having people around");
+
+                    b.Property<int?>("Mode")
+                        .HasColumnType("int")
+                        .HasColumnName("MODE")
+                        .HasColumnOrder(4);
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
@@ -669,7 +698,18 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<int?>("ReasonCode")
                         .HasColumnType("int")
-                        .HasColumnName("NOT");
+                        .HasColumnName("NOT")
+                        .HasColumnOrder(8);
+
+                    b.Property<int?>("RemoteMode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEMODE")
+                        .HasColumnOrder(5);
+
+                    b.Property<int?>("RemoteReasonCode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEREASON")
+                        .HasColumnOrder(6);
 
                     b.Property<int?>("SAFECOMM")
                         .HasColumnType("int")
@@ -686,7 +726,8 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnOrder(2);
 
                     b.Property<int?>("THREATENED")
                         .HasColumnType("int")
@@ -713,7 +754,8 @@ namespace UDS.Net.API.Data.Migrations
                         .HasComment("6. In the past 30 days, how often has a lack of transportation kept you from medical appointments or from doing things needed for daily living?");
 
                     b.Property<int>("VisitId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
 
                     b.HasKey("Id");
 
@@ -728,7 +770,8 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("FormId");
+                        .HasColumnName("FormId")
+                        .HasColumnOrder(0);
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -781,11 +824,18 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<bool?>("IsIncluded")
                         .HasColumnType("bit")
-                        .HasColumnName("SUB");
+                        .HasColumnName("SUB")
+                        .HasColumnOrder(7);
 
                     b.Property<int?>("Language")
                         .HasColumnType("int")
-                        .HasColumnName("LANG");
+                        .HasColumnName("LANG")
+                        .HasColumnOrder(3);
+
+                    b.Property<int?>("Mode")
+                        .HasColumnType("int")
+                        .HasColumnName("MODE")
+                        .HasColumnOrder(4);
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
@@ -795,15 +845,28 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<int?>("ReasonCode")
                         .HasColumnType("int")
-                        .HasColumnName("NOT");
+                        .HasColumnName("NOT")
+                        .HasColumnOrder(8);
+
+                    b.Property<int?>("RemoteMode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEMODE")
+                        .HasColumnOrder(5);
+
+                    b.Property<int?>("RemoteReasonCode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEREASON")
+                        .HasColumnOrder(6);
 
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnOrder(2);
 
                     b.Property<int>("VisitId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
 
                     b.HasKey("Id");
 
@@ -818,7 +881,8 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("FormId");
+                        .HasColumnName("FormId")
+                        .HasColumnOrder(0);
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -858,14 +922,16 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<bool?>("IsIncluded")
                         .HasColumnType("bit")
-                        .HasColumnName("SUB");
+                        .HasColumnName("SUB")
+                        .HasColumnOrder(7);
 
                     b.Property<int?>("KIDS")
                         .HasColumnType("int");
 
                     b.Property<int?>("Language")
                         .HasColumnType("int")
-                        .HasColumnName("LANG");
+                        .HasColumnName("LANG")
+                        .HasColumnOrder(3);
 
                     b.Property<int?>("MOMAGEO")
                         .HasColumnType("int");
@@ -885,6 +951,11 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int?>("MOMYOB")
                         .HasColumnType("int");
 
+                    b.Property<int?>("Mode")
+                        .HasColumnType("int")
+                        .HasColumnName("MODE")
+                        .HasColumnOrder(4);
+
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -899,7 +970,18 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<int?>("ReasonCode")
                         .HasColumnType("int")
-                        .HasColumnName("NOT");
+                        .HasColumnName("NOT")
+                        .HasColumnOrder(8);
+
+                    b.Property<int?>("RemoteMode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEMODE")
+                        .HasColumnOrder(5);
+
+                    b.Property<int?>("RemoteReasonCode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEREASON")
+                        .HasColumnOrder(6);
 
                     b.Property<int?>("SIBS")
                         .HasColumnType("int");
@@ -907,10 +989,12 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnOrder(2);
 
                     b.Property<int>("VisitId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
 
                     b.HasKey("Id");
 
@@ -925,7 +1009,8 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("FormId");
+                        .HasColumnName("FormId")
+                        .HasColumnOrder(0);
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -947,26 +1032,46 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<bool?>("IsIncluded")
                         .HasColumnType("bit")
-                        .HasColumnName("SUB");
+                        .HasColumnName("SUB")
+                        .HasColumnOrder(7);
 
                     b.Property<int?>("Language")
                         .HasColumnType("int")
-                        .HasColumnName("LANG");
+                        .HasColumnName("LANG")
+                        .HasColumnOrder(3);
+
+                    b.Property<int?>("Mode")
+                        .HasColumnType("int")
+                        .HasColumnName("MODE")
+                        .HasColumnOrder(4);
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ReasonCode")
                         .HasColumnType("int")
-                        .HasColumnName("NOT");
+                        .HasColumnName("NOT")
+                        .HasColumnOrder(8);
+
+                    b.Property<int?>("RemoteMode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEMODE")
+                        .HasColumnOrder(5);
+
+                    b.Property<int?>("RemoteReasonCode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEREASON")
+                        .HasColumnOrder(6);
 
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnOrder(2);
 
                     b.Property<int>("VisitId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
 
                     b.HasKey("Id");
 
@@ -981,7 +1086,8 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("FormId");
+                        .HasColumnName("FormId")
+                        .HasColumnOrder(0);
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -1016,29 +1122,49 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<bool?>("IsIncluded")
                         .HasColumnType("bit")
-                        .HasColumnName("SUB");
+                        .HasColumnName("SUB")
+                        .HasColumnOrder(7);
 
                     b.Property<int?>("Language")
                         .HasColumnType("int")
-                        .HasColumnName("LANG");
+                        .HasColumnName("LANG")
+                        .HasColumnOrder(3);
+
+                    b.Property<int?>("Mode")
+                        .HasColumnType("int")
+                        .HasColumnName("MODE")
+                        .HasColumnOrder(4);
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ReasonCode")
                         .HasColumnType("int")
-                        .HasColumnName("NOT");
+                        .HasColumnName("NOT")
+                        .HasColumnOrder(8);
+
+                    b.Property<int?>("RemoteMode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEMODE")
+                        .HasColumnOrder(5);
+
+                    b.Property<int?>("RemoteReasonCode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEREASON")
+                        .HasColumnOrder(6);
 
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnOrder(2);
 
                     b.Property<int?>("TRTBIOMARK")
                         .HasColumnType("int");
 
                     b.Property<int>("VisitId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
 
                     b.HasKey("Id");
 
@@ -1053,7 +1179,8 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("FormId");
+                        .HasColumnName("FormId")
+                        .HasColumnOrder(0);
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -1504,7 +1631,8 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<bool?>("IsIncluded")
                         .HasColumnType("bit")
-                        .HasColumnName("SUB");
+                        .HasColumnName("SUB")
+                        .HasColumnOrder(7);
 
                     b.Property<int?>("KIDNEY")
                         .HasColumnType("int")
@@ -1528,7 +1656,8 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<int?>("Language")
                         .HasColumnType("int")
-                        .HasColumnName("LANG");
+                        .HasColumnName("LANG")
+                        .HasColumnOrder(3);
 
                     b.Property<int?>("MAJORDEP")
                         .HasColumnType("int")
@@ -1541,6 +1670,11 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int?>("MS")
                         .HasColumnType("int")
                         .HasComment("Multiple sclerosis");
+
+                    b.Property<int?>("Mode")
+                        .HasColumnType("int")
+                        .HasColumnName("MODE")
+                        .HasColumnOrder(4);
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
@@ -1691,7 +1825,18 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<int?>("ReasonCode")
                         .HasColumnType("int")
-                        .HasColumnName("NOT");
+                        .HasColumnName("NOT")
+                        .HasColumnOrder(8);
+
+                    b.Property<int?>("RemoteMode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEMODE")
+                        .HasColumnOrder(5);
+
+                    b.Property<int?>("RemoteReasonCode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEREASON")
+                        .HasColumnOrder(6);
 
                     b.Property<int?>("SCHIZ")
                         .HasColumnType("int")
@@ -1736,7 +1881,8 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnOrder(2);
 
                     b.Property<int?>("THYROID")
                         .HasColumnType("int")
@@ -1759,7 +1905,8 @@ namespace UDS.Net.API.Data.Migrations
                         .HasComment("Age at most recent heart valve replacement or repair procedure");
 
                     b.Property<int>("VisitId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
 
                     b.HasKey("Id");
 
@@ -1774,7 +1921,8 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("FormId");
+                        .HasColumnName("FormId")
+                        .HasColumnOrder(0);
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -1841,26 +1989,46 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<bool?>("IsIncluded")
                         .HasColumnType("bit")
-                        .HasColumnName("SUB");
+                        .HasColumnName("SUB")
+                        .HasColumnOrder(7);
 
                     b.Property<int?>("Language")
                         .HasColumnType("int")
-                        .HasColumnName("LANG");
+                        .HasColumnName("LANG")
+                        .HasColumnOrder(3);
+
+                    b.Property<int?>("Mode")
+                        .HasColumnType("int")
+                        .HasColumnName("MODE")
+                        .HasColumnOrder(4);
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ReasonCode")
                         .HasColumnType("int")
-                        .HasColumnName("NOT");
+                        .HasColumnName("NOT")
+                        .HasColumnOrder(8);
+
+                    b.Property<int?>("RemoteMode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEMODE")
+                        .HasColumnOrder(5);
+
+                    b.Property<int?>("RemoteReasonCode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEREASON")
+                        .HasColumnOrder(6);
 
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnOrder(2);
 
                     b.Property<int>("VisitId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
 
                     b.Property<int?>("WAIST1")
                         .HasColumnType("int")
@@ -1887,7 +2055,8 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("FormId");
+                        .HasColumnName("FormId")
+                        .HasColumnOrder(0);
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -1962,7 +2131,8 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<bool?>("IsIncluded")
                         .HasColumnType("bit")
-                        .HasColumnName("SUB");
+                        .HasColumnName("SUB")
+                        .HasColumnOrder(7);
 
                     b.Property<int?>("LEGLF")
                         .HasColumnType("int");
@@ -1980,7 +2150,13 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<int?>("Language")
                         .HasColumnType("int")
-                        .HasColumnName("LANG");
+                        .HasColumnName("LANG")
+                        .HasColumnOrder(3);
+
+                    b.Property<int?>("Mode")
+                        .HasColumnType("int")
+                        .HasColumnName("MODE")
+                        .HasColumnOrder(4);
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
@@ -2039,7 +2215,18 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<int?>("ReasonCode")
                         .HasColumnType("int")
-                        .HasColumnName("NOT");
+                        .HasColumnName("NOT")
+                        .HasColumnOrder(8);
+
+                    b.Property<int?>("RemoteMode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEMODE")
+                        .HasColumnOrder(5);
+
+                    b.Property<int?>("RemoteReasonCode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEREASON")
+                        .HasColumnOrder(6);
 
                     b.Property<int?>("SPEECH")
                         .HasColumnType("int");
@@ -2051,7 +2238,8 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnOrder(2);
 
                     b.Property<int?>("TAPSLF")
                         .HasColumnType("int");
@@ -2120,7 +2308,8 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("nvarchar(60)");
 
                     b.Property<int>("VisitId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
 
                     b.HasKey("Id");
 
@@ -2135,7 +2324,8 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("FormId");
+                        .HasColumnName("FormId")
+                        .HasColumnOrder(0);
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -2172,17 +2362,24 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<bool?>("IsIncluded")
                         .HasColumnType("bit")
-                        .HasColumnName("SUB");
+                        .HasColumnName("SUB")
+                        .HasColumnOrder(7);
 
                     b.Property<decimal?>("JUDGMENT")
                         .HasColumnType("decimal(2,1)");
 
                     b.Property<int?>("Language")
                         .HasColumnType("int")
-                        .HasColumnName("LANG");
+                        .HasColumnName("LANG")
+                        .HasColumnOrder(3);
 
                     b.Property<decimal?>("MEMORY")
                         .HasColumnType("decimal(2,1)");
+
+                    b.Property<int?>("Mode")
+                        .HasColumnType("int")
+                        .HasColumnName("MODE")
+                        .HasColumnOrder(4);
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
@@ -2195,15 +2392,28 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<int?>("ReasonCode")
                         .HasColumnType("int")
-                        .HasColumnName("NOT");
+                        .HasColumnName("NOT")
+                        .HasColumnOrder(8);
+
+                    b.Property<int?>("RemoteMode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEMODE")
+                        .HasColumnOrder(5);
+
+                    b.Property<int?>("RemoteReasonCode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEREASON")
+                        .HasColumnOrder(6);
 
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnOrder(2);
 
                     b.Property<int>("VisitId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
 
                     b.HasKey("Id");
 
@@ -2218,7 +2428,8 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("FormId");
+                        .HasColumnName("FormId")
+                        .HasColumnOrder(0);
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -2297,17 +2508,24 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<bool?>("IsIncluded")
                         .HasColumnType("bit")
-                        .HasColumnName("SUB");
+                        .HasColumnName("SUB")
+                        .HasColumnOrder(7);
 
                     b.Property<int?>("Language")
                         .HasColumnType("int")
-                        .HasColumnName("LANG");
+                        .HasColumnName("LANG")
+                        .HasColumnOrder(3);
 
                     b.Property<int?>("MOT")
                         .HasColumnType("int");
 
                     b.Property<int?>("MOTSEV")
                         .HasColumnType("int");
+
+                    b.Property<int?>("Mode")
+                        .HasColumnType("int")
+                        .HasColumnName("MODE")
+                        .HasColumnOrder(4);
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
@@ -2327,15 +2545,28 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<int?>("ReasonCode")
                         .HasColumnType("int")
-                        .HasColumnName("NOT");
+                        .HasColumnName("NOT")
+                        .HasColumnOrder(8);
+
+                    b.Property<int?>("RemoteMode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEMODE")
+                        .HasColumnOrder(5);
+
+                    b.Property<int?>("RemoteReasonCode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEREASON")
+                        .HasColumnOrder(6);
 
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnOrder(2);
 
                     b.Property<int>("VisitId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
 
                     b.HasKey("Id");
 
@@ -2350,7 +2581,8 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("FormId");
+                        .HasColumnName("FormId")
+                        .HasColumnOrder(0);
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -2399,14 +2631,21 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<bool?>("IsIncluded")
                         .HasColumnType("bit")
-                        .HasColumnName("SUB");
+                        .HasColumnName("SUB")
+                        .HasColumnOrder(7);
 
                     b.Property<int?>("Language")
                         .HasColumnType("int")
-                        .HasColumnName("LANG");
+                        .HasColumnName("LANG")
+                        .HasColumnOrder(3);
 
                     b.Property<int?>("MEMPROB")
                         .HasColumnType("int");
+
+                    b.Property<int?>("Mode")
+                        .HasColumnType("int")
+                        .HasColumnName("MODE")
+                        .HasColumnOrder(4);
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
@@ -2416,7 +2655,18 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<int?>("ReasonCode")
                         .HasColumnType("int")
-                        .HasColumnName("NOT");
+                        .HasColumnName("NOT")
+                        .HasColumnOrder(8);
+
+                    b.Property<int?>("RemoteMode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEMODE")
+                        .HasColumnOrder(5);
+
+                    b.Property<int?>("RemoteReasonCode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEREASON")
+                        .HasColumnOrder(6);
 
                     b.Property<int?>("SATIS")
                         .HasColumnType("int");
@@ -2430,10 +2680,12 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnOrder(2);
 
                     b.Property<int>("VisitId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
 
                     b.Property<int?>("WONDRFUL")
                         .HasColumnType("int");
@@ -2454,7 +2706,8 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("FormId");
+                        .HasColumnName("FormId")
+                        .HasColumnOrder(0);
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -2482,14 +2735,21 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<bool?>("IsIncluded")
                         .HasColumnType("bit")
-                        .HasColumnName("SUB");
+                        .HasColumnName("SUB")
+                        .HasColumnOrder(7);
 
                     b.Property<int?>("Language")
                         .HasColumnType("int")
-                        .HasColumnName("LANG");
+                        .HasColumnName("LANG")
+                        .HasColumnOrder(3);
 
                     b.Property<int?>("MEALPREP")
                         .HasColumnType("int");
+
+                    b.Property<int?>("Mode")
+                        .HasColumnType("int")
+                        .HasColumnName("MODE")
+                        .HasColumnOrder(4);
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
@@ -2502,7 +2762,18 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<int?>("ReasonCode")
                         .HasColumnType("int")
-                        .HasColumnName("NOT");
+                        .HasColumnName("NOT")
+                        .HasColumnOrder(8);
+
+                    b.Property<int?>("RemoteMode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEMODE")
+                        .HasColumnOrder(5);
+
+                    b.Property<int?>("RemoteReasonCode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEREASON")
+                        .HasColumnOrder(6);
 
                     b.Property<int?>("SHOPPING")
                         .HasColumnType("int");
@@ -2513,7 +2784,8 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnOrder(2);
 
                     b.Property<int?>("TAXES")
                         .HasColumnType("int");
@@ -2522,7 +2794,8 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("VisitId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
 
                     b.HasKey("Id");
 
@@ -2537,7 +2810,8 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("FormId");
+                        .HasColumnName("FormId")
+                        .HasColumnOrder(0);
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -2599,7 +2873,8 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<bool?>("IsIncluded")
                         .HasColumnType("bit")
-                        .HasColumnName("SUB");
+                        .HasColumnName("SUB")
+                        .HasColumnOrder(7);
 
                     b.Property<int?>("LIMBAPRAX")
                         .HasColumnType("int");
@@ -2612,13 +2887,19 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<int?>("Language")
                         .HasColumnType("int")
-                        .HasColumnName("LANG");
+                        .HasColumnName("LANG")
+                        .HasColumnOrder(3);
 
                     b.Property<int?>("MASKING")
                         .HasColumnType("int");
 
                     b.Property<int?>("MYOCLON")
                         .HasColumnType("int");
+
+                    b.Property<int?>("Mode")
+                        .HasColumnType("int")
+                        .HasColumnName("MODE")
+                        .HasColumnOrder(4);
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
@@ -2652,7 +2933,18 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<int?>("ReasonCode")
                         .HasColumnType("int")
-                        .HasColumnName("NOT");
+                        .HasColumnName("NOT")
+                        .HasColumnOrder(8);
+
+                    b.Property<int?>("RemoteMode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEMODE")
+                        .HasColumnOrder(5);
+
+                    b.Property<int?>("RemoteReasonCode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEREASON")
+                        .HasColumnOrder(6);
 
                     b.Property<int?>("SLOWINGFM")
                         .HasColumnType("int");
@@ -2666,7 +2958,8 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnOrder(2);
 
                     b.Property<int?>("TREMKINE")
                         .HasColumnType("int");
@@ -2690,7 +2983,8 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("VisitId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
 
                     b.HasKey("Id");
 
@@ -2705,7 +2999,8 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("FormId");
+                        .HasColumnName("FormId")
+                        .HasColumnOrder(0);
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -2934,11 +3229,13 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<bool?>("IsIncluded")
                         .HasColumnType("bit")
-                        .HasColumnName("SUB");
+                        .HasColumnName("SUB")
+                        .HasColumnOrder(7);
 
                     b.Property<int?>("Language")
                         .HasColumnType("int")
-                        .HasColumnName("LANG");
+                        .HasColumnName("LANG")
+                        .HasColumnOrder(3);
 
                     b.Property<int?>("MOFACE")
                         .HasColumnType("int")
@@ -2988,6 +3285,11 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("int")
                         .HasComment("Indicate whether the participant currently has meaningful changes in motor function — Tremor");
 
+                    b.Property<int?>("Mode")
+                        .HasColumnType("int")
+                        .HasColumnName("MODE")
+                        .HasColumnOrder(4);
+
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -3022,7 +3324,18 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<int?>("ReasonCode")
                         .HasColumnType("int")
-                        .HasColumnName("NOT");
+                        .HasColumnName("NOT")
+                        .HasColumnOrder(8);
+
+                    b.Property<int?>("RemoteMode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEMODE")
+                        .HasColumnOrder(5);
+
+                    b.Property<int?>("RemoteReasonCode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEREASON")
+                        .HasColumnOrder(6);
 
                     b.Property<bool?>("SEDUSE")
                         .HasColumnType("bit")
@@ -3031,10 +3344,12 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnOrder(2);
 
                     b.Property<int>("VisitId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
 
                     b.HasKey("Id");
 
@@ -3049,7 +3364,8 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("FormId");
+                        .HasColumnName("FormId")
+                        .HasColumnOrder(0);
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -3089,7 +3405,8 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<bool?>("IsIncluded")
                         .HasColumnType("bit")
-                        .HasColumnName("SUB");
+                        .HasColumnName("SUB")
+                        .HasColumnOrder(7);
 
                     b.Property<int?>("LOGIDAY")
                         .HasColumnType("int");
@@ -3108,7 +3425,8 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<int?>("Language")
                         .HasColumnType("int")
-                        .HasColumnName("LANG");
+                        .HasColumnName("LANG")
+                        .HasColumnOrder(3);
 
                     b.Property<int?>("MEMTIME")
                         .HasColumnType("int");
@@ -3147,6 +3465,11 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int?>("MMSEVIS")
                         .HasColumnType("int");
 
+                    b.Property<int?>("Mode")
+                        .HasColumnType("int")
+                        .HasColumnName("MODE")
+                        .HasColumnOrder(4);
+
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -3165,12 +3488,24 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<int?>("ReasonCode")
                         .HasColumnType("int")
-                        .HasColumnName("NOT");
+                        .HasColumnName("NOT")
+                        .HasColumnOrder(8);
+
+                    b.Property<int?>("RemoteMode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEMODE")
+                        .HasColumnOrder(5);
+
+                    b.Property<int?>("RemoteReasonCode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEREASON")
+                        .HasColumnOrder(6);
 
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnOrder(2);
 
                     b.Property<int?>("TRAILA")
                         .HasColumnType("int");
@@ -3230,7 +3565,8 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("VisitId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
 
                     b.HasKey("Id");
 
@@ -3245,7 +3581,8 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("FormId");
+                        .HasColumnName("FormId")
+                        .HasColumnOrder(0);
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -3342,11 +3679,13 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<bool?>("IsIncluded")
                         .HasColumnType("bit")
-                        .HasColumnName("SUB");
+                        .HasColumnName("SUB")
+                        .HasColumnOrder(7);
 
                     b.Property<int?>("Language")
                         .HasColumnType("int")
-                        .HasColumnName("LANG");
+                        .HasColumnName("LANG")
+                        .HasColumnOrder(3);
 
                     b.Property<int?>("MINTPCNC")
                         .HasColumnType("int");
@@ -3457,6 +3796,11 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int?>("MOCAVIS")
                         .HasColumnType("int");
 
+                    b.Property<int?>("Mode")
+                        .HasColumnType("int")
+                        .HasColumnName("MODE")
+                        .HasColumnOrder(4);
+
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -3563,12 +3907,24 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<int?>("ReasonCode")
                         .HasColumnType("int")
-                        .HasColumnName("NOT");
+                        .HasColumnName("NOT")
+                        .HasColumnOrder(8);
+
+                    b.Property<int?>("RemoteMode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEMODE")
+                        .HasColumnOrder(5);
+
+                    b.Property<int?>("RemoteReasonCode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEREASON")
+                        .HasColumnOrder(6);
 
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnOrder(2);
 
                     b.Property<int?>("TRAILA")
                         .HasColumnType("int");
@@ -3631,7 +3987,8 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("VisitId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
 
                     b.HasKey("Id");
 
@@ -3646,7 +4003,8 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("FormId");
+                        .HasColumnName("FormId")
+                        .HasColumnOrder(0);
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -3891,7 +4249,8 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<bool?>("IsIncluded")
                         .HasColumnType("bit")
-                        .HasColumnName("SUB");
+                        .HasColumnName("SUB")
+                        .HasColumnOrder(7);
 
                     b.Property<int?>("LBDIF")
                         .HasColumnType("int");
@@ -3904,7 +4263,8 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<int?>("Language")
                         .HasColumnType("int")
-                        .HasColumnName("LANG");
+                        .HasColumnName("LANG")
+                        .HasColumnOrder(3);
 
                     b.Property<int?>("MCIAMEM")
                         .HasColumnType("int");
@@ -3968,6 +4328,11 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<int?>("MSAIF")
                         .HasColumnType("int");
+
+                    b.Property<int?>("Mode")
+                        .HasColumnType("int")
+                        .HasColumnName("MODE")
+                        .HasColumnOrder(4);
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
@@ -4056,7 +4421,18 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<int?>("ReasonCode")
                         .HasColumnType("int")
-                        .HasColumnName("NOT");
+                        .HasColumnName("NOT")
+                        .HasColumnOrder(8);
+
+                    b.Property<int?>("RemoteMode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEMODE")
+                        .HasColumnOrder(5);
+
+                    b.Property<int?>("RemoteReasonCode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEREASON")
+                        .HasColumnOrder(6);
 
                     b.Property<int?>("SCHIZOIF")
                         .HasColumnType("int");
@@ -4073,7 +4449,8 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnOrder(2);
 
                     b.Property<int?>("TAUPETAD")
                         .HasColumnType("int");
@@ -4082,7 +4459,8 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("VisitId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
 
                     b.HasKey("Id");
 
@@ -4120,7 +4498,8 @@ namespace UDS.Net.API.Data.Migrations
             modelBuilder.Entity("UDS.Net.API.Entities.FormStatus", b =>
                 {
                     b.Property<int>("VisitId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
 
                     b.Property<string>("Kind")
                         .HasMaxLength(2)
@@ -4139,30 +4518,50 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("FormId");
+                        .HasColumnName("FormId")
+                        .HasColumnOrder(0);
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<bool?>("IsIncluded")
                         .HasColumnType("bit")
-                        .HasColumnName("SUB");
+                        .HasColumnName("SUB")
+                        .HasColumnOrder(7);
 
                     b.Property<int?>("Language")
                         .HasColumnType("int")
-                        .HasColumnName("LANG");
+                        .HasColumnName("LANG")
+                        .HasColumnOrder(3);
+
+                    b.Property<int?>("Mode")
+                        .HasColumnType("int")
+                        .HasColumnName("MODE")
+                        .HasColumnOrder(4);
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ReasonCode")
                         .HasColumnType("int")
-                        .HasColumnName("NOT");
+                        .HasColumnName("NOT")
+                        .HasColumnOrder(8);
+
+                    b.Property<int?>("RemoteMode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEMODE")
+                        .HasColumnOrder(5);
+
+                    b.Property<int?>("RemoteReasonCode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEREASON")
+                        .HasColumnOrder(6);
 
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnOrder(2);
 
                     b.HasKey("VisitId", "Kind");
 
@@ -4331,7 +4730,8 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("FormId");
+                        .HasColumnName("FormId")
+                        .HasColumnOrder(0);
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -4350,23 +4750,42 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<bool?>("IsIncluded")
                         .HasColumnType("bit")
-                        .HasColumnName("SUB");
+                        .HasColumnName("SUB")
+                        .HasColumnOrder(7);
 
                     b.Property<int?>("Language")
                         .HasColumnType("int")
-                        .HasColumnName("LANG");
+                        .HasColumnName("LANG")
+                        .HasColumnOrder(3);
+
+                    b.Property<int?>("Mode")
+                        .HasColumnType("int")
+                        .HasColumnName("MODE")
+                        .HasColumnOrder(4);
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ReasonCode")
                         .HasColumnType("int")
-                        .HasColumnName("NOT");
+                        .HasColumnName("NOT")
+                        .HasColumnOrder(8);
+
+                    b.Property<int?>("RemoteMode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEMODE")
+                        .HasColumnOrder(5);
+
+                    b.Property<int?>("RemoteReasonCode")
+                        .HasColumnType("int")
+                        .HasColumnName("REMOTEREASON")
+                        .HasColumnOrder(6);
 
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnOrder(2);
 
                     b.Property<int?>("TELCOG")
                         .HasColumnType("int");
@@ -4400,7 +4819,8 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("VisitId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
 
                     b.HasKey("Id");
 
@@ -4464,40 +4884,34 @@ namespace UDS.Net.API.Data.Migrations
 
             modelBuilder.Entity("UDS.Net.API.Entities.A1", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", "Visit")
+                    b.HasOne("UDS.Net.API.Entities.Visit", null)
                         .WithOne("A1")
                         .HasForeignKey("UDS.Net.API.Entities.A1", "VisitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Visit");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.A1a", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", "Visit")
+                    b.HasOne("UDS.Net.API.Entities.Visit", null)
                         .WithOne("A1a")
                         .HasForeignKey("UDS.Net.API.Entities.A1a", "VisitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Visit");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.A2", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", "Visit")
+                    b.HasOne("UDS.Net.API.Entities.Visit", null)
                         .WithOne("A2")
                         .HasForeignKey("UDS.Net.API.Entities.A2", "VisitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Visit");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.A3", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", "Visit")
+                    b.HasOne("UDS.Net.API.Entities.Visit", null)
                         .WithOne("A3")
                         .HasForeignKey("UDS.Net.API.Entities.A3", "VisitId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -5762,13 +6176,11 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Navigation("SIB9")
                         .IsRequired();
-
-                    b.Navigation("Visit");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.A4", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", "Visit")
+                    b.HasOne("UDS.Net.API.Entities.Visit", null)
                         .WithOne("A4")
                         .HasForeignKey("UDS.Net.API.Entities.A4", "VisitId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -6853,13 +7265,11 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Navigation("RXNORMID9")
                         .IsRequired();
-
-                    b.Navigation("Visit");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.A4a", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", "Visit")
+                    b.HasOne("UDS.Net.API.Entities.Visit", null)
                         .WithOne("A4a")
                         .HasForeignKey("UDS.Net.API.Entities.A4a", "VisitId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -7464,151 +7874,123 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Navigation("Treatment8")
                         .IsRequired();
-
-                    b.Navigation("Visit");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.A5D2", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", "Visit")
+                    b.HasOne("UDS.Net.API.Entities.Visit", null)
                         .WithOne("A5D2")
                         .HasForeignKey("UDS.Net.API.Entities.A5D2", "VisitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Visit");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.B1", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", "Visit")
+                    b.HasOne("UDS.Net.API.Entities.Visit", null)
                         .WithOne("B1")
                         .HasForeignKey("UDS.Net.API.Entities.B1", "VisitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Visit");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.B3", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", "Visit")
+                    b.HasOne("UDS.Net.API.Entities.Visit", null)
                         .WithOne("B3")
                         .HasForeignKey("UDS.Net.API.Entities.B3", "VisitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Visit");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.B4", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", "Visit")
+                    b.HasOne("UDS.Net.API.Entities.Visit", null)
                         .WithOne("B4")
                         .HasForeignKey("UDS.Net.API.Entities.B4", "VisitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Visit");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.B5", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", "Visit")
+                    b.HasOne("UDS.Net.API.Entities.Visit", null)
                         .WithOne("B5")
                         .HasForeignKey("UDS.Net.API.Entities.B5", "VisitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Visit");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.B6", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", "Visit")
+                    b.HasOne("UDS.Net.API.Entities.Visit", null)
                         .WithOne("B6")
                         .HasForeignKey("UDS.Net.API.Entities.B6", "VisitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Visit");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.B7", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", "Visit")
+                    b.HasOne("UDS.Net.API.Entities.Visit", null)
                         .WithOne("B7")
                         .HasForeignKey("UDS.Net.API.Entities.B7", "VisitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Visit");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.B8", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", "Visit")
+                    b.HasOne("UDS.Net.API.Entities.Visit", null)
                         .WithOne("B8")
                         .HasForeignKey("UDS.Net.API.Entities.B8", "VisitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Visit");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.B9", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", "Visit")
+                    b.HasOne("UDS.Net.API.Entities.Visit", null)
                         .WithOne("B9")
                         .HasForeignKey("UDS.Net.API.Entities.B9", "VisitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Visit");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.C1", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", "Visit")
+                    b.HasOne("UDS.Net.API.Entities.Visit", null)
                         .WithOne("C1")
                         .HasForeignKey("UDS.Net.API.Entities.C1", "VisitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Visit");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.C2", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", "Visit")
+                    b.HasOne("UDS.Net.API.Entities.Visit", null)
                         .WithOne("C2")
                         .HasForeignKey("UDS.Net.API.Entities.C2", "VisitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Visit");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.D1", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", "Visit")
+                    b.HasOne("UDS.Net.API.Entities.Visit", null)
                         .WithOne("D1")
                         .HasForeignKey("UDS.Net.API.Entities.D1", "VisitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Visit");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.FormStatus", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", "Visit")
+                    b.HasOne("UDS.Net.API.Entities.Visit", null)
                         .WithMany("FormStatuses")
                         .HasForeignKey("VisitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Visit");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.M1", b =>
@@ -7624,13 +8006,11 @@ namespace UDS.Net.API.Data.Migrations
 
             modelBuilder.Entity("UDS.Net.API.Entities.T1", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", "Visit")
+                    b.HasOne("UDS.Net.API.Entities.Visit", null)
                         .WithOne("T1")
                         .HasForeignKey("UDS.Net.API.Entities.T1", "VisitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Visit");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.Visit", b =>

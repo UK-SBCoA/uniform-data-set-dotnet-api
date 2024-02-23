@@ -130,6 +130,14 @@ namespace UDS.Net.API.Data.Migrations
                 {
                     FormId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    VisitId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    LANG = table.Column<int>(type: "int", nullable: true),
+                    MODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEMODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEREASON = table.Column<int>(type: "int", nullable: true),
+                    SUB = table.Column<bool>(type: "bit", nullable: true),
+                    NOT = table.Column<int>(type: "int", nullable: true),
                     OWNSCAR = table.Column<int>(type: "int", nullable: true, comment: "1. Do you or someone in your household currently own a car?"),
                     TRSPACCESS = table.Column<int>(type: "int", nullable: true, comment: "2. Do you have consistent access to transportation?"),
                     TRANSPROB = table.Column<int>(type: "int", nullable: true, comment: "3. In the past 30 days, how often were you not able to leave the house when you wanted to because of a problem with transportation?"),
@@ -195,12 +203,7 @@ namespace UDS.Net.API.Data.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    VisitId = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    LANG = table.Column<int>(type: "int", nullable: true),
-                    SUB = table.Column<bool>(type: "bit", nullable: true),
-                    NOT = table.Column<int>(type: "int", nullable: true)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -219,6 +222,14 @@ namespace UDS.Net.API.Data.Migrations
                 {
                     FormId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    VisitId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    LANG = table.Column<int>(type: "int", nullable: true),
+                    MODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEMODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEREASON = table.Column<int>(type: "int", nullable: true),
+                    SUB = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
+                    NOT = table.Column<int>(type: "int", nullable: true),
                     BIRTHMO = table.Column<int>(type: "int", nullable: true),
                     BIRTHYR = table.Column<int>(type: "int", nullable: true),
                     CHLDHDCTRY = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: true),
@@ -331,12 +342,7 @@ namespace UDS.Net.API.Data.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    VisitId = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    LANG = table.Column<int>(type: "int", nullable: true),
-                    SUB = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
-                    NOT = table.Column<int>(type: "int", nullable: true)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -355,6 +361,14 @@ namespace UDS.Net.API.Data.Migrations
                 {
                     FormId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    VisitId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    LANG = table.Column<int>(type: "int", nullable: true),
+                    MODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEMODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEREASON = table.Column<int>(type: "int", nullable: true),
+                    SUB = table.Column<bool>(type: "bit", nullable: true),
+                    NOT = table.Column<int>(type: "int", nullable: true),
                     NEWINF = table.Column<int>(type: "int", nullable: true),
                     INRELTO = table.Column<int>(type: "int", nullable: true),
                     INKNOWN = table.Column<int>(type: "int", nullable: true),
@@ -371,12 +385,7 @@ namespace UDS.Net.API.Data.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    VisitId = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    LANG = table.Column<int>(type: "int", nullable: true),
-                    SUB = table.Column<bool>(type: "bit", nullable: true),
-                    NOT = table.Column<int>(type: "int", nullable: true)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -395,6 +404,14 @@ namespace UDS.Net.API.Data.Migrations
                 {
                     FormId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    VisitId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    LANG = table.Column<int>(type: "int", nullable: true),
+                    MODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEMODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEREASON = table.Column<int>(type: "int", nullable: true),
+                    SUB = table.Column<bool>(type: "bit", nullable: true),
+                    NOT = table.Column<int>(type: "int", nullable: true),
                     AFFFAMM = table.Column<int>(type: "int", nullable: true),
                     NWINFMUT = table.Column<int>(type: "int", nullable: true),
                     MOMYOB = table.Column<int>(type: "int", nullable: true),
@@ -627,12 +644,7 @@ namespace UDS.Net.API.Data.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    VisitId = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    LANG = table.Column<int>(type: "int", nullable: true),
-                    SUB = table.Column<bool>(type: "bit", nullable: true),
-                    NOT = table.Column<int>(type: "int", nullable: true)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -651,6 +663,14 @@ namespace UDS.Net.API.Data.Migrations
                 {
                     FormId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    VisitId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    LANG = table.Column<int>(type: "int", nullable: true),
+                    MODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEMODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEREASON = table.Column<int>(type: "int", nullable: true),
+                    SUB = table.Column<bool>(type: "bit", nullable: true),
+                    NOT = table.Column<int>(type: "int", nullable: true),
                     TRTBIOMARK = table.Column<int>(type: "int", nullable: true),
                     TARGETAB1 = table.Column<bool>(type: "bit", nullable: true),
                     TARGETTAU1 = table.Column<bool>(type: "bit", nullable: true),
@@ -773,12 +793,7 @@ namespace UDS.Net.API.Data.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    VisitId = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    LANG = table.Column<int>(type: "int", nullable: true),
-                    SUB = table.Column<bool>(type: "bit", nullable: true),
-                    NOT = table.Column<int>(type: "int", nullable: true)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -797,6 +812,14 @@ namespace UDS.Net.API.Data.Migrations
                 {
                     FormId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    VisitId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    LANG = table.Column<int>(type: "int", nullable: true),
+                    MODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEMODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEREASON = table.Column<int>(type: "int", nullable: true),
+                    SUB = table.Column<bool>(type: "bit", nullable: true),
+                    NOT = table.Column<int>(type: "int", nullable: true),
                     ANYMEDS = table.Column<int>(type: "int", nullable: true),
                     RXNORMID1_RxNormId = table.Column<int>(type: "int", nullable: true),
                     RXNORMID2_RxNormId = table.Column<int>(type: "int", nullable: true),
@@ -842,12 +865,7 @@ namespace UDS.Net.API.Data.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    VisitId = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    LANG = table.Column<int>(type: "int", nullable: true),
-                    SUB = table.Column<bool>(type: "bit", nullable: true),
-                    NOT = table.Column<int>(type: "int", nullable: true)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -1066,6 +1084,14 @@ namespace UDS.Net.API.Data.Migrations
                 {
                     FormId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    VisitId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    LANG = table.Column<int>(type: "int", nullable: true),
+                    MODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEMODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEREASON = table.Column<int>(type: "int", nullable: true),
+                    SUB = table.Column<bool>(type: "bit", nullable: true),
+                    NOT = table.Column<int>(type: "int", nullable: true),
                     TOBAC100 = table.Column<int>(type: "int", nullable: true, comment: "Has participant smoked more than 100 cigarettes in their life?"),
                     SMOKYRS = table.Column<int>(type: "int", nullable: true, comment: "Total years smoked"),
                     PACKSPER = table.Column<int>(type: "int", nullable: true, comment: "Average number of packs smoked per day"),
@@ -1235,12 +1261,7 @@ namespace UDS.Net.API.Data.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    VisitId = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    LANG = table.Column<int>(type: "int", nullable: true),
-                    SUB = table.Column<bool>(type: "bit", nullable: true),
-                    NOT = table.Column<int>(type: "int", nullable: true)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -1259,6 +1280,14 @@ namespace UDS.Net.API.Data.Migrations
                 {
                     FormId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    VisitId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    LANG = table.Column<int>(type: "int", nullable: true),
+                    MODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEMODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEREASON = table.Column<int>(type: "int", nullable: true),
+                    SUB = table.Column<bool>(type: "bit", nullable: true),
+                    NOT = table.Column<int>(type: "int", nullable: true),
                     HEIGHT = table.Column<decimal>(type: "decimal(3,1)", nullable: true, comment: "Participant height (inches)"),
                     WEIGHT = table.Column<int>(type: "int", nullable: true, comment: "Participant weight (lbs.)"),
                     WAIST1 = table.Column<int>(type: "int", nullable: true, comment: "Waist circumference measurements (inches): Measurement 1"),
@@ -1278,12 +1307,7 @@ namespace UDS.Net.API.Data.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    VisitId = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    LANG = table.Column<int>(type: "int", nullable: true),
-                    SUB = table.Column<bool>(type: "bit", nullable: true),
-                    NOT = table.Column<int>(type: "int", nullable: true)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -1302,6 +1326,14 @@ namespace UDS.Net.API.Data.Migrations
                 {
                     FormId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    VisitId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    LANG = table.Column<int>(type: "int", nullable: true),
+                    MODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEMODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEREASON = table.Column<int>(type: "int", nullable: true),
+                    SUB = table.Column<bool>(type: "bit", nullable: true),
+                    NOT = table.Column<int>(type: "int", nullable: true),
                     PDNORMAL = table.Column<bool>(type: "bit", nullable: true),
                     SPEECH = table.Column<int>(type: "int", nullable: true),
                     SPEECHX = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: true),
@@ -1362,12 +1394,7 @@ namespace UDS.Net.API.Data.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    VisitId = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    LANG = table.Column<int>(type: "int", nullable: true),
-                    SUB = table.Column<bool>(type: "bit", nullable: true),
-                    NOT = table.Column<int>(type: "int", nullable: true)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -1386,6 +1413,14 @@ namespace UDS.Net.API.Data.Migrations
                 {
                     FormId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    VisitId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    LANG = table.Column<int>(type: "int", nullable: true),
+                    MODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEMODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEREASON = table.Column<int>(type: "int", nullable: true),
+                    SUB = table.Column<bool>(type: "bit", nullable: true),
+                    NOT = table.Column<int>(type: "int", nullable: true),
                     MEMORY = table.Column<decimal>(type: "decimal(2,1)", nullable: true),
                     ORIENT = table.Column<decimal>(type: "decimal(2,1)", nullable: true),
                     JUDGMENT = table.Column<decimal>(type: "decimal(2,1)", nullable: true),
@@ -1400,12 +1435,7 @@ namespace UDS.Net.API.Data.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    VisitId = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    LANG = table.Column<int>(type: "int", nullable: true),
-                    SUB = table.Column<bool>(type: "bit", nullable: true),
-                    NOT = table.Column<int>(type: "int", nullable: true)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -1424,6 +1454,14 @@ namespace UDS.Net.API.Data.Migrations
                 {
                     FormId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    VisitId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    LANG = table.Column<int>(type: "int", nullable: true),
+                    MODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEMODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEREASON = table.Column<int>(type: "int", nullable: true),
+                    SUB = table.Column<bool>(type: "bit", nullable: true),
+                    NOT = table.Column<int>(type: "int", nullable: true),
                     NPIQINF = table.Column<int>(type: "int", nullable: true),
                     NPIQINFX = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: true),
                     DEL = table.Column<int>(type: "int", nullable: true),
@@ -1454,12 +1492,7 @@ namespace UDS.Net.API.Data.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    VisitId = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    LANG = table.Column<int>(type: "int", nullable: true),
-                    SUB = table.Column<bool>(type: "bit", nullable: true),
-                    NOT = table.Column<int>(type: "int", nullable: true)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -1478,6 +1511,14 @@ namespace UDS.Net.API.Data.Migrations
                 {
                     FormId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    VisitId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    LANG = table.Column<int>(type: "int", nullable: true),
+                    MODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEMODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEREASON = table.Column<int>(type: "int", nullable: true),
+                    SUB = table.Column<bool>(type: "bit", nullable: true),
+                    NOT = table.Column<int>(type: "int", nullable: true),
                     NOGDS = table.Column<int>(type: "int", nullable: true),
                     SATIS = table.Column<int>(type: "int", nullable: true),
                     DROPACT = table.Column<int>(type: "int", nullable: true),
@@ -1499,12 +1540,7 @@ namespace UDS.Net.API.Data.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    VisitId = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    LANG = table.Column<int>(type: "int", nullable: true),
-                    SUB = table.Column<bool>(type: "bit", nullable: true),
-                    NOT = table.Column<int>(type: "int", nullable: true)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -1523,6 +1559,14 @@ namespace UDS.Net.API.Data.Migrations
                 {
                     FormId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    VisitId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    LANG = table.Column<int>(type: "int", nullable: true),
+                    MODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEMODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEREASON = table.Column<int>(type: "int", nullable: true),
+                    SUB = table.Column<bool>(type: "bit", nullable: true),
+                    NOT = table.Column<int>(type: "int", nullable: true),
                     BILLS = table.Column<int>(type: "int", nullable: true),
                     TAXES = table.Column<int>(type: "int", nullable: true),
                     SHOPPING = table.Column<int>(type: "int", nullable: true),
@@ -1537,12 +1581,7 @@ namespace UDS.Net.API.Data.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    VisitId = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    LANG = table.Column<int>(type: "int", nullable: true),
-                    SUB = table.Column<bool>(type: "bit", nullable: true),
-                    NOT = table.Column<int>(type: "int", nullable: true)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -1561,6 +1600,14 @@ namespace UDS.Net.API.Data.Migrations
                 {
                     FormId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    VisitId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    LANG = table.Column<int>(type: "int", nullable: true),
+                    MODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEMODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEREASON = table.Column<int>(type: "int", nullable: true),
+                    SUB = table.Column<bool>(type: "bit", nullable: true),
+                    NOT = table.Column<int>(type: "int", nullable: true),
                     NEUREXAM = table.Column<int>(type: "int", nullable: true),
                     NORMNREXAM = table.Column<bool>(type: "bit", nullable: true),
                     PARKSIGN = table.Column<int>(type: "int", nullable: true),
@@ -1603,12 +1650,7 @@ namespace UDS.Net.API.Data.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    VisitId = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    LANG = table.Column<int>(type: "int", nullable: true),
-                    SUB = table.Column<bool>(type: "bit", nullable: true),
-                    NOT = table.Column<int>(type: "int", nullable: true)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -1627,6 +1669,14 @@ namespace UDS.Net.API.Data.Migrations
                 {
                     FormId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    VisitId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    LANG = table.Column<int>(type: "int", nullable: true),
+                    MODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEMODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEREASON = table.Column<int>(type: "int", nullable: true),
+                    SUB = table.Column<bool>(type: "bit", nullable: true),
+                    NOT = table.Column<int>(type: "int", nullable: true),
                     DECCOG = table.Column<int>(type: "int", nullable: true, comment: "Does the participant report a decline in any cognitive domain (relative to stable baseline prior to onset of current syndrome)?"),
                     DECMOT = table.Column<int>(type: "int", nullable: true, comment: "Does the participant report a decline in any motor domain (relative to stable baseline prior to onset of current syndrome)?"),
                     PSYCHSYM = table.Column<int>(type: "int", nullable: true, comment: "Does the participant report the development of any significant neuropsychiatric/behavioral symptoms (relative to stable baseline prior to onset of current syndrome)?"),
@@ -1703,12 +1753,7 @@ namespace UDS.Net.API.Data.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    VisitId = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    LANG = table.Column<int>(type: "int", nullable: true),
-                    SUB = table.Column<bool>(type: "bit", nullable: true),
-                    NOT = table.Column<int>(type: "int", nullable: true)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -1727,6 +1772,14 @@ namespace UDS.Net.API.Data.Migrations
                 {
                     FormId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    VisitId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    LANG = table.Column<int>(type: "int", nullable: true),
+                    MODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEMODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEREASON = table.Column<int>(type: "int", nullable: true),
+                    SUB = table.Column<bool>(type: "bit", nullable: true),
+                    NOT = table.Column<int>(type: "int", nullable: true),
                     MMSECOMP = table.Column<int>(type: "int", nullable: true),
                     MMSEREAS = table.Column<int>(type: "int", nullable: true),
                     MMSELOC = table.Column<int>(type: "int", nullable: true),
@@ -1778,12 +1831,7 @@ namespace UDS.Net.API.Data.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    VisitId = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    LANG = table.Column<int>(type: "int", nullable: true),
-                    SUB = table.Column<bool>(type: "bit", nullable: true),
-                    NOT = table.Column<int>(type: "int", nullable: true)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -1802,6 +1850,14 @@ namespace UDS.Net.API.Data.Migrations
                 {
                     FormId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    VisitId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    LANG = table.Column<int>(type: "int", nullable: true),
+                    MODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEMODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEREASON = table.Column<int>(type: "int", nullable: true),
+                    SUB = table.Column<bool>(type: "bit", nullable: true),
+                    NOT = table.Column<int>(type: "int", nullable: true),
                     MOCACOMP = table.Column<int>(type: "int", nullable: true),
                     MOCAREAS = table.Column<int>(type: "int", nullable: true),
                     MOCALOC = table.Column<int>(type: "int", nullable: true),
@@ -1921,12 +1977,7 @@ namespace UDS.Net.API.Data.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    VisitId = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    LANG = table.Column<int>(type: "int", nullable: true),
-                    SUB = table.Column<bool>(type: "bit", nullable: true),
-                    NOT = table.Column<int>(type: "int", nullable: true)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -1945,6 +1996,14 @@ namespace UDS.Net.API.Data.Migrations
                 {
                     FormId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    VisitId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    LANG = table.Column<int>(type: "int", nullable: true),
+                    MODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEMODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEREASON = table.Column<int>(type: "int", nullable: true),
+                    SUB = table.Column<bool>(type: "bit", nullable: true),
+                    NOT = table.Column<int>(type: "int", nullable: true),
                     DXMETHOD = table.Column<int>(type: "int", nullable: true),
                     NORMCOG = table.Column<int>(type: "int", nullable: true),
                     DEMENTED = table.Column<int>(type: "int", nullable: true),
@@ -2079,12 +2138,7 @@ namespace UDS.Net.API.Data.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    VisitId = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    LANG = table.Column<int>(type: "int", nullable: true),
-                    SUB = table.Column<bool>(type: "bit", nullable: true),
-                    NOT = table.Column<int>(type: "int", nullable: true)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -2103,6 +2157,14 @@ namespace UDS.Net.API.Data.Migrations
                 {
                     FormId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    VisitId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    LANG = table.Column<int>(type: "int", nullable: true),
+                    MODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEMODE = table.Column<int>(type: "int", nullable: true),
+                    REMOTEREASON = table.Column<int>(type: "int", nullable: true),
+                    SUB = table.Column<bool>(type: "bit", nullable: true),
+                    NOT = table.Column<int>(type: "int", nullable: true),
                     TELCOG = table.Column<int>(type: "int", nullable: true),
                     TELILL = table.Column<int>(type: "int", nullable: true),
                     TELHOME = table.Column<int>(type: "int", nullable: true),
@@ -2117,12 +2179,7 @@ namespace UDS.Net.API.Data.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    VisitId = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    LANG = table.Column<int>(type: "int", nullable: true),
-                    SUB = table.Column<bool>(type: "bit", nullable: true),
-                    NOT = table.Column<int>(type: "int", nullable: true)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
