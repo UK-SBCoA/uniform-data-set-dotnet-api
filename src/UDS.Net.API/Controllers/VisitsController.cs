@@ -347,7 +347,44 @@ namespace UDS.Net.API.Controllers
             else if (formDto is A3Dto)
             {
                 if (visit.A3 == null)
+                {
                     visit.A3 = new A3();
+                    visit.A3.SIB1 = new A3FamilyMember();
+                    visit.A3.SIB2 = new A3FamilyMember();
+                    visit.A3.SIB3 = new A3FamilyMember();
+                    visit.A3.SIB4 = new A3FamilyMember();
+                    visit.A3.SIB5 = new A3FamilyMember();
+                    visit.A3.SIB6 = new A3FamilyMember();
+                    visit.A3.SIB7 = new A3FamilyMember();
+                    visit.A3.SIB8 = new A3FamilyMember();
+                    visit.A3.SIB9 = new A3FamilyMember();
+                    visit.A3.SIB10 = new A3FamilyMember();
+                    visit.A3.SIB11 = new A3FamilyMember();
+                    visit.A3.SIB12 = new A3FamilyMember();
+                    visit.A3.SIB13 = new A3FamilyMember();
+                    visit.A3.SIB14 = new A3FamilyMember();
+                    visit.A3.SIB15 = new A3FamilyMember();
+                    visit.A3.SIB16 = new A3FamilyMember();
+                    visit.A3.SIB17 = new A3FamilyMember();
+                    visit.A3.SIB18 = new A3FamilyMember();
+                    visit.A3.SIB19 = new A3FamilyMember();
+                    visit.A3.SIB20 = new A3FamilyMember();
+                    visit.A3.KID1 = new A3FamilyMember();
+                    visit.A3.KID2 = new A3FamilyMember();
+                    visit.A3.KID3 = new A3FamilyMember();
+                    visit.A3.KID4 = new A3FamilyMember();
+                    visit.A3.KID5 = new A3FamilyMember();
+                    visit.A3.KID6 = new A3FamilyMember();
+                    visit.A3.KID7 = new A3FamilyMember();
+                    visit.A3.KID8 = new A3FamilyMember();
+                    visit.A3.KID9 = new A3FamilyMember();
+                    visit.A3.KID10 = new A3FamilyMember();
+                    visit.A3.KID11 = new A3FamilyMember();
+                    visit.A3.KID12 = new A3FamilyMember();
+                    visit.A3.KID13 = new A3FamilyMember();
+                    visit.A3.KID14 = new A3FamilyMember();
+                    visit.A3.KID15 = new A3FamilyMember();
+                }
                 visit.A3.Update((A3Dto)formDto);
             }
             else if (formDto is A4Dto)
