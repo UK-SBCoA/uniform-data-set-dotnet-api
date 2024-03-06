@@ -7,14 +7,14 @@ namespace UDS.Net.Dto
         public int? NWINFMUT { get; set; } // follow-up visits
         public int? MOMYOB { get; set; }
         public int? MOMDAGE { get; set; }
-        public int? MOMETPR { get; set; }
-        public int? MOMETSEC { get; set; }
+        public string MOMETPR { get; set; }
+        public string MOMETSEC { get; set; }
         public int? MOMMEVAL { get; set; }
         public int? MOMAGEO { get; set; }
         public int? DADYOB { get; set; }
         public int? DADDAGE { get; set; }
-        public int? DADETPR { get; set; }
-        public int? DADETSEC { get; set; }
+        public string DADETPR { get; set; }
+        public string DADETSEC { get; set; }
         public int? DADMEVAL { get; set; }
         public int? DADAGEO { get; set; }
         public int? SIBS { get; set; }

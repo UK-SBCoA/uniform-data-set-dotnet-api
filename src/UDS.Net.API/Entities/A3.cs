@@ -14,14 +14,18 @@ namespace UDS.Net.API.Entities
         public int? NWINFMUT { get; set; } // Assuming these variables will remain in UDS4
         public int? MOMYOB { get; set; }
         public int? MOMDAGE { get; set; }
-        public int? MOMETPR { get; set; }
-        public int? MOMETSEC { get; set; }
+        [MaxLength(2)]
+        public string? MOMETPR { get; set; }
+        [MaxLength(2)]
+        public string? MOMETSEC { get; set; }
         public int? MOMMEVAL { get; set; }
         public int? MOMAGEO { get; set; }
         public int? DADYOB { get; set; }
         public int? DADDAGE { get; set; }
-        public int? DADETPR { get; set; }
-        public int? DADETSEC { get; set; }
+        [MaxLength(2)]
+        public string? DADETPR { get; set; }
+        [MaxLength(2)]
+        public string? DADETSEC { get; set; }
         public int? DADMEVAL { get; set; }
         public int? DADAGEO { get; set; }
         public int? SIBS { get; set; }
