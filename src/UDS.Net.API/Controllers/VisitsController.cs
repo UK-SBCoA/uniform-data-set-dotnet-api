@@ -188,14 +188,14 @@ namespace UDS.Net.API.Controllers
                     if (c2 != null)
                         visit.C2 = c2;
                 }
-                else if (formKind == "D1") // clinician diagnosis
+                else if (formKind == "D1a") // clinician diagnosis
                 {
-                    var d1 = await _context.D1s
+                    var d1a = await _context.D1as
                         .Where(a => a.VisitId == id)
                         .FirstOrDefaultAsync();
 
-                    if (d1 != null)
-                        visit.D1 = d1;
+                    if (d1a != null)
+                        visit.D1a = d1a;
                 }
                 else if (formKind == "T1") // telephone inclusion
                 {
@@ -465,11 +465,11 @@ namespace UDS.Net.API.Controllers
                     visit.C2 = new C2();
                 visit.C2.Update((C2Dto)formDto);
             }
-            else if (formDto is D1Dto)
+            else if (formDto is D1aDto)
             {
-                if (visit.D1 == null)
-                    visit.D1 = new D1();
-                visit.D1.Update((D1Dto)formDto);
+                if (visit.D1a == null)
+                    visit.D1a = new D1a();
+                visit.D1a.Update((D1aDto)formDto);
             }
             else if (formDto is T1Dto)
             {
