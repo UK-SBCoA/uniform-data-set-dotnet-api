@@ -5,7 +5,7 @@ namespace UDS.Net.API.Entities
 {
 
     [Table("tbl_D1As")]
-    public class D1a:Form
+    public class D1a : Form
     {
         public int? DXMETHOD { get; set; }
         public int? NORMCOG { get; set; }
