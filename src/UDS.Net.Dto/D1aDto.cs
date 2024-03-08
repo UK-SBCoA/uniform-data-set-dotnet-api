@@ -4,7 +4,7 @@ using System.Text;
 
 namespace UDS.Net.Dto
 {
-        public class D1aDto : FormDto
+    public class D1aDto : FormDto
     {
 
         public int? DXMETHOD { get; set; }
