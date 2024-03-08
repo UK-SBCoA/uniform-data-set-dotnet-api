@@ -315,7 +315,7 @@ namespace UDS.Net.API.Controllers
                         formKind = "C1";
                     else if (form is C2Dto)
                         formKind = "C2";
-                    else if (form is D1Dto)
+                    else if (form is D1aDto)
                         formKind = "D1";
                     else if (form is T1Dto)
                         formKind = "T1";
