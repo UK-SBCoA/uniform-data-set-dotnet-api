@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace UDS.Net.API.Entities
 {
 
-    [Table("tbl_D1As")]
+    [Table("tbl_D1as")]
     public class D1a : Form
     {
         [Comment("1. Diagnosis method—responses in this form are based on diagnosis by a:")]
