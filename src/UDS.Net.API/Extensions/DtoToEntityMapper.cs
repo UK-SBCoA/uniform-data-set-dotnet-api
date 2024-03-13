@@ -1247,6 +1247,7 @@ namespace UDS.Net.API.Extensions
                 entity.DYEXECSYN = dto.DYEXECSYN;
                 entity.PCA = dto.PCA;
                 entity.PPASYN = dto.PPASYN;
+                entity.PPASYNT = dto.PPASYNT;
                 entity.FTDSYN = dto.FTDSYN;
                 entity.LBDSYN = dto.LBDSYN;
                 entity.LBDSYNT = dto.LBDSYNT;
