@@ -1314,10 +1314,10 @@ namespace UDS.Net.API.Extensions
                 entity.COGOTH = dto.COGOTH;
                 entity.COGOTHIF = dto.COGOTHIF;
                 entity.COGOTHX = dto.COGOTHX;
-                entity.COGOT2H = dto.COGOT2H;
+                entity.COGOTH2 = dto.COGOTH2;
                 entity.COGOTH2F = dto.COGOTH2F;
                 entity.COGOTH2X = dto.COGOTH2X;
-                entity.COGOT3H = dto.COGOT3H;
+                entity.COGOTH3 = dto.COGOTH3;
                 entity.COGOTH3F = dto.COGOTH3F;
                 entity.COGOTH3X = dto.COGOTH3X;
 

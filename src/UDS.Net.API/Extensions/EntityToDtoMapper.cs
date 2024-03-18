@@ -1401,10 +1401,10 @@ namespace UDS.Net.API.Extensions
                 COGOTH = d1a.COGOTH,
                 COGOTHIF = d1a.COGOTHIF,
                 COGOTHX = d1a.COGOTHX,
-                COGOT2H = d1a.COGOT2H,
+                COGOTH2 = d1a.COGOTH2,
                 COGOTH2F = d1a.COGOTH2F,
                 COGOTH2X = d1a.COGOTH2X,
-                COGOT3H = d1a.COGOT3H,
+                COGOTH3 = d1a.COGOTH3,
                 COGOTH3F = d1a.COGOTH3F,
                 COGOTH3X = d1a.COGOTH3X,
 

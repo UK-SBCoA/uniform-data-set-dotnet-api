@@ -106,10 +106,10 @@ namespace UDS.Net.Dto
         public bool? COGOTH { get; set; }
         public int? COGOTHIF { get; set; }
         public string COGOTHX { get; set; }
-        public bool? COGOT2H { get; set; }
+        public bool? COGOTH2 { get; set; }
         public int? COGOTH2F { get; set; }
         public string COGOTH2X { get; set; }
-        public bool? COGOT3H { get; set; }
+        public bool? COGOTH3 { get; set; }
         public int? COGOTH3F { get; set; }
         public string COGOTH3X { get; set; }
 
