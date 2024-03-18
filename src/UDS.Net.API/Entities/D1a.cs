@@ -213,14 +213,14 @@ namespace UDS.Net.API.Entities
         [MaxLength(60)]
         public string? COGOTHX { get; set; }
         [Comment("31. Cognitive impairment not otherwise specified (NOS) (present)")]
-        public bool? COGOT2H { get; set; }
+        public bool? COGOTH2 { get; set; }
         [Comment("31a. Cognitive impairment NOS (primary/contributing/non-contributing)")]
         public int? COGOTH2F { get; set; }
         [Comment("31b. Cognitive impairment NOS (specify)")]
         [MaxLength(60)]
         public string? COGOTH2X { get; set; }
         [Comment("32. Cognitive impairment not otherwise specified (NOS) (present)")]
-        public bool? COGOT3H { get; set; }
+        public bool? COGOTH3 { get; set; }
         [Comment("32a. Cognitive impairment NOS (primary/contributing/non-contributing)")]
         public int? COGOTH3F { get; set; }
         [Comment("32b. Cognitive impairment NOS (specify)")]
