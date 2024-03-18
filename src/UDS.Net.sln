@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UDS.Net.API.Client", "UDS.N
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UDS.Net.Dto", "UDS.Net.Dto\UDS.Net.Dto.csproj", "{E620B892-269C-423B-9AEF-375131FA6B0C}"
 EndProject
-Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "docker-compose", "docker-compose.dcproj", "{56B1A29E-294F-4509-8322-6F08CF956C07}"
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "docker-compose", "docker-compose.dcproj", "{1AB27D58-F2D7-42DC-BEBB-0322850231D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{E620B892-269C-423B-9AEF-375131FA6B0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E620B892-269C-423B-9AEF-375131FA6B0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E620B892-269C-423B-9AEF-375131FA6B0C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{56B1A29E-294F-4509-8322-6F08CF956C07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{56B1A29E-294F-4509-8322-6F08CF956C07}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{56B1A29E-294F-4509-8322-6F08CF956C07}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{56B1A29E-294F-4509-8322-6F08CF956C07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AB27D58-F2D7-42DC-BEBB-0322850231D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AB27D58-F2D7-42DC-BEBB-0322850231D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AB27D58-F2D7-42DC-BEBB-0322850231D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AB27D58-F2D7-42DC-BEBB-0322850231D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +41,6 @@ Global
 		SolutionGuid = {D39D5BFF-1FB6-4543-9752-418308400A84}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		version = 2.0.1
+		version = 2.0.2
 	EndGlobalSection
 EndGlobal

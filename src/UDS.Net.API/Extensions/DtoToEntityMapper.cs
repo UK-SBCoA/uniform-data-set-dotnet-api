@@ -606,7 +606,7 @@ namespace UDS.Net.API.Extensions
                 entity.INSOMN = dto.INSOMN;
                 entity.OTHSLEEP = dto.OTHSLEEP;
                 entity.OTHSLEEX = dto.OTHSLEEX;
-                entity.CANCER = dto.CANCER;
+                entity.CANCERACTV = dto.CANCERACTV;
                 entity.CANCERPRIM = dto.CANCERPRIM;
                 entity.CANCERMETA = dto.CANCERMETA;
                 entity.CANCMETBR = dto.CANCMETBR;

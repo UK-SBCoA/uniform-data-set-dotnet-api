@@ -98,7 +98,7 @@ namespace UDS.Net.Dto
         public int? INSOMN { get; set; }
         public int? OTHSLEEP { get; set; }
         public string OTHSLEEX { get; set; }
-        public int? CANCER { get; set; }
+        public int? CANCERACTV { get; set; }
         public bool? CANCERPRIM { get; set; }
         public bool? CANCERMETA { get; set; }
         public bool? CANCMETBR { get; set; }

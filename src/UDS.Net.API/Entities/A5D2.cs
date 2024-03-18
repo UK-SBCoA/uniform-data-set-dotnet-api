@@ -207,7 +207,7 @@ namespace UDS.Net.API.Entities
         [MaxLength(60)]
         public string? OTHSLEEX { get; set; }
         [Comment("Cancer, primary or metastatic (Report all known diagnoses. Exclude non-melanoma skin cancer.)")]
-        public int? CANCER { get; set; }
+        public int? CANCERACTV { get; set; }
         [Comment("Type of cancer: Primary/non-metastatic")]
         public bool? CANCERPRIM { get; set; }
         [Comment("Type of cancer: Metastatic")]
