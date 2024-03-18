@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UDS.Net.API.Data;
 
@@ -11,9 +12,11 @@ using UDS.Net.API.Data;
 namespace UDS.Net.API.Data.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    partial class ApiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240318173200_HotFixA5D2CANCERACTV")]
+    partial class HotFixA5D2CANCERACTV
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -3999,7 +4002,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.ToTable("tbl_C2s");
                 });
 
-            modelBuilder.Entity("UDS.Net.API.Entities.D1a", b =>
+            modelBuilder.Entity("UDS.Net.API.Entities.D1", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -4009,136 +4012,98 @@ namespace UDS.Net.API.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<bool?>("ALCDEM")
-                        .HasColumnType("bit")
-                        .HasComment("27. Cognitive impairment due to alcohol abuse (present)");
+                    b.Property<int?>("ADMUT")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ALCABUSE")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ALCDEM")
+                        .HasColumnType("int");
 
                     b.Property<int?>("ALCDEMIF")
-                        .HasColumnType("int")
-                        .HasComment("27a. Cognitive impairment due to alcohol abuse (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("AMNDEM")
-                        .HasColumnType("bit")
-                        .HasComment("8a. Amnestic predominant syndrome");
+                    b.Property<int?>("ALZDIS")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("ANXIET")
-                        .HasColumnType("bit")
-                        .HasComment("14. Anxiety disorder (present)");
+                    b.Property<int?>("ALZDISIF")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("ANXIETIF")
-                        .HasColumnType("bit")
-                        .HasComment("14a. Anxiety disorder (primary/contributing/non-contributing)");
+                    b.Property<int?>("AMNDEM")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("APNEADX")
-                        .HasColumnType("bit")
-                        .HasComment("25. Sleep apnea (i.e., obstructive, central, mixed or complex sleep apnea) (present)");
+                    b.Property<int?>("AMYLCSF")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("APNEADXIF")
-                        .HasColumnType("int")
-                        .HasComment("25a. Sleep apnea (i.e., obstructive, central, mixed or complex sleep apnea) (primary/contributing/non-contributing)");
+                    b.Property<int?>("AMYLPET")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("BDOMAFREG")
-                        .HasColumnType("int")
-                        .HasComment("7b. MBI affected domains - Affective regulation");
+                    b.Property<int?>("ANXIET")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("BDOMIMP")
-                        .HasColumnType("int")
-                        .HasComment("7c. MBI affected domains - Impulse control");
-
-                    b.Property<int?>("BDOMMOT")
-                        .HasColumnType("int")
-                        .HasComment("7a. MBI affected domains - Motivation");
-
-                    b.Property<int?>("BDOMSOCIAL")
-                        .HasColumnType("int")
-                        .HasComment("7d. MBI affected domains - Social appropriateness");
-
-                    b.Property<int?>("BDOMTHTS")
-                        .HasColumnType("int")
-                        .HasComment("7e. MBI affected domains - Thought content/perception");
+                    b.Property<int?>("ANXIETIF")
+                        .HasColumnType("int");
 
                     b.Property<int?>("BIPOLDIF")
-                        .HasColumnType("int")
-                        .HasComment("12a. Bipolar disorder (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("BIPOLDX")
-                        .HasColumnType("bit")
-                        .HasComment("12. Bipolar disorder (present)");
+                    b.Property<int?>("BIPOLDX")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("CBSSYN")
-                        .HasColumnType("bit")
-                        .HasComment("8j. Corticobasal syndrome (CBS)");
+                    b.Property<int?>("BRNINCTE")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("CDOMAPRAX")
-                        .HasColumnType("bit")
-                        .HasComment("6g. Dementia and MCI affected domains - Apraxia");
+                    b.Property<int?>("BRNINJ")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("CDOMATTN")
-                        .HasColumnType("bit")
-                        .HasComment("6c. Dementia and MCI affected domains - Attention");
+                    b.Property<int?>("BRNINJIF")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("CDOMBEH")
-                        .HasColumnType("bit")
-                        .HasComment("6f. Dementia and MCI affected domains - Behavioral");
+                    b.Property<int?>("COGOTH")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("CDOMEXEC")
-                        .HasColumnType("bit")
-                        .HasComment("6d. Dementia and MCI affected domains - Executive");
-
-                    b.Property<bool?>("CDOMLANG")
-                        .HasColumnType("bit")
-                        .HasComment("6b. Dementia and MCI affected domains - Language");
-
-                    b.Property<bool?>("CDOMMEM")
-                        .HasColumnType("bit")
-                        .HasComment("6a. Dementia and MCI affected domains - Memory");
-
-                    b.Property<bool?>("CDOMVISU")
-                        .HasColumnType("bit")
-                        .HasComment("6e. Dementia and MCI affected domains - Visuospatial");
-
-                    b.Property<bool?>("COGOT2H")
-                        .HasColumnType("bit")
-                        .HasComment("31. Cognitive impairment not otherwise specified (NOS) (present)");
-
-                    b.Property<bool?>("COGOT3H")
-                        .HasColumnType("bit")
-                        .HasComment("32. Cognitive impairment not otherwise specified (NOS) (present)");
-
-                    b.Property<bool?>("COGOTH")
-                        .HasColumnType("bit")
-                        .HasComment("30. Cognitive impairment not otherwise specified (NOS) (present)");
+                    b.Property<int?>("COGOTH2")
+                        .HasColumnType("int");
 
                     b.Property<int?>("COGOTH2F")
-                        .HasColumnType("int")
-                        .HasComment("31a. Cognitive impairment NOS (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<string>("COGOTH2X")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("31b. Cognitive impairment NOS (specify)");
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<int?>("COGOTH3")
+                        .HasColumnType("int");
 
                     b.Property<int?>("COGOTH3F")
-                        .HasColumnType("int")
-                        .HasComment("32a. Cognitive impairment NOS (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<string>("COGOTH3X")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("32b. Cognitive impairment NOS (specify)");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<int?>("COGOTHIF")
-                        .HasColumnType("int")
-                        .HasComment("30a. Cognitive impairment NOS (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<string>("COGOTHX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("30b. Cognitive impairment NOS (specify)");
+                        .HasColumnType("nvarchar(60)");
 
-                    b.Property<bool?>("CTESYN")
-                        .HasColumnType("bit")
-                        .HasComment("8i. Traumatic encephalopathy syndrome");
+                    b.Property<int?>("CORT")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CORTIF")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CSFTAU")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CVD")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CVDIF")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -4147,93 +4112,141 @@ namespace UDS.Net.API.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("DELIR")
-                        .HasColumnType("bit")
-                        .HasComment("17. Delirium (present)");
+                    b.Property<int?>("DATSCAN")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DELIR")
+                        .HasColumnType("int");
 
                     b.Property<int?>("DELIRIF")
-                        .HasColumnType("int")
-                        .HasComment("17a. Delirium (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("DEMENTED")
-                        .HasColumnType("int")
-                        .HasComment("3. Does the participant meet criteria for dementia?");
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DEP")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DEPIF")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DEPTREAT")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DOWNS")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DOWNSIF")
+                        .HasColumnType("int");
 
                     b.Property<int?>("DXMETHOD")
-                        .HasColumnType("int")
-                        .HasComment("1. Diagnosis method—responses in this form are based on diagnosis by a:");
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("DYEXECSYN")
-                        .HasColumnType("bit")
-                        .HasComment("8b. Dysexecutive predominant syndrome");
+                    b.Property<int?>("DYSILL")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DYSILLIF")
+                        .HasColumnType("int");
 
                     b.Property<string>("DeletedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("EPILEP")
-                        .HasColumnType("bit")
-                        .HasComment("20. Epilepsy (present)");
+                    b.Property<int?>("EPILEP")
+                        .HasColumnType("int");
 
                     b.Property<int?>("EPILEPIF")
-                        .HasColumnType("int")
-                        .HasComment("20a. Epilepsy (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("FTDSYN")
-                        .HasColumnType("bit")
-                        .HasComment("8e. Behavioral variant frontotemporal (bvFTD) syndrome");
+                    b.Property<int?>("ESSTREIF")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("GENANX")
-                        .HasColumnType("bit")
-                        .HasComment("14b. Generalized Anxiety Disorder");
+                    b.Property<int?>("ESSTREM")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("HIV")
-                        .HasColumnType("bit")
-                        .HasComment("23. Human Immunodeficiency Virus (HIV) infection (present)");
+                    b.Property<int?>("FDGAD")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("FDGFTLD")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("FTDSYN")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("FTLDMO")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("FTLDMOIF")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("FTLDMUT")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("FTLDNOIF")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("FTLDNOS")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("FTLDSUBT")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FTLDSUBX")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<int?>("HIPPATR")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("HIV")
+                        .HasColumnType("int");
 
                     b.Property<int?>("HIVIF")
-                        .HasColumnType("int")
-                        .HasComment("23a. Human Immunodeficiency Virus (HIV) infection (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("HYCEPH")
-                        .HasColumnType("bit")
-                        .HasComment("21. Normal-pressure hydrocephalus (present)");
+                    b.Property<int?>("HUNT")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("HUNTIF")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("HYCEPH")
+                        .HasColumnType("int");
 
                     b.Property<int?>("HYCEPHIF")
-                        .HasColumnType("int")
-                        .HasComment("21a. Normal-pressure hydrocephalus (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("IMPNOMCI")
-                        .HasColumnType("bit")
-                        .HasComment("5b. Cognitively impaired, not MCI");
+                    b.Property<int?>("IMAGEWMH")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("IMPNOMCICG")
-                        .HasColumnType("bit")
-                        .HasComment("5a2. Cognitively impaired, not MCI reason - Cognitive testing is abnormal but no clinical concern or functional decline (e.g., CDR SB=0 and FAS=0)");
+                    b.Property<int?>("IMAGLAC")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("IMPNOMCIFU")
-                        .HasColumnType("bit")
-                        .HasComment("5a1. Cognitively impaired, not MCI reason - Evidence of functional impairment (e.g., CDR SB>0 and/or FAS>0), but available cognitive testing is judged to be normal");
+                    b.Property<int?>("IMAGLINF")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("IMPNOMCIO")
-                        .HasColumnType("bit")
-                        .HasComment("5a4. Cognitively impaired, not MCI reason - Other");
+                    b.Property<int?>("IMAGMACH")
+                        .HasColumnType("int");
 
-                    b.Property<string>("IMPNOMCIOX")
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("5a4a. Cognitively impaired, not MCI reason - Other (specify)");
+                    b.Property<int?>("IMAGMICH")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("IMPNOMCLCD")
-                        .HasColumnType("bit")
-                        .HasComment("5a3. Cognitively impaired, not MCI reason - Longstanding cognitive difficulties, not representing a change from their usual function");
+                    b.Property<int?>("IMAGMWMH")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("IMPSUB")
-                        .HasColumnType("bit")
-                        .HasComment("28. Cognitive impairment due to substance use or abuse (present)");
+                    b.Property<int?>("IMPNOMCI")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("IMPSUB")
+                        .HasColumnType("int");
 
                     b.Property<int?>("IMPSUBIF")
-                        .HasColumnType("int")
-                        .HasComment("28a. Cognitive impairment due to substance use or abuse (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
+
+                    b.Property<int?>("INFNETW")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("INFWMH")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -4243,62 +4256,82 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnName("SUB")
                         .HasColumnOrder(7);
 
-                    b.Property<bool?>("LBDSYN")
-                        .HasColumnType("bit")
-                        .HasComment("8f. Lewy body syndrome");
+                    b.Property<int?>("LBDIF")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("LBDSYNT")
-                        .HasColumnType("int")
-                        .HasComment("8f1. Lewy body syndrome - type");
+                    b.Property<int?>("LBDIS")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("LBDSYN")
+                        .HasColumnType("int");
 
                     b.Property<int?>("Language")
                         .HasColumnType("int")
                         .HasColumnName("LANG")
                         .HasColumnOrder(3);
 
-                    b.Property<int?>("MAJDEPDIF")
-                        .HasColumnType("int")
-                        .HasComment("10a. Major depressive disorder (primary/contributing/non-contributing)");
+                    b.Property<int?>("MCIAMEM")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("MAJDEPDX")
-                        .HasColumnType("bit")
-                        .HasComment("10. Major depressive disorder (present)");
+                    b.Property<int?>("MCIAPATT")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("MBI")
-                        .HasColumnType("int")
-                        .HasComment("7. Does the participant meet criteria for MBI");
+                    b.Property<int?>("MCIAPEX")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("MCI")
-                        .HasColumnType("int")
-                        .HasComment("4b. Does the participant meet criteria for MCI (amnestic or non-amnestic)?");
+                    b.Property<int?>("MCIAPLAN")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("MCICRITCLN")
-                        .HasColumnType("bit")
-                        .HasComment("4a1. MCI criteria - Clinical concern about decline in cognition compared to participant’s prior level of lifelong or usual cognitive function");
+                    b.Property<int?>("MCIAPLUS")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("MCICRITFUN")
-                        .HasColumnType("bit")
-                        .HasComment("4a3. MCI criteria - Largely preserved functional independence OR functional dependence that is not related to cognitive decline");
+                    b.Property<int?>("MCIAPVIS")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("MCICRITIMP")
-                        .HasColumnType("bit")
-                        .HasComment("4a2. MCI criteria - Impairment in one or more cognitive domains, compared to participant’s estimated prior level of lifelong or usual cognitive function, or supported by objective longitudinal neuropsychological evidence of decline");
+                    b.Property<int?>("MCIN1ATT")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("MEDS")
-                        .HasColumnType("bit")
-                        .HasComment("29. Cognitive impairment due to medications (present)");
+                    b.Property<int?>("MCIN1EX")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MCIN1LAN")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MCIN1VIS")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MCIN2ATT")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MCIN2EX")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MCIN2LAN")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MCIN2VIS")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MCINON1")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MCINON2")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MEDS")
+                        .HasColumnType("int");
 
                     b.Property<int?>("MEDSIF")
-                        .HasColumnType("int")
-                        .HasComment("29a. Cognitive impairment due to medications (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("MSASYN")
-                        .HasColumnType("bit")
-                        .HasComment("8k. Multiple system atrophy (MSA) syndrome");
+                    b.Property<int?>("MRFTLD")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("MSASYNT")
-                        .HasColumnType("int")
-                        .HasComment("8k1. Multiple system atrophy (MSA) syndrome - type");
+                    b.Property<int?>("MSA")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MSAIF")
+                        .HasColumnType("int");
 
                     b.Property<int?>("Mode")
                         .HasColumnType("int")
@@ -4308,129 +4341,87 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("NAMNDEM")
-                        .HasColumnType("bit")
-                        .HasComment("8g. Non-amnestic multidomain syndrome, not PCA, PPA, bvFT, or DLB syndrome");
+                    b.Property<int?>("NAMNDEM")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("NDEVDIS")
-                        .HasColumnType("bit")
-                        .HasComment("16. Developmental neuropsychiatric disorders (e.g., autism spectrum disorder (ASD), attention-deficit hyperactivity disorder (ADHD), dyslexia) (present)");
-
-                    b.Property<int?>("NDEVDISIF")
-                        .HasColumnType("int")
-                        .HasComment("16a. Developmental neuropsychiatric disorders (e.g., autism spectrum disorder (ASD), attention-deficit hyperactivity disorder (primary/contributing/non-contributing)");
-
-                    b.Property<bool?>("NEOP")
-                        .HasColumnType("bit")
-                        .HasComment("22. CNS Neoplasm (present)");
+                    b.Property<int?>("NEOP")
+                        .HasColumnType("int");
 
                     b.Property<int?>("NEOPIF")
-                        .HasColumnType("int")
-                        .HasComment("22a. CNS Neoplasm (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("NEOPSTAT")
-                        .HasColumnType("int")
-                        .HasComment("22b. CNS Neoplasm - benign or malignant");
+                        .HasColumnType("int");
 
                     b.Property<int?>("NORMCOG")
-                        .HasColumnType("int")
-                        .HasComment("2. Does the participant have unimpaired cognition & behavior");
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("OCDDX")
-                        .HasColumnType("bit")
-                        .HasComment("14d. Obsessive-compulsive disorder (OCD)");
+                    b.Property<int?>("OTHBIOM")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("OTHANXD")
-                        .HasColumnType("bit")
-                        .HasComment("14e. Other anxiety disorder");
-
-                    b.Property<string>("OTHANXDX")
+                    b.Property<string>("OTHBIOMX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("14e1. Other anxiety disorder (specify)");
+                        .HasColumnType("nvarchar(60)");
 
-                    b.Property<int?>("OTHCILLIF")
-                        .HasColumnType("int")
-                        .HasComment("26a. Cognitive impairment due to other neurologic, genetic, infectious conditions (not listed above), or systemic disease/medical illness (as indicated on Form A5/D2) (primary/contributing/non-contributing)");
+                    b.Property<int?>("OTHCOG")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("OTHCOGILL")
-                        .HasColumnType("bit")
-                        .HasComment("26. Cognitive impairment due to other neurologic, genetic, infectious conditions (not listed above), or systemic disease/medical illness (as indicated on Form A5/D2) (present)");
+                    b.Property<int?>("OTHCOGIF")
+                        .HasColumnType("int");
 
-                    b.Property<string>("OTHCOGILLX")
+                    b.Property<string>("OTHCOGX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("26b. Specify cognitive impairment due to other neurologic, genetic, infection conditions or systemic disease");
+                        .HasColumnType("nvarchar(60)");
 
-                    b.Property<int?>("OTHDEPDIF")
-                        .HasColumnType("int")
-                        .HasComment("11a. Other specified depressive disorder (primary/contributing/non-contributing)");
+                    b.Property<int?>("OTHMUT")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("OTHDEPDX")
-                        .HasColumnType("bit")
-                        .HasComment("11. Other specified depressive disorder (present)");
+                    b.Property<string>("OTHMUTX")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
 
-                    b.Property<bool?>("OTHPSY")
-                        .HasColumnType("bit")
-                        .HasComment("18. Other psychiatric disorder (present)");
+                    b.Property<int?>("OTHPSY")
+                        .HasColumnType("int");
 
                     b.Property<int?>("OTHPSYIF")
-                        .HasColumnType("int")
-                        .HasComment("18a. Other psychiatric disorder (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<string>("OTHPSYX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("18b. Other psychiatric disorder (specify)");
+                        .HasColumnType("nvarchar(60)");
 
-                    b.Property<bool?>("OTHSYN")
-                        .HasColumnType("bit")
-                        .HasComment("8l. Other syndrome");
+                    b.Property<int?>("PARK")
+                        .HasColumnType("int");
 
-                    b.Property<string>("OTHSYNX")
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("8l1. Other syndrome (specify)");
+                    b.Property<int?>("PCA")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("PANICDISDX")
-                        .HasColumnType("bit")
-                        .HasComment("14c. Panic Disorder");
-
-                    b.Property<bool?>("PCA")
-                        .HasColumnType("bit")
-                        .HasComment("8c. Primary visual presentation (such as posterior cortical atrophy (PCA) syndrome)");
-
-                    b.Property<bool?>("POSTC19")
-                        .HasColumnType("bit")
-                        .HasComment("24. Post COVID-19 cognitive impairment (present)");
-
-                    b.Property<int?>("POSTC19IF")
-                        .HasColumnType("int")
-                        .HasComment("24a. Post COVID-19 cognitive impairment (primary/contributing/non-contributing)");
-
-                    b.Property<bool?>("PPASYN")
-                        .HasColumnType("bit")
-                        .HasComment("8d. Primary progressive aphasia (PPA) syndrome");
+                    b.Property<int?>("PPASYN")
+                        .HasColumnType("int");
 
                     b.Property<int?>("PPASYNT")
-                        .HasColumnType("int")
-                        .HasComment("8d1. Primary progressive aphasia (PPA) syndrome - type");
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("PSPSYN")
-                        .HasColumnType("bit")
-                        .HasComment("8h. Primary supranuclear palsy (PSP) syndrome");
+                    b.Property<int?>("PREVSTK")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("PSPSYNT")
-                        .HasColumnType("int")
-                        .HasComment("8h1. Primary supranuclear palsy (PSP) syndrome - type");
+                    b.Property<int?>("PRION")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("PTSDDX")
-                        .HasColumnType("bit")
-                        .HasComment("15. Post-traumatic stress disorder (PTSD) (present)");
+                    b.Property<int?>("PRIONIF")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PSP")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PSPIF")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PTSDDX")
+                        .HasColumnType("int");
 
                     b.Property<int?>("PTSDDXIF")
-                        .HasColumnType("int")
-                        .HasComment("15a. Post-traumatic stress disorder (PTSD) (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("ReasonCode")
                         .HasColumnType("int")
@@ -4447,33 +4438,17 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnName("REMOTEREASON")
                         .HasColumnOrder(6);
 
-                    b.Property<int?>("SCD")
-                        .HasColumnType("int")
-                        .HasComment("2a. Does the participant report 1) significant concerns about changes in cognition AND 2) no neuropsychological evidence of decline AND 3) no functional decline?");
-
-                    b.Property<int?>("SCDDXCONF")
-                        .HasColumnType("int")
-                        .HasComment("2b. As a clinician, are you confident that the subjective cognitive decline is clinically meaningful?");
-
                     b.Property<int?>("SCHIZOIF")
-                        .HasColumnType("int")
-                        .HasComment("13a. Schizophrenia or other psychotic disorder (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("SCHIZOP")
-                        .HasColumnType("bit")
-                        .HasComment("13. Schizophrenia or other psychotic disorder (present)");
+                    b.Property<int?>("SCHIZOP")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("SYNINFBIOM")
-                        .HasColumnType("bit")
-                        .HasComment("9c. Indicate the source(s) of information used to assign the clinical syndrome - Biomarkers (MRI, PET, CSF, plasma)");
+                    b.Property<int?>("STKIMAG")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("SYNINFCLIN")
-                        .HasColumnType("bit")
-                        .HasComment("9a. Indicate the source(s) of information used to assign the clinical syndrome - Clinical information (history, CDR)");
-
-                    b.Property<bool?>("SYNINFCTST")
-                        .HasColumnType("bit")
-                        .HasComment("9b. Indicate the source(s) of information used to assign the clinical syndrome - Cognitive testing");
+                    b.Property<int?>("STROKDEC")
+                        .HasColumnType("int");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -4481,13 +4456,11 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasColumnOrder(2);
 
-                    b.Property<bool?>("TBIDX")
-                        .HasColumnType("bit")
-                        .HasComment("19. Traumatic brain injury (present)");
+                    b.Property<int?>("TAUPETAD")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("TBIDXIF")
-                        .HasColumnType("int")
-                        .HasComment("19a. Traumatic brain injury (primary/contributing/non-contributing)");
+                    b.Property<int?>("TPETFTLD")
+                        .HasColumnType("int");
 
                     b.Property<int>("VisitId")
                         .HasColumnType("int")
@@ -4498,7 +4471,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.HasIndex("VisitId")
                         .IsUnique();
 
-                    b.ToTable("tbl_D1as");
+                    b.ToTable("tbl_D1s");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.DrugCodeLookup", b =>
@@ -8006,11 +7979,11 @@ namespace UDS.Net.API.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("UDS.Net.API.Entities.D1a", b =>
+            modelBuilder.Entity("UDS.Net.API.Entities.D1", b =>
                 {
                     b.HasOne("UDS.Net.API.Entities.Visit", null)
-                        .WithOne("D1a")
-                        .HasForeignKey("UDS.Net.API.Entities.D1a", "VisitId")
+                        .WithOne("D1")
+                        .HasForeignKey("UDS.Net.API.Entities.D1", "VisitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -8115,7 +8088,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.Navigation("C2")
                         .IsRequired();
 
-                    b.Navigation("D1a")
+                    b.Navigation("D1")
                         .IsRequired();
 
                     b.Navigation("FormStatuses");

@@ -4,13 +4,12 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<ReleaseVersion>2.0.1</ReleaseVersion>
+		<ReleaseVersion>2.0.2</ReleaseVersion>
 		<DockerComposeProjectPath>../docker-compose.dcproj</DockerComposeProjectPath>
 		<UserSecretsId>c1dd1715-6fa0-4515-bcf2-6a7f6a0c11a5</UserSecretsId>
+		<Configurations>Release;Debug</Configurations>
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-	  <PublicSign>false</PublicSign>
-	  <AssemblyOriginatorKeyFile></AssemblyOriginatorKeyFile>
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\UDS.Net.Dto\UDS.Net.Dto.csproj">
@@ -33,5 +32,11 @@
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Remove="Data\Seeds\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Data\Seeds\" />
 	</ItemGroup>
 </Project>

@@ -728,7 +728,7 @@ namespace UDS.Net.API.Extensions
                 INSOMN = a5.INSOMN,
                 OTHSLEEP = a5.OTHSLEEP,
                 OTHSLEEX = a5.OTHSLEEX,
-                CANCER = a5.CANCER,
+                CANCERACTV = a5.CANCERACTV,
                 CANCERPRIM = a5.CANCERPRIM,
                 CANCERMETA = a5.CANCERMETA,
                 CANCMETBR = a5.CANCMETBR,
