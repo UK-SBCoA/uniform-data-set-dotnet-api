@@ -888,6 +888,7 @@ namespace UDS.Net.API.Extensions
                 BRADYKIX = b3.BRADYKIX,
                 TOTALUPDRS = b3.TOTALUPDRS
             };
+            dto.SetBaseFormProperties(b3);
             return dto;
         }
 
