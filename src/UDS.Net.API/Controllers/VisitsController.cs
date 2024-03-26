@@ -396,7 +396,17 @@ namespace UDS.Net.API.Controllers
             else if (formDto is A4aDto)
             {
                 if (visit.A4a == null)
+                {
                     visit.A4a = new A4a();
+                    visit.A4a.Treatment1 = new A4aTreatment();
+                    visit.A4a.Treatment2 = new A4aTreatment();
+                    visit.A4a.Treatment3 = new A4aTreatment();
+                    visit.A4a.Treatment4 = new A4aTreatment();
+                    visit.A4a.Treatment5 = new A4aTreatment();
+                    visit.A4a.Treatment6 = new A4aTreatment();
+                    visit.A4a.Treatment7 = new A4aTreatment();
+                    visit.A4a.Treatment8 = new A4aTreatment();
+                }
                 visit.A4a.Update((A4aDto)formDto);
             }
             else if (formDto is A5D2Dto)
