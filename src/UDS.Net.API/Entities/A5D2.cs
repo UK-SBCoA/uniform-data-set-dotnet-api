@@ -275,7 +275,7 @@ namespace UDS.Net.API.Entities
         [Comment("Age at HIV diagnosis")]
         public int? HIVAGE { get; set; }
         [Comment("Other medical conditions or procedures")]
-        public int? OTHCOND { get; set; }
+        public int? OTHERCOND { get; set; }
         [Comment("Specify other medical conditions or procedures")]
         public string? OTHCONDX { get; set; }
         [Comment("Major depressive disorder (DSM-5-TR criteria)")]

@@ -131,7 +131,7 @@ namespace UDS.Net.Dto
         public int? PVDAGE { get; set; }
         public int? HIVDIAG { get; set; }
         public int? HIVAGE { get; set; }
-        public int? OTHCOND { get; set; }
+        public int? OTHERCOND { get; set; }
         public string OTHCONDX { get; set; }
         public int? MAJORDEP { get; set; }
         public int? OTHERDEP { get; set; }

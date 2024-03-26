@@ -761,7 +761,7 @@ namespace UDS.Net.API.Extensions
                 PVDAGE = a5.PVDAGE,
                 HIVDIAG = a5.HIVDIAG,
                 HIVAGE = a5.HIVAGE,
-                OTHCOND = a5.OTHCOND,
+                OTHERCOND = a5.OTHERCOND,
                 OTHCONDX = a5.OTHCONDX,
                 MAJORDEP = a5.MAJORDEP,
                 OTHERDEP = a5.OTHERDEP,

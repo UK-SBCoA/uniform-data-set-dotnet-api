@@ -639,7 +639,7 @@ namespace UDS.Net.API.Extensions
                 entity.PVDAGE = dto.PVDAGE;
                 entity.HIVDIAG = dto.HIVDIAG;
                 entity.HIVAGE = dto.HIVAGE;
-                entity.OTHCOND = dto.OTHCOND;
+                entity.OTHERCOND = dto.OTHERCOND;
                 entity.OTHCONDX = dto.OTHCONDX;
                 entity.MAJORDEP = dto.MAJORDEP;
                 entity.OTHERDEP = dto.OTHERDEP;
