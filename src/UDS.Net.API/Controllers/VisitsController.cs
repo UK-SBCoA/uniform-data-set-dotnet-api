@@ -197,6 +197,15 @@ namespace UDS.Net.API.Controllers
                     if (d1a != null)
                         visit.D1a = d1a;
                 }
+                else if (formKind == "D1b") // clinician diagnosis
+                {
+                    var d1b = await _context.D1bs
+                        .Where(a => a.VisitId == id)
+                        .FirstOrDefaultAsync();
+
+                    if (d1b != null)
+                        visit.D1b = d1b;
+                }
                 else if (formKind == "T1") // telephone inclusion
                 {
                     var t1 = await _context.T1s

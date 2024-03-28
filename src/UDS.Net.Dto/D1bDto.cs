@@ -1,10 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Net;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace UDS.Net.API.Entities
+namespace UDS.Net.Dto
 {
-    [Table("tbl_D1bs")]
-    public class D1b : Form
+    public class D1bDto :FormDto
     {
         public int? BIOMARKDX { get; set; }
         public int? FLUIDBIOM { get; set; }
@@ -12,12 +12,12 @@ namespace UDS.Net.API.Entities
         public int? BLOODFTLD { get; set; }
         public int? BLOODLBD { get; set; }
         public int? BLOODOTH { get; set; }
-        public string? BLOODOTHX { get; set; }
+        public string BLOODOTHX { get; set; }
         public int? CSFAD { get; set; }
         public int? CSFFTLD { get; set; }
         public int? CSFLBD { get; set; }
         public int? CSFOTH { get; set; }
-        public string? CSFOTHX { get; set; }
+        public string CSFOTHX { get; set; }
         public int? IMAGINGDX { get; set; }
         public int? PETDX { get; set; }
         public int? AMYLPET { get; set; }
@@ -27,15 +27,15 @@ namespace UDS.Net.API.Entities
         public int? FDGFTLD { get; set; }
         public int? FDGLBD { get; set; }
         public int? FDGOTH { get; set; }
-        public string? FDGOTHX { get; set; }
+        public string FDGOTHX { get; set; }
         public int? DATSCANDX { get; set; }
         public int? TRACOTHDX { get; set; }
-        public string? TRACOTHDXX { get; set; }
+        public string TRACOTHDXX { get; set; }
         public int? TRACERAD { get; set; }
         public int? TRACERFTLD { get; set; }
         public int? TRACERLBD { get; set; }
         public int? TRACEROTH { get; set; }
-        public string? TRACEROTHX { get; set; }
+        public string TRACEROTHX { get; set; }
         public int? STRUCTDX { get; set; }
         public int? STRUCTAD { get; set; }
         public int? STRUCTFTLD { get; set; }
@@ -47,26 +47,26 @@ namespace UDS.Net.API.Entities
         public int? IMAGMWMH { get; set; }
         public int? IMAGEWMH { get; set; }
         public int? OTHBIOM1 { get; set; }
-        public string? OTHBIOMX1 { get; set; }
+        public string OTHBIOMX1 { get; set; }
         public int? BIOMAD1 { get; set; }
         public int? BIOMFTLD1 { get; set; }
         public int? BIOMLBD1 { get; set; }
         public int? BIOMOTH1 { get; set; }
-        public string? BIOMOTHX1 { get; set; }
+        public string BIOMOTHX1 { get; set; }
         public int? OTHBIOM2 { get; set; }
-        public string? OTHBIOMX2 { get; set; }
+        public string OTHBIOMX2 { get; set; }
         public int? BIOMAD2 { get; set; }
         public int? BIOMFTLD2 { get; set; }
         public int? BIOMLBD2 { get; set; }
         public int? BIOMOTH2 { get; set; }
-        public string? BIOMOTHX2 { get; set; }
+        public string BIOMOTHX2 { get; set; }
         public int? OTHBIOM3 { get; set; }
-        public string? OTHBIOMX3 { get; set; }
+        public string OTHBIOMX3 { get; set; }
         public int? BIOMAD3 { get; set; }
         public int? BIOMFTLD3 { get; set; }
         public int? BIOMLBD3 { get; set; }
         public int? BIOMOTH3 { get; set; }
-        public string? BIOMOTHX3 { get; set; }
+        public string BIOMOTHX3 { get; set; }
         public int? AUTDOMMUT { get; set; }
         public bool? ALZDIS { get; set; }
         public int? ALZDISIF { get; set; }
@@ -83,7 +83,7 @@ namespace UDS.Net.API.Entities
         public bool? FTLDNOS { get; set; }
         public int? FTLDNOIF { get; set; }
         public int? FTLDSUBT { get; set; }
-        public string? FTLDSUBX { get; set; }
+        public string FTLDSUBX { get; set; }
         public bool? CVD { get; set; }
         public int? CVDIF { get; set; }
         public bool? MSA { get; set; }
@@ -102,7 +102,6 @@ namespace UDS.Net.API.Entities
         public int? LATEIF { get; set; }
         public bool? OTHCOG { get; set; }
         public int? OTHCOGIF { get; set; }
-        public string? OTHCOGX { get; set; }
-
+        public string OTHCOGX { get; set; }
     }
 }

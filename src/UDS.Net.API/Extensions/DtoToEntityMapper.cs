@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using UDS.Net.API.Entities;
 using UDS.Net.Dto;
 
@@ -1327,6 +1328,121 @@ namespace UDS.Net.API.Extensions
             return false;
 
         }
+
+        public static bool Update(this D1b entity, D1bDto dto)
+        {
+
+            if (entity.Id == dto.Id)
+            {
+                entity.SetBaseProperties(dto);
+
+                entity.BIOMARKDX = dto.BIOMARKDX;
+                entity.FLUIDBIOM = dto.FLUIDBIOM;
+                entity.BLOODAD = dto.BLOODAD;
+                entity.BLOODFTLD = dto.BLOODFTLD;
+                entity.BLOODLBD = dto.BLOODLBD;
+                entity.BLOODOTH = dto.BLOODOTH;
+                entity.BLOODOTHX = dto.BLOODOTHX;
+                entity.CSFAD = dto.CSFAD;
+                entity.CSFFTLD = dto.CSFFTLD;
+                entity.CSFLBD = dto.CSFLBD;
+                entity.CSFOTH = dto.CSFOTH;
+                entity.CSFOTHX = dto.CSFOTHX;
+                entity.IMAGINGDX = dto.IMAGINGDX;
+                entity.PETDX = dto.PETDX;
+                entity.AMYLPET = dto.AMYLPET;
+                entity.TAUPET = dto.TAUPET;
+                entity.FDGPETDX = dto.FDGPETDX;
+                entity.FDGAD = dto.FDGAD;
+                entity.FDGFTLD = dto.FDGFTLD;
+                entity.FDGLBD = dto.FDGLBD;
+                entity.FDGOTH = dto.FDGOTH;
+                entity.FDGOTHX = dto.FDGOTHX;
+                entity.DATSCANDX = dto.DATSCANDX;
+                entity.TRACOTHDX = dto.TRACOTHDX;
+                entity.TRACOTHDXX = dto.TRACOTHDXX;
+                entity.TRACERAD = dto.TRACERAD;
+                entity.TRACERFTLD = dto.TRACERFTLD;
+                entity.TRACERLBD = dto.TRACERLBD;
+                entity.TRACEROTH = dto.TRACEROTH;
+                entity.TRACEROTHX = dto.TRACEROTHX;
+                entity.STRUCTDX = dto.STRUCTDX;
+                entity.STRUCTAD = dto.STRUCTAD;
+                entity.STRUCTFTLD = dto.STRUCTFTLD;
+                entity.STRUCTCVD = dto.STRUCTCVD;
+                entity.IMAGLINF = dto.IMAGLINF;
+                entity.IMAGLAC = dto.IMAGLAC;
+                entity.IMAGMACH = dto.IMAGMACH;
+                entity.IMAGMICH = dto.IMAGMICH;
+                entity.IMAGMWMH = dto.IMAGMWMH;
+                entity.IMAGEWMH = dto.IMAGEWMH;
+                entity.OTHBIOM1 = dto.OTHBIOM1;
+                entity.OTHBIOMX1 = dto.OTHBIOMX1;
+                entity.BIOMAD1 = dto.BIOMAD1;
+                entity.BIOMFTLD1 = dto.BIOMFTLD1;
+                entity.BIOMLBD1 = dto.BIOMLBD1;
+                entity.BIOMOTH1 = dto.BIOMOTH1;
+                entity.BIOMOTHX1 = dto.BIOMOTHX1;
+                entity.OTHBIOM2 = dto.OTHBIOM2;
+                entity.OTHBIOMX2 = dto.OTHBIOMX2;
+                entity.BIOMAD2 = dto.BIOMAD2;
+                entity.BIOMFTLD2 = dto.BIOMFTLD2;
+                entity.BIOMLBD2 = dto.BIOMLBD2;
+                entity.BIOMOTH2 = dto.BIOMOTH2;
+                entity.BIOMOTHX2 = dto.BIOMOTHX2;
+                entity.OTHBIOM3 = dto.OTHBIOM3;
+                entity.OTHBIOMX3 = dto.OTHBIOMX3;
+                entity.BIOMAD3 = dto.BIOMAD3;
+                entity.BIOMFTLD3 = dto.BIOMFTLD3;
+                entity.BIOMLBD3 = dto.BIOMLBD3;
+                entity.BIOMOTH3 = dto.BIOMOTH3;
+                entity.BIOMOTHX3 = dto.BIOMOTHX3;
+                entity.AUTDOMMUT = dto.AUTDOMMUT;
+                entity.ALZDIS = dto.ALZDIS;
+                entity.ALZDISIF = dto.ALZDISIF;
+                entity.LBDIS = dto.LBDIS;
+                entity.LBDIF = dto.LBDIF;
+                entity.FTLD = dto.FTLD;
+                entity.FTLDIF = dto.FTLDIF;
+                entity.PSP = dto.PSP;
+                entity.PSPIF = dto.PSPIF;
+                entity.CORT = dto.CORT;
+                entity.CORTIF = dto.CORTIF;
+                entity.FTLDMO = dto.FTLDMO;
+                entity.FTLDMOIF = dto.FTLDMOIF;
+                entity.FTLDNOS = dto.FTLDNOS;
+                entity.FTLDNOIF = dto.FTLDNOIF;
+                entity.FTLDSUBT = dto.FTLDSUBT;
+                entity.FTLDSUBX = dto.FTLDSUBX;
+                entity.CVD = dto.CVD;
+                entity.CVDIF = dto.CVDIF;
+                entity.MSA = dto.MSA;
+                entity.MSAIF = dto.MSAIF;
+                entity.CTE = dto.CTE;
+                entity.CTEIF = dto.CTEIF;
+                entity.DOWNS = dto.DOWNS;
+                entity.DOWNSIF = dto.DOWNSIF;
+                entity.HUNT = dto.HUNT;
+                entity.HUNTIF = dto.HUNTIF;
+                entity.PRION = dto.PRION;
+                entity.PRIONIF = dto.PRIONIF;
+                entity.CAA = dto.CAA;
+                entity.CAAIF = dto.CAAIF;
+                entity.LATE = dto.LATE;
+                entity.LATEIF = dto.LATEIF;
+                entity.OTHCOG = dto.OTHCOG;
+                entity.OTHCOGIF = dto.OTHCOGIF;
+                entity.OTHCOGX = dto.OTHCOGX;
+
+
+                return true;
+            }
+
+            return false;
+
+
+        }
+
 
         public static bool Update(this T1 entity, T1Dto dto)
         {

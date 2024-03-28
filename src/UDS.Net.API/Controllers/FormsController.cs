@@ -58,6 +58,8 @@ namespace UDS.Net.API.Controllers
                     return await _context.C2s.CountAsync();
                 case "D1a":
                     return await _context.D1as.CountAsync();
+                case "D1b":
+                    return await _context.D1bs.CountAsync();
                 default:
                     break;
             }

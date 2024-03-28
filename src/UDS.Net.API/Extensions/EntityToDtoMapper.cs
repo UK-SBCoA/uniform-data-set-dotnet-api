@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net;
+using System.Security.Claims;
 using UDS.Net.API.Entities;
 using UDS.Net.Dto;
 
@@ -1413,6 +1415,113 @@ namespace UDS.Net.API.Extensions
             dto.SetBaseFormProperties(d1a);
             return dto;
 
+        }
+
+        public static D1bDto ToFullDto(this D1b d1b)
+        {
+            D1bDto dto = new D1bDto
+            {
+                BIOMARKDX = d1b.BIOMARKDX,
+                FLUIDBIOM = d1b.FLUIDBIOM,
+                BLOODAD = d1b.BLOODAD,
+                BLOODFTLD = d1b.BLOODFTLD,
+                BLOODLBD = d1b.BLOODLBD,
+                BLOODOTH = d1b.BLOODOTH,
+                BLOODOTHX = d1b.BLOODOTHX,
+                CSFAD = d1b.CSFAD,
+                CSFFTLD = d1b.CSFFTLD,
+                CSFLBD = d1b.CSFLBD,
+                CSFOTH = d1b.CSFOTH,
+                CSFOTHX = d1b.CSFOTHX,
+                IMAGINGDX = d1b.IMAGINGDX,
+                PETDX = d1b.PETDX,
+                AMYLPET = d1b.AMYLPET,
+                TAUPET = d1b.TAUPET,
+                FDGPETDX = d1b.FDGPETDX,
+                FDGAD = d1b.FDGAD,
+                FDGFTLD = d1b.FDGFTLD,
+                FDGLBD = d1b.FDGLBD,
+                FDGOTH = d1b.FDGOTH,
+                FDGOTHX = d1b.FDGOTHX,
+                DATSCANDX = d1b.DATSCANDX,
+                TRACOTHDX = d1b.TRACOTHDX,
+                TRACOTHDXX = d1b.TRACOTHDXX,
+                TRACERAD = d1b.TRACERAD,
+                TRACERFTLD = d1b.TRACERFTLD,
+                TRACERLBD = d1b.TRACERLBD,
+                TRACEROTH = d1b.TRACEROTH,
+                TRACEROTHX = d1b.TRACEROTHX,
+                STRUCTDX = d1b.STRUCTDX,
+                STRUCTAD = d1b.STRUCTAD,
+                STRUCTFTLD = d1b.STRUCTFTLD,
+                STRUCTCVD = d1b.STRUCTCVD,
+                IMAGLINF = d1b.IMAGLINF,
+                IMAGLAC = d1b.IMAGLAC,
+                IMAGMACH = d1b.IMAGMACH,
+                IMAGMICH = d1b.IMAGMICH,
+                IMAGMWMH = d1b.IMAGMWMH,
+                IMAGEWMH = d1b.IMAGEWMH,
+                OTHBIOM1 = d1b.OTHBIOM1,
+                OTHBIOMX1 = d1b.OTHBIOMX1,
+                BIOMAD1 = d1b.BIOMAD1,
+                BIOMFTLD1 = d1b.BIOMFTLD1,
+                BIOMLBD1 = d1b.BIOMLBD1,
+                BIOMOTH1 = d1b.BIOMOTH1,
+                BIOMOTHX1 = d1b.BIOMOTHX1,
+                OTHBIOM2 = d1b.OTHBIOM2,
+                OTHBIOMX2 = d1b.OTHBIOMX2,
+                BIOMAD2 = d1b.BIOMAD2,
+                BIOMFTLD2 = d1b.BIOMFTLD2,
+                BIOMLBD2 = d1b.BIOMLBD2,
+                BIOMOTH2 = d1b.BIOMOTH2,
+                BIOMOTHX2 = d1b.BIOMOTHX2,
+                OTHBIOM3 = d1b.OTHBIOM3,
+                OTHBIOMX3 = d1b.OTHBIOMX3,
+                BIOMAD3 = d1b.BIOMAD3,
+                BIOMFTLD3 = d1b.BIOMFTLD3,
+                BIOMLBD3 = d1b.BIOMLBD3,
+                BIOMOTH3 = d1b.BIOMOTH3,
+                BIOMOTHX3 = d1b.BIOMOTHX3,
+                AUTDOMMUT = d1b.AUTDOMMUT,
+                ALZDIS = d1b.ALZDIS,
+                ALZDISIF = d1b.ALZDISIF,
+                LBDIS = d1b.LBDIS,
+                LBDIF = d1b.LBDIF,
+                FTLD = d1b.FTLD,
+                FTLDIF = d1b.FTLDIF,
+                PSP = d1b.PSP,
+                PSPIF = d1b.PSPIF,
+                CORT = d1b.CORT,
+                CORTIF = d1b.CORTIF,
+                FTLDMO = d1b.FTLDMO,
+                FTLDMOIF = d1b.FTLDMOIF,
+                FTLDNOS = d1b.FTLDNOS,
+                FTLDNOIF = d1b.FTLDNOIF,
+                FTLDSUBT = d1b.FTLDSUBT,
+                FTLDSUBX = d1b.FTLDSUBX,
+                CVD = d1b.CVD,
+                CVDIF = d1b.CVDIF,
+                MSA = d1b.MSA,
+                MSAIF = d1b.MSAIF,
+                CTE = d1b.CTE,
+                CTEIF = d1b.CTEIF,
+                DOWNS = d1b.DOWNS,
+                DOWNSIF = d1b.DOWNSIF,
+                HUNT = d1b.HUNT,
+                HUNTIF = d1b.HUNTIF,
+                PRION = d1b.PRION,
+                PRIONIF = d1b.PRIONIF,
+                CAA = d1b.CAA,
+                CAAIF = d1b.CAAIF,
+                LATE = d1b.LATE,
+                LATEIF = d1b.LATEIF,
+                OTHCOG = d1b.OTHCOG,
+                OTHCOGIF = d1b.OTHCOGIF,
+                OTHCOGX = d1b.OTHCOGX,
+
+            };
+            dto.SetBaseFormProperties(d1b);
+            return dto;
         }
 
         public static T1Dto ToFullDto(this T1 t1)
