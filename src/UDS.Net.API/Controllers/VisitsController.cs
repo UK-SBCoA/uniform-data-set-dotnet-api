@@ -326,6 +326,8 @@ namespace UDS.Net.API.Controllers
                         formKind = "C2";
                     else if (form is D1aDto)
                         formKind = "D1a";
+                    else if (form is D1bDto)
+                        formKind = "D1b";
                     else if (form is T1Dto)
                         formKind = "T1";
                 }
@@ -489,6 +491,13 @@ namespace UDS.Net.API.Controllers
                 if (visit.D1a == null)
                     visit.D1a = new D1a();
                 visit.D1a.Update((D1aDto)formDto);
+            }
+
+            else if (formDto is D1bDto)
+            {
+                if (visit.D1b == null)
+                    visit.D1b = new D1b();
+                visit.D1b.Update((D1bDto)formDto);
             }
             else if (formDto is T1Dto)
             {

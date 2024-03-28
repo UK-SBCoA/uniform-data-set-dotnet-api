@@ -126,6 +126,9 @@ namespace UDS.Net.API.Extensions
                         if (formKind == "D1a" && visit.D1a != null)
                             formDto = visit.D1a.ToFullDto();
 
+                        if (formKind == "D1b" && visit.D1b != null)
+                            formDto = visit.D1b.ToFullDto();
+
                         if (formKind == "T1" && visit.T1 != null)
                             formDto = visit.T1.ToFullDto();
                     }
