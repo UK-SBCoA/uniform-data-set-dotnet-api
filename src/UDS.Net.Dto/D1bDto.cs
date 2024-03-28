@@ -4,7 +4,7 @@ using System.Text;
 
 namespace UDS.Net.Dto
 {
-    public class D1bDto :FormDto
+    public class D1bDto : FormDto
     {
         public int? BIOMARKDX { get; set; }
         public int? FLUIDBIOM { get; set; }
