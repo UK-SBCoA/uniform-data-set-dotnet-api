@@ -67,6 +67,8 @@ namespace UDS.Net.API.Entities
 
         public virtual D1a D1a { get; set; } = default!; // D1a required at least for IVP
 
+        public virtual D1b D1b { get; set; } = default!; // D1b required at least for IVP
+
         public virtual T1? T1 { get; set; } // T1 only required for TIP, TFP visits
     }
 }
