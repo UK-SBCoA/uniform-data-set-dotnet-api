@@ -106,7 +106,7 @@ namespace UDS.Net.API.Entities
         [Comment("7a. Structural Imaging (i.e., MRI or CT) - Was structural imaging data or information used to support an etiological diagnosis?")]
         public int? STRUCTDX { get; set; }
 
-        [Comment("7a1. Atrophy pattern conistent with AD")]
+        [Comment("7a1. Atrophy pattern consistent with AD")]
         public int? STRUCTAD { get; set; }
 
         [Comment("7a2. Atrophy pattern consistent with FTLD")]
@@ -130,7 +130,7 @@ namespace UDS.Net.API.Entities
         [Comment("7a3e. Moderate white-matter hyperintensity (CHS score 5-6)")]
         public int? IMAGMWMH { get; set; }
 
-        [Comment("7a3f. Extensive white-matter hyperinensity (CHS score 7-8+)")]
+        [Comment("7a3f. Extensive white-matter hyperintensity (CHS score 7-8+)")]
         public int? IMAGEWMH { get; set; }
 
         [Comment("8. Other biomarker modality - Was another biomarker modality used to support an etiological diagnosis?")]
