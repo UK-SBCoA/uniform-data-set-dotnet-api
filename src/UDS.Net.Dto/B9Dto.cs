@@ -50,6 +50,7 @@ namespace UDS.Net.Dto
         public bool? SEDUSE { get; set; }
         public bool? OPIATEUSE { get; set; }
         public bool? COCAINEUSE { get; set; }
+        public bool? CANNABUSE { get; set; }
         public bool? OTHSUBUSE { get; set; }
         public string? OTHSUBUSEX { get; set; }
         public int? PERCHAGE { get; set; }

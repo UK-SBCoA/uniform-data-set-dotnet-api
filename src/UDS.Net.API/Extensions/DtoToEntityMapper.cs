@@ -993,6 +993,7 @@ namespace UDS.Net.API.Extensions
                 entity.SEDUSE = dto.SEDUSE;
                 entity.OPIATEUSE = dto.OPIATEUSE;
                 entity.COCAINEUSE = dto.COCAINEUSE;
+                entity.CANNABUSE = dto.CANNABUSE;
                 entity.OTHSUBUSE = dto.OTHSUBUSE;
                 entity.OTHSUBUSEX = dto.OTHSUBUSEX;
                 entity.PERCHAGE = dto.PERCHAGE;

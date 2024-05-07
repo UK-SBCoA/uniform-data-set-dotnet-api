@@ -1094,6 +1094,7 @@ namespace UDS.Net.API.Extensions
                 SEDUSE = b9.SEDUSE,
                 OPIATEUSE = b9.OPIATEUSE,
                 COCAINEUSE = b9.COCAINEUSE,
+                CANNABUSE = b9.CANNABUSE,
                 OTHSUBUSE = b9.OTHSUBUSE,
                 OTHSUBUSEX = b9.OTHSUBUSEX,
                 PERCHAGE = b9.PERCHAGE,

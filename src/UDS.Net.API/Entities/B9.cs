@@ -107,6 +107,8 @@ namespace UDS.Net.API.Entities
         public bool? OPIATEUSE { get; set; }
         [Comment("Cocaine use")]
         public bool? COCAINEUSE { get; set; }
+        [Comment("Cannabis use")]
+        public bool? CANNABUSE { get; set; }
         [Comment("Other substance use")]
         public bool? OTHSUBUSE { get; set; }
         [Comment("Specify other substance use")]
