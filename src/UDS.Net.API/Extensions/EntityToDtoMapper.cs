@@ -1337,6 +1337,7 @@ namespace UDS.Net.API.Extensions
                 BDOMIMP = d1a.BDOMIMP,
                 BDOMSOCIAL = d1a.BDOMSOCIAL,
                 BDOMTHTS = d1a.BDOMTHTS,
+                PREDOMSYN = d1a.PREDOMSYN,
                 AMNDEM = d1a.AMNDEM,
                 DYEXECSYN = d1a.DYEXECSYN,
                 PCA = d1a.PCA,
