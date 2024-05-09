@@ -1245,6 +1245,7 @@ namespace UDS.Net.API.Extensions
                 entity.BDOMIMP = dto.BDOMIMP;
                 entity.BDOMSOCIAL = dto.BDOMSOCIAL;
                 entity.BDOMTHTS = dto.BDOMTHTS;
+                entity.PREDOMSYN = dto.PREDOMSYN;
                 entity.AMNDEM = dto.AMNDEM;
                 entity.DYEXECSYN = dto.DYEXECSYN;
                 entity.PCA = dto.PCA;

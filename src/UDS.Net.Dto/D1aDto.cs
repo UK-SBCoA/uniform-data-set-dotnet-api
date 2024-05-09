@@ -35,6 +35,7 @@ namespace UDS.Net.Dto
         public int? BDOMIMP { get; set; }
         public int? BDOMSOCIAL { get; set; }
         public int? BDOMTHTS { get; set; }
+        public int? PREDOMSYN { get; set; }
         public bool? AMNDEM { get; set; }
         public bool? DYEXECSYN { get; set; }
         public bool? PCA { get; set; }

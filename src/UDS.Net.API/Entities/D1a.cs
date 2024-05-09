@@ -65,6 +65,8 @@ namespace UDS.Net.API.Entities
         public int? BDOMSOCIAL { get; set; }
         [Comment("7e. MBI affected domains - Thought content/perception")]
         public int? BDOMTHTS { get; set; }
+        [Comment("8. Is there a predominant clinical syndrome?")]
+        public int? PREDOMSYN { get; set; }
         [Comment("8a. Amnestic predominant syndrome")]
         public bool? AMNDEM { get; set; }
         [Comment("8b. Dysexecutive predominant syndrome")]
