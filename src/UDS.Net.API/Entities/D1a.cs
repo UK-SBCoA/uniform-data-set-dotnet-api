@@ -127,7 +127,7 @@ namespace UDS.Net.API.Entities
         [Comment("14. Anxiety disorder (present)")]
         public bool? ANXIET { get; set; }
         [Comment("14a. Anxiety disorder (primary/contributing/non-contributing)")]
-        public bool? ANXIETIF { get; set; }
+        public int? ANXIETIF { get; set; }
         [Comment("14b. Generalized Anxiety Disorder")]
         public bool? GENANX { get; set; }
         [Comment("14c. Panic Disorder")]
