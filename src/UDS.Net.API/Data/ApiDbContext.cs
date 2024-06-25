@@ -48,8 +48,7 @@ namespace UDS.Net.API.Data
 
             modelBuilder.Entity<A1>(entity =>
             {
-                entity.Property(a => a.IsIncluded).IsRequired(true).HasDefaultValue(true);
-                entity.Property(a => a.ReasonCode).HasDefaultValue(null);
+                entity.Property(a => a.RMREAS).HasDefaultValue(null);
             });
 
             modelBuilder.Entity<A4a>(entity =>

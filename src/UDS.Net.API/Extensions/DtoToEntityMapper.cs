@@ -16,47 +16,89 @@ namespace UDS.Net.API.Extensions
             entity.IsDeleted = dto.IsDeleted;
             entity.Status = dto.Status;
 
-            if (String.IsNullOrWhiteSpace(dto.Language))
-                entity.Language = null;
+            if (dto.FRMDATE > DateTime.MinValue)
+                entity.FRMDATE = dto.FRMDATE;
+            else
+                entity.FRMDATE = dto.CreatedAt;
+
+            if (String.IsNullOrWhiteSpace(dto.LANG))
+                entity.LANG = null;
             else
             {
-                if (Enum.TryParse(dto.Language, true, out Language language))
-                    entity.Language = language;
+                if (Enum.TryParse(dto.LANG, true, out Language language))
+                    entity.LANG = language;
             }
 
-            if (String.IsNullOrWhiteSpace(dto.Mode))
-                entity.Mode = null;
+            if (String.IsNullOrWhiteSpace(dto.MODE))
+                entity.MODE = null;
             else
             {
-                if (Enum.TryParse(dto.Mode, true, out FormMode mode))
-                    entity.Mode = mode;
+                if (Enum.TryParse(dto.MODE, true, out FormMode mode))
+                    entity.MODE = mode;
             }
 
-            if (String.IsNullOrWhiteSpace(dto.RemoteMode))
-                entity.RemoteMode = null;
+            if (String.IsNullOrWhiteSpace(dto.RMREAS))
+                entity.RMREAS = null;
             else
             {
-                if (Enum.TryParse(dto.RemoteMode, true, out RemoteMode remoteMode))
-                    entity.RemoteMode = remoteMode;
+                if (Enum.TryParse(dto.RMREAS, true, out RemoteReasonCode code))
+                    entity.RMREAS = code;
             }
 
-            if (String.IsNullOrWhiteSpace(dto.RemoteReasonCode))
-                entity.RemoteReasonCode = null;
+            if (String.IsNullOrWhiteSpace(dto.RMMODE))
+                entity.RMMODE = null;
             else
             {
-                if (Enum.TryParse(dto.RemoteReasonCode, true, out RemoteReasonCode code))
-                    entity.RemoteReasonCode = code;
+                if (Enum.TryParse(dto.RMMODE, true, out RemoteMode remoteMode))
+                    entity.RMMODE = remoteMode;
             }
 
-            entity.IsIncluded = dto.IsIncluded;
-
-            if (String.IsNullOrWhiteSpace(dto.ReasonCode))
-                entity.ReasonCode = null;
+            if (String.IsNullOrWhiteSpace(dto.NOT))
+                entity.NOT = null;
             else
             {
-                if (Enum.TryParse(dto.ReasonCode, true, out ReasonCode reasonCode))
-                    entity.ReasonCode = reasonCode;
+                if (Enum.TryParse(dto.NOT, true, out NotIncludedReasonCode reasonCode))
+                    entity.NOT = reasonCode;
             }
+        }
+
+        public static Visit Convert(this VisitDto dto)
+        {
+            return new Visit
+            {
+                PACKET = dto.PACKET,
+                VISITNUM = dto.VISITNUM,
+                FORMVER = dto.FORMVER,
+                VISIT_DATE = dto.VISIT_DATE,
+                INITIALS = dto.INITIALS,
+                CreatedBy = dto.CreatedBy,
+                CreatedAt = dto.CreatedAt,
+                ModifiedBy = dto.ModifiedBy,
+                IsDeleted = dto.IsDeleted,
+                DeletedBy = dto.DeletedBy,
+                ParticipationId = dto.ParticipationId
+            };
+        }
+
+        public static bool Update(this Visit entity, VisitDto dto)
+        {
+            if (entity != null)
+            {
+                // Only some properties are allowed to be updated
+                //entity.ParticipationId = dto.ParticipationId;
+                //entity.VISITNUM = dto.VISITNUM;
+                //entity.PACKET = dto.PACKET;
+                //entity.FORMVER = dto.FORMVER;
+                entity.VISIT_DATE = dto.VISIT_DATE;
+                //entity.CreatedAt = dto.CreatedAt;
+                //entity.CreatedBy = dto.CreatedBy;
+                entity.INITIALS = dto.INITIALS;
+                entity.ModifiedBy = dto.ModifiedBy;
+                entity.DeletedBy = dto.DeletedBy;
+                entity.IsDeleted = dto.IsDeleted;
+                return true;
+            }
+            return false;
         }
 
         public static M1 ToEntity(this M1Dto dto)
@@ -1444,7 +1486,6 @@ namespace UDS.Net.API.Extensions
 
 
         }
-
 
         public static bool Update(this T1 entity, T1Dto dto)
         {

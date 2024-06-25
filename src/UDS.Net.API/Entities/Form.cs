@@ -11,7 +11,6 @@ namespace UDS.Net.API.Entities
         [Column("FormId", Order = 0)]
         public int Id { get; set; }
 
-        // CenterOnAging.studies.tbl_Visits
         [Column(Order = 1)]
         public int VisitId { get; set; }
 
@@ -19,23 +18,27 @@ namespace UDS.Net.API.Entities
         [Column(Order = 2)]
         public string Status { get; set; } = default!;
 
-        [Column("LANG", Order = 3)]
-        public Language? Language { get; set; }
+        [Column("FRMDATE", Order = 3)]
+        public DateTime FRMDATE { get; set; }
 
-        [Column("MODE", Order = 4)] // TODO update variable name
-        public FormMode? Mode { get; set; }
+        [MaxLength(3)]
+        [Column("INITIALS", Order = 4)]
+        public string INITIALS { get; set; } = default!;
 
-        [Column("REMOTEMODE", Order = 5)] // TODO update variable name
-        public RemoteMode? RemoteMode { get; set; }
+        [Column("LANG", Order = 5)]
+        public Language? LANG { get; set; }
 
-        [Column("REMOTEREASON", Order = 6)] // TODO update variable name
-        public RemoteReasonCode? RemoteReasonCode { get; set; }
+        [Column("MODE", Order = 6)]
+        public FormMode? MODE { get; set; }
 
-        [Column("SUB", Order = 7)]
-        public bool? IsIncluded { get; set; }
+        [Column("RMREASON", Order = 7)]
+        public RemoteReasonCode? RMREAS { get; set; }
 
-        [Column("NOT", Order = 8)]
-        public ReasonCode? ReasonCode { get; set; }
+        [Column("RMMODE", Order = 8)]
+        public RemoteMode? RMMODE { get; set; }
+
+        [Column("NOT", Order = 9)] // A2NOT, A4NOT, A4ANOT, B1NOT, B3NOT, B5NOT, B6NOT, B7NOT
+        public NotIncludedReasonCode? NOT { get; set; }
     }
 }
 

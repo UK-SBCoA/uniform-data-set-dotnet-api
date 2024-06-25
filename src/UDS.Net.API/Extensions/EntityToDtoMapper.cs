@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Security.Claims;
 using UDS.Net.API.Entities;
 using UDS.Net.Dto;
@@ -19,10 +20,10 @@ namespace UDS.Net.API.Extensions
                 ModifiedBy = visit.ModifiedBy,
                 DeletedBy = visit.DeletedBy,
                 IsDeleted = visit.IsDeleted,
-                Number = visit.Number,
-                Kind = visit.Kind,
-                Version = visit.Version,
-                StartDateTime = visit.StartDateTime,
+                VISITNUM = visit.VISITNUM,
+                PACKET = visit.PACKET,
+                FORMVER = visit.FORMVER,
+                VISIT_DATE = visit.VISIT_DATE,
                 Forms = new List<FormDto>()
             };
 
@@ -36,23 +37,11 @@ namespace UDS.Net.API.Extensions
             if (visit.FormStatuses != null)
             {
                 // since we aren't returning any specific details of any form, return the summary and status of all
-                foreach (var formStatus in visit.FormStatuses.OrderBy(f => f.Kind).ToList()) // TODO Instead of ordering alphabetically by kind, include a DisplayWeight property and make it configurable (maybe even grouping)
+                foreach (var formStatus in visit.FormStatuses.OrderBy(f => f.Kind).ToList())
                 {
-                    dto.Forms.Add(new FormDto
-                    {
-                        Id = formStatus.Id,
-                        VisitId = formStatus.VisitId,
-                        Status = formStatus.Status,
-                        Kind = formStatus.Kind,
-                        IsDeleted = formStatus.IsDeleted,
-                        DeletedBy = formStatus.DeletedBy,
-                        CreatedBy = formStatus.CreatedBy,
-                        CreatedAt = formStatus.CreatedAt,
-                        IsIncluded = formStatus.IsIncluded,
-                        Language = formStatus.Language.HasValue ? ((int)formStatus.Language).ToString() : "",
-                        ModifiedBy = formStatus.ModifiedBy,
-                        ReasonCode = formStatus.ReasonCode.HasValue ? ((int)formStatus.ReasonCode).ToString() : ""
-                    });
+                    var formDto = formStatus.ToSummaryDto(formStatus.Kind);
+
+                    dto.Forms.Add(formDto);
                 }
             }
 
@@ -134,21 +123,7 @@ namespace UDS.Net.API.Extensions
                     }
                     else
                     {
-                        formDto = new FormDto
-                        {
-                            Id = form.Id,
-                            VisitId = form.VisitId,
-                            Kind = form.Kind,
-                            Status = form.Status,
-                            CreatedAt = form.CreatedAt,
-                            CreatedBy = form.CreatedBy,
-                            ModifiedBy = form.ModifiedBy,
-                            DeletedBy = form.DeletedBy,
-                            IsDeleted = form.IsDeleted,
-                            IsIncluded = form.IsIncluded,
-                            Language = form.Language.HasValue ? ((int)form.Language).ToString() : "",
-                            ReasonCode = form.ReasonCode.HasValue ? ((int)form.ReasonCode).ToString() : ""
-                        };
+                        formDto = form.ToSummaryDto(form.Kind);
                     }
                     dto.Forms.Add(formDto);
                 }
@@ -162,21 +137,22 @@ namespace UDS.Net.API.Extensions
         {
             if (form != null)
             {
-                dto.Kind = form.GetType().Name;
                 dto.Id = form.Id;
+                dto.VisitId = form.VisitId;
+                dto.Kind = form.GetType().Name;
                 dto.CreatedAt = form.CreatedAt;
                 dto.CreatedBy = form.CreatedBy;
                 dto.ModifiedBy = form.ModifiedBy;
-                dto.DeletedBy = form.DeletedBy;
                 dto.IsDeleted = form.IsDeleted;
-                dto.VisitId = form.VisitId;
+                dto.DeletedBy = form.DeletedBy;
                 dto.Status = form.Status;
-                dto.Language = form.Language.HasValue ? ((int)form.Language).ToString() : "";
-                dto.Mode = form.Mode.HasValue ? ((int)form.Mode).ToString() : "";
-                dto.RemoteMode = form.RemoteMode.HasValue ? ((int)form.RemoteMode).ToString() : "";
-                dto.RemoteReasonCode = form.RemoteReasonCode.HasValue ? ((int)form.RemoteReasonCode).ToString() : "";
-                dto.IsIncluded = form.IsIncluded;
-                dto.ReasonCode = form.ReasonCode.HasValue ? ((int)form.ReasonCode).ToString() : "";
+                dto.FRMDATE = form.FRMDATE;
+                dto.INITIALS = form.INITIALS;
+                dto.LANG = form.LANG.HasValue ? ((int)form.LANG).ToString() : "";
+                dto.MODE = form.MODE.HasValue ? ((int)form.MODE).ToString() : "";
+                dto.RMREAS = form.RMREAS.HasValue ? ((int)form.RMREAS).ToString() : "";
+                dto.RMMODE = form.RMMODE.HasValue ? ((int)form.RMMODE).ToString() : "";
+                dto.NOT = form.NOT.HasValue ? ((int)form.NOT).ToString() : "";
             }
         }
 
@@ -1604,7 +1580,7 @@ namespace UDS.Net.API.Extensions
                 IsDeleted = participation.IsDeleted,
                 Visits = participation.Visits.Select(v => v.ToDto()).ToList(),
                 VisitCount = participation.Visits != null ? participation.Visits.Count() : 0,
-                LastVisitNumber = participation.Visits != null ? (participation.Visits.Any() ? participation.Visits.OrderByDescending(v => v.Number).Select(v => v.Number).First() : 0) : 0
+                LastVisitNumber = participation.Visits != null ? (participation.Visits.Any() ? participation.Visits.OrderByDescending(v => v.VISITNUM).Select(v => v.VISITNUM).First() : 0) : 0
             };
 
             return dto;

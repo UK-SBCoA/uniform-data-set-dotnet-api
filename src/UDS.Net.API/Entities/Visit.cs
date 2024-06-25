@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace UDS.Net.API.Entities
 {
     [Table("tbl_Visits")]
-    [Index(nameof(ParticipationId), nameof(Number), IsUnique = true)]
+    [Index(nameof(ParticipationId), nameof(VISITNUM), IsUnique = true)]
     public class Visit : BaseEntity
     {
         [Key]
@@ -19,15 +19,24 @@ namespace UDS.Net.API.Entities
         [ForeignKey("ParticipationId")]
         public virtual Participation Participation { get; set; } = default!;
 
-        public int Number { get; set; }
+        [Column("VISITNUM")]
+        public int VISITNUM { get; set; }
+
+        [MaxLength(1)]
+        [Column("PACKET")]
+        public string PACKET { get; set; } = ""; // I, F
+
+        [MaxLength(1)]
+        [Column("FORMVER")]
+        public string FORMVER { get; set; } = ""; // 4
+
+        // Will you submit a Down Syndrome Module with this UDS visit?
+        public int DSSDUB { get; set; } = 0;
+
+        public DateTime VISIT_DATE { get; set; }
 
         [MaxLength(3)]
-        public string Kind { get; set; } = ""; // IVP, FVP, TIP, TFP
-
-        [MaxLength(10)]
-        public string Version { get; set; } = ""; // 4.0.0
-
-        public DateTime StartDateTime { get; set; }
+        public string INITIALS { get; set; } = default!;
 
         public virtual List<FormStatus> FormStatuses { get; set; } = default!;
 

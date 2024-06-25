@@ -7,13 +7,15 @@ namespace UDS.Net.Dto
     {
         public int ParticipationId { get; set; }
 
-        public int Number { get; set; }
+        public int VISITNUM { get; set; }
 
-        public string Kind { get; set; } = "";
+        public string PACKET { get; set; } = "";
 
-        public string Version { get; set; } = "";
+        public string FORMVER { get; set; } = "";
 
-        public DateTime StartDateTime { get; set; }
+        public DateTime VISIT_DATE { get; set; }
+
+        public string INITIALS { get; set; } = "";
 
         public List<FormDto> Forms { get; set; }
     }

@@ -32,17 +32,19 @@ namespace UDS.Net.Dto
 
         public string Status { get; set; }
 
-        public string Language { get; set; }
+        public DateTime FRMDATE { get; set; }
 
-        public string Mode { get; set; }
+        public string INITIALS { get; set; }
 
-        public string RemoteMode { get; set; }
+        public string LANG { get; set; }
 
-        public string RemoteReasonCode { get; set; }
+        public string MODE { get; set; }
 
-        public bool? IsIncluded { get; set; }
+        public string RMREAS { get; set; }
 
-        public string ReasonCode { get; set; }
+        public string RMMODE { get; set; }
+
+        public string NOT { get; set; }
     }
 }
 
