@@ -16,6 +16,11 @@ namespace UDS.Net.API.Extensions
             entity.IsDeleted = dto.IsDeleted;
             entity.Status = dto.Status;
 
+            if (dto.INITIALS == null)
+                entity.INITIALS = string.Empty; // INITIALS can't be null, so use empty string
+            else
+                entity.INITIALS = dto.INITIALS;
+
             if (dto.FRMDATE > DateTime.MinValue)
                 entity.FRMDATE = dto.FRMDATE;
             else

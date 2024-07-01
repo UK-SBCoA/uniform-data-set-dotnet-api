@@ -24,6 +24,7 @@ namespace UDS.Net.API.Extensions
                 PACKET = visit.PACKET,
                 FORMVER = visit.FORMVER,
                 VISIT_DATE = visit.VISIT_DATE,
+                INITIALS = visit.INITIALS,
                 Forms = new List<FormDto>()
             };
 
