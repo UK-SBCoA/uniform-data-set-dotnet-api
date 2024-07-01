@@ -266,19 +266,8 @@ namespace UDS.Net.API.Controllers
         [HttpPost]
         public async Task Post([FromBody] VisitDto dto)
         {
-            var visit = new Visit
-            {
-                Kind = dto.Kind,
-                Number = dto.Number,
-                Version = dto.Version,
-                StartDateTime = dto.StartDateTime,
-                CreatedBy = dto.CreatedBy,
-                CreatedAt = dto.CreatedAt,
-                ModifiedBy = dto.ModifiedBy,
-                IsDeleted = dto.IsDeleted,
-                DeletedBy = dto.DeletedBy,
-                ParticipationId = dto.ParticipationId
-            };
+            var visit = dto.Convert();
+
             _context.Visits.Add(visit);
             await _context.SaveChangesAsync();
         }
@@ -559,17 +548,7 @@ namespace UDS.Net.API.Controllers
 
             if (visit != null)
             {
-                visit.ParticipationId = dto.ParticipationId;
-                visit.Number = dto.Number;
-                visit.Kind = dto.Kind;
-                visit.Version = dto.Version;
-                visit.StartDateTime = dto.StartDateTime;
-                visit.CreatedAt = dto.CreatedAt;
-                visit.CreatedBy = dto.CreatedBy;
-                visit.ModifiedBy = dto.ModifiedBy;
-                visit.DeletedBy = dto.DeletedBy;
-                visit.IsDeleted = dto.IsDeleted;
-
+                visit.Update(dto);
 
                 if (!String.IsNullOrEmpty(formKind))
                 {
