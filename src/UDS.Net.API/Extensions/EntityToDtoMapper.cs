@@ -134,13 +134,16 @@ namespace UDS.Net.API.Extensions
             return dto;
         }
 
-        private static void SetBaseFormProperties(this FormDto dto, Form form)
+        private static void SetBaseFormProperties(this FormDto dto, Form form, string? formKind = "")
         {
             if (form != null)
             {
                 dto.Id = form.Id;
                 dto.VisitId = form.VisitId;
-                dto.Kind = form.GetType().Name;
+                if (String.IsNullOrWhiteSpace(formKind))
+                    dto.Kind = form.GetType().Name;
+                else
+                    dto.Kind = formKind;
                 dto.CreatedAt = form.CreatedAt;
                 dto.CreatedBy = form.CreatedBy;
                 dto.ModifiedBy = form.ModifiedBy;
@@ -160,7 +163,7 @@ namespace UDS.Net.API.Extensions
         public static FormDto ToSummaryDto(this Form form, string formKind)
         {
             var dto = new FormDto();
-            dto.SetBaseFormProperties(form);
+            dto.SetBaseFormProperties(form, formKind);
             return dto;
         }
 
