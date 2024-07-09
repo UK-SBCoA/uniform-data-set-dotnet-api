@@ -148,6 +148,10 @@ namespace UDS.Net.API.Entities
         public bool? DIABINS { get; set; }
         [Comment("Diabetes treated with: Oral medications")]
         public bool? DIABMEDS { get; set; }
+        [Comment("GLP-1 receptor activators")]
+        public bool? DIABGLP1 { get; set; }
+        [Comment("Other non-insulin, non-GLP-1 receptor activator injection medication")]
+        public bool? DIABRECACT { get; set; }
         [Comment("Diabetes treated with: Diet")]
         public bool? DIABDIET { get; set; }
         [Comment("Diabetes treated with: Unknown")]

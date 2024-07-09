@@ -626,6 +626,8 @@ namespace UDS.Net.API.Extensions
                 entity.DIABTYPE = dto.DIABTYPE;
                 entity.DIABINS = dto.DIABINS;
                 entity.DIABMEDS = dto.DIABMEDS;
+                entity.DIABGLP1 = dto.DIABGLP1;
+                entity.DIABRECACT = dto.DIABRECACT;
                 entity.DIABDIET = dto.DIABDIET;
                 entity.DIABUNK = dto.DIABUNK;
                 entity.DIABAGE = dto.DIABAGE;
