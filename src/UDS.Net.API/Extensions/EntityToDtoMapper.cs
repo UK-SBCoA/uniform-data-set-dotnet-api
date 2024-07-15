@@ -685,6 +685,8 @@ namespace UDS.Net.API.Extensions
                 DIABTYPE = a5.DIABTYPE,
                 DIABINS = a5.DIABINS,
                 DIABMEDS = a5.DIABMEDS,
+                DIABGLP1 = a5.DIABGLP1,
+                DIABRECACT = a5.DIABRECACT,
                 DIABDIET = a5.DIABDIET,
                 DIABUNK = a5.DIABUNK,
                 DIABAGE = a5.DIABAGE,

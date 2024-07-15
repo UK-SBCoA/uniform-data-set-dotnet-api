@@ -70,6 +70,8 @@ namespace UDS.Net.Dto
         public int? DIABTYPE { get; set; }
         public bool? DIABINS { get; set; }
         public bool? DIABMEDS { get; set; }
+        public bool? DIABGLP1 { get; set; }
+        public bool? DIABRECACT { get; set; }
         public bool? DIABDIET { get; set; }
         public bool? DIABUNK { get; set; }
         public int? DIABAGE { get; set; }
