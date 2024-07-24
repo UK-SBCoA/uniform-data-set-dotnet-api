@@ -1,7 +1,5 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Net.Sockets;
 
 namespace UDS.Net.API.Entities
 {
@@ -20,6 +18,8 @@ namespace UDS.Net.API.Entities
         public Visit Visit { get; set; } = default!;
 
         public int VisitId { get; set; }
+
+        public List<PacketSubmissionError> PacketSubmissionErrors { get; set; } = new List<PacketSubmissionError>();
     }
 }
 

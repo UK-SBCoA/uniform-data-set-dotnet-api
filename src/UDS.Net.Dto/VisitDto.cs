@@ -17,7 +17,13 @@ namespace UDS.Net.Dto
 
         public string INITIALS { get; set; } = "";
 
-        public List<FormDto> Forms { get; set; }
+        public string Status { get; set; }
+
+        public List<FormDto> Forms { get; set; } = new List<FormDto>();
+
+        public int PacketSubmissionCount { get; set; } = 0;
+
+        public List<PacketSubmissionDto> PacketSubmissions { get; set; } = new List<PacketSubmissionDto>();
     }
 }
 

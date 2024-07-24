@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using UDS.Net.Dto;
 
 namespace UDS.Net.API.Client

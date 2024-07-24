@@ -1,5 +1,4 @@
-﻿using System;
-namespace UDS.Net.API.Entities
+﻿namespace UDS.Net.API.Entities
 {
     public enum PacketSubmissionErrorLevel
     {
