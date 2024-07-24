@@ -44,6 +44,7 @@ namespace UDS.Net.Dto
         public int? DISCDAY { get; set; }
         public int? DISCYR { get; set; }
         public int? DROPREAS { get; set; }
+        public int? MILESTONETYPE { get; set; }
     }
 }
 
