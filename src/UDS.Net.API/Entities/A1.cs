@@ -21,7 +21,7 @@ namespace UDS.Net.API.Entities
         public int? ETHENGLISH { get; set; }
         public int? ETHITALIAN { get; set; }
         public int? ETHPOLISH { get; set; }
-        public int? ETHFRENCH { get; set; }
+        public int? ETHSCOTT { get; set; }
         public int? ETHWHIOTH { get; set; }
         [MaxLength(60)]
         public string? ETHWHIOTHX { get; set; }
@@ -63,7 +63,7 @@ namespace UDS.Net.API.Entities
         public int? ETHIRAN { get; set; }
         public int? ETHEGYPT { get; set; }
         public int? ETHSYRIA { get; set; }
-        public int? ETHMOROCCO { get; set; }
+        public int? ETHIRAQI { get; set; }
         public int? ETHISRAEL { get; set; }
         public int? ETHMENAOTH { get; set; }
         [MaxLength(60)]
