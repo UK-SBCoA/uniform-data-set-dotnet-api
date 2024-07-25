@@ -4,13 +4,13 @@
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<OutputType>Library</OutputType>
 		<PackageId>UDS.Net.Dto</PackageId>
-		<Version>3.0.1</Version>
+		<Version>3.0.2-preview.1</Version>
 		<Authors>Sanders-Brown Center on Aging</Authors>
 		<Description>UDS data transfer objects for use with API</Description>
 		<Owners>UK-SBCoA</Owners>
 		<PackageDescription>Dtos for API</PackageDescription>
 		<RepositoryUrl>https://github.com/UK-SBCoA/uniform-data-set-dotnet-api</RepositoryUrl>
-		<ReleaseVersion>3.0.1</ReleaseVersion>
+		<ReleaseVersion>3.0.2-preview.1</ReleaseVersion>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="System.Text.Json" Version="7.0.2" />
