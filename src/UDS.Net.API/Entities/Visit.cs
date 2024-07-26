@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
@@ -37,6 +36,8 @@ namespace UDS.Net.API.Entities
 
         [MaxLength(3)]
         public string INITIALS { get; set; } = default!;
+
+        public PacketStatus Status { get; set; }
 
         public virtual List<FormStatus> FormStatuses { get; set; } = default!;
 
@@ -79,6 +80,8 @@ namespace UDS.Net.API.Entities
         public virtual D1b D1b { get; set; } = default!; // D1b required at least for IVP
 
         public virtual T1? T1 { get; set; } // T1 only required for TIP, TFP visits
+
+        public List<PacketSubmission> PacketSubmissions { get; set; } = new List<PacketSubmission>();
     }
 }
 

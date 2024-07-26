@@ -1,6 +1,4 @@
-﻿using System;
-using System.Net;
-using UDS.Net.API.Entities;
+﻿using UDS.Net.API.Entities;
 using UDS.Net.Dto;
 
 namespace UDS.Net.API.Extensions
@@ -69,7 +67,7 @@ namespace UDS.Net.API.Extensions
 
         public static Visit Convert(this VisitDto dto)
         {
-            return new Visit
+            var visit = new Visit
             {
                 PACKET = dto.PACKET,
                 VISITNUM = dto.VISITNUM,
@@ -83,6 +81,14 @@ namespace UDS.Net.API.Extensions
                 DeletedBy = dto.DeletedBy,
                 ParticipationId = dto.ParticipationId
             };
+
+            if (!string.IsNullOrWhiteSpace(dto.Status))
+            {
+                if (Enum.TryParse(dto.Status, true, out PacketStatus status))
+                    visit.Status = status;
+            }
+
+            return visit;
         }
 
         public static bool Update(this Visit entity, VisitDto dto)
@@ -90,13 +96,13 @@ namespace UDS.Net.API.Extensions
             if (entity != null)
             {
                 // Only some properties are allowed to be updated
-                //entity.ParticipationId = dto.ParticipationId;
-                //entity.VISITNUM = dto.VISITNUM;
-                //entity.PACKET = dto.PACKET;
-                //entity.FORMVER = dto.FORMVER;
+                if (!string.IsNullOrWhiteSpace(dto.Status))
+                {
+                    if (Enum.TryParse(dto.Status, true, out PacketStatus status))
+                        entity.Status = status;
+                }
+
                 entity.VISIT_DATE = dto.VISIT_DATE;
-                //entity.CreatedAt = dto.CreatedAt;
-                //entity.CreatedBy = dto.CreatedBy;
                 entity.INITIALS = dto.INITIALS;
                 entity.ModifiedBy = dto.ModifiedBy;
                 entity.DeletedBy = dto.DeletedBy;
@@ -104,6 +110,18 @@ namespace UDS.Net.API.Extensions
                 return true;
             }
             return false;
+        }
+
+        // TODO
+        public static bool Convert(this PacketSubmissionDto dto)
+        {
+            return true;
+        }
+
+        // TODO
+        public static bool Convert(this PacketSubmissionErrorDto dto)
+        {
+            return true;
         }
 
         public static M1 ToEntity(this M1Dto dto)
@@ -1074,6 +1092,7 @@ namespace UDS.Net.API.Extensions
             return false;
         }
 
+        [Obsolete]
         public static bool Update(this C1 entity, C1Dto dto)
         {
             if (entity.Id == dto.Id)
@@ -1494,6 +1513,7 @@ namespace UDS.Net.API.Extensions
 
         }
 
+        [Obsolete]
         public static bool Update(this T1 entity, T1Dto dto)
         {
             if (entity.Id == dto.Id)
