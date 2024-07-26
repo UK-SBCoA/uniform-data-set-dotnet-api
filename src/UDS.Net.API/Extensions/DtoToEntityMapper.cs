@@ -112,6 +112,18 @@ namespace UDS.Net.API.Extensions
             return false;
         }
 
+        // TODO
+        public static bool Convert(this PacketSubmissionDto dto)
+        {
+            return true;
+        }
+
+        // TODO
+        public static bool Convert(this PacketSubmissionErrorDto dto)
+        {
+            return true;
+        }
+
         public static M1 ToEntity(this M1Dto dto)
         {
             return new M1
@@ -1080,6 +1092,7 @@ namespace UDS.Net.API.Extensions
             return false;
         }
 
+        [Obsolete]
         public static bool Update(this C1 entity, C1Dto dto)
         {
             if (entity.Id == dto.Id)
@@ -1500,6 +1513,7 @@ namespace UDS.Net.API.Extensions
 
         }
 
+        [Obsolete]
         public static bool Update(this T1 entity, T1Dto dto)
         {
             if (entity.Id == dto.Id)

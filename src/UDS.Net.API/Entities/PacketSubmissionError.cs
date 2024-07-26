@@ -21,6 +21,10 @@ namespace UDS.Net.API.Entities
         public PacketSubmissionErrorLevel Level { get; set; }
 
         public string ResolvedBy { get; set; }
+
+        public PacketSubmission PacketSubmission { get; set; }
+
+        public int PacketSubmissionId { get; set; }
     }
 }
 

@@ -22,8 +22,8 @@ namespace UDS.Net.API.Extensions
                 VISIT_DATE = visit.VISIT_DATE,
                 INITIALS = visit.INITIALS,
                 Status = visit.Status.ToString(),
-                //Forms = new List<FormDto>(),
-                //PacketSubmissions = new List<PacketSubmissionDto>()
+                //Forms = new List<FormDto>(), // TODO remove
+                //PacketSubmissions = new List<PacketSubmissionDto>() // TODO remove
             };
 
             if (visit.PacketSubmissions != null && visit.PacketSubmissions.Count() > 0)
@@ -1111,6 +1111,7 @@ namespace UDS.Net.API.Extensions
             return dto;
         }
 
+        [Obsolete]
         public static C1Dto ToFullDto(this C1 c1)
         {
             C1Dto dto = new C1Dto
@@ -1515,6 +1516,7 @@ namespace UDS.Net.API.Extensions
             return dto;
         }
 
+        [Obsolete]
         public static T1Dto ToFullDto(this T1 t1)
         {
             T1Dto dto = new T1Dto
@@ -1625,6 +1627,7 @@ namespace UDS.Net.API.Extensions
             var dto = new PacketSubmissionDto
             {
                 Id = packetSubmission.Id,
+                VisitId = packetSubmission.VisitId,
                 SubmissionDate = packetSubmission.SubmissionDate,
                 CreatedAt = packetSubmission.CreatedAt,
                 CreatedBy = packetSubmission.CreatedBy,
@@ -1659,6 +1662,7 @@ namespace UDS.Net.API.Extensions
             return new PacketSubmissionErrorDto()
             {
                 Id = packetSubmissionError.Id,
+                PacketSubmissionId = packetSubmissionError.PacketSubmissionId,
                 CreatedAt = packetSubmissionError.CreatedAt,
                 CreatedBy = packetSubmissionError.CreatedBy,
                 ModifiedBy = packetSubmissionError.ModifiedBy,

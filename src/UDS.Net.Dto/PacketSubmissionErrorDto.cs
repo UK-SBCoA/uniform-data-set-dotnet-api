@@ -4,6 +4,8 @@
     {
         public int Id { get; set; }
 
+        public int PacketSubmissionId { get; set; }
+
         public string FormKind { get; set; }
 
         public string Message { get; set; }
