@@ -18,7 +18,7 @@ namespace UDS.Net.API.Client
 
         Task<int> PacketSubmissionsErrorsCountByVisit(int visitId);
 
-        Task<int> PacketSubmissionsErrorsCountyByAssignee(string assignedTo);
+        Task<int> PacketSubmissionsErrorsCountByAssignee(string assignedTo);
 
         Task<List<PacketSubmissionErrorDto>> GetPacketSubmissionErrors(bool includeResolved = false, int pageSize = 10, int pageIndex = 1);
 
@@ -28,6 +28,6 @@ namespace UDS.Net.API.Client
 
         Task PostPacketSubmissionError(int packetSubmissionId, PacketSubmissionErrorDto dto);
 
-        Task PutPacketSubmissionError(int packetSubmissionId, PacketSubmissionErrorDto dto);
+        Task PutPacketSubmissionError(int packetSubmissionId, int id, PacketSubmissionErrorDto dto);
     }
 }

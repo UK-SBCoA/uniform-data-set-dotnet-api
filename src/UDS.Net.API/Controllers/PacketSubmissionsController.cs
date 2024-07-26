@@ -32,15 +32,6 @@ namespace UDS.Net.API.Controllers
             throw new NotImplementedException();
         }
 
-
-
-
-        [HttpDelete("{id}")]
-        public async Task Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         [HttpGet]
         public async Task<IEnumerable<PacketSubmissionDto>> Get(int pageSize = 10, int pageIndex = 1)
         {
@@ -52,6 +43,13 @@ namespace UDS.Net.API.Controllers
         {
             throw new NotImplementedException();
         }
+
+        [HttpGet("ByStatus/{packetStatus}", Name = "GetPacketSubmissionByStatus")]
+        public Task<List<PacketSubmissionDto>> GetPacketSubmissionsByStatus(string packetStatus, int pageSize = 10, int pageIndex = 1)
+        {
+            throw new NotImplementedException();
+        }
+
 
         [HttpGet("{id}")]
         public async Task<PacketSubmissionDto> Get(int id)
@@ -71,6 +69,32 @@ namespace UDS.Net.API.Controllers
             throw new NotImplementedException();
         }
 
+        [HttpDelete("{id}")]
+        public async Task Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpGet("Errors/Count", Name = "PacketSubmissionErrorsCount")]
+        public async Task<int> PacketSubmissionErrorsCount(bool includeResolved = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpGet("Errors/Count/ByVisit/{visitId}", Name = "PacketSubmissionErrorsCountByVisit")]
+        public Task<int> PacketSubmissionsErrorsCountByVisit(int visitId)
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpGet("Errors/Count/ByAssignee/{assignedTo}", Name = "PacketSubmissionErrorsCountByAssignee")]
+        public Task<int> PacketSubmissionsErrorsCountByAssignee(string assignedTo)
+        {
+            // order by unresolved then modifiedat
+            throw new NotImplementedException();
+        }
+
+
         [HttpGet("Errors/ByAssigned/{assignedTo}", Name = "GetPacketSubmissionErrorsByAssigned")]
         public async Task<List<PacketSubmissionErrorDto>> GetPacketSubmissionErrorsByAssignee(string assignedTo)
         {
@@ -83,63 +107,37 @@ namespace UDS.Net.API.Controllers
             throw new NotImplementedException();
         }
 
-        [HttpGet("Errors/ByStatus/{packetStatus}", Name = "GetPacketSubmissionErrorsByStatus")]
-        public async Task<List<PacketSubmissionDto>> GetPacketSubmissionsByStatus(string packetStatus)
+        [HttpGet("Errors", Name = "GetPacketSubmissionErrors")]
+        public async Task<List<PacketSubmissionErrorDto>> GetPacketSubmissionErrors(bool includeResolved = false, int pageSize = 10, int pageIndex = 1)
         {
             throw new NotImplementedException();
         }
 
-
-        public async Task<List<PacketSubmissionErrorDto>> GetPacketSubmissionErrors(bool includeResolved = false)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task PostPacketSubmissionError(int packetSubmissionId, PacketSubmissionErrorDto dto)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task PutPacketSubmissionError(int packetSubmissionId, PacketSubmissionErrorDto dto)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public Task<List<PacketSubmissionDto>> GetPacketSubmissionsByStatus(string packetStatus, int pageSize = 10, int pageIndex = 1)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> PacketSubmissionErrorsCount(bool includeResolved = false)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> PacketSubmissionsErrorsCountByVisit(int visitId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> PacketSubmissionsErrorsCountyByAssignee(string assignedTo)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<PacketSubmissionErrorDto>> GetPacketSubmissionErrors(bool includeResolved = false, int pageSize = 10, int pageIndex = 1)
-        {
-            throw new NotImplementedException();
-        }
-
+        [HttpGet("Errors/ByVisit/{visitId}", Name = "GetPacketSubmissionErrorsByVisit")]
         public Task<List<PacketSubmissionErrorDto>> GetPacketSubmissionErrorsByVisit(int visitId, int pageSize = 10, int pageIndex = 1)
         {
             throw new NotImplementedException();
         }
 
+        [HttpGet("Errors/ByAssignee/{assignedTo}", Name = "GetPacketSubmissionErrorsByAssignee")]
         public Task<List<PacketSubmissionErrorDto>> GetPacketSubmissionErrorsByAssignee(string assignedTo, int pageSize = 10, int pageIndex = 1)
         {
             throw new NotImplementedException();
         }
+
+        [HttpPost("{packetSubmissionId}/Errors", Name = "PostPacketSubmissionError")]
+        public async Task PostPacketSubmissionError(int packetSubmissionId, PacketSubmissionErrorDto dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpPut("{packetSubmissionId}/Errors/{id}", Name = "PutPacketSubmissionError")]
+        public async Task PutPacketSubmissionError(int packetSubmissionId, int id, PacketSubmissionErrorDto dto)
+        {
+            throw new NotImplementedException();
+        }
+
+
     }
 }
 

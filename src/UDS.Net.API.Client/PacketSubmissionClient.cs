@@ -32,58 +32,90 @@ namespace UDS.Net.API.Client
             return count;
         }
 
-        public Task<List<PacketSubmissionDto>> GetPacketSubmissionsByVisit(int visitId, int pageSize = 10, int pageIndex = 1)
+        public async Task<List<PacketSubmissionDto>> GetPacketSubmissionsByVisit(int visitId, int pageSize = 10, int pageIndex = 1)
         {
-            throw new System.NotImplementedException();
+            var response = await GetRequest($"{_BasePath}/ByVisit/{visitId}?pageSize={pageSize}&pageIndex={pageIndex}");
+
+            List<PacketSubmissionDto> dto = JsonSerializer.Deserialize<List<PacketSubmissionDto>>(response, options);
+
+            return dto;
         }
 
-        public Task<List<PacketSubmissionDto>> GetPacketSubmissionsByStatus(string packetStatus, int pageSize = 10, int pageIndex = 1)
+        public async Task<List<PacketSubmissionDto>> GetPacketSubmissionsByStatus(string packetStatus, int pageSize = 10, int pageIndex = 1)
         {
-            throw new System.NotImplementedException();
+            var response = await GetRequest($"{_BasePath}/ByStatus/{packetStatus}?pageSize={pageSize}&pageIndex={pageIndex}");
+
+            List<PacketSubmissionDto> dto = JsonSerializer.Deserialize<List<PacketSubmissionDto>>(response, options);
+
+            return dto;
         }
 
-        public Task<int> PacketSubmissionErrorsCount(bool includeResolved = false)
+        public async Task<int> PacketSubmissionErrorsCount(bool includeResolved = false)
         {
-            throw new System.NotImplementedException();
+            var response = await GetRequest($"{_BasePath}/Errors/Count?includeResolved={includeResolved}");
+
+            int count = JsonSerializer.Deserialize<int>(response, options);
+
+            return count;
         }
 
-        public Task<int> PacketSubmissionsErrorsCountByVisit(int visitId)
+        public async Task<int> PacketSubmissionsErrorsCountByVisit(int visitId)
         {
-            throw new System.NotImplementedException();
+            var response = await GetRequest($"{_BasePath}/Errors/Count/ByVisit/{visitId}");
+
+            int count = JsonSerializer.Deserialize<int>(response, options);
+
+            return count;
         }
 
-        public Task<int> PacketSubmissionsErrorsCountyByAssignee(string assignedTo)
+        public async Task<int> PacketSubmissionsErrorsCountByAssignee(string assignedTo)
         {
-            throw new System.NotImplementedException();
+            var response = await GetRequest($"{_BasePath}/Errors/Count/ByAssignee/{assignedTo}");
+
+            int count = JsonSerializer.Deserialize<int>(response, options);
+
+            return count;
         }
 
-        public Task<List<PacketSubmissionErrorDto>> GetPacketSubmissionErrors(bool includeResolved = false, int pageSize = 10, int pageIndex = 1)
+        public async Task<List<PacketSubmissionErrorDto>> GetPacketSubmissionErrors(bool includeResolved = false, int pageSize = 10, int pageIndex = 1)
         {
-            throw new System.NotImplementedException();
+            var response = await GetRequest($"{_BasePath}/Errors?includeResolved={includeResolved}&pageSize={pageSize}&pageIndex={pageIndex}");
+
+            List<PacketSubmissionErrorDto> dto = JsonSerializer.Deserialize<List<PacketSubmissionErrorDto>>(response, options);
+
+            return dto;
         }
 
-        public Task<List<PacketSubmissionErrorDto>> GetPacketSubmissionErrorsByVisit(int visitId, int pageSize = 10, int pageIndex = 1)
+        public async Task<List<PacketSubmissionErrorDto>> GetPacketSubmissionErrorsByVisit(int visitId, int pageSize = 10, int pageIndex = 1)
         {
-            throw new System.NotImplementedException();
+            var response = await GetRequest($"{_BasePath}/Errors/ByVisit/{visitId}?pageSize={pageSize}&pageIndex={pageIndex}");
+
+            List<PacketSubmissionErrorDto> dto = JsonSerializer.Deserialize<List<PacketSubmissionErrorDto>>(response, options);
+
+            return dto;
         }
 
-        public Task<List<PacketSubmissionErrorDto>> GetPacketSubmissionErrorsByAssignee(string assignedTo, int pageSize = 10, int pageIndex = 1)
+        public async Task<List<PacketSubmissionErrorDto>> GetPacketSubmissionErrorsByAssignee(string assignedTo, int pageSize = 10, int pageIndex = 1)
         {
-            throw new System.NotImplementedException();
+            var response = await GetRequest($"{_BasePath}/Errors/ByAssignee/{assignedTo}?pageSize={pageSize}&pageIndex={pageIndex}");
+
+            List<PacketSubmissionErrorDto> dto = JsonSerializer.Deserialize<List<PacketSubmissionErrorDto>>(response, options);
+
+            return dto;
         }
 
         public async Task PostPacketSubmissionError(int packetSubmissionId, PacketSubmissionErrorDto dto)
         {
+            string json = JsonSerializer.Serialize(dto);
 
-            //string json = JsonSerializer.Serialize(dto);
-
-            //var response = await PostRequest($"{_BasePath}/{id}/Forms/{formKind}", json);
-            throw new System.NotImplementedException();
+            var response = await PostRequest($"{_BasePath}/{packetSubmissionId}/Errors", json);
         }
 
-        public async Task PutPacketSubmissionError(int packetSubmissionId, PacketSubmissionErrorDto dto)
+        public async Task PutPacketSubmissionError(int packetSubmissionId, int id, PacketSubmissionErrorDto dto)
         {
-            throw new System.NotImplementedException();
+            string json = JsonSerializer.Serialize(dto);
+
+            var response = await PutRequest($"{_BasePath}/{packetSubmissionId}/Errors/{id}", json);
         }
 
     }
