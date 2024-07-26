@@ -94,19 +94,6 @@ namespace UDS.Net.API.Controllers
             throw new NotImplementedException();
         }
 
-
-        [HttpGet("Errors/ByAssigned/{assignedTo}", Name = "GetPacketSubmissionErrorsByAssigned")]
-        public async Task<List<PacketSubmissionErrorDto>> GetPacketSubmissionErrorsByAssignee(string assignedTo)
-        {
-            throw new NotImplementedException();
-        }
-
-        [HttpGet("Errors/ByVisit/{visitId}", Name = "GetPacketSubmissionErrorsByVisit")]
-        public async Task<List<PacketSubmissionErrorDto>> GetPacketSubmissionErrorsByVisit(int visitId)
-        {
-            throw new NotImplementedException();
-        }
-
         [HttpGet("Errors", Name = "GetPacketSubmissionErrors")]
         public async Task<List<PacketSubmissionErrorDto>> GetPacketSubmissionErrors(bool includeResolved = false, int pageSize = 10, int pageIndex = 1)
         {
