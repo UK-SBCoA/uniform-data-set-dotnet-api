@@ -189,7 +189,7 @@ namespace UDS.Net.API.Extensions
                 ETHCUBAN = a1.ETHCUBAN,
                 ETHSALVA = a1.ETHSALVA,
                 ETHDOMIN = a1.ETHDOMIN,
-                ETHCOLOM = a1.ETHCOLOM,
+                ETHGUATEM = a1.ETHGUATEM,
                 ETHHISOTH = a1.ETHHISOTH,
                 ETHHISOTHX = a1.ETHHISOTHX,
                 RACEBLACK = a1.RACEBLACK,

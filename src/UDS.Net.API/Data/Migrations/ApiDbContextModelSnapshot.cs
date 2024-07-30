@@ -87,9 +87,6 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int?>("ETHCHINESE")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ETHCOLOM")
-                        .HasColumnType("int");
-
                     b.Property<int?>("ETHCUBAN")
                         .HasColumnType("int");
 
@@ -112,6 +109,9 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("ETHGERMAN")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ETHGUATEM")
                         .HasColumnType("int");
 
                     b.Property<int?>("ETHHAITIAN")

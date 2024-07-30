@@ -5,7 +5,7 @@
 namespace UDS.Net.API.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class updatea1ethnicities : Migration
+    public partial class modifya1ethnicities : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -19,6 +19,11 @@ namespace UDS.Net.API.Data.Migrations
                 name: "ETHFRENCH",
                 table: "tbl_A1s",
                 newName: "ETHIRAQI");
+
+            migrationBuilder.RenameColumn(
+                name: "ETHCOLOM",
+                table: "tbl_A1s",
+                newName: "ETHGUATEM");
         }
 
         /// <inheritdoc />
@@ -33,6 +38,11 @@ namespace UDS.Net.API.Data.Migrations
                 name: "ETHIRAQI",
                 table: "tbl_A1s",
                 newName: "ETHFRENCH");
+
+            migrationBuilder.RenameColumn(
+                name: "ETHGUATEM",
+                table: "tbl_A1s",
+                newName: "ETHCOLOM");
         }
     }
 }

@@ -31,7 +31,7 @@ namespace UDS.Net.API.Entities
         public int? ETHCUBAN { get; set; }
         public int? ETHSALVA { get; set; }
         public int? ETHDOMIN { get; set; }
-        public int? ETHCOLOM { get; set; }
+        public int? ETHGUATEM { get; set; }
         public int? ETHHISOTH { get; set; }
         [MaxLength(60)]
         public string? ETHHISOTHX { get; set; }

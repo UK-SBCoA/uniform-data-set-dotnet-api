@@ -12,8 +12,8 @@ using UDS.Net.API.Data;
 namespace UDS.Net.API.Data.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    [Migration("20240725192857_update-a1-ethnicities")]
-    partial class updatea1ethnicities
+    [Migration("20240730203116_modify-a1-ethnicities")]
+    partial class modifya1ethnicities
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -90,9 +90,6 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int?>("ETHCHINESE")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ETHCOLOM")
-                        .HasColumnType("int");
-
                     b.Property<int?>("ETHCUBAN")
                         .HasColumnType("int");
 
@@ -115,6 +112,9 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("ETHGERMAN")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ETHGUATEM")
                         .HasColumnType("int");
 
                     b.Property<int?>("ETHHAITIAN")

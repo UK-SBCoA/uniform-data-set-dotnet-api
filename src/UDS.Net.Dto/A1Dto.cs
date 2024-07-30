@@ -21,7 +21,7 @@ namespace UDS.Net.Dto
         public int? ETHCUBAN { get; set; }
         public int? ETHSALVA { get; set; }
         public int? ETHDOMIN { get; set; }
-        public int? ETHCOLOM { get; set; }
+        public int? ETHGUATEM { get; set; }
         public int? ETHHISOTH { get; set; }
         public string ETHHISOTHX { get; set; }
         public int? RACEBLACK { get; set; }

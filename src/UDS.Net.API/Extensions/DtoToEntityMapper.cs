@@ -172,7 +172,7 @@ namespace UDS.Net.API.Extensions
                 entity.ETHCUBAN = dto.ETHCUBAN;
                 entity.ETHSALVA = dto.ETHSALVA;
                 entity.ETHDOMIN = dto.ETHDOMIN;
-                entity.ETHCOLOM = dto.ETHCOLOM;
+                entity.ETHGUATEM = dto.ETHGUATEM;
                 entity.ETHHISOTH = dto.ETHHISOTH;
                 entity.ETHHISOTHX = dto.ETHHISOTHX;
                 entity.RACEBLACK = dto.RACEBLACK;
