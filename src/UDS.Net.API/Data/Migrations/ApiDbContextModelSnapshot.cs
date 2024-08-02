@@ -443,7 +443,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.HasIndex("VisitId")
                         .IsUnique();
 
-                    b.ToTable("tbl_A1s");
+                    b.ToTable("tbl_A1s", (string)null);
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.A1a", b =>
@@ -770,7 +770,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.HasIndex("VisitId")
                         .IsUnique();
 
-                    b.ToTable("tbl_A1as");
+                    b.ToTable("tbl_A1as", (string)null);
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.A2", b =>
@@ -888,7 +888,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.HasIndex("VisitId")
                         .IsUnique();
 
-                    b.ToTable("tbl_A2s");
+                    b.ToTable("tbl_A2s", (string)null);
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.A3", b =>
@@ -1027,7 +1027,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.HasIndex("VisitId")
                         .IsUnique();
 
-                    b.ToTable("tbl_A3s");
+                    b.ToTable("tbl_A3s", (string)null);
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.A4", b =>
@@ -1111,7 +1111,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.HasIndex("VisitId")
                         .IsUnique();
 
-                    b.ToTable("tbl_A4s");
+                    b.ToTable("tbl_A4s", (string)null);
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.A4a", b =>
@@ -1211,7 +1211,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.HasIndex("VisitId")
                         .IsUnique();
 
-                    b.ToTable("tbl_A4as");
+                    b.ToTable("tbl_A4as", (string)null);
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.A5D2", b =>
@@ -1968,7 +1968,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.HasIndex("VisitId")
                         .IsUnique();
 
-                    b.ToTable("tbl_A5D2s");
+                    b.ToTable("tbl_A5D2s", (string)null);
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.B1", b =>
@@ -2109,7 +2109,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.HasIndex("VisitId")
                         .IsUnique();
 
-                    b.ToTable("tbl_B1s");
+                    b.ToTable("tbl_B1s", (string)null);
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.B3", b =>
@@ -2385,7 +2385,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.HasIndex("VisitId")
                         .IsUnique();
 
-                    b.ToTable("tbl_B3s");
+                    b.ToTable("tbl_B3s", (string)null);
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.B4", b =>
@@ -2496,7 +2496,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.HasIndex("VisitId")
                         .IsUnique();
 
-                    b.ToTable("tbl_B4s");
+                    b.ToTable("tbl_B4s", (string)null);
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.B5", b =>
@@ -2656,7 +2656,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.HasIndex("VisitId")
                         .IsUnique();
 
-                    b.ToTable("tbl_B5s");
+                    b.ToTable("tbl_B5s", (string)null);
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.B6", b =>
@@ -2788,7 +2788,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.HasIndex("VisitId")
                         .IsUnique();
 
-                    b.ToTable("tbl_B6s");
+                    b.ToTable("tbl_B6s", (string)null);
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.B7", b =>
@@ -2899,7 +2899,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.HasIndex("VisitId")
                         .IsUnique();
 
-                    b.ToTable("tbl_B7s");
+                    b.ToTable("tbl_B7s", (string)null);
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.B8", b =>
@@ -3095,7 +3095,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.HasIndex("VisitId")
                         .IsUnique();
 
-                    b.ToTable("tbl_B8s");
+                    b.ToTable("tbl_B8s", (string)null);
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.B9", b =>
@@ -3471,7 +3471,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.HasIndex("VisitId")
                         .IsUnique();
 
-                    b.ToTable("tbl_B9s");
+                    b.ToTable("tbl_B9s", (string)null);
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.C1", b =>
@@ -3695,7 +3695,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.HasIndex("VisitId")
                         .IsUnique();
 
-                    b.ToTable("tbl_C1s");
+                    b.ToTable("tbl_C1s", (string)null);
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.C2", b =>
@@ -4124,7 +4124,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.HasIndex("VisitId")
                         .IsUnique();
 
-                    b.ToTable("tbl_C2s");
+                    b.ToTable("tbl_C2s", (string)null);
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.D1a", b =>
@@ -4637,7 +4637,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.HasIndex("VisitId")
                         .IsUnique();
 
-                    b.ToTable("tbl_D1as");
+                    b.ToTable("tbl_D1as", (string)null);
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.D1b", b =>
@@ -5119,7 +5119,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.HasIndex("VisitId")
                         .IsUnique();
 
-                    b.ToTable("tbl_D1bs");
+                    b.ToTable("tbl_D1bs", (string)null);
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.DrugCodeLookup", b =>
@@ -5144,7 +5144,7 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.HasKey("RxNormId");
 
-                    b.ToTable("DrugCodesLookup");
+                    b.ToTable("DrugCodesLookup", (string)null);
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.FormStatus", b =>
@@ -5302,9 +5302,6 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("MILESTONETYPE")
-                        .HasColumnType("int");
-
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -5350,7 +5347,7 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.HasIndex("ParticipationId");
 
-                    b.ToTable("tbl_M1s");
+                    b.ToTable("tbl_M1s", (string)null);
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.Participation", b =>
@@ -5384,7 +5381,7 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Participation");
+                    b.ToTable("Participation", (string)null);
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.T1", b =>
@@ -5496,7 +5493,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.HasIndex("VisitId")
                         .IsUnique();
 
-                    b.ToTable("tbl_T1s");
+                    b.ToTable("tbl_T1s", (string)null);
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.Visit", b =>
@@ -5559,7 +5556,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.HasIndex("ParticipationId", "VISITNUM")
                         .IsUnique();
 
-                    b.ToTable("tbl_Visits");
+                    b.ToTable("tbl_Visits", (string)null);
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.A1", b =>
@@ -5597,7 +5594,7 @@ namespace UDS.Net.API.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "KID1", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.KID1#UDS.Net.API.Entities.A3FamilyMember", "KID1", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -5624,13 +5621,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "KID10", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.KID10#UDS.Net.API.Entities.A3FamilyMember", "KID10", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -5657,13 +5654,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "KID11", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.KID11#UDS.Net.API.Entities.A3FamilyMember", "KID11", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -5690,13 +5687,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "KID12", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.KID12#UDS.Net.API.Entities.A3FamilyMember", "KID12", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -5723,13 +5720,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "KID13", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.KID13#UDS.Net.API.Entities.A3FamilyMember", "KID13", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -5756,13 +5753,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "KID14", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.KID14#UDS.Net.API.Entities.A3FamilyMember", "KID14", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -5789,13 +5786,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "KID15", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.KID15#UDS.Net.API.Entities.A3FamilyMember", "KID15", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -5822,13 +5819,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "KID2", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.KID2#UDS.Net.API.Entities.A3FamilyMember", "KID2", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -5855,13 +5852,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "KID3", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.KID3#UDS.Net.API.Entities.A3FamilyMember", "KID3", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -5888,13 +5885,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "KID4", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.KID4#UDS.Net.API.Entities.A3FamilyMember", "KID4", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -5921,13 +5918,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "KID5", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.KID5#UDS.Net.API.Entities.A3FamilyMember", "KID5", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -5954,13 +5951,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "KID6", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.KID6#UDS.Net.API.Entities.A3FamilyMember", "KID6", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -5987,13 +5984,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "KID7", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.KID7#UDS.Net.API.Entities.A3FamilyMember", "KID7", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -6020,13 +6017,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "KID8", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.KID8#UDS.Net.API.Entities.A3FamilyMember", "KID8", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -6053,13 +6050,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "KID9", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.KID9#UDS.Net.API.Entities.A3FamilyMember", "KID9", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -6086,13 +6083,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "SIB1", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.SIB1#UDS.Net.API.Entities.A3FamilyMember", "SIB1", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -6119,13 +6116,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "SIB10", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.SIB10#UDS.Net.API.Entities.A3FamilyMember", "SIB10", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -6152,13 +6149,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "SIB11", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.SIB11#UDS.Net.API.Entities.A3FamilyMember", "SIB11", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -6185,13 +6182,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "SIB12", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.SIB12#UDS.Net.API.Entities.A3FamilyMember", "SIB12", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -6218,13 +6215,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "SIB13", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.SIB13#UDS.Net.API.Entities.A3FamilyMember", "SIB13", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -6251,13 +6248,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "SIB14", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.SIB14#UDS.Net.API.Entities.A3FamilyMember", "SIB14", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -6284,13 +6281,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "SIB15", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.SIB15#UDS.Net.API.Entities.A3FamilyMember", "SIB15", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -6317,13 +6314,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "SIB16", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.SIB16#UDS.Net.API.Entities.A3FamilyMember", "SIB16", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -6350,13 +6347,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "SIB17", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.SIB17#UDS.Net.API.Entities.A3FamilyMember", "SIB17", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -6383,13 +6380,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "SIB18", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.SIB18#UDS.Net.API.Entities.A3FamilyMember", "SIB18", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -6416,13 +6413,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "SIB19", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.SIB19#UDS.Net.API.Entities.A3FamilyMember", "SIB19", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -6449,13 +6446,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "SIB2", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.SIB2#UDS.Net.API.Entities.A3FamilyMember", "SIB2", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -6482,13 +6479,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "SIB20", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.SIB20#UDS.Net.API.Entities.A3FamilyMember", "SIB20", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -6515,13 +6512,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "SIB3", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.SIB3#UDS.Net.API.Entities.A3FamilyMember", "SIB3", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -6548,13 +6545,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "SIB4", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.SIB4#UDS.Net.API.Entities.A3FamilyMember", "SIB4", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -6581,13 +6578,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "SIB5", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.SIB5#UDS.Net.API.Entities.A3FamilyMember", "SIB5", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -6614,13 +6611,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "SIB6", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.SIB6#UDS.Net.API.Entities.A3FamilyMember", "SIB6", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -6647,13 +6644,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "SIB7", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.SIB7#UDS.Net.API.Entities.A3FamilyMember", "SIB7", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -6680,13 +6677,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "SIB8", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.SIB8#UDS.Net.API.Entities.A3FamilyMember", "SIB8", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -6713,13 +6710,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A3FamilyMember", "SIB9", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A3.SIB9#UDS.Net.API.Entities.A3FamilyMember", "SIB9", b1 =>
                         {
                             b1.Property<int>("A3Id")
                                 .HasColumnType("int");
@@ -6746,7 +6743,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A3Id");
 
-                            b1.ToTable("tbl_A3s");
+                            b1.ToTable("tbl_A3s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A3Id");
@@ -6866,7 +6863,7 @@ namespace UDS.Net.API.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID1", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID1#UDS.Net.API.Entities.A4D", "RXNORMID1", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -6878,7 +6875,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -6890,7 +6887,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID10", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID10#UDS.Net.API.Entities.A4D", "RXNORMID10", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -6902,7 +6899,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -6914,7 +6911,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID11", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID11#UDS.Net.API.Entities.A4D", "RXNORMID11", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -6926,7 +6923,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -6938,7 +6935,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID12", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID12#UDS.Net.API.Entities.A4D", "RXNORMID12", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -6950,7 +6947,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -6962,7 +6959,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID13", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID13#UDS.Net.API.Entities.A4D", "RXNORMID13", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -6974,7 +6971,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -6986,7 +6983,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID14", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID14#UDS.Net.API.Entities.A4D", "RXNORMID14", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -6998,7 +6995,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7010,7 +7007,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID15", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID15#UDS.Net.API.Entities.A4D", "RXNORMID15", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7022,7 +7019,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7034,7 +7031,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID16", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID16#UDS.Net.API.Entities.A4D", "RXNORMID16", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7046,7 +7043,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7058,7 +7055,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID17", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID17#UDS.Net.API.Entities.A4D", "RXNORMID17", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7070,7 +7067,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7082,7 +7079,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID18", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID18#UDS.Net.API.Entities.A4D", "RXNORMID18", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7094,7 +7091,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7106,7 +7103,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID19", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID19#UDS.Net.API.Entities.A4D", "RXNORMID19", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7118,7 +7115,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7130,7 +7127,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID2", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID2#UDS.Net.API.Entities.A4D", "RXNORMID2", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7142,7 +7139,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7154,7 +7151,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID20", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID20#UDS.Net.API.Entities.A4D", "RXNORMID20", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7166,7 +7163,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7178,7 +7175,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID21", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID21#UDS.Net.API.Entities.A4D", "RXNORMID21", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7190,7 +7187,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7202,7 +7199,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID22", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID22#UDS.Net.API.Entities.A4D", "RXNORMID22", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7214,7 +7211,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7226,7 +7223,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID23", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID23#UDS.Net.API.Entities.A4D", "RXNORMID23", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7238,7 +7235,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7250,7 +7247,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID24", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID24#UDS.Net.API.Entities.A4D", "RXNORMID24", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7262,7 +7259,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7274,7 +7271,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID25", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID25#UDS.Net.API.Entities.A4D", "RXNORMID25", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7286,7 +7283,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7298,7 +7295,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID26", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID26#UDS.Net.API.Entities.A4D", "RXNORMID26", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7310,7 +7307,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7322,7 +7319,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID27", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID27#UDS.Net.API.Entities.A4D", "RXNORMID27", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7334,7 +7331,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7346,7 +7343,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID28", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID28#UDS.Net.API.Entities.A4D", "RXNORMID28", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7358,7 +7355,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7370,7 +7367,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID29", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID29#UDS.Net.API.Entities.A4D", "RXNORMID29", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7382,7 +7379,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7394,7 +7391,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID3", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID3#UDS.Net.API.Entities.A4D", "RXNORMID3", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7406,7 +7403,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7418,7 +7415,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID30", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID30#UDS.Net.API.Entities.A4D", "RXNORMID30", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7430,7 +7427,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7442,7 +7439,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID31", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID31#UDS.Net.API.Entities.A4D", "RXNORMID31", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7454,7 +7451,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7466,7 +7463,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID32", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID32#UDS.Net.API.Entities.A4D", "RXNORMID32", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7478,7 +7475,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7490,7 +7487,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID33", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID33#UDS.Net.API.Entities.A4D", "RXNORMID33", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7502,7 +7499,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7514,7 +7511,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID34", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID34#UDS.Net.API.Entities.A4D", "RXNORMID34", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7526,7 +7523,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7538,7 +7535,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID35", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID35#UDS.Net.API.Entities.A4D", "RXNORMID35", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7550,7 +7547,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7562,7 +7559,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID36", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID36#UDS.Net.API.Entities.A4D", "RXNORMID36", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7574,7 +7571,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7586,7 +7583,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID37", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID37#UDS.Net.API.Entities.A4D", "RXNORMID37", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7598,7 +7595,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7610,7 +7607,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID38", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID38#UDS.Net.API.Entities.A4D", "RXNORMID38", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7622,7 +7619,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7634,7 +7631,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID39", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID39#UDS.Net.API.Entities.A4D", "RXNORMID39", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7646,7 +7643,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7658,7 +7655,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID4", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID4#UDS.Net.API.Entities.A4D", "RXNORMID4", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7670,7 +7667,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7682,7 +7679,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID40", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID40#UDS.Net.API.Entities.A4D", "RXNORMID40", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7694,7 +7691,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7706,7 +7703,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID5", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID5#UDS.Net.API.Entities.A4D", "RXNORMID5", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7718,7 +7715,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7730,7 +7727,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID6", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID6#UDS.Net.API.Entities.A4D", "RXNORMID6", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7742,7 +7739,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7754,7 +7751,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID7", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID7#UDS.Net.API.Entities.A4D", "RXNORMID7", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7766,7 +7763,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7778,7 +7775,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID8", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID8#UDS.Net.API.Entities.A4D", "RXNORMID8", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7790,7 +7787,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7802,7 +7799,7 @@ namespace UDS.Net.API.Data.Migrations
                             b1.Navigation("DrugCode");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID9", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4.RXNORMID9#UDS.Net.API.Entities.A4D", "RXNORMID9", b1 =>
                         {
                             b1.Property<int>("A4Id")
                                 .HasColumnType("int");
@@ -7814,7 +7811,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasIndex("RxNormId");
 
-                            b1.ToTable("tbl_A4s");
+                            b1.ToTable("tbl_A4s", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4Id");
@@ -7955,7 +7952,7 @@ namespace UDS.Net.API.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4aTreatment", "Treatment1", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4a.Treatment1#UDS.Net.API.Entities.A4aTreatment", "Treatment1", b1 =>
                         {
                             b1.Property<int>("A4aId")
                                 .HasColumnType("int");
@@ -8021,13 +8018,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A4aId");
 
-                            b1.ToTable("tbl_A4as");
+                            b1.ToTable("tbl_A4as", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4aId");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4aTreatment", "Treatment2", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4a.Treatment2#UDS.Net.API.Entities.A4aTreatment", "Treatment2", b1 =>
                         {
                             b1.Property<int>("A4aId")
                                 .HasColumnType("int");
@@ -8093,13 +8090,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A4aId");
 
-                            b1.ToTable("tbl_A4as");
+                            b1.ToTable("tbl_A4as", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4aId");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4aTreatment", "Treatment3", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4a.Treatment3#UDS.Net.API.Entities.A4aTreatment", "Treatment3", b1 =>
                         {
                             b1.Property<int>("A4aId")
                                 .HasColumnType("int");
@@ -8165,13 +8162,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A4aId");
 
-                            b1.ToTable("tbl_A4as");
+                            b1.ToTable("tbl_A4as", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4aId");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4aTreatment", "Treatment4", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4a.Treatment4#UDS.Net.API.Entities.A4aTreatment", "Treatment4", b1 =>
                         {
                             b1.Property<int>("A4aId")
                                 .HasColumnType("int");
@@ -8237,13 +8234,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A4aId");
 
-                            b1.ToTable("tbl_A4as");
+                            b1.ToTable("tbl_A4as", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4aId");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4aTreatment", "Treatment5", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4a.Treatment5#UDS.Net.API.Entities.A4aTreatment", "Treatment5", b1 =>
                         {
                             b1.Property<int>("A4aId")
                                 .HasColumnType("int");
@@ -8309,13 +8306,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A4aId");
 
-                            b1.ToTable("tbl_A4as");
+                            b1.ToTable("tbl_A4as", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4aId");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4aTreatment", "Treatment6", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4a.Treatment6#UDS.Net.API.Entities.A4aTreatment", "Treatment6", b1 =>
                         {
                             b1.Property<int>("A4aId")
                                 .HasColumnType("int");
@@ -8381,13 +8378,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A4aId");
 
-                            b1.ToTable("tbl_A4as");
+                            b1.ToTable("tbl_A4as", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4aId");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4aTreatment", "Treatment7", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4a.Treatment7#UDS.Net.API.Entities.A4aTreatment", "Treatment7", b1 =>
                         {
                             b1.Property<int>("A4aId")
                                 .HasColumnType("int");
@@ -8453,13 +8450,13 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A4aId");
 
-                            b1.ToTable("tbl_A4as");
+                            b1.ToTable("tbl_A4as", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4aId");
                         });
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4aTreatment", "Treatment8", b1 =>
+                    b.OwnsOne("UDS.Net.API.Entities.A4a.Treatment8#UDS.Net.API.Entities.A4aTreatment", "Treatment8", b1 =>
                         {
                             b1.Property<int>("A4aId")
                                 .HasColumnType("int");
@@ -8525,7 +8522,7 @@ namespace UDS.Net.API.Data.Migrations
 
                             b1.HasKey("A4aId");
 
-                            b1.ToTable("tbl_A4as");
+                            b1.ToTable("tbl_A4as", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("A4aId");
