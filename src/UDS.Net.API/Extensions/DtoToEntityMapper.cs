@@ -162,7 +162,8 @@ namespace UDS.Net.API.Extensions
                 CreatedBy = dto.CreatedBy,
                 ModifiedBy = dto.ModifiedBy,
                 DeletedBy = dto.DeletedBy,
-                IsDeleted = dto.IsDeleted
+                IsDeleted = dto.IsDeleted,
+                MILESTONETYPE = dto.MILESTONETYPE
             };
         }
 
@@ -181,7 +182,7 @@ namespace UDS.Net.API.Extensions
                 entity.ETHENGLISH = dto.ETHENGLISH;
                 entity.ETHITALIAN = dto.ETHITALIAN;
                 entity.ETHPOLISH = dto.ETHPOLISH;
-                entity.ETHFRENCH = dto.ETHFRENCH;
+                entity.ETHSCOTT = dto.ETHSCOTT;
                 entity.ETHWHIOTH = dto.ETHWHIOTH;
                 entity.ETHWHIOTHX = dto.ETHWHIOTHX;
                 entity.ETHISPANIC = dto.ETHISPANIC;
@@ -190,7 +191,7 @@ namespace UDS.Net.API.Extensions
                 entity.ETHCUBAN = dto.ETHCUBAN;
                 entity.ETHSALVA = dto.ETHSALVA;
                 entity.ETHDOMIN = dto.ETHDOMIN;
-                entity.ETHCOLOM = dto.ETHCOLOM;
+                entity.ETHGUATEM = dto.ETHGUATEM;
                 entity.ETHHISOTH = dto.ETHHISOTH;
                 entity.ETHHISOTHX = dto.ETHHISOTHX;
                 entity.RACEBLACK = dto.RACEBLACK;
@@ -218,7 +219,7 @@ namespace UDS.Net.API.Extensions
                 entity.ETHIRAN = dto.ETHIRAN;
                 entity.ETHEGYPT = dto.ETHEGYPT;
                 entity.ETHSYRIA = dto.ETHSYRIA;
-                entity.ETHMOROCCO = dto.ETHMOROCCO;
+                entity.ETHIRAQI = dto.ETHIRAQI;
                 entity.ETHISRAEL = dto.ETHISRAEL;
                 entity.ETHMENAOTH = dto.ETHMENAOTH;
                 entity.ETHMENAOTX = dto.ETHMENAOTX;

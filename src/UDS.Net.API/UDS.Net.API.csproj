@@ -4,7 +4,7 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<ReleaseVersion>3.1.0-preview.2</ReleaseVersion>
+		<ReleaseVersion>4.1.0-preview.1</ReleaseVersion>
 		<DockerComposeProjectPath>../docker-compose.dcproj</DockerComposeProjectPath>
 		<UserSecretsId>c1dd1715-6fa0-4515-bcf2-6a7f6a0c11a5</UserSecretsId>
 		<Configurations>Release;Debug</Configurations>
@@ -32,11 +32,5 @@
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
-	</ItemGroup>
-	<ItemGroup>
-	  <None Remove="Data\Seeds\" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Data\Seeds\" />
 	</ItemGroup>
 </Project>

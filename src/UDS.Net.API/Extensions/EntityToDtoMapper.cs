@@ -184,7 +184,7 @@ namespace UDS.Net.API.Extensions
                 ETHENGLISH = a1.ETHENGLISH,
                 ETHITALIAN = a1.ETHITALIAN,
                 ETHPOLISH = a1.ETHPOLISH,
-                ETHFRENCH = a1.ETHFRENCH,
+                ETHSCOTT = a1.ETHSCOTT,
                 ETHWHIOTH = a1.ETHWHIOTH,
                 ETHWHIOTHX = a1.ETHWHIOTHX,
                 ETHISPANIC = a1.ETHISPANIC,
@@ -193,7 +193,7 @@ namespace UDS.Net.API.Extensions
                 ETHCUBAN = a1.ETHCUBAN,
                 ETHSALVA = a1.ETHSALVA,
                 ETHDOMIN = a1.ETHDOMIN,
-                ETHCOLOM = a1.ETHCOLOM,
+                ETHGUATEM = a1.ETHGUATEM,
                 ETHHISOTH = a1.ETHHISOTH,
                 ETHHISOTHX = a1.ETHHISOTHX,
                 RACEBLACK = a1.RACEBLACK,
@@ -221,7 +221,7 @@ namespace UDS.Net.API.Extensions
                 ETHIRAN = a1.ETHIRAN,
                 ETHEGYPT = a1.ETHEGYPT,
                 ETHSYRIA = a1.ETHSYRIA,
-                ETHMOROCCO = a1.ETHMOROCCO,
+                ETHIRAQI = a1.ETHIRAQI,
                 ETHISRAEL = a1.ETHISRAEL,
                 ETHMENAOTH = a1.ETHMENAOTH,
                 ETHMENAOTX = a1.ETHMENAOTX,
@@ -1574,7 +1574,8 @@ namespace UDS.Net.API.Extensions
                 CreatedBy = m1.CreatedBy,
                 ModifiedBy = m1.ModifiedBy,
                 DeletedBy = m1.DeletedBy,
-                IsDeleted = m1.IsDeleted
+                IsDeleted = m1.IsDeleted,
+                MILESTONETYPE = m1.MILESTONETYPE
             };
             return dto;
         }
