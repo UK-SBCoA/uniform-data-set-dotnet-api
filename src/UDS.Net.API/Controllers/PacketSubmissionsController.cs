@@ -5,6 +5,7 @@ using UDS.Net.Dto;
 
 namespace UDS.Net.API.Controllers
 {
+    [Route("api/[controller]")]
     public class PacketSubmissionsController : Controller, IPacketSubmissionClient
     {
         private readonly ApiDbContext _context;

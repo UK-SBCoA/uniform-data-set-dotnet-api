@@ -4,7 +4,7 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<ReleaseVersion>4.1.0-preview.1</ReleaseVersion>
+		<ReleaseVersion>4.1.0-preview.2</ReleaseVersion>
 		<DockerComposeProjectPath>../docker-compose.dcproj</DockerComposeProjectPath>
 		<UserSecretsId>c1dd1715-6fa0-4515-bcf2-6a7f6a0c11a5</UserSecretsId>
 		<Configurations>Release;Debug</Configurations>
