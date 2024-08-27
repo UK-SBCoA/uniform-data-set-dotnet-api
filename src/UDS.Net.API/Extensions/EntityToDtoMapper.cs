@@ -21,9 +21,7 @@ namespace UDS.Net.API.Extensions
                 FORMVER = visit.FORMVER,
                 VISIT_DATE = visit.VISIT_DATE,
                 INITIALS = visit.INITIALS,
-                Status = visit.Status.ToString(),
-                //Forms = new List<FormDto>(), // TODO remove
-                //PacketSubmissions = new List<PacketSubmissionDto>() // TODO remove
+                Status = visit.Status.ToString()
             };
 
             if (visit.PacketSubmissions != null && visit.PacketSubmissions.Count() > 0)
@@ -1646,6 +1644,30 @@ namespace UDS.Net.API.Extensions
             return dto;
         }
 
+        public static PacketSubmissionDto ToDto(this PacketSubmission packetSubmission, int errorCount)
+        {
+            var dto = new PacketSubmissionDto
+            {
+                Id = packetSubmission.Id,
+                VisitId = packetSubmission.VisitId,
+                SubmissionDate = packetSubmission.SubmissionDate,
+                CreatedAt = packetSubmission.CreatedAt,
+                CreatedBy = packetSubmission.CreatedBy,
+                ModifiedBy = packetSubmission.ModifiedBy,
+                IsDeleted = packetSubmission.IsDeleted,
+                DeletedBy = packetSubmission.DeletedBy,
+                ErrorCount = errorCount
+            };
+
+            if (packetSubmission.PacketSubmissionErrors != null && packetSubmission.PacketSubmissionErrors.Count() > 0)
+            {
+                dto.PacketSubmissionErrors = packetSubmission.PacketSubmissionErrors.ToDto();
+            }
+
+            return dto;
+        }
+
+
         public static List<PacketSubmissionErrorDto> ToDto(this List<PacketSubmissionError> packetSubmissionErrors)
         {
             List<PacketSubmissionErrorDto> dto = new List<PacketSubmissionErrorDto>();
@@ -1664,6 +1686,11 @@ namespace UDS.Net.API.Extensions
             {
                 Id = packetSubmissionError.Id,
                 PacketSubmissionId = packetSubmissionError.PacketSubmissionId,
+                FormKind = packetSubmissionError.FormKind,
+                Level = packetSubmissionError.Level.ToString(),
+                Message = packetSubmissionError.Message,
+                AssignedTo = packetSubmissionError.AssignedTo,
+                ResolvedBy = packetSubmissionError.ResolvedBy,
                 CreatedAt = packetSubmissionError.CreatedAt,
                 CreatedBy = packetSubmissionError.CreatedBy,
                 ModifiedBy = packetSubmissionError.ModifiedBy,

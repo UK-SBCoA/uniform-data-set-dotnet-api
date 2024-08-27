@@ -1,4 +1,5 @@
-﻿using UDS.Net.API.Entities;
+﻿using System.Net.NetworkInformation;
+using UDS.Net.API.Entities;
 using UDS.Net.Dto;
 
 namespace UDS.Net.API.Extensions
@@ -112,16 +113,46 @@ namespace UDS.Net.API.Extensions
             return false;
         }
 
-        // TODO
-        public static bool Convert(this PacketSubmissionDto dto)
+        public static PacketSubmission Convert(this PacketSubmissionDto dto)
         {
-            return true;
+            return new PacketSubmission
+            {
+                Id = dto.Id,
+                VisitId = dto.VisitId,
+                SubmissionDate = dto.SubmissionDate,
+                CreatedAt = dto.CreatedAt,
+                CreatedBy = dto.CreatedBy,
+                ModifiedBy = dto.ModifiedBy,
+                IsDeleted = dto.IsDeleted,
+                DeletedBy = dto.DeletedBy,
+                PacketSubmissionErrors = dto.PacketSubmissionErrors.Select(e => e.Convert()).ToList()
+            };
         }
 
-        // TODO
-        public static bool Convert(this PacketSubmissionErrorDto dto)
+        public static PacketSubmissionError Convert(this PacketSubmissionErrorDto dto)
         {
-            return true;
+            var entity = new PacketSubmissionError
+            {
+                Id = dto.Id,
+                PacketSubmissionId = dto.PacketSubmissionId,
+                FormKind = dto.FormKind,
+                Message = dto.Message,
+                AssignedTo = dto.AssignedTo,
+                ResolvedBy = dto.ResolvedBy,
+                CreatedAt = dto.CreatedAt,
+                CreatedBy = dto.CreatedBy,
+                ModifiedBy = dto.ModifiedBy,
+                IsDeleted = dto.IsDeleted,
+                DeletedBy = dto.DeletedBy
+            };
+
+            if (!string.IsNullOrWhiteSpace(dto.Level))
+            {
+                if (Enum.TryParse(dto.Level, true, out PacketSubmissionErrorLevel level))
+                    entity.Level = level;
+            }
+
+            return entity;
         }
 
         public static M1 ToEntity(this M1Dto dto)
