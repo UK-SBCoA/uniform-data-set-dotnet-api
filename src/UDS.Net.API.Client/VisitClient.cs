@@ -13,6 +13,15 @@ namespace UDS.Net.API.Client
         {
         }
 
+        public async Task<VisitDto> GetWithPacketSubmissions(int id, int pageSize = 10, int pageIndex = 1)
+        {
+            var response = await GetRequest($"{_BasePath}/{id}/WithPacketSubmissions?pageSize={pageSize}&pageIndex={pageIndex}");
+
+            VisitDto? dto = JsonSerializer.Deserialize<VisitDto>(response, options);
+
+            return dto;
+        }
+
         public async Task<VisitDto> GetWithForm(int id, string formKind)
         {
             var response = await GetRequest($"{_BasePath}/{id}/Forms/{formKind}");
