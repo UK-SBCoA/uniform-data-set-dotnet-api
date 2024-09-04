@@ -1,8 +1,4 @@
-﻿using System;
-using System.Net;
-using System.Net.NetworkInformation;
-using System.Security.Claims;
-using UDS.Net.API.Entities;
+﻿using UDS.Net.API.Entities;
 using UDS.Net.Dto;
 
 namespace UDS.Net.API.Extensions
@@ -25,8 +21,14 @@ namespace UDS.Net.API.Extensions
                 FORMVER = visit.FORMVER,
                 VISIT_DATE = visit.VISIT_DATE,
                 INITIALS = visit.INITIALS,
-                Forms = new List<FormDto>()
+                Status = visit.Status.ToString()
             };
+
+            if (visit.PacketSubmissions != null && visit.PacketSubmissions.Count() > 0)
+            {
+                dto.PacketSubmissionCount = visit.PacketSubmissions.Count();
+                dto.PacketSubmissions = visit.PacketSubmissions.ToDto();
+            }
 
             return dto;
         }
@@ -1107,6 +1109,7 @@ namespace UDS.Net.API.Extensions
             return dto;
         }
 
+        [Obsolete]
         public static C1Dto ToFullDto(this C1 c1)
         {
             C1Dto dto = new C1Dto
@@ -1511,6 +1514,7 @@ namespace UDS.Net.API.Extensions
             return dto;
         }
 
+        [Obsolete]
         public static T1Dto ToFullDto(this T1 t1)
         {
             T1Dto dto = new T1Dto
@@ -1602,6 +1606,96 @@ namespace UDS.Net.API.Extensions
                 BrandName = drugCode.BrandNames,
                 IsOverTheCounter = drugCode.IsOverTheCounter,
                 IsPopular = drugCode.IsPopular
+            };
+        }
+
+        public static List<PacketSubmissionDto> ToDto(this List<PacketSubmission> packetSubmissions)
+        {
+            List<PacketSubmissionDto> dto = new List<PacketSubmissionDto>();
+
+            if (packetSubmissions != null && packetSubmissions.Count() > 0)
+            {
+                dto = packetSubmissions.Select(p => p.ToDto()).ToList();
+            }
+
+            return dto;
+        }
+
+        public static PacketSubmissionDto ToDto(this PacketSubmission packetSubmission)
+        {
+            var dto = new PacketSubmissionDto
+            {
+                Id = packetSubmission.Id,
+                VisitId = packetSubmission.VisitId,
+                SubmissionDate = packetSubmission.SubmissionDate,
+                CreatedAt = packetSubmission.CreatedAt,
+                CreatedBy = packetSubmission.CreatedBy,
+                ModifiedBy = packetSubmission.ModifiedBy,
+                IsDeleted = packetSubmission.IsDeleted,
+                DeletedBy = packetSubmission.DeletedBy
+            };
+
+            if (packetSubmission.PacketSubmissionErrors != null && packetSubmission.PacketSubmissionErrors.Count() > 0)
+            {
+                dto.ErrorCount = packetSubmission.PacketSubmissionErrors.Count();
+                dto.PacketSubmissionErrors = packetSubmission.PacketSubmissionErrors.ToDto();
+            }
+
+            return dto;
+        }
+
+        public static PacketSubmissionDto ToDto(this PacketSubmission packetSubmission, int errorCount)
+        {
+            var dto = new PacketSubmissionDto
+            {
+                Id = packetSubmission.Id,
+                VisitId = packetSubmission.VisitId,
+                SubmissionDate = packetSubmission.SubmissionDate,
+                CreatedAt = packetSubmission.CreatedAt,
+                CreatedBy = packetSubmission.CreatedBy,
+                ModifiedBy = packetSubmission.ModifiedBy,
+                IsDeleted = packetSubmission.IsDeleted,
+                DeletedBy = packetSubmission.DeletedBy,
+                ErrorCount = errorCount
+            };
+
+            if (packetSubmission.PacketSubmissionErrors != null && packetSubmission.PacketSubmissionErrors.Count() > 0)
+            {
+                dto.PacketSubmissionErrors = packetSubmission.PacketSubmissionErrors.ToDto();
+            }
+
+            return dto;
+        }
+
+
+        public static List<PacketSubmissionErrorDto> ToDto(this List<PacketSubmissionError> packetSubmissionErrors)
+        {
+            List<PacketSubmissionErrorDto> dto = new List<PacketSubmissionErrorDto>();
+
+            if (packetSubmissionErrors != null && packetSubmissionErrors.Count() > 0)
+            {
+                dto = packetSubmissionErrors.Select(e => e.ToDto()).ToList();
+            }
+
+            return dto;
+        }
+
+        public static PacketSubmissionErrorDto ToDto(this PacketSubmissionError packetSubmissionError)
+        {
+            return new PacketSubmissionErrorDto()
+            {
+                Id = packetSubmissionError.Id,
+                PacketSubmissionId = packetSubmissionError.PacketSubmissionId,
+                FormKind = packetSubmissionError.FormKind,
+                Level = packetSubmissionError.Level.ToString(),
+                Message = packetSubmissionError.Message,
+                AssignedTo = packetSubmissionError.AssignedTo,
+                ResolvedBy = packetSubmissionError.ResolvedBy,
+                CreatedAt = packetSubmissionError.CreatedAt,
+                CreatedBy = packetSubmissionError.CreatedBy,
+                ModifiedBy = packetSubmissionError.ModifiedBy,
+                IsDeleted = packetSubmissionError.IsDeleted,
+                DeletedBy = packetSubmissionError.DeletedBy
             };
         }
     }

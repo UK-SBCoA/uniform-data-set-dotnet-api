@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using UDS.Net.API.Client;
 using UDS.Net.API.Data;
@@ -247,6 +243,36 @@ namespace UDS.Net.API.Controllers
                 .Where(v => v.Id == id)
                 .Select(v => v.ToDto())
                 .FirstOrDefaultAsync();
+
+            dto.PacketSubmissionCount = await _context.PacketSubmissions
+                .Where(p => p.VisitId == id)
+                .CountAsync();
+
+            return dto;
+        }
+
+        [HttpGet("{id}/WithPacketSubmissions", Name = "GetWithPacketSubmissions")]
+        public async Task<VisitDto> GetWithPacketSubmissions(int id, int pageSize = 10, int pageIndex = 1)
+        {
+            var dto = await _context.Visits
+                .Include(v => v.FormStatuses)
+                .AsNoTracking()
+                .Where(v => v.Id == id)
+                .Select(v => v.ToDto())
+                .FirstOrDefaultAsync();
+
+            var packetSubmissions = await _context.PacketSubmissions
+                .Include(p => p.PacketSubmissionErrors)
+                .AsNoTracking()
+                .Skip((pageIndex - 1) * pageSize)
+                .Take(pageSize)
+                .Select(v => v.ToDto())
+                .ToListAsync();
+
+            dto.PacketSubmissions = packetSubmissions;
+            dto.PacketSubmissionCount = await _context.PacketSubmissions
+                .Where(p => p.VisitId == id)
+                .CountAsync();
 
             return dto;
         }

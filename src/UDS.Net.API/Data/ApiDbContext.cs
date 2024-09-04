@@ -9,7 +9,10 @@ namespace UDS.Net.API.Data
         public DbSet<Participation> Participations { get; set; }
         public DbSet<M1> M1s { get; set; }
         public DbSet<Visit> Visits { get; set; }
+        public DbSet<PacketSubmission> PacketSubmissions { get; set; }
+        public DbSet<PacketSubmissionError> PacketSubmissionErrors { get; set; }
 
+        /* Forms and instruments */
         public DbSet<A1> A1s { get; set; }
         public DbSet<A1a> A1as { get; set; }
         public DbSet<A2> A2s { get; set; }
@@ -25,13 +28,13 @@ namespace UDS.Net.API.Data
         public DbSet<B7> B7s { get; set; }
         public DbSet<B8> B8s { get; set; }
         public DbSet<B9> B9s { get; set; }
-        public DbSet<C1> C1s { get; set; }
+        public DbSet<C1> C1s { get; set; } // TODO remove
         public DbSet<C2> C2s { get; set; }
         public DbSet<D1a> D1as { get; set; }
         public DbSet<D1b> D1bs { get; set; }
-        public DbSet<T1> T1s { get; set; }
+        public DbSet<T1> T1s { get; set; } // TODO remove
 
-        /* Lookup/reference tables */
+        /* Lookup or reference tables */
         public DbSet<DrugCodeLookup> DrugCodesLookup { get; set; }
 
         /* SQL Views */
