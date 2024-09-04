@@ -133,24 +133,27 @@ namespace UDS.Net.API.Controllers
 
                 if (visit != null)
                 {
-                    dto.A1 = visit.A1.ToFullDto();
-                    dto.A1a = visit.A1a.ToFullDto();
-                    dto.A2 = visit.A2.ToFullDto();
-                    dto.A3 = visit.A3.ToFullDto();
-                    dto.A4 = visit.A4.ToFullDto();
-                    dto.A4a = visit.A4a.ToFullDto();
-                    dto.A5D2 = visit.A5D2.ToFullDto();
-                    dto.B1 = visit.B1.ToFullDto();
-                    dto.B3 = visit.B3.ToFullDto();
-                    dto.B4 = visit.B4.ToFullDto();
-                    dto.B5 = visit.B5.ToFullDto();
-                    dto.B6 = visit.B6.ToFullDto();
-                    dto.B7 = visit.B7.ToFullDto();
-                    dto.B8 = visit.B8.ToFullDto();
-                    dto.B9 = visit.B9.ToFullDto();
-                    dto.C2 = visit.C2.ToFullDto();
-                    dto.D1a = visit.D1a.ToFullDto();
-                    dto.D1b = visit.D1b.ToFullDto();
+                    dto.Forms = new PacketSubmissionFormsDto();
+                    dto.Forms.Period = DateTime.Now; // TODO implement temporality with dto.CreatedAt
+
+                    dto.Forms.Add(visit.A1.ToFullDto());
+                    dto.Forms.Add(visit.A1a.ToFullDto());
+                    dto.Forms.Add(visit.A2.ToFullDto());
+                    dto.Forms.Add(visit.A3.ToFullDto());
+                    dto.Forms.Add(visit.A4.ToFullDto());
+                    dto.Forms.Add(visit.A4a.ToFullDto());
+                    dto.Forms.Add(visit.A5D2.ToFullDto());
+                    dto.Forms.Add(visit.B1.ToFullDto());
+                    dto.Forms.Add(visit.B3.ToFullDto());
+                    dto.Forms.Add(visit.B4.ToFullDto());
+                    dto.Forms.Add(visit.B5.ToFullDto());
+                    dto.Forms.Add(visit.B6.ToFullDto());
+                    dto.Forms.Add(visit.B7.ToFullDto());
+                    dto.Forms.Add(visit.B8.ToFullDto());
+                    dto.Forms.Add(visit.B9.ToFullDto());
+                    dto.Forms.Add(visit.C2.ToFullDto());
+                    dto.Forms.Add(visit.D1a.ToFullDto());
+                    dto.Forms.Add(visit.D1b.ToFullDto());
                 }
             }
 

@@ -19,11 +19,9 @@ namespace UDS.Net.Dto
     [JsonDerivedType(typeof(B7Dto), "B7Dto")]
     [JsonDerivedType(typeof(B8Dto), "B8Dto")]
     [JsonDerivedType(typeof(B9Dto), "B9Dto")]
-    [JsonDerivedType(typeof(C1Dto), "C1Dto")]
     [JsonDerivedType(typeof(C2Dto), "C2Dto")]
     [JsonDerivedType(typeof(D1aDto), "D1aDto")]
     [JsonDerivedType(typeof(D1bDto), "D1bDto")]
-    [JsonDerivedType(typeof(T1Dto), "T1Dto")]
     public class FormDto : BaseDto
     {
         public int VisitId { get; set; }
