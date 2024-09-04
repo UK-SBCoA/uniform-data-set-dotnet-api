@@ -6,6 +6,8 @@ namespace UDS.Net.API.Client
 {
     public interface IPacketSubmissionClient : IBaseClient<PacketSubmissionDto>
     {
+        Task<PacketSubmissionDto> GetPacketSubmissionWithForms(int id);
+
         Task<int> PacketSubmissionsCountByVisit(int visitId);
 
         Task<int> PacketSubmissionsCountByStatus(string packetStatus);

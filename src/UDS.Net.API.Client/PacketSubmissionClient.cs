@@ -14,6 +14,15 @@ namespace UDS.Net.API.Client
         {
         }
 
+        public async Task<PacketSubmissionDto> GetPacketSubmissionWithForms(int id)
+        {
+            var response = await GetRequest($"{_BasePath}/{id}/IncludeForms");
+
+            PacketSubmissionDto dto = JsonSerializer.Deserialize<PacketSubmissionDto>(response, options);
+
+            return dto;
+        }
+
         public async Task<int> PacketSubmissionsCountByVisit(int visitId)
         {
             var response = await GetRequest($"{_BasePath}/Count/ByVisit/{visitId}");
@@ -117,7 +126,6 @@ namespace UDS.Net.API.Client
 
             var response = await PutRequest($"{_BasePath}/{packetSubmissionId}/Errors/{id}", json);
         }
-
     }
 }
 

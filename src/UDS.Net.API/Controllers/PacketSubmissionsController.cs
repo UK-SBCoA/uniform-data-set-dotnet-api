@@ -85,7 +85,6 @@ namespace UDS.Net.API.Controllers
             return dto;
         }
 
-
         [HttpGet("{id}")]
         public async Task<PacketSubmissionDto> Get(int id)
         {
@@ -94,6 +93,66 @@ namespace UDS.Net.API.Controllers
                 .Where(p => p.Id == id)
                 .Select(p => p.ToDto())
                 .FirstOrDefaultAsync();
+
+            return dto;
+        }
+
+        [HttpGet("{id}/IncludeForms")]
+        public async Task<PacketSubmissionDto> GetPacketSubmissionWithForms(int id)
+        {
+            var dto = await _context.PacketSubmissions
+                .Where(p => p.Id == id)
+                .AsNoTracking()
+                .Select(p => p.ToDto())
+                .FirstOrDefaultAsync();
+
+            if (dto != null)
+            {
+                var visit = await _context.Visits
+                    .Include(v => v.A1)
+                    .Include(v => v.A1a)
+                    .Include(v => v.A2)
+                    .Include(v => v.A3)
+                    .Include(v => v.A4)
+                    .Include(v => v.A4a)
+                    .Include(v => v.A5D2)
+                    .Include(v => v.B1)
+                    .Include(v => v.B3)
+                    .Include(v => v.B4)
+                    .Include(v => v.B5)
+                    .Include(v => v.B6)
+                    .Include(v => v.B7)
+                    .Include(v => v.B8)
+                    .Include(v => v.B9)
+                    .Include(v => v.C2)
+                    .Include(v => v.D1a)
+                    .Include(v => v.D1b)
+                    .Where(v => v.Id == dto.VisitId)
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync();
+
+                if (visit != null)
+                {
+                    dto.A1 = visit.A1.ToFullDto();
+                    dto.A1a = visit.A1a.ToFullDto();
+                    dto.A2 = visit.A2.ToFullDto();
+                    dto.A3 = visit.A3.ToFullDto();
+                    dto.A4 = visit.A4.ToFullDto();
+                    dto.A4a = visit.A4a.ToFullDto();
+                    dto.A5D2 = visit.A5D2.ToFullDto();
+                    dto.B1 = visit.B1.ToFullDto();
+                    dto.B3 = visit.B3.ToFullDto();
+                    dto.B4 = visit.B4.ToFullDto();
+                    dto.B5 = visit.B5.ToFullDto();
+                    dto.B6 = visit.B6.ToFullDto();
+                    dto.B7 = visit.B7.ToFullDto();
+                    dto.B8 = visit.B8.ToFullDto();
+                    dto.B9 = visit.B9.ToFullDto();
+                    dto.C2 = visit.C2.ToFullDto();
+                    dto.D1a = visit.D1a.ToFullDto();
+                    dto.D1b = visit.D1b.ToFullDto();
+                }
+            }
 
             return dto;
         }
@@ -275,7 +334,6 @@ namespace UDS.Net.API.Controllers
                 }
             }
         }
-
 
     }
 }
