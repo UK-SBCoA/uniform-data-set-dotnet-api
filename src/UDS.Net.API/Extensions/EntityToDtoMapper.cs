@@ -1649,7 +1649,7 @@ namespace UDS.Net.API.Extensions
 
             if (packetSubmission.PacketSubmissionErrors != null && packetSubmission.PacketSubmissionErrors.Count() > 0)
             {
-                dto.UnresolvedErrorCount = packetSubmission.UnresolvedErrorCount;
+                dto.ErrorCount = packetSubmission.ErrorCount;
                 dto.PacketSubmissionErrors = packetSubmission.PacketSubmissionErrors.ToDto();
             }
 

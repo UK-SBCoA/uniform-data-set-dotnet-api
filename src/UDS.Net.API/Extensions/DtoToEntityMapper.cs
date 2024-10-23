@@ -129,7 +129,7 @@ namespace UDS.Net.API.Extensions
                 ModifiedBy = dto.ModifiedBy,
                 IsDeleted = dto.IsDeleted,
                 DeletedBy = dto.DeletedBy,
-                UnresolvedErrorCount = dto.UnresolvedErrorCount,
+                ErrorCount = dto.ErrorCount,
                 PacketSubmissionErrors = dto.PacketSubmissionErrors.Select(e => e.Convert()).ToList()
             };
         }

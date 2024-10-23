@@ -19,7 +19,7 @@ namespace UDS.Net.API.Entities
 
         public int VisitId { get; set; }
 
-        public int? UnresolvedErrorCount { get; set; } // null means no results yet, 0 means no errors
+        public int? ErrorCount { get; set; } // null means no results yet, 0 means no errors
 
         public List<PacketSubmissionError> PacketSubmissionErrors { get; set; } = new List<PacketSubmissionError>();
     }

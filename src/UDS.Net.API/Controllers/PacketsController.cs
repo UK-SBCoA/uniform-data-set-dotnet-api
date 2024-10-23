@@ -142,7 +142,7 @@ namespace UDS.Net.API.Controllers
         }
 
         /// <summary>
-        /// Put updates the status of the visit, packet submissions, and errors
+        /// Put updates the status of the visit, submissions errors
         /// </summary>
         /// <param name="id"></param>
         /// <param name="dto"></param>
@@ -163,11 +163,31 @@ namespace UDS.Net.API.Controllers
                     existingPacket.Status = dto.Status.Convert();
                     existingPacket.ModifiedBy = dto.ModifiedBy;
 
-                    // iterate dto submissions, see if there are any new
+                    foreach (var submissionDto in dto.PacketSubmissions)
+                    {
+                        if (submissionDto.Id == 0)
+                        {
+                            // new submission needs to be created
+                        }
+                        else
+                        {
+                            // existing submission needs to be updated and could affect visit status
 
-                    // see if there are any updates to existing
 
-                    // iterate dto errors, see if there are any new
+                            // iterate errors
+                            foreach (var errorDto in submissionDto.PacketSubmissionErrors)
+                            {
+                                if (errorDto.Id == 0)
+                                {
+                                    // new error needs to be created and could affect
+                                }
+                                else
+                                {
+                                    // existing error needs to be updated
+                                }
+                            }
+                        }
+                    }
 
                     _context.Visits.Update(existingPacket);
                     await _context.SaveChangesAsync();
@@ -258,174 +278,5 @@ namespace UDS.Net.API.Controllers
 
             return dto;
         }
-
-
-
-
-
-
-
-
-        //[HttpGet("ByVisit/{visitId}", Name = "GetPacketSubmissionByVisit")]
-        //public async Task<List<PacketSubmissionDto>> GetPacketSubmissionsByVisit(int visitId, int pageSize = 10, int pageIndex = 1)
-        //{
-        //    var dto = await _context.PacketSubmissions
-        //        .Include(p => p.Visit)
-        //        .Include(p => p.PacketSubmissionErrors)
-        //        .Where(p => p.VisitId == visitId)
-        //        .AsNoTracking()
-        //        .Skip((pageIndex - 1) * pageSize)
-        //        .Take(pageSize)
-        //        .Select(p => p.ToDto(p.PacketSubmissionErrors.Count()))
-        //        .ToListAsync();
-
-        //    return dto;
-        //}
-
-
-        //[HttpGet("Errors/Count", Name = "PacketSubmissionErrorsCount")]
-        //public async Task<int> PacketSubmissionErrorsCount(bool includeResolved = false)
-        //{
-        //    if (includeResolved)
-        //    {
-        //        return await _context.PacketSubmissionErrors
-        //            .Where(e => String.IsNullOrWhiteSpace(e.ResolvedBy) == false)
-        //            .CountAsync();
-        //    }
-        //    else
-        //    {
-        //        return await _context.PacketSubmissionErrors
-        //            .CountAsync();
-        //    }
-        //}
-
-        //[HttpGet("Errors/Count/ByVisit/{visitId}", Name = "PacketSubmissionErrorsCountByVisit")]
-        //public async Task<int?> PacketSubmissionsErrorsCountByVisit(int visitId)
-        //{
-        //    return await _context.PacketSubmissions
-        //        .Where(e => e.VisitId == visitId)
-        //        .Select(p => p.ErrorCount)
-        //        .FirstOrDefaultAsync();
-        //}
-
-        //[HttpGet("Errors/Count/ByAssignee/{assignedTo}", Name = "PacketSubmissionErrorsCountByAssignee")]
-        //public async Task<int> PacketSubmissionsErrorsCountByAssignee(string assignedTo)
-        //{
-        //    return await _context.PacketSubmissionErrors
-        //        .Where(e => e.AssignedTo.ToLower().Trim() == assignedTo.ToLower().Trim())
-        //        .CountAsync();
-        //}
-
-        //[HttpGet("Errors", Name = "GetPacketSubmissionErrors")]
-        //public async Task<List<PacketSubmissionErrorDto>> GetPacketSubmissionErrors(bool includeResolved = false, int pageSize = 10, int pageIndex = 1)
-        //{
-        //    if (includeResolved)
-        //    {
-        //        return await _context.PacketSubmissionErrors
-        //            .Where(e => String.IsNullOrWhiteSpace(e.ResolvedBy) == false)
-        //            .AsNoTracking()
-        //            .Skip((pageIndex - 1) * pageSize)
-        //            .Take(pageSize)
-        //            .Select(p => p.ToDto())
-        //            .ToListAsync();
-        //    }
-        //    else
-        //    {
-        //        return await _context.PacketSubmissionErrors
-        //            .AsNoTracking()
-        //            .Skip((pageIndex - 1) * pageSize)
-        //            .Take(pageSize)
-        //            .Select(p => p.ToDto())
-        //            .ToListAsync();
-        //    }
-        //}
-
-        //[HttpGet("Errors/ByVisit/{visitId}", Name = "GetPacketSubmissionErrorsByVisit")]
-        //public async Task<List<PacketSubmissionErrorDto>> GetPacketSubmissionErrorsByVisit(int visitId, int pageSize = 10, int pageIndex = 1)
-        //{
-        //    return await _context.PacketSubmissionErrors
-        //        .Include(e => e.PacketSubmission)
-        //        .Where(e => e.PacketSubmission.VisitId == visitId)
-        //        .AsNoTracking()
-        //        .Skip((pageIndex - 1) * pageSize)
-        //        .Take(pageSize)
-        //        .Select(p => p.ToDto())
-        //        .ToListAsync();
-        //}
-
-        //[HttpGet("Errors/ByAssignee/{assignedTo}", Name = "GetPacketSubmissionErrorsByAssignee")]
-        //public async Task<List<PacketSubmissionErrorDto>> GetPacketSubmissionErrorsByAssignee(string assignedTo, int pageSize = 10, int pageIndex = 1)
-        //{
-        //    return await _context.PacketSubmissionErrors
-        //        .Where(e => e.AssignedTo.ToLower().Trim() == assignedTo.ToLower().Trim())
-        //        .AsNoTracking()
-        //        .Skip((pageIndex - 1) * pageSize)
-        //        .Take(pageSize)
-        //        .Select(p => p.ToDto())
-        //        .ToListAsync();
-        //}
-
-        //[HttpPost("{packetSubmissionId}/Errors", Name = "PostPacketSubmissionError")]
-        //public async Task PostPacketSubmissionError(int packetSubmissionId, PacketSubmissionErrorDto dto)
-        //{
-        //    var packetSubmission = await _context.PacketSubmissions
-        //        .Include(p => p.PacketSubmissionErrors)
-        //        .Where(p => p.Id == packetSubmissionId)
-        //        .FirstOrDefaultAsync();
-
-        //    if (packetSubmission != null)
-        //    {
-        //        var error = dto.Convert();
-
-        //        packetSubmission.PacketSubmissionErrors.Add(error);
-        //        packetSubmission.ErrorCount += 1;
-
-        //        _context.PacketSubmissions.Update(packetSubmission);
-        //        await _context.SaveChangesAsync();
-        //    }
-        //}
-
-        //[HttpPut("{packetSubmissionId}/Errors/{id}", Name = "PutPacketSubmissionError")]
-        //public async Task PutPacketSubmissionError(int packetSubmissionId, int id, PacketSubmissionErrorDto dto)
-        //{
-        //    var packetSubmission = await _context.PacketSubmissions
-        //        .Include(p => p.PacketSubmissionErrors)
-        //        .Where(p => p.Id == packetSubmissionId)
-        //        .FirstOrDefaultAsync();
-
-        //    if (packetSubmission != null)
-        //    {
-        //        var existingError = packetSubmission.PacketSubmissionErrors.Where(e => e.Id == id).FirstOrDefault();
-
-        //        if (existingError != null)
-        //        {
-        //            if (!string.IsNullOrWhiteSpace(dto.Level))
-        //            {
-        //                if (Enum.TryParse(dto.Level, true, out PacketSubmissionErrorLevel level))
-        //                    existingError.Level = level;
-        //            }
-
-        //            existingError.FormKind = dto.FormKind;
-        //            existingError.AssignedTo = dto.AssignedTo;
-        //            existingError.ResolvedBy = dto.ResolvedBy;
-        //            existingError.Message = dto.Message;
-        //            existingError.ModifiedBy = dto.ModifiedBy;
-
-        //            if (dto.IsDeleted)
-        //            {
-        //                existingError.IsDeleted = dto.IsDeleted;
-        //                existingError.DeletedBy = dto.DeletedBy;
-        //                if (packetSubmission.ErrorCount > 1)
-        //                    packetSubmission.ErrorCount -= 1;
-        //            }
-        //        }
-        //    }
-        //}
-
-        //Task<int> IPacketSubmissionClient.PacketSubmissionsErrorsCountByVisit(int visitId)
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 }
-

@@ -47,7 +47,7 @@ namespace UDS.Net.Dto
 
         public int? UnresolvedErrorCount { get; set; }
 
-        public List<PacketSubmissionErrorDto> Errors { get; set; } = new List<PacketSubmissionErrorDto>();
+        public List<PacketSubmissionErrorDto> UnresolvedErrors { get; set; } = new List<PacketSubmissionErrorDto>();
     }
 }
 
