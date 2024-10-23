@@ -66,6 +66,16 @@ namespace UDS.Net.API.Extensions
             }
         }
 
+        public static PacketStatus Convert(this string status)
+        {
+            if (!string.IsNullOrWhiteSpace(status))
+            {
+                if (Enum.TryParse(status, true, out PacketStatus packetStatus))
+                    return packetStatus;
+            }
+            return PacketStatus.Pending;
+        }
+
         public static Visit Convert(this VisitDto dto)
         {
             var visit = new Visit
@@ -84,10 +94,7 @@ namespace UDS.Net.API.Extensions
             };
 
             if (!string.IsNullOrWhiteSpace(dto.Status))
-            {
-                if (Enum.TryParse(dto.Status, true, out PacketStatus status))
-                    visit.Status = status;
-            }
+                visit.Status = dto.Status.Convert();
 
             return visit;
         }
@@ -98,10 +105,7 @@ namespace UDS.Net.API.Extensions
             {
                 // Only some properties are allowed to be updated
                 if (!string.IsNullOrWhiteSpace(dto.Status))
-                {
-                    if (Enum.TryParse(dto.Status, true, out PacketStatus status))
-                        entity.Status = status;
-                }
+                    entity.Status = dto.Status.Convert();
 
                 entity.VISIT_DATE = dto.VISIT_DATE;
                 entity.INITIALS = dto.INITIALS;
@@ -125,6 +129,7 @@ namespace UDS.Net.API.Extensions
                 ModifiedBy = dto.ModifiedBy,
                 IsDeleted = dto.IsDeleted,
                 DeletedBy = dto.DeletedBy,
+                UnresolvedErrorCount = dto.UnresolvedErrorCount,
                 PacketSubmissionErrors = dto.PacketSubmissionErrors.Select(e => e.Convert()).ToList()
             };
         }

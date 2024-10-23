@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace UDS.Net.Dto
@@ -43,6 +44,10 @@ namespace UDS.Net.Dto
         public string RMMODE { get; set; }
 
         public string NOT { get; set; }
+
+        public int? UnresolvedErrorCount { get; set; }
+
+        public List<PacketSubmissionErrorDto> Errors { get; set; } = new List<PacketSubmissionErrorDto>();
     }
 }
 

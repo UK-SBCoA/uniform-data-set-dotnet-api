@@ -9,11 +9,11 @@ namespace UDS.Net.Dto
 
         public DateTime SubmissionDate { get; set; }
 
-        public int ErrorCount { get; set; } = 0;
+        public int? UnresolvedErrorCount { get; set; } // if the results haven't been returned then the error count will be null
 
         public List<PacketSubmissionErrorDto> PacketSubmissionErrors { get; set; } = new List<PacketSubmissionErrorDto>();
 
-        public PacketSubmissionFormsDto Forms { get; set; }
+        public List<FormDto> Forms { get; set; } = new List<FormDto>();
     }
 }
 

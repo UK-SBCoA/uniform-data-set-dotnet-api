@@ -24,6 +24,13 @@ namespace UDS.Net.API.Extensions
                 Status = visit.Status.ToString()
             };
 
+            return dto;
+        }
+
+        public static PacketDto ToPacketDto(this Visit visit)
+        {
+            var dto = (PacketDto)ConvertVisitToDto(visit);
+
             if (visit.PacketSubmissions != null && visit.PacketSubmissions.Count() > 0)
             {
                 dto.PacketSubmissionCount = visit.PacketSubmissions.Count();
@@ -46,6 +53,11 @@ namespace UDS.Net.API.Extensions
 
                     dto.Forms.Add(formDto);
                 }
+            }
+
+            if (visit.PacketSubmissions != null)
+            {
+                // since this 
             }
 
             return dto;
@@ -1637,36 +1649,12 @@ namespace UDS.Net.API.Extensions
 
             if (packetSubmission.PacketSubmissionErrors != null && packetSubmission.PacketSubmissionErrors.Count() > 0)
             {
-                dto.ErrorCount = packetSubmission.PacketSubmissionErrors.Count();
+                dto.UnresolvedErrorCount = packetSubmission.UnresolvedErrorCount;
                 dto.PacketSubmissionErrors = packetSubmission.PacketSubmissionErrors.ToDto();
             }
 
             return dto;
         }
-
-        public static PacketSubmissionDto ToDto(this PacketSubmission packetSubmission, int errorCount)
-        {
-            var dto = new PacketSubmissionDto
-            {
-                Id = packetSubmission.Id,
-                VisitId = packetSubmission.VisitId,
-                SubmissionDate = packetSubmission.SubmissionDate,
-                CreatedAt = packetSubmission.CreatedAt,
-                CreatedBy = packetSubmission.CreatedBy,
-                ModifiedBy = packetSubmission.ModifiedBy,
-                IsDeleted = packetSubmission.IsDeleted,
-                DeletedBy = packetSubmission.DeletedBy,
-                ErrorCount = errorCount
-            };
-
-            if (packetSubmission.PacketSubmissionErrors != null && packetSubmission.PacketSubmissionErrors.Count() > 0)
-            {
-                dto.PacketSubmissionErrors = packetSubmission.PacketSubmissionErrors.ToDto();
-            }
-
-            return dto;
-        }
-
 
         public static List<PacketSubmissionErrorDto> ToDto(this List<PacketSubmissionError> packetSubmissionErrors)
         {

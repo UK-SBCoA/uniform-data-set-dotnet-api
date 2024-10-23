@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System.Collections.Generic;
+using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 using UDS.Net.Dto;
@@ -13,13 +14,14 @@ namespace UDS.Net.API.Client
         {
         }
 
-        public async Task<VisitDto> GetWithPacketSubmissions(int id, int pageSize = 10, int pageIndex = 1)
+        public async Task<List<VisitDto>> GetVisitsAtStatus(string[] statuses, int pageSize = 10, int pageIndex = 1)
         {
-            var response = await GetRequest($"{_BasePath}/{id}/WithPacketSubmissions?pageSize={pageSize}&pageIndex={pageIndex}");
+            throw new System.NotImplementedException();
+        }
 
-            VisitDto? dto = JsonSerializer.Deserialize<VisitDto>(response, options);
-
-            return dto;
+        public async Task<int> GetCountOfVisitsAtStatus(string[] statuses)
+        {
+            throw new System.NotImplementedException();
         }
 
         public async Task<VisitDto> GetWithForm(int id, string formKind)
@@ -37,6 +39,7 @@ namespace UDS.Net.API.Client
 
             var response = await PostRequest($"{_BasePath}/{id}/Forms/{formKind}", json);
         }
+
     }
 }
 

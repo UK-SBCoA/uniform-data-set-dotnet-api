@@ -5,7 +5,7 @@
         IVisitClient VisitClient { get; }
         IParticipationClient ParticipationClient { get; }
         ILookupClient LookupClient { get; }
-        IPacketSubmissionClient PacketSubmissionClient { get; }
+        IPacketClient PacketClient { get; }
     }
 }
 

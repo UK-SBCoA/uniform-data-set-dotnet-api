@@ -2,7 +2,7 @@
 {
     public enum PacketStatus
     {
-        Pending, // no attempts made to finalize or submit
+        Pending, // since last form change, no attempts made to finalize
         Finalized, // finalized entire packet since last form change
         Submitted, // submitted at least once, pending error checks from the latest submission
         FailedErrorChecks, // submitted at least once and failed error checks

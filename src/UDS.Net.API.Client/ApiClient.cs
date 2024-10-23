@@ -27,7 +27,7 @@ namespace UDS.Net.API.Client
                 options.BaseAddress = new Uri(baseAddress);
             });
 
-            services.AddHttpClient<IPacketSubmissionClient, PacketSubmissionClient>(options =>
+            services.AddHttpClient<IPacketClient, PacketClient>(options =>
             {
                 options.BaseAddress = new Uri(baseAddress);
             });
@@ -46,14 +46,14 @@ namespace UDS.Net.API.Client
         public IVisitClient VisitClient { get; }
         public IParticipationClient ParticipationClient { get; }
         public ILookupClient LookupClient { get; }
-        public IPacketSubmissionClient PacketSubmissionClient { get; }
+        public IPacketClient PacketClient { get; }
 
-        public ApiClient(IVisitClient visitClient, IParticipationClient participationClient, ILookupClient lookupClient, IPacketSubmissionClient packetSubmissionClient)
+        public ApiClient(IVisitClient visitClient, IParticipationClient participationClient, ILookupClient lookupClient, IPacketClient packetClient)
         {
             VisitClient = visitClient;
             ParticipationClient = participationClient;
             LookupClient = lookupClient;
-            PacketSubmissionClient = packetSubmissionClient;
+            PacketClient = packetClient;
         }
 
 

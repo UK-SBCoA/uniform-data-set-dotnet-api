@@ -218,6 +218,31 @@ namespace UDS.Net.API.Controllers
             return null;
         }
 
+        private async Task<List<VisitDto>> Get(string[] statuses, int pageSize = 10, int pageIndex = 1)
+        {
+            var dto = new List<VisitDto>();
+            if (statuses == null || statuses.Count() == 0)
+            {
+
+            }
+            else
+            {
+                dto = await _context.Visits
+                    .Include(v => v.PacketSubmissions)
+                        .ThenInclude(p => p.PacketSubmissionErrors)
+                    .AsNoTracking()
+                    .Where(v => EF.Constant(statuses).Contains(v.Status.ToString()))
+                    .Skip((pageIndex - 1) * pageSize)
+                    .Take(pageSize)
+                    .Select(v => v.ToDto())
+                    .ToListAsync();
+
+
+            }
+
+            return dto;
+        }
+
         [HttpGet]
         public async Task<IEnumerable<VisitDto>> Get(int pageSize = 10, int pageIndex = 1)
         {
@@ -235,6 +260,30 @@ namespace UDS.Net.API.Controllers
             return await _context.Visits.CountAsync();
         }
 
+        [HttpGet("ByStatus/{status}")]
+        public async Task<List<VisitDto>> GetVisitsAtStatus(string[] statuses, int pageSize = 10, int pageIndex = 1)
+        {
+            if (statuses == null || statuses.Count() == 0)
+                return new List<VisitDto>();
+
+            var dto = new List<VisitDto>();
+
+            return dto;
+        }
+
+        [HttpGet("Count/ByStatus/{status}")]
+        public async Task<int> GetCountOfVisitsAtStatus(string[] statuses)
+        {
+            if (statuses == null || statuses.Count() == 0)
+                return 0;
+
+            return await _context.Visits
+                .Where(v => statuses.Contains(v.Status.ToString()))
+                .CountAsync();
+        }
+
+
+
         [HttpGet("{id}")]
         public async Task<VisitDto> Get(int id)
         {
@@ -244,38 +293,34 @@ namespace UDS.Net.API.Controllers
                 .Select(v => v.ToDto())
                 .FirstOrDefaultAsync();
 
-            dto.PacketSubmissionCount = await _context.PacketSubmissions
-                .Where(p => p.VisitId == id)
-                .CountAsync();
-
             return dto;
         }
 
-        [HttpGet("{id}/WithPacketSubmissions", Name = "GetWithPacketSubmissions")]
-        public async Task<VisitDto> GetWithPacketSubmissions(int id, int pageSize = 10, int pageIndex = 1)
-        {
-            var dto = await _context.Visits
-                .Include(v => v.FormStatuses)
-                .AsNoTracking()
-                .Where(v => v.Id == id)
-                .Select(v => v.ToDto())
-                .FirstOrDefaultAsync();
+        //[HttpGet("{id}/WithPacketSubmissions", Name = "GetWithPacketSubmissions")]
+        //public async Task<VisitDto> GetWithPacketSubmissions(int id, int pageSize = 10, int pageIndex = 1)
+        //{
+        //    var dto = await _context.Visits
+        //        .Include(v => v.FormStatuses)
+        //        .AsNoTracking()
+        //        .Where(v => v.Id == id)
+        //        .Select(v => v.ToDto())
+        //        .FirstOrDefaultAsync();
 
-            var packetSubmissions = await _context.PacketSubmissions
-                .Include(p => p.PacketSubmissionErrors)
-                .AsNoTracking()
-                .Skip((pageIndex - 1) * pageSize)
-                .Take(pageSize)
-                .Select(v => v.ToDto())
-                .ToListAsync();
+        //    var packetSubmissions = await _context.PacketSubmissions
+        //        .Include(p => p.PacketSubmissionErrors)
+        //        .AsNoTracking()
+        //        .Skip((pageIndex - 1) * pageSize)
+        //        .Take(pageSize)
+        //        .Select(v => v.ToDto())
+        //        .ToListAsync();
 
-            dto.PacketSubmissions = packetSubmissions;
-            dto.PacketSubmissionCount = await _context.PacketSubmissions
-                .Where(p => p.VisitId == id)
-                .CountAsync();
+        //    dto.PacketSubmissions = packetSubmissions;
+        //    dto.PacketSubmissionCount = await _context.PacketSubmissions
+        //        .Where(p => p.VisitId == id)
+        //        .CountAsync();
 
-            return dto;
-        }
+        //    return dto;
+        //}
 
         [HttpGet("{id}/Forms/{formKind}", Name = "GetWithForm")]
         public async Task<VisitDto> GetWithForm(int id, string formKind)
