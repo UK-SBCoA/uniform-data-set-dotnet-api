@@ -24,7 +24,7 @@ namespace UDS.Net.API.Client
 
                 if (!string.IsNullOrWhiteSpace(stringStatuses))
                 {
-                    var response = await GetRequest($"{_BasePath}/ByStatus/{stringStatuses}?pageSize={pageSize}&pageIndex={pageIndex}");
+                    var response = await GetRequest($"{_BasePath}/ByStatus?statuses={stringStatuses}&pageSize={pageSize}&pageIndex={pageIndex}");
 
                     dto = JsonSerializer.Deserialize<List<VisitDto>>(response, options);
                 }
@@ -42,7 +42,7 @@ namespace UDS.Net.API.Client
                 if (string.IsNullOrWhiteSpace(stringStatuses))
                     return 0;
 
-                var response = await GetRequest($"{_BasePath}/Count/ByStatus/{stringStatuses}");
+                var response = await GetRequest($"{_BasePath}/Count/ByStatus?statuses={stringStatuses}");
 
                 return JsonSerializer.Deserialize<int>(response, options);
             }

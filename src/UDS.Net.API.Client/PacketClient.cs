@@ -34,13 +34,13 @@ namespace UDS.Net.API.Client
 
                 if (string.IsNullOrWhiteSpace(assignedTo))
                 {
-                    var response = await GetRequest($"{_BasePath}/Count/ByStatus/{stringStatuses}");
+                    var response = await GetRequest($"{_BasePath}/Count/ByStatus?statuses={stringStatuses}");
 
                     return JsonSerializer.Deserialize<int>(response, options);
                 }
                 else
                 {
-                    var response = await GetRequest($"{_BasePath}/Count/ByStatus/{stringStatuses}?assignedTo={assignedTo}");
+                    var response = await GetRequest($"{_BasePath}/Count/ByStatus?statuses={stringStatuses}&assignedTo={assignedTo}");
 
                     return JsonSerializer.Deserialize<int>(response, options);
                 }
@@ -61,13 +61,13 @@ namespace UDS.Net.API.Client
                 {
                     if (string.IsNullOrWhiteSpace(assignedTo))
                     {
-                        var response = await GetRequest($"{_BasePath}/ByStatus/{stringStatuses}?pageSize={pageSize}&pageIndex={pageIndex}");
+                        var response = await GetRequest($"{_BasePath}/ByStatus?statuses={stringStatuses}&pageSize={pageSize}&pageIndex={pageIndex}");
 
                         dto = JsonSerializer.Deserialize<List<PacketDto>>(response, options);
                     }
                     else
                     {
-                        var response = await GetRequest($"{_BasePath}/ByStatus/{stringStatuses}?assignedTo={assignedTo}&pageSize={pageSize}&pageIndex={pageIndex}");
+                        var response = await GetRequest($"{_BasePath}/ByStatus?statuses={stringStatuses}&assignedTo={assignedTo}&pageSize={pageSize}&pageIndex={pageIndex}");
 
                         dto = JsonSerializer.Deserialize<List<PacketDto>>(response, options);
                     }
