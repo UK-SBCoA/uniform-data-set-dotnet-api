@@ -16,12 +16,37 @@ namespace UDS.Net.API.Client
 
         public async Task<List<VisitDto>> GetVisitsAtStatus(string[] statuses, int pageSize = 10, int pageIndex = 1)
         {
-            throw new System.NotImplementedException();
+            List<VisitDto> dto = new List<VisitDto>();
+
+            if (statuses != null)
+            {
+                var stringStatuses = string.Join(",", statuses);
+
+                if (!string.IsNullOrWhiteSpace(stringStatuses))
+                {
+                    var response = await GetRequest($"{_BasePath}/ByStatus/{stringStatuses}?pageSize={pageSize}&pageIndex={pageIndex}");
+
+                    dto = JsonSerializer.Deserialize<List<VisitDto>>(response, options);
+                }
+            }
+
+            return dto;
         }
 
         public async Task<int> GetCountOfVisitsAtStatus(string[] statuses)
         {
-            throw new System.NotImplementedException();
+            if (statuses != null)
+            {
+                var stringStatuses = string.Join(",", statuses);
+
+                if (string.IsNullOrWhiteSpace(stringStatuses))
+                    return 0;
+
+                var response = await GetRequest($"{_BasePath}/Count/ByStatus/{stringStatuses}");
+
+                return JsonSerializer.Deserialize<int>(response, options);
+            }
+            return 0;
         }
 
         public async Task<VisitDto> GetWithForm(int id, string formKind)

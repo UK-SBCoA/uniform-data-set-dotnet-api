@@ -25,18 +25,54 @@ namespace UDS.Net.API.Client
 
         public async Task<int> CountByStatusAndAssignee(string[] statuses, string assignedTo)
         {
-            var response = await GetRequest($"{_BasePath}/Count/ByStatus/{statuses}");
+            if (statuses != null)
+            {
+                var stringStatuses = string.Join(",", statuses);
 
-            int count = JsonSerializer.Deserialize<int>(response, options);
+                if (string.IsNullOrWhiteSpace(stringStatuses))
+                    return 0;
 
-            return count;
+                if (string.IsNullOrWhiteSpace(assignedTo))
+                {
+                    var response = await GetRequest($"{_BasePath}/Count/ByStatus/{stringStatuses}");
+
+                    return JsonSerializer.Deserialize<int>(response, options);
+                }
+                else
+                {
+                    var response = await GetRequest($"{_BasePath}/Count/ByStatus/{stringStatuses}?assignedTo={assignedTo}");
+
+                    return JsonSerializer.Deserialize<int>(response, options);
+                }
+            }
+            return 0;
         }
 
         public async Task<List<PacketDto>> GetPacketsByStatusAndAssignee(string[] statuses, string assignedTo, int pageSize = 10, int pageIndex = 1)
         {
-            var response = await GetRequest($"{_BasePath}/ByStatus/{statuses}?pageSize={pageSize}&pageIndex={pageIndex}");
+            List<PacketDto> dto = new List<PacketDto>();
 
-            List<PacketDto> dto = JsonSerializer.Deserialize<List<PacketDto>>(response, options);
+
+            if (statuses != null)
+            {
+                var stringStatuses = string.Join(",", statuses);
+
+                if (!string.IsNullOrWhiteSpace(stringStatuses))
+                {
+                    if (string.IsNullOrWhiteSpace(assignedTo))
+                    {
+                        var response = await GetRequest($"{_BasePath}/ByStatus/{stringStatuses}?pageSize={pageSize}&pageIndex={pageIndex}");
+
+                        dto = JsonSerializer.Deserialize<List<PacketDto>>(response, options);
+                    }
+                    else
+                    {
+                        var response = await GetRequest($"{_BasePath}/ByStatus/{stringStatuses}?assignedTo={assignedTo}&pageSize={pageSize}&pageIndex={pageIndex}");
+
+                        dto = JsonSerializer.Deserialize<List<PacketDto>>(response, options);
+                    }
+                }
+            }
 
             return dto;
         }
