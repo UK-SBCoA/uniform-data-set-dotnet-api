@@ -66,6 +66,21 @@ namespace UDS.Net.API.Extensions
             }
         }
 
+        public static List<PacketStatus> Convert(this string[] statuses)
+        {
+            List<PacketStatus> packetStatuses = new List<PacketStatus>();
+
+            if (statuses != null && statuses.Count() > 0)
+            {
+                foreach (var status in statuses)
+                {
+                    packetStatuses.Add(status.Convert());
+                }
+            }
+
+            return packetStatuses;
+        }
+
         public static PacketStatus Convert(this string status)
         {
             if (!string.IsNullOrWhiteSpace(status))

@@ -22,6 +22,8 @@ namespace UDS.Net.Dto
         public List<FormDto> Forms { get; set; } = new List<FormDto>();
 
         public int? TotalUnresolvedErrorCount { get; set; }
+
+        public List<PacketSubmissionErrorDto> UnresolvedErrors { get; set; } = new List<PacketSubmissionErrorDto>();
     }
 }
 

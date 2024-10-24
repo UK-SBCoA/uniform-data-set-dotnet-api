@@ -9,7 +9,7 @@ using UDS.Net.Dto;
 namespace UDS.Net.API.Controllers
 {
     /// <summary>
-    /// A packet is a visit that is not pending (finalized or after)
+    /// A packet is a visit that is ready to be submitted or has been submitted at least once
     /// </summary>
     [Route("api/[controller]")]
     public class PacketsController : Controller, IPacketClient
@@ -25,12 +25,11 @@ namespace UDS.Net.API.Controllers
         public async Task<int> Count()
         {
             return await _context.Visits
-                .Where(v => v.Status != PacketStatus.Pending)
                 .CountAsync();
         }
 
         /// <summary>
-        /// Returns visits that are finalized or after
+        /// Returns visits as packets
         /// </summary>
         /// <param name="pageSize"></param>
         /// <param name="pageIndex"></param>
@@ -42,7 +41,6 @@ namespace UDS.Net.API.Controllers
                 .Include(v => v.PacketSubmissions)
                     .ThenInclude(p => p.PacketSubmissionErrors)
                 .AsNoTracking()
-                .Where(v => v.Status != PacketStatus.Pending)
                 .Skip((pageIndex - 1) * pageSize)
                 .Take(pageSize)
                 .Select(p => p.ToPacketDto())
@@ -168,22 +166,44 @@ namespace UDS.Net.API.Controllers
                         if (submissionDto.Id == 0)
                         {
                             // new submission needs to be created
+                            var newSubmission = submissionDto.Convert();
+                            existingPacket.PacketSubmissions.Add(newSubmission);
                         }
                         else
                         {
                             // existing submission needs to be updated and could affect visit status
-
-
-                            // iterate errors
-                            foreach (var errorDto in submissionDto.PacketSubmissionErrors)
+                            var existingSubmission = existingPacket.PacketSubmissions.Where(p => p.Id == submissionDto.Id).FirstOrDefault();
+                            if (existingSubmission != null)
                             {
-                                if (errorDto.Id == 0)
+                                existingSubmission.ErrorCount = submissionDto.ErrorCount;
+                                existingSubmission.ModifiedBy = submissionDto.ModifiedBy;
+                                existingSubmission.IsDeleted = submissionDto.IsDeleted;
+                                existingSubmission.DeletedBy = submissionDto.DeletedBy;
+
+                                // iterate errors
+                                foreach (var errorDto in submissionDto.PacketSubmissionErrors)
                                 {
-                                    // new error needs to be created and could affect
-                                }
-                                else
-                                {
-                                    // existing error needs to be updated
+                                    if (errorDto.Id == 0)
+                                    {
+                                        // new error needs to be created and could affect
+                                        var newError = errorDto.Convert();
+                                        existingSubmission.PacketSubmissionErrors.Add(newError);
+                                    }
+                                    else
+                                    {
+                                        // existing error needs to be updated
+                                        var existingError = existingSubmission.PacketSubmissionErrors.Where(e => e.Id == errorDto.Id).FirstOrDefault();
+                                        if (existingError != null)
+                                        {
+                                            existingError.AssignedTo = errorDto.AssignedTo;
+                                            existingError.ResolvedBy = errorDto.ResolvedBy;
+                                            existingError.FormKind = errorDto.FormKind;
+                                            existingError.Message = errorDto.Message;
+                                            existingError.ModifiedBy = errorDto.ModifiedBy;
+                                            existingError.IsDeleted = errorDto.IsDeleted;
+                                            existingError.DeletedBy = errorDto.DeletedBy;
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -201,77 +221,87 @@ namespace UDS.Net.API.Controllers
             throw new NotImplementedException();
         }
 
-        [HttpGet("Count/ByStatus/{status}", Name = "PacketsCountByStatusAndAssignee")]
-        public async Task<int> CountByStatusAndAssignee(string[] statuses, string assignedTo)
+        [HttpGet("Count/ByStatus", Name = "PacketsCountByStatusAndAssignee")]
+        public async Task<int> CountByStatusAndAssignee([FromQuery] string[] statuses, string assignedTo)
         {
-            if (string.IsNullOrWhiteSpace(assignedTo))
-            {
-                return await _context.Visits
-                    .Where(v => EF.Constant(statuses).Contains(v.Status.ToString()))
-                    .CountAsync();
-            }
-            else
-            {
-                var visitsAtStatus = await _context.Visits
-                    .Include(v => v.PacketSubmissions)
-                        .ThenInclude(p => p.PacketSubmissionErrors)
-                    .Where(v => EF.Constant(statuses).Contains(v.Status.ToString()))
-                    .ToListAsync();
+            var enumStatuses = statuses.Convert();
 
-                int count = 0;
-
-                foreach (var visit in visitsAtStatus)
+            if (enumStatuses != null && enumStatuses.Count() > 0)
+            {
+                if (string.IsNullOrWhiteSpace(assignedTo))
                 {
-                    bool assigneeAssignedToThisVisit = false;
-                    foreach (var submission in visit.PacketSubmissions)
-                    {
-                        if (submission.PacketSubmissionErrors.Any(p => String.IsNullOrWhiteSpace(p.ResolvedBy) == true && p.AssignedTo == assignedTo))
-                            assigneeAssignedToThisVisit = true;
-                    }
-                    if (assigneeAssignedToThisVisit)
-                        count++;
+                    return await _context.Visits
+                        .Where(v => enumStatuses.Contains(v.Status))
+                        .CountAsync();
                 }
+                else
+                {
+                    var visitsAtStatus = await _context.Visits
+                        .Include(v => v.PacketSubmissions)
+                            .ThenInclude(p => p.PacketSubmissionErrors)
+                        .Where(v => enumStatuses.Contains(v.Status))
+                        .ToListAsync();
 
-                return count;
+                    int count = 0;
+
+                    foreach (var visit in visitsAtStatus)
+                    {
+                        bool assigneeAssignedToThisVisit = false;
+                        foreach (var submission in visit.PacketSubmissions)
+                        {
+                            if (submission.PacketSubmissionErrors.Any(p => String.IsNullOrWhiteSpace(p.ResolvedBy) == true && p.AssignedTo == assignedTo))
+                                assigneeAssignedToThisVisit = true;
+                        }
+                        if (assigneeAssignedToThisVisit)
+                            count++;
+                    }
+
+                    return count;
+                }
             }
+            return 0;
         }
 
-        [HttpGet("ByStatus/{status}", Name = "GetPacketsByStatusAndAssignee")]
-        public async Task<List<PacketDto>> GetPacketsByStatusAndAssignee(string[] statuses, string assignedTo, int pageSize = 10, int pageIndex = 1)
+        [HttpGet("ByStatus", Name = "GetPacketsByStatusAndAssignee")]
+        public async Task<List<PacketDto>> GetPacketsByStatusAndAssignee([FromQuery] string[] statuses, string assignedTo, int pageSize = 10, int pageIndex = 1)
         {
             var dto = new List<PacketDto>();
-            if (string.IsNullOrWhiteSpace(assignedTo))
+            var enumStatuses = statuses.Convert();
+            if (enumStatuses != null && enumStatuses.Count() > 0)
             {
-                dto = await _context.Visits
-                    .Include(v => v.PacketSubmissions)
-                        .ThenInclude(p => p.PacketSubmissionErrors)
-                    .Where(v => EF.Constant(statuses).Contains(v.Status.ToString()))
-                    .AsNoTracking()
-                    .Skip((pageIndex - 1) * pageSize)
-                    .Take(pageSize)
-                    .Select(p => p.ToPacketDto())
-                    .ToListAsync();
-            }
-            else
-            {
-                var visitsAtStatus = await _context.Visits
-                    .Include(v => v.PacketSubmissions)
-                        .ThenInclude(p => p.PacketSubmissionErrors)
-                    .Where(v => EF.Constant(statuses).Contains(v.Status.ToString()))
-                    .ToListAsync();
-
-                foreach (var visit in visitsAtStatus)
+                if (string.IsNullOrWhiteSpace(assignedTo))
                 {
-                    bool assigneeAssignedToThisVisit = false;
-                    foreach (var submission in visit.PacketSubmissions)
-                    {
-                        if (submission.PacketSubmissionErrors.Any(p => String.IsNullOrWhiteSpace(p.ResolvedBy) == true && p.AssignedTo == assignedTo))
-                            assigneeAssignedToThisVisit = true;
-                    }
+                    dto = await _context.Visits
+                        .Include(v => v.PacketSubmissions)
+                            .ThenInclude(p => p.PacketSubmissionErrors)
+                        .Where(v => enumStatuses.Contains(v.Status))
+                        .AsNoTracking()
+                        .Skip((pageIndex - 1) * pageSize)
+                        .Take(pageSize)
+                        .Select(p => p.ToPacketDto())
+                        .ToListAsync();
+                }
+                else
+                {
+                    var visitsAtStatus = await _context.Visits
+                        .Include(v => v.PacketSubmissions)
+                            .ThenInclude(p => p.PacketSubmissionErrors)
+                        .Where(v => enumStatuses.Contains(v.Status))
+                        .ToListAsync();
 
-                    if (assigneeAssignedToThisVisit)
+                    foreach (var visit in visitsAtStatus)
                     {
-                        dto.Add(visit.ToPacketDto());
+                        bool assigneeAssignedToThisVisit = false;
+                        foreach (var submission in visit.PacketSubmissions)
+                        {
+                            if (submission.PacketSubmissionErrors.Any(p => String.IsNullOrWhiteSpace(p.ResolvedBy) == true && p.AssignedTo == assignedTo))
+                                assigneeAssignedToThisVisit = true;
+                        }
+
+                        if (assigneeAssignedToThisVisit)
+                        {
+                            dto.Add(visit.ToPacketDto());
+                        }
                     }
                 }
             }

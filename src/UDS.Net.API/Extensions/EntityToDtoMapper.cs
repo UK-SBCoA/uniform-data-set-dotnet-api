@@ -7,7 +7,27 @@ namespace UDS.Net.API.Extensions
     {
         private static VisitDto ConvertVisitToDto(Visit visit)
         {
-            var dto = new VisitDto()
+            return new VisitDto()
+            {
+                Id = visit.Id,
+                ParticipationId = visit.ParticipationId,
+                CreatedAt = visit.CreatedAt,
+                CreatedBy = visit.CreatedBy,
+                ModifiedBy = visit.ModifiedBy,
+                DeletedBy = visit.DeletedBy,
+                IsDeleted = visit.IsDeleted,
+                VISITNUM = visit.VISITNUM,
+                PACKET = visit.PACKET,
+                FORMVER = visit.FORMVER,
+                VISIT_DATE = visit.VISIT_DATE,
+                INITIALS = visit.INITIALS,
+                Status = visit.Status.ToString()
+            };
+        }
+
+        public static PacketDto ToPacketDto(this Visit visit)
+        {
+            PacketDto dto = new PacketDto()
             {
                 Id = visit.Id,
                 ParticipationId = visit.ParticipationId,
@@ -24,17 +44,17 @@ namespace UDS.Net.API.Extensions
                 Status = visit.Status.ToString()
             };
 
-            return dto;
-        }
-
-        public static PacketDto ToPacketDto(this Visit visit)
-        {
-            var dto = (PacketDto)ConvertVisitToDto(visit);
-
             if (visit.PacketSubmissions != null && visit.PacketSubmissions.Count() > 0)
             {
                 dto.PacketSubmissionCount = visit.PacketSubmissions.Count();
                 dto.PacketSubmissions = visit.PacketSubmissions.ToDto();
+                int? unresolvedErrorsCount = null;
+                foreach (var submission in dto.PacketSubmissions)
+                {
+                    int? unresolvedCountPerSubmission = submission.PacketSubmissionErrors.Where(e => String.IsNullOrWhiteSpace(e.ResolvedBy)).Count();
+                    unresolvedErrorsCount += unresolvedCountPerSubmission;
+                }
+                dto.TotalUnresolvedErrorCount = unresolvedErrorsCount;
             }
 
             return dto;
@@ -57,7 +77,33 @@ namespace UDS.Net.API.Extensions
 
             if (visit.PacketSubmissions != null)
             {
-                // since this 
+                int? unresolvedErrorsCount = null;
+                var unresolvedErrors = new List<PacketSubmissionErrorDto>();
+                foreach (var submission in visit.PacketSubmissions)
+                {
+                    if (submission != null && submission.ErrorCount.HasValue && submission.PacketSubmissionErrors != null)
+                    {
+                        foreach (var error in submission.PacketSubmissionErrors)
+                        {
+                            if (error != null && String.IsNullOrWhiteSpace(error.ResolvedBy))
+                            {
+                                unresolvedErrorsCount += 1;
+                                unresolvedErrors.Add(error.ToDto());
+                                if (dto.Forms != null)
+                                {
+                                    // if there are forms, also update the number of unresolved errors and errors list per form
+                                    var formDto = dto.Forms.Where(f => f.Kind == error.FormKind).FirstOrDefault();
+                                    if (formDto != null)
+                                    {
+                                        formDto.UnresolvedErrorCount += 1;
+                                        formDto.UnresolvedErrors.Add(error.ToDto());
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                dto.TotalUnresolvedErrorCount = unresolvedErrorsCount;
             }
 
             return dto;
