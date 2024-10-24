@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using UDS.Net.API.Client;
 using UDS.Net.API.Data;
@@ -31,6 +27,8 @@ namespace UDS.Net.API.Controllers
             {
                 var visit = await _context.Visits
                     .Include(v => v.FormStatuses)
+                    .Include(v => v.PacketSubmissions)
+                        .ThenInclude(p => p.PacketSubmissionErrors)
                     .Where(v => v.Id == id)
                     .FirstOrDefaultAsync();
 
@@ -222,15 +220,45 @@ namespace UDS.Net.API.Controllers
             return null;
         }
 
-        [HttpGet]
-        public async Task<IEnumerable<VisitDto>> Get(int pageSize = 10, int pageIndex = 1)
+        private async Task<List<VisitDto>> Get(string[] statuses, int pageSize = 10, int pageIndex = 1)
         {
-            return await _context.Visits
+            var dto = new List<VisitDto>();
+            if (statuses == null || statuses.Count() == 0)
+            {
+                dto = await _context.Visits
+                    .Include(v => v.PacketSubmissions)
+                        .ThenInclude(p => p.PacketSubmissionErrors)
+                    .AsNoTracking()
+                    .Skip((pageIndex - 1) * pageSize)
+                    .Take(pageSize)
+                    .Select(v => v.ToDto())
+                    .ToListAsync();
+            }
+            else
+            {
+                var enumStatuses = statuses.Convert();
+
+                if (enumStatuses != null && enumStatuses.Count() > 0)
+                {
+                    dto = await _context.Visits
+                        .Include(v => v.PacketSubmissions)
+                            .ThenInclude(p => p.PacketSubmissionErrors)
                         .AsNoTracking()
+                        .Where(v => enumStatuses.Contains(v.Status))
                         .Skip((pageIndex - 1) * pageSize)
                         .Take(pageSize)
                         .Select(v => v.ToDto())
                         .ToListAsync();
+                }
+            }
+
+            return dto;
+        }
+
+        [HttpGet]
+        public async Task<IEnumerable<VisitDto>> Get(int pageSize = 10, int pageIndex = 1)
+        {
+            return await Get(null, pageSize, pageIndex);
         }
 
         [HttpGet("Count", Name = "VisitsCount")]
@@ -239,11 +267,37 @@ namespace UDS.Net.API.Controllers
             return await _context.Visits.CountAsync();
         }
 
+        [HttpGet("ByStatus")]
+        public async Task<List<VisitDto>> GetVisitsAtStatus([FromQuery] string[] statuses, int pageSize = 10, int pageIndex = 1)
+        {
+            return await Get(statuses, pageSize, pageIndex);
+        }
+
+        [HttpGet("Count/ByStatus")]
+        public async Task<int> GetCountOfVisitsAtStatus([FromQuery] string[] statuses)
+        {
+            if (statuses == null || statuses.Count() == 0)
+                return 0;
+
+            var enumStatuses = statuses.Convert();
+
+            if (enumStatuses != null && enumStatuses.Count() > 0)
+            {
+                return await _context.Visits
+                    .Where(v => enumStatuses.Contains(v.Status))
+                    .CountAsync();
+            }
+
+            return 0;
+        }
+
         [HttpGet("{id}")]
         public async Task<VisitDto> Get(int id)
         {
             var dto = await _context.Visits
                 .Include(v => v.FormStatuses)
+                .Include(v => v.PacketSubmissions)
+                    .ThenInclude(p => p.PacketSubmissionErrors)
                 .Where(v => v.Id == id)
                 .Select(v => v.ToDto())
                 .FirstOrDefaultAsync();

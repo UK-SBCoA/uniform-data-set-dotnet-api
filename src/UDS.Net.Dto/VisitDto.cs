@@ -17,7 +17,13 @@ namespace UDS.Net.Dto
 
         public string INITIALS { get; set; } = "";
 
-        public List<FormDto> Forms { get; set; }
+        public string Status { get; set; }
+
+        public List<FormDto> Forms { get; set; } = new List<FormDto>();
+
+        public int? TotalUnresolvedErrorCount { get; set; }
+
+        public List<PacketSubmissionErrorDto> UnresolvedErrors { get; set; } = new List<PacketSubmissionErrorDto>();
     }
 }
 
