@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -18,16 +19,18 @@ namespace UDS.Net.API.Client
         {
             List<VisitDto> dto = new List<VisitDto>();
 
-            if (statuses != null)
+            if (statuses != null && statuses.Length > 0)
             {
-                var stringStatuses = string.Join(",", statuses);
+                NameValueCollection query = System.Web.HttpUtility.ParseQueryString(string.Empty);
 
-                if (!string.IsNullOrWhiteSpace(stringStatuses))
+                foreach (var status in statuses)
                 {
-                    var response = await GetRequest($"{_BasePath}/ByStatus?statuses={stringStatuses}&pageSize={pageSize}&pageIndex={pageIndex}");
-
-                    dto = JsonSerializer.Deserialize<List<VisitDto>>(response, options);
+                    query.Add("statuses", status);
                 }
+
+                var response = await GetRequest($"{_BasePath}/ByStatus?{query.ToString()}&pageSize={pageSize}&pageIndex={pageIndex}");
+
+                dto = JsonSerializer.Deserialize<List<VisitDto>>(response, options);
             }
 
             return dto;
@@ -35,14 +38,16 @@ namespace UDS.Net.API.Client
 
         public async Task<int> GetCountOfVisitsAtStatus(string[] statuses)
         {
-            if (statuses != null)
+            if (statuses != null && statuses.Length > 0)
             {
-                var stringStatuses = string.Join(",", statuses);
+                NameValueCollection query = System.Web.HttpUtility.ParseQueryString(string.Empty);
 
-                if (string.IsNullOrWhiteSpace(stringStatuses))
-                    return 0;
+                foreach (var status in statuses)
+                {
+                    query.Add("statuses", status);
+                }
 
-                var response = await GetRequest($"{_BasePath}/Count/ByStatus?statuses={stringStatuses}");
+                var response = await GetRequest($"{_BasePath}/Count/ByStatus?{query.ToString()}");
 
                 return JsonSerializer.Deserialize<int>(response, options);
             }

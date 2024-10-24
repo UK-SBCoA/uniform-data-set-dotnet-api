@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -25,22 +26,24 @@ namespace UDS.Net.API.Client
 
         public async Task<int> CountByStatusAndAssignee(string[] statuses, string assignedTo)
         {
-            if (statuses != null)
+            if (statuses != null && statuses.Length > 0)
             {
-                var stringStatuses = string.Join(",", statuses);
+                NameValueCollection query = System.Web.HttpUtility.ParseQueryString(string.Empty);
 
-                if (string.IsNullOrWhiteSpace(stringStatuses))
-                    return 0;
+                foreach (var status in statuses)
+                {
+                    query.Add("statuses", status);
+                }
 
                 if (string.IsNullOrWhiteSpace(assignedTo))
                 {
-                    var response = await GetRequest($"{_BasePath}/Count/ByStatus?statuses={stringStatuses}");
+                    var response = await GetRequest($"{_BasePath}/Count/ByStatus?{query.ToString()}");
 
                     return JsonSerializer.Deserialize<int>(response, options);
                 }
                 else
                 {
-                    var response = await GetRequest($"{_BasePath}/Count/ByStatus?statuses={stringStatuses}&assignedTo={assignedTo}");
+                    var response = await GetRequest($"{_BasePath}/Count/ByStatus?{query.ToString()}&assignedTo={assignedTo}");
 
                     return JsonSerializer.Deserialize<int>(response, options);
                 }
@@ -52,25 +55,26 @@ namespace UDS.Net.API.Client
         {
             List<PacketDto> dto = new List<PacketDto>();
 
-
-            if (statuses != null)
+            if (statuses != null && statuses.Length > 0)
             {
-                var stringStatuses = string.Join(",", statuses);
+                NameValueCollection query = System.Web.HttpUtility.ParseQueryString(string.Empty);
 
-                if (!string.IsNullOrWhiteSpace(stringStatuses))
+                foreach (var status in statuses)
                 {
-                    if (string.IsNullOrWhiteSpace(assignedTo))
-                    {
-                        var response = await GetRequest($"{_BasePath}/ByStatus?statuses={stringStatuses}&pageSize={pageSize}&pageIndex={pageIndex}");
+                    query.Add("statuses", status);
+                }
 
-                        dto = JsonSerializer.Deserialize<List<PacketDto>>(response, options);
-                    }
-                    else
-                    {
-                        var response = await GetRequest($"{_BasePath}/ByStatus?statuses={stringStatuses}&assignedTo={assignedTo}&pageSize={pageSize}&pageIndex={pageIndex}");
+                if (string.IsNullOrWhiteSpace(assignedTo))
+                {
+                    var response = await GetRequest($"{_BasePath}/ByStatus?{query.ToString()}&pageSize={pageSize}&pageIndex={pageIndex}");
 
-                        dto = JsonSerializer.Deserialize<List<PacketDto>>(response, options);
-                    }
+                    dto = JsonSerializer.Deserialize<List<PacketDto>>(response, options);
+                }
+                else
+                {
+                    var response = await GetRequest($"{_BasePath}/ByStatus?{query.ToString()}&assignedTo={assignedTo}&pageSize={pageSize}&pageIndex={pageIndex}");
+
+                    dto = JsonSerializer.Deserialize<List<PacketDto>>(response, options);
                 }
             }
 
