@@ -12,7 +12,7 @@ using UDS.Net.API.Data;
 namespace UDS.Net.API.Data.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    [Migration("20241024113252_SupportPacketSubmission")]
+    [Migration("20241028135707_SupportPacketSubmission")]
     partial class SupportPacketSubmission
     {
         /// <inheritdoc />
@@ -5409,7 +5409,6 @@ namespace UDS.Net.API.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("AssignedTo")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")
@@ -5423,7 +5422,6 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FormKind")
-                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
@@ -5445,7 +5443,6 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ResolvedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

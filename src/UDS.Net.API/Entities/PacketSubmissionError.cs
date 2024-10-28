@@ -11,18 +11,18 @@ namespace UDS.Net.API.Entities
         public int Id { get; set; }
 
         [MaxLength(10)]
-        public string FormKind { get; set; }
+        public string? FormKind { get; set; } // it might be possible for an error to be at the visit and not a specific form
 
         [MaxLength(500)]
-        public string Message { get; set; }
+        public required string Message { get; set; }
 
-        public string AssignedTo { get; set; }
+        public string? AssignedTo { get; set; }
 
         public PacketSubmissionErrorLevel Level { get; set; }
 
-        public string ResolvedBy { get; set; }
+        public string? ResolvedBy { get; set; }
 
-        public PacketSubmission PacketSubmission { get; set; }
+        public PacketSubmission PacketSubmission { get; set; } = default!;
 
         public int PacketSubmissionId { get; set; }
     }

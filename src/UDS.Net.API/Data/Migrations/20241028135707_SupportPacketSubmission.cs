@@ -50,11 +50,11 @@ namespace UDS.Net.API.Data.Migrations
                 {
                     PacketSubmissionErrorId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FormKind = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    FormKind = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),
                     Message = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    AssignedTo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AssignedTo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Level = table.Column<int>(type: "int", nullable: false),
-                    ResolvedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ResolvedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PacketSubmissionId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
