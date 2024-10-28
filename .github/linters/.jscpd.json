@@ -6,8 +6,7 @@
     "ignore": [
       "**/__snapshots__/**",
       "**/Properties/**",
-      "**/UDS.Net.API/Data/**",
-      "**/.github/**"
+      "**/UDS.Net.API/Data/**"
     ],
     "absolute": true
   }
