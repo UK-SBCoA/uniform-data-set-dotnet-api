@@ -137,7 +137,7 @@ namespace UDS.Net.API.Extensions
             return new PacketSubmission
             {
                 Id = dto.Id,
-                VisitId = dto.VisitId,
+                VisitId = dto.PacketId, //  VisitId == PacketId
                 SubmissionDate = dto.SubmissionDate,
                 CreatedAt = dto.CreatedAt,
                 CreatedBy = dto.CreatedBy,

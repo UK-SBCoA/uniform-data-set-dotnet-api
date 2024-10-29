@@ -5,7 +5,7 @@ namespace UDS.Net.Dto
 {
     public class PacketSubmissionDto : BaseDto
     {
-        public int VisitId { get; set; }
+        public int PacketId { get; set; }
 
         public DateTime SubmissionDate { get; set; }
 
