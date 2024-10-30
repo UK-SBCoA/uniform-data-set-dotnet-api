@@ -1148,6 +1148,7 @@ namespace UDS.Net.API.Extensions
                 entity.MOCAVIS = dto.MOCAVIS;
                 entity.MOCAHEAR = dto.MOCAHEAR;
                 entity.MOCATOTS = dto.MOCATOTS;
+                entity.MOCBTOTS = dto.MOCBTOTS;
                 entity.MOCATRAI = dto.MOCATRAI;
                 entity.MOCACUBE = dto.MOCACUBE;
                 entity.MOCACLOC = dto.MOCACLOC;
@@ -1224,6 +1225,8 @@ namespace UDS.Net.API.Extensions
                 entity.REYMETHOD = dto.REYMETHOD;
                 entity.REYTCOR = dto.REYTCOR;
                 entity.REYFPOS = dto.REYFPOS;
+                entity.VNTTOTW = dto.VNTTOTW;
+                entity.VNTPCNC = dto.VNTPCNC;
                 entity.CERAD1REC = dto.CERAD1REC;
                 entity.CERAD1READ = dto.CERAD1READ;
                 entity.CERAD1INT = dto.CERAD1INT;
@@ -1238,6 +1241,12 @@ namespace UDS.Net.API.Extensions
                 entity.CERADJ6INT = dto.CERADJ6INT;
                 entity.CERADJ7YES = dto.CERADJ7YES;
                 entity.CERADJ7NO = dto.CERADJ7NO;
+                entity.OTRAILA = dto.OTRAILA;
+                entity.OTRLARR = dto.OTRLARR;
+                entity.OTRALI  = dto.OTRALI ;
+                entity.OTRAILB = dto.OTRAILB;
+                entity.OTRLBRR = dto.OTRLBRR;
+                entity.OTRLBLI = dto.OTRLBLI;
                 entity.MINTTOTS = dto.MINTTOTS;
                 entity.MINTTOTW = dto.MINTTOTW;
                 entity.MINTSCNG = dto.MINTSCNG;
