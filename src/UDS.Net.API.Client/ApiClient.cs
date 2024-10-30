@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Net.Http;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
 
 namespace UDS.Net.API.Client
 {
@@ -29,6 +27,11 @@ namespace UDS.Net.API.Client
                 options.BaseAddress = new Uri(baseAddress);
             });
 
+            services.AddHttpClient<IPacketClient, PacketClient>(options =>
+            {
+                options.BaseAddress = new Uri(baseAddress);
+            });
+
             // API client registered last
             services.AddSingleton<IApiClient, ApiClient>();
         }
@@ -43,12 +46,14 @@ namespace UDS.Net.API.Client
         public IVisitClient VisitClient { get; }
         public IParticipationClient ParticipationClient { get; }
         public ILookupClient LookupClient { get; }
+        public IPacketClient PacketClient { get; }
 
-        public ApiClient(IVisitClient visitClient, IParticipationClient participationClient, ILookupClient lookupClient)
+        public ApiClient(IVisitClient visitClient, IParticipationClient participationClient, ILookupClient lookupClient, IPacketClient packetClient)
         {
             VisitClient = visitClient;
             ParticipationClient = participationClient;
             LookupClient = lookupClient;
+            PacketClient = packetClient;
         }
 
 

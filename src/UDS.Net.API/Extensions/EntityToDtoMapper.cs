@@ -1,8 +1,4 @@
-﻿using System;
-using System.Net;
-using System.Net.NetworkInformation;
-using System.Security.Claims;
-using UDS.Net.API.Entities;
+﻿using UDS.Net.API.Entities;
 using UDS.Net.Dto;
 
 namespace UDS.Net.API.Extensions
@@ -11,7 +7,7 @@ namespace UDS.Net.API.Extensions
     {
         private static VisitDto ConvertVisitToDto(Visit visit)
         {
-            var dto = new VisitDto()
+            return new VisitDto()
             {
                 Id = visit.Id,
                 ParticipationId = visit.ParticipationId,
@@ -25,8 +21,84 @@ namespace UDS.Net.API.Extensions
                 FORMVER = visit.FORMVER,
                 VISIT_DATE = visit.VISIT_DATE,
                 INITIALS = visit.INITIALS,
-                Forms = new List<FormDto>()
+                Status = visit.Status.ToString()
             };
+        }
+
+        private static VisitDto UpdateWithSubmissions(this VisitDto dto, Visit visit)
+        {
+            if (visit.PacketSubmissions != null)
+            {
+                int? unresolvedErrorsCount = null;
+                var unresolvedErrors = new List<PacketSubmissionErrorDto>();
+                foreach (var submission in visit.PacketSubmissions)
+                {
+                    if (submission != null && submission.ErrorCount.HasValue && submission.PacketSubmissionErrors != null)
+                    {
+                        foreach (var error in submission.PacketSubmissionErrors)
+                        {
+                            if (error != null && String.IsNullOrWhiteSpace(error.ResolvedBy))
+                            {
+                                if (!unresolvedErrorsCount.HasValue)
+                                    unresolvedErrorsCount = 1;
+                                else
+                                    unresolvedErrorsCount += 1;
+                                unresolvedErrors.Add(error.ToDto());
+                                if (dto.Forms != null)
+                                {
+                                    // if there are forms, also update the number of unresolved errors and errors list per form
+                                    var formDto = dto.Forms.Where(f => f.Kind == error.FormKind).FirstOrDefault();
+                                    if (formDto != null)
+                                    {
+                                        if (!formDto.UnresolvedErrorCount.HasValue)
+                                            formDto.UnresolvedErrorCount = 1;
+                                        else
+                                            formDto.UnresolvedErrorCount += 1;
+                                        formDto.UnresolvedErrors.Add(error.ToDto());
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                dto.TotalUnresolvedErrorCount = unresolvedErrorsCount;
+                dto.UnresolvedErrors = unresolvedErrors;
+            }
+
+            return dto;
+        }
+
+        public static PacketDto ToPacketDto(this Visit visit)
+        {
+            PacketDto dto = new PacketDto()
+            {
+                Id = visit.Id,
+                ParticipationId = visit.ParticipationId,
+                CreatedAt = visit.CreatedAt,
+                CreatedBy = visit.CreatedBy,
+                ModifiedBy = visit.ModifiedBy,
+                DeletedBy = visit.DeletedBy,
+                IsDeleted = visit.IsDeleted,
+                VISITNUM = visit.VISITNUM,
+                PACKET = visit.PACKET,
+                FORMVER = visit.FORMVER,
+                VISIT_DATE = visit.VISIT_DATE,
+                INITIALS = visit.INITIALS,
+                Status = visit.Status.ToString()
+            };
+
+            if (visit.PacketSubmissions != null && visit.PacketSubmissions.Count() > 0)
+            {
+                dto.PacketSubmissionCount = visit.PacketSubmissions.Count();
+                dto.PacketSubmissions = visit.PacketSubmissions.ToDto();
+                int? unresolvedErrorsCount = null;
+                foreach (var submission in dto.PacketSubmissions)
+                {
+                    int? unresolvedCountPerSubmission = submission.PacketSubmissionErrors.Where(e => String.IsNullOrWhiteSpace(e.ResolvedBy)).Count();
+                    unresolvedErrorsCount += unresolvedCountPerSubmission;
+                }
+                dto.TotalUnresolvedErrorCount = unresolvedErrorsCount;
+            }
 
             return dto;
         }
@@ -45,6 +117,8 @@ namespace UDS.Net.API.Extensions
                     dto.Forms.Add(formDto);
                 }
             }
+
+            dto.UpdateWithSubmissions(visit);
 
             return dto;
         }
@@ -130,6 +204,8 @@ namespace UDS.Net.API.Extensions
                 }
 
             }
+
+            dto.UpdateWithSubmissions(visit);
 
             return dto;
         }
@@ -1107,6 +1183,7 @@ namespace UDS.Net.API.Extensions
             return dto;
         }
 
+        [Obsolete]
         public static C1Dto ToFullDto(this C1 c1)
         {
             C1Dto dto = new C1Dto
@@ -1520,6 +1597,7 @@ namespace UDS.Net.API.Extensions
             return dto;
         }
 
+        [Obsolete]
         public static T1Dto ToFullDto(this T1 t1)
         {
             T1Dto dto = new T1Dto
@@ -1611,6 +1689,72 @@ namespace UDS.Net.API.Extensions
                 BrandName = drugCode.BrandNames,
                 IsOverTheCounter = drugCode.IsOverTheCounter,
                 IsPopular = drugCode.IsPopular
+            };
+        }
+
+        public static List<PacketSubmissionDto> ToDto(this List<PacketSubmission> packetSubmissions)
+        {
+            List<PacketSubmissionDto> dto = new List<PacketSubmissionDto>();
+
+            if (packetSubmissions != null && packetSubmissions.Count() > 0)
+            {
+                dto = packetSubmissions.Select(p => p.ToDto()).ToList();
+            }
+
+            return dto;
+        }
+
+        public static PacketSubmissionDto ToDto(this PacketSubmission packetSubmission)
+        {
+            var dto = new PacketSubmissionDto
+            {
+                Id = packetSubmission.Id,
+                PacketId = packetSubmission.VisitId, // PacketId == VisitId
+                SubmissionDate = packetSubmission.SubmissionDate,
+                CreatedAt = packetSubmission.CreatedAt,
+                CreatedBy = packetSubmission.CreatedBy,
+                ModifiedBy = packetSubmission.ModifiedBy,
+                IsDeleted = packetSubmission.IsDeleted,
+                DeletedBy = packetSubmission.DeletedBy
+            };
+
+            if (packetSubmission.PacketSubmissionErrors != null && packetSubmission.PacketSubmissionErrors.Count() > 0)
+            {
+                dto.ErrorCount = packetSubmission.ErrorCount;
+                dto.PacketSubmissionErrors = packetSubmission.PacketSubmissionErrors.ToDto();
+            }
+
+            return dto;
+        }
+
+        public static List<PacketSubmissionErrorDto> ToDto(this List<PacketSubmissionError> packetSubmissionErrors)
+        {
+            List<PacketSubmissionErrorDto> dto = new List<PacketSubmissionErrorDto>();
+
+            if (packetSubmissionErrors != null && packetSubmissionErrors.Count() > 0)
+            {
+                dto = packetSubmissionErrors.Select(e => e.ToDto()).ToList();
+            }
+
+            return dto;
+        }
+
+        public static PacketSubmissionErrorDto ToDto(this PacketSubmissionError packetSubmissionError)
+        {
+            return new PacketSubmissionErrorDto()
+            {
+                Id = packetSubmissionError.Id,
+                PacketSubmissionId = packetSubmissionError.PacketSubmissionId,
+                FormKind = packetSubmissionError.FormKind,
+                Level = packetSubmissionError.Level.ToString(),
+                Message = packetSubmissionError.Message,
+                AssignedTo = packetSubmissionError.AssignedTo,
+                ResolvedBy = packetSubmissionError.ResolvedBy,
+                CreatedAt = packetSubmissionError.CreatedAt,
+                CreatedBy = packetSubmissionError.CreatedBy,
+                ModifiedBy = packetSubmissionError.ModifiedBy,
+                IsDeleted = packetSubmissionError.IsDeleted,
+                DeletedBy = packetSubmissionError.DeletedBy
             };
         }
     }

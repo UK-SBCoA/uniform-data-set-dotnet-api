@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Net.Http;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
 using UDS.Net.Dto;
 
 namespace UDS.Net.API.Client
@@ -15,6 +13,45 @@ namespace UDS.Net.API.Client
 
         public VisitClient(HttpClient httpClient) : base(httpClient, BASEPATH)
         {
+        }
+
+        public async Task<List<VisitDto>> GetVisitsAtStatus(string[] statuses, int pageSize = 10, int pageIndex = 1)
+        {
+            List<VisitDto> dto = new List<VisitDto>();
+
+            if (statuses != null && statuses.Length > 0)
+            {
+                NameValueCollection query = System.Web.HttpUtility.ParseQueryString(string.Empty);
+
+                foreach (var status in statuses)
+                {
+                    query.Add("statuses", status);
+                }
+
+                var response = await GetRequest($"{_BasePath}/ByStatus?{query.ToString()}&pageSize={pageSize}&pageIndex={pageIndex}");
+
+                dto = JsonSerializer.Deserialize<List<VisitDto>>(response, options);
+            }
+
+            return dto;
+        }
+
+        public async Task<int> GetCountOfVisitsAtStatus(string[] statuses)
+        {
+            if (statuses != null && statuses.Length > 0)
+            {
+                NameValueCollection query = System.Web.HttpUtility.ParseQueryString(string.Empty);
+
+                foreach (var status in statuses)
+                {
+                    query.Add("statuses", status);
+                }
+
+                var response = await GetRequest($"{_BasePath}/Count/ByStatus?{query.ToString()}");
+
+                return JsonSerializer.Deserialize<int>(response, options);
+            }
+            return 0;
         }
 
         public async Task<VisitDto> GetWithForm(int id, string formKind)
@@ -32,6 +69,7 @@ namespace UDS.Net.API.Client
 
             var response = await PostRequest($"{_BasePath}/{id}/Forms/{formKind}", json);
         }
+
     }
 }
 
