@@ -29,7 +29,7 @@ namespace UDS.Net.API.Data.Migrations
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
-                name: "OTRALI",
+                name: "OTRLALI",
                 table: "tbl_C2s",
                 type: "int",
                 nullable: true);
@@ -81,7 +81,7 @@ namespace UDS.Net.API.Data.Migrations
                 table: "tbl_C2s");
 
             migrationBuilder.DropColumn(
-                name: "OTRALI",
+                name: "OTRLALI",
                 table: "tbl_C2s");
 
             migrationBuilder.DropColumn(

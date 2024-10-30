@@ -3957,7 +3957,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int?>("OTRAILB")
                         .HasColumnType("int");
 
-                    b.Property<int?>("OTRALI")
+                    b.Property<int?>("OTRLALI")
                         .HasColumnType("int");
 
                     b.Property<int?>("OTRLARR")

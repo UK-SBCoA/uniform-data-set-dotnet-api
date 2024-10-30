@@ -12,7 +12,7 @@ using UDS.Net.API.Data;
 namespace UDS.Net.API.Data.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    [Migration("20241030124721_UpdateC2TProperties")]
+    [Migration("20241030191456_UpdateC2TProperties")]
     partial class UpdateC2TProperties
     {
         /// <inheritdoc />
@@ -3960,7 +3960,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int?>("OTRAILB")
                         .HasColumnType("int");
 
-                    b.Property<int?>("OTRALI")
+                    b.Property<int?>("OTRLALI")
                         .HasColumnType("int");
 
                     b.Property<int?>("OTRLARR")
