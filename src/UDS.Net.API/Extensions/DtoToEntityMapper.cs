@@ -1313,7 +1313,7 @@ namespace UDS.Net.API.Extensions
                 entity.CERADJ7NO = dto.CERADJ7NO;
                 entity.OTRAILA = dto.OTRAILA;
                 entity.OTRLARR = dto.OTRLARR;
-                entity.OTRALI  = dto.OTRALI ;
+                entity.OTRLALI = dto.OTRLALI;
                 entity.OTRAILB = dto.OTRAILB;
                 entity.OTRLBRR = dto.OTRLBRR;
                 entity.OTRLBLI = dto.OTRLBLI;

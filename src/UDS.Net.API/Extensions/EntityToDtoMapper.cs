@@ -1347,7 +1347,7 @@ namespace UDS.Net.API.Extensions
                 CERADJ7NO = c2.CERADJ7NO,
                 OTRAILA = c2.OTRAILA,
                 OTRLARR = c2.OTRLARR,
-                OTRALI  = c2.OTRALI ,
+                OTRLALI = c2.OTRLALI,
                 OTRAILB = c2.OTRAILB,
                 OTRLBRR = c2.OTRLBRR,
                 OTRLBLI = c2.OTRLBLI,
