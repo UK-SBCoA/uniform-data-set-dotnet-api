@@ -19,6 +19,7 @@ namespace UDS.Net.API.Entities
         public int? MOCAVIS { get; set; }
         public int? MOCAHEAR { get; set; }
         public int? MOCATOTS { get; set; }
+        public int? MOCBTOTS { get; set; }
         public int? MOCATRAI { get; set; }
         public int? MOCACUBE { get; set; }
         public int? MOCACLOC { get; set; }
@@ -96,6 +97,8 @@ namespace UDS.Net.API.Entities
         public int? REYMETHOD { get; set; }
         public int? REYTCOR { get; set; }
         public int? REYFPOS { get; set; }
+        public int? VNTTOTW { get; set; }
+        public int? VNTPCNC { get; set; }
         public int? CERAD1REC { get; set; }
         public int? CERAD1READ { get; set; }
         public int? CERAD1INT { get; set; }
@@ -110,6 +113,12 @@ namespace UDS.Net.API.Entities
         public int? CERADJ6INT { get; set; }
         public int? CERADJ7YES { get; set; }
         public int? CERADJ7NO { get; set; }
+        public int? OTRAILA { get; set; }
+        public int? OTRLARR { get; set; }
+        public int? OTRLALI { get; set; }
+        public int? OTRAILB { get; set; }
+        public int? OTRLBRR { get; set; }
+        public int? OTRLBLI { get; set; }
         public int? MINTTOTS { get; set; }
         public int? MINTTOTW { get; set; }
         public int? MINTSCNG { get; set; }
