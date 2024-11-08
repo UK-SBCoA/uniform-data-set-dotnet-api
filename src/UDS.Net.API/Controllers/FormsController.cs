@@ -1,9 +1,7 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using UDS.Net.API.Client;
 using UDS.Net.API.Data;
-using UDS.Net.API.Entities;
 using UDS.Net.API.Extensions;
 using UDS.Net.Dto;
 
@@ -373,14 +371,14 @@ namespace UDS.Net.API.Controllers
 
         [Obsolete]
         [HttpPost]
-        public Task Post(FormDto dto)
+        public Task<FormDto> Post(FormDto dto)
         {
             throw new NotImplementedException();
         }
 
         [Obsolete]
         [HttpPut("{id}")]
-        public Task Put(int id, FormDto dto)
+        public Task<FormDto> Put(int id, FormDto dto)
         {
             throw new NotImplementedException();
         }

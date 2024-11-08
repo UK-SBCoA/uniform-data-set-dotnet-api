@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using UDS.Net.API.Client;
 using UDS.Net.API.Data;
-using UDS.Net.API.Entities;
 using UDS.Net.API.Extensions;
 using UDS.Net.Dto;
 
@@ -134,7 +133,7 @@ namespace UDS.Net.API.Controllers
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
         [HttpPost]
-        public async Task Post(PacketDto dto)
+        public async Task<PacketDto> Post(PacketDto dto)
         {
             throw new NotImplementedException("Packets are not created, use Visits.");
         }
@@ -146,7 +145,7 @@ namespace UDS.Net.API.Controllers
         /// <param name="dto"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        public async Task Put(int id, [FromBody] PacketDto dto)
+        public async Task<PacketDto> Put(int id, [FromBody] PacketDto dto)
         {
             if (dto != null)
             {
@@ -213,6 +212,8 @@ namespace UDS.Net.API.Controllers
                     await _context.SaveChangesAsync();
                 }
             }
+
+            return null;
         }
 
         [HttpDelete("{id}")]

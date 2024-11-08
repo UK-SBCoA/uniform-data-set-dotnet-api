@@ -318,12 +318,14 @@ namespace UDS.Net.API.Controllers
         }
 
         [HttpPost]
-        public async Task Post([FromBody] VisitDto dto)
+        public async Task<VisitDto> Post([FromBody] VisitDto dto)
         {
             var visit = dto.Convert();
 
             _context.Visits.Add(visit);
             await _context.SaveChangesAsync();
+
+            return dto;
         }
 
         private string GetFormKind(VisitDto dto)
@@ -581,7 +583,7 @@ namespace UDS.Net.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task Put(int id, [FromBody] VisitDto dto)
+        public async Task<VisitDto> Put(int id, [FromBody] VisitDto dto)
         {
             // check to see if the dto has a full form
             string formKind = GetFormKind(dto);
@@ -614,9 +616,10 @@ namespace UDS.Net.API.Controllers
                 _context.Visits.Update(visit);
                 await _context.SaveChangesAsync();
 
-                return;
+                return dto;
             }
 
+            return null;
         }
 
         [HttpDelete("{id}")]

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using UDS.Net.API.Client;
 using UDS.Net.API.Data;
@@ -106,13 +101,13 @@ namespace UDS.Net.API.Controllers
         }
 
         [HttpPost]
-        public Task Post(LookupDto dto)
+        public Task<LookupDto> Post(LookupDto dto)
         {
             throw new NotImplementedException();
         }
 
         [HttpPut("{id}")]
-        public Task Put(int id, LookupDto dto)
+        public Task<LookupDto> Put(int id, LookupDto dto)
         {
             throw new NotImplementedException();
         }

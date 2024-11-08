@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using UDS.Net.API.Client;
@@ -51,13 +47,13 @@ namespace UDS.Net.API.Controllers
         }
 
         [HttpPost]
-        public async Task Post([FromBody] ParticipationDto dto)
+        public async Task<ParticipationDto> Post([FromBody] ParticipationDto dto)
         {
             var existingLegacyid = await _context.Participations.AnyAsync(p => p.LegacyId == dto.LegacyId);
 
             if (existingLegacyid)
             {
-                return;
+                return null;
 
             }
             else
@@ -73,10 +69,12 @@ namespace UDS.Net.API.Controllers
                 };
                 _context.Participations.Add(newParticipation);
                 await _context.SaveChangesAsync();
+
+                return dto;
             }
         }
         [HttpPut("{id}")]
-        public async Task Put(int id, [FromBody] ParticipationDto dto)
+        public async Task<ParticipationDto> Put(int id, [FromBody] ParticipationDto dto)
         {
             var participation = await _context.Participations.FindAsync(id);
 
@@ -91,8 +89,11 @@ namespace UDS.Net.API.Controllers
 
                 _context.Participations.Update(participation);
                 await _context.SaveChangesAsync();
+
+                return dto;
             }
 
+            return null;
         }
 
         [HttpDelete("{id}")]

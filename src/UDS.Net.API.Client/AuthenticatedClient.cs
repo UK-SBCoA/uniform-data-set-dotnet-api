@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
 
 namespace UDS.Net.API.Client
 {
@@ -126,20 +124,24 @@ namespace UDS.Net.API.Client
             return value;
         }
 
-        public async Task Post(T dto)
+        public async Task<T> Post(T dto)
         {
             var json = JsonSerializer.Serialize(dto);
 
             string response = await PostRequest(_BasePath, json);
 
             /// TODO how to handle failures?
+
+            return (T)Convert.ChangeType(response, typeof(T));
         }
 
-        public async Task Put(int id, T dto)
+        public async Task<T> Put(int id, T dto)
         {
             var json = JsonSerializer.Serialize(dto);
 
-            string response = await PutRequest($"{_BasePath}/{id}", json);
+            var response = await PutRequest($"{_BasePath}/{id}", json);
+
+            return (T)Convert.ChangeType(response, typeof(T));
         }
 
         public Task Delete(int id)
