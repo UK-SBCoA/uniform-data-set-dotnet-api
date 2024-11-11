@@ -53,7 +53,7 @@ namespace UDS.Net.API.Controllers
 
             if (existingLegacyid)
             {
-                return null;
+                return dto;
 
             }
             else
@@ -70,7 +70,7 @@ namespace UDS.Net.API.Controllers
                 _context.Participations.Add(newParticipation);
                 await _context.SaveChangesAsync();
 
-                return dto;
+                return newParticipation.ToDto();
             }
         }
         [HttpPut("{id}")]
@@ -90,10 +90,10 @@ namespace UDS.Net.API.Controllers
                 _context.Participations.Update(participation);
                 await _context.SaveChangesAsync();
 
-                return dto;
+                return participation.ToDto();
             }
 
-            return null;
+            return dto;
         }
 
         [HttpDelete("{id}")]

@@ -211,11 +211,11 @@ namespace UDS.Net.API.Controllers
                     _context.Visits.Update(existingPacket);
                     await _context.SaveChangesAsync();
 
-                    return dto;
+                    return existingPacket.ToPacketDto();
                 }
             }
 
-            return null;
+            return dto;
         }
 
         [HttpDelete("{id}")]

@@ -325,7 +325,7 @@ namespace UDS.Net.API.Controllers
             _context.Visits.Add(visit);
             await _context.SaveChangesAsync();
 
-            return dto;
+            return visit.ToDto();
         }
 
         private string GetFormKind(VisitDto dto)
@@ -616,10 +616,10 @@ namespace UDS.Net.API.Controllers
                 _context.Visits.Update(visit);
                 await _context.SaveChangesAsync();
 
-                return dto;
+                return visit.ToDto();
             }
 
-            return null;
+            return dto;
         }
 
         [HttpDelete("{id}")]
