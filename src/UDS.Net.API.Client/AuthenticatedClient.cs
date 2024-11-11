@@ -132,7 +132,7 @@ namespace UDS.Net.API.Client
 
             /// TODO how to handle failures?
 
-            return (T)Convert.ChangeType(response, typeof(T));
+            return JsonSerializer.Deserialize<T>(response, options);
         }
 
         public async Task<T> Put(int id, T dto)
@@ -141,7 +141,7 @@ namespace UDS.Net.API.Client
 
             var response = await PutRequest($"{_BasePath}/{id}", json);
 
-            return (T)Convert.ChangeType(response, typeof(T));
+            return JsonSerializer.Deserialize<T>(response, options);
         }
 
         public Task Delete(int id)

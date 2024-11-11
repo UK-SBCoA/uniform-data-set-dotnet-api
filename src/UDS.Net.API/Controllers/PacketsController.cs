@@ -210,6 +210,8 @@ namespace UDS.Net.API.Controllers
 
                     _context.Visits.Update(existingPacket);
                     await _context.SaveChangesAsync();
+
+                    return dto;
                 }
             }
 
