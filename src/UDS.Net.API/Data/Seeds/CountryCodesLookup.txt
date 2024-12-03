@@ -1,4 +1,4 @@
-﻿INSERT INTO [dbo].[CountryCodesLookup] (Code, Country,IsActive)
+﻿INSERT INTO [dbo].[CountryCodesLookup] (Alpha3Code,Country,IsActive)
 VALUES
 ('AFG','Afghanistan',1),
 ('CHN','China',1),
