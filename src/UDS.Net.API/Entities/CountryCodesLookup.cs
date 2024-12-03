@@ -6,11 +6,13 @@ namespace UDS.Net.API.Entities
     public class CountryCodesLookup
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         public string? Code { get; set; }
 
         public string? Country { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }
