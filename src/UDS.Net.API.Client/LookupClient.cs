@@ -32,6 +32,16 @@ namespace UDS.Net.API.Client
 
             return dto;
         }
+
+        public async Task<LookupCountryCodesDto> CountryCode(string? countryName)
+        {
+            var response = await GetRequest($"{_BasePath}/CountryCodes?countryName={countryName}");
+
+            LookupCountryCodesDto? dto = JsonSerializer.Deserialize<LookupCountryCodesDto>(response, options);
+
+            return dto;
+        }
+
     }
 }
 
