@@ -10,12 +10,12 @@ namespace UDS.Net.API.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public string? Alpha3Code { get; set; }
+        public string? Code { get; set; }
 
         public string? Country { get; set; }
 
         public bool IsActive { get; set; }
 
-        public string? Alpha4Code { get; set; }
+        public string? ReasonChangedCode { get; set; }
     }
 }
