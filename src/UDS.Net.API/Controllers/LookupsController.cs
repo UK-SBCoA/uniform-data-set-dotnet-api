@@ -117,7 +117,35 @@ namespace UDS.Net.API.Controllers
         {
             throw new NotImplementedException();
         }
+        [HttpGet("CountryCode", Name ="LookupCountryCode")]
+        public async Task<LookupCountryCodeDto> LookupCountryCode(string? countryCode)
+        {
+            if (string.IsNullOrEmpty(countryCode))
+            {
+                return new LookupCountryCodeDto
+                {
+                    Error = new ErrorDto()
+                };
+            }
 
+            var country = await _context.CountryCodesLookup.FirstOrDefaultAsync(c => c.Code == countryCode);
+            if (country == null)
+            {
+                return new LookupCountryCodeDto {
+                    Error = new ErrorDto()
+                };
+            }
+
+            return new LookupCountryCodeDto
+            {
+                Id = country.Id,
+                Code = country.Code,
+                Country = country.Country,
+                IsActive = country.IsActive,
+                ReasonChangedCode = country.ReasonChangedCode
+
+            };
+        }
     }
 }
 
