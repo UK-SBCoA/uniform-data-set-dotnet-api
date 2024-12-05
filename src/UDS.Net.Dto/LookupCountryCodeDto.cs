@@ -4,7 +4,7 @@ using System.Text;
 
 namespace UDS.Net.Dto
 {
-    public class LookupCountryCodesDto : LookupDto
+    public class LookupCountryCodeDto : LookupDto
     {
         public int Id { get; set; }
 

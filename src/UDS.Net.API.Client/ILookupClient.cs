@@ -11,7 +11,7 @@ namespace UDS.Net.API.Client
 
         Task<LookupDrugCodeDto> SearchDrugCodes(int pageSize = 10, int pageIndex = 1, bool onlyPopular = true, string? searchTerm = "");
 
-        Task<LookupCountryCodesDto> CountryCode(string countryName);
+        Task<LookupCountryCodeDto> LookupCountryCode(string countryCode);
     }
 }
 
