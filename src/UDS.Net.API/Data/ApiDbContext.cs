@@ -37,6 +37,8 @@ namespace UDS.Net.API.Data
         /* Lookup or reference tables */
         public DbSet<DrugCodeLookup> DrugCodesLookup { get; set; }
 
+        public DbSet<CountryCodesLookup> CountryCodesLookup { get; set; }
+
         /* SQL Views */
         public DbSet<FormStatus> FormStatuses { get; set; }
 
