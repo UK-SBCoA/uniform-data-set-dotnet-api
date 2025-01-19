@@ -1596,6 +1596,18 @@ namespace UDS.Net.API.Extensions
             }
             return false;
         }
+
+        public static DrugCodeLookup ToEntity(this DrugCodeDto dto)
+        {
+            return new DrugCodeLookup
+            {
+                RxNormId = dto.RxNormId,
+                DrugName = dto.DrugName,
+                BrandNames = dto.BrandName,
+                IsOverTheCounter = dto.IsOverTheCounter,
+                IsPopular = dto.IsPopular
+            };
+        }
     }
 }
 

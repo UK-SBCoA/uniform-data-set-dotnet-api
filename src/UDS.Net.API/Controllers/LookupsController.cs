@@ -18,10 +18,9 @@ namespace UDS.Net.API.Controllers
             _context = context;
         }
 
-        private IQueryable<DrugCodeLookup> GetDrugCodeQuery(bool onlyPopular = true, string searchTerm = "")
+        private IQueryable<DrugCodeLookup> GetDrugCodeQuery(string searchTerm = "")
         {
             var drugCodeQuery = _context.DrugCodesLookup
-                .Where(d => d.IsPopular == onlyPopular)
                 .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(searchTerm))
@@ -56,15 +55,15 @@ namespace UDS.Net.API.Controllers
                 PageIndex = pageSize,
                 TotalResultsCount = totalRecords,
                 Results = results,
-                LookupParameters = new { OnlyPopular = true },
+                LookupParameters = new { },
                 Error = new ErrorDto()
             };
         }
 
         [HttpGet("DrugCodes/Search", Name = "SearchDrugCodes")]
-        public async Task<LookupDrugCodeDto> SearchDrugCodes(int pageSize = 10, int pageIndex = 1, bool onlyPopular = true, string searchTerm = "")
+        public async Task<LookupDrugCodeDto> SearchDrugCodes(int pageSize = 10, int pageIndex = 1, string searchTerm = "")
         {
-            var query = GetDrugCodeQuery(onlyPopular, searchTerm);
+            var query = GetDrugCodeQuery(searchTerm);
             var totalRecords = await query.CountAsync();
 
             var results = await query.ToListAsync();
@@ -77,9 +76,22 @@ namespace UDS.Net.API.Controllers
                 PageIndex = pageSize,
                 TotalResultsCount = totalRecords,
                 Results = results.Select(d => d.ToDto()).ToList(),
-                LookupParameters = new { OnlyPopular = onlyPopular, SearchTerm = searchTerm },
+                LookupParameters = new { SearchTerm = searchTerm },
                 Error = new ErrorDto()
             };
+        }
+
+        [HttpPost("DrugCodes", Name = "AddDrugCode")]
+        public async Task<DrugCodeDto> AddDrugCode(DrugCodeDto dto)
+        {
+            bool exists = await _context.DrugCodesLookup.Where(d => d.RxNormId == dto.RxNormId).AnyAsync();
+            if (!exists)
+            {
+                _context.DrugCodesLookup.Add(dto.ToEntity());
+                await _context.SaveChangesAsync();
+            }
+
+            return dto;
         }
 
         [HttpGet("Count", Name = "LookupsCount")]
@@ -117,7 +129,7 @@ namespace UDS.Net.API.Controllers
         {
             throw new NotImplementedException();
         }
-        [HttpGet("CountryCode", Name ="LookupCountryCode")]
+        [HttpGet("CountryCode", Name = "LookupCountryCode")]
         public async Task<LookupCountryCodeDto> LookupCountryCode(string? countryCode)
         {
             if (string.IsNullOrEmpty(countryCode))
@@ -131,7 +143,8 @@ namespace UDS.Net.API.Controllers
             var country = await _context.CountryCodesLookup.FirstOrDefaultAsync(c => c.Code == countryCode);
             if (country == null)
             {
-                return new LookupCountryCodeDto {
+                return new LookupCountryCodeDto
+                {
                     Error = new ErrorDto()
                 };
             }
