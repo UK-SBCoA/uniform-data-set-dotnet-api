@@ -60,6 +60,13 @@ namespace UDS.Net.API.Controllers
             };
         }
 
+        /// <summary>
+        /// Searches existing drug codes by drug name or brand name
+        /// </summary>
+        /// <param name="pageSize"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="searchTerm"></param>
+        /// <returns></returns>
         [HttpGet("DrugCodes/Search", Name = "SearchDrugCodes")]
         public async Task<LookupDrugCodeDto> SearchDrugCodes(int pageSize = 10, int pageIndex = 1, string searchTerm = "")
         {
@@ -79,6 +86,46 @@ namespace UDS.Net.API.Controllers
                 LookupParameters = new { SearchTerm = searchTerm },
                 Error = new ErrorDto()
             };
+        }
+
+        [HttpGet("DrugCodes/Find/{rxCUI}", Name = "FindDrugCodes")]
+        public async Task<LookupDrugCodeDto> FindDrugCode(int rxCUI)
+        {
+            var drugCode = await _context.DrugCodesLookup
+                .Where(d => d.RxNormId == rxCUI)
+                .FirstOrDefaultAsync();
+
+            if (drugCode != null)
+            {
+                return new LookupDrugCodeDto
+                {
+                    LookupType = "DrugCode",
+                    SearchTerm = rxCUI.ToString(),
+                    PageSize = 1,
+                    PageIndex = 1,
+                    TotalResultsCount = 1,
+                    Results = new List<DrugCodeDto>
+                    {
+                        drugCode.ToDto()
+                    },
+                    LookupParameters = new { RxCUI = rxCUI },
+                    Error = new ErrorDto()
+                };
+            }
+            else
+            {
+                return new LookupDrugCodeDto
+                {
+                    LookupType = "DrugCode",
+                    SearchTerm = rxCUI.ToString(),
+                    PageSize = 1,
+                    PageIndex = 1,
+                    TotalResultsCount = 0,
+                    Results = new List<DrugCodeDto>(),
+                    LookupParameters = new { RxCUI = rxCUI },
+                    Error = new ErrorDto()
+                };
+            }
         }
 
         [HttpPost("DrugCodes", Name = "AddDrugCode")]
@@ -159,6 +206,7 @@ namespace UDS.Net.API.Controllers
 
             };
         }
+
     }
 }
 

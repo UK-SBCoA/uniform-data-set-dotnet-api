@@ -33,11 +33,11 @@ namespace UDS.Net.API.Client
             return dto;
         }
 
-        public async Task<LookupCountryCodeDto> LookupCountryCode(string? countryCode)
+        public async Task<LookupDrugCodeDto> FindDrugCode(int rxCUI)
         {
-            var response = await GetRequest($"{_BasePath}/CountryCode?countryCode={countryCode}");
+            var response = await GetRequest($"{_BasePath}/DrugCodes/Find/{rxCUI}");
 
-            LookupCountryCodeDto? dto = JsonSerializer.Deserialize<LookupCountryCodeDto>(response, options);
+            LookupDrugCodeDto? dto = JsonSerializer.Deserialize<LookupDrugCodeDto>(response, options);
 
             return dto;
         }
@@ -52,6 +52,17 @@ namespace UDS.Net.API.Client
 
             return added;
         }
+
+        public async Task<LookupCountryCodeDto> LookupCountryCode(string? countryCode)
+        {
+            var response = await GetRequest($"{_BasePath}/CountryCode?countryCode={countryCode}");
+
+            LookupCountryCodeDto? dto = JsonSerializer.Deserialize<LookupCountryCodeDto>(response, options);
+
+            return dto;
+        }
+
+
     }
 }
 
