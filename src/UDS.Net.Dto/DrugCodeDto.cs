@@ -7,7 +7,7 @@ namespace UDS.Net.Dto
 
         public string DrugName { get; set; }
 
-        public string BrandName { get; set; }
+        public string? BrandName { get; set; }
 
         public bool IsOverTheCounter { get; set; }
 

@@ -24,13 +24,33 @@ namespace UDS.Net.API.Client
             return dto;
         }
 
-        public async Task<LookupDrugCodeDto> SearchDrugCodes(int pageSize = 10, int pageIndex = 1, bool onlyPopular = true, string searchTerm = "")
+        public async Task<LookupDrugCodeDto> SearchDrugCodes(int pageSize = 10, int pageIndex = 1, string searchTerm = "")
         {
-            var response = await GetRequest($"{_BasePath}/DrugCodes/Search?pageSize={pageSize}&pageIndex={pageIndex}&onlyPopular={onlyPopular}&searchTerm={searchTerm}");
+            var response = await GetRequest($"{_BasePath}/DrugCodes/Search?pageSize={pageSize}&pageIndex={pageIndex}&searchTerm={searchTerm}");
 
             LookupDrugCodeDto? dto = JsonSerializer.Deserialize<LookupDrugCodeDto>(response, options);
 
             return dto;
+        }
+
+        public async Task<LookupDrugCodeDto> FindDrugCode(int rxCUI)
+        {
+            var response = await GetRequest($"{_BasePath}/DrugCodes/Find/{rxCUI}");
+
+            LookupDrugCodeDto? dto = JsonSerializer.Deserialize<LookupDrugCodeDto>(response, options);
+
+            return dto;
+        }
+
+        public async Task<DrugCodeDto> AddDrugCode(DrugCodeDto dto)
+        {
+            string json = JsonSerializer.Serialize(dto);
+
+            var response = await PostRequest($"{_BasePath}/DrugCodes", json);
+
+            DrugCodeDto? added = JsonSerializer.Deserialize<DrugCodeDto>(response, options);
+
+            return added;
         }
 
         public async Task<LookupCountryCodeDto> LookupCountryCode(string? countryCode)
@@ -41,6 +61,7 @@ namespace UDS.Net.API.Client
 
             return dto;
         }
+
 
     }
 }
