@@ -44,10 +44,8 @@ namespace UDS.Net.API.Client
 
         public async Task<DrugCodeDto> AddDrugCode(DrugCodeDto dto)
         {
-            Console.WriteLine("Lookup client received dto");
-            Console.WriteLine(dto);
             string json = JsonSerializer.Serialize(dto);
-            Console.WriteLine(json);
+
             var response = await PostRequest($"{_BasePath}/DrugCodes", json);
 
             DrugCodeDto? added = JsonSerializer.Deserialize<DrugCodeDto>(response, options);

@@ -129,7 +129,7 @@ namespace UDS.Net.API.Controllers
         }
 
         [HttpPost("DrugCodes", Name = "AddDrugCode")]
-        public async Task<DrugCodeDto> AddDrugCode(DrugCodeDto dto)
+        public async Task<DrugCodeDto> AddDrugCode([FromBody] DrugCodeDto dto)
         {
             bool exists = await _context.DrugCodesLookup.Where(d => d.RxNormId == dto.RxNormId).AnyAsync();
             if (!exists)
