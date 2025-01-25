@@ -134,8 +134,15 @@ namespace UDS.Net.API.Controllers
             bool exists = await _context.DrugCodesLookup.Where(d => d.RxNormId == dto.RxNormId).AnyAsync();
             if (!exists)
             {
-                _context.DrugCodesLookup.Add(dto.ToEntity());
-                await _context.SaveChangesAsync();
+                try
+                {
+                    _context.DrugCodesLookup.Add(dto.ToEntity());
+                    await _context.SaveChangesAsync();
+                }
+                catch (Exception ex)
+                {
+                    var message = ex.Message;
+                }
             }
 
             return dto;
