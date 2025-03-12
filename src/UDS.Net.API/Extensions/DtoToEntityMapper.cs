@@ -1505,8 +1505,8 @@ namespace UDS.Net.API.Extensions
                 entity.IMAGLAC = dto.IMAGLAC;
                 entity.IMAGMACH = dto.IMAGMACH;
                 entity.IMAGMICH = dto.IMAGMICH;
-                entity.IMAGMWMH = dto.IMAGMWMH;
-                entity.IMAGEWMH = dto.IMAGEWMH;
+                entity.IMAGWMH = dto.IMAGWMH;
+                entity.IMAGWMHSEV = dto.IMAGWMHSEV;
                 entity.OTHBIOM1 = dto.OTHBIOM1;
                 entity.OTHBIOMX1 = dto.OTHBIOMX1;
                 entity.BIOMAD1 = dto.BIOMAD1;

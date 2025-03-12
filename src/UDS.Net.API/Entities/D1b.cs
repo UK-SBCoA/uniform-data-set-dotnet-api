@@ -127,11 +127,11 @@ namespace UDS.Net.API.Entities
         [Comment("7a3d. Microhemorrhage(s)")]
         public int? IMAGMICH { get; set; }
 
-        [Comment("7a3e. Moderate white-matter hyperintensity (CHS score 5-6)")]
-        public int? IMAGMWMH { get; set; }
+        [Comment("7a3e. White-matter hyperintensity")]
+        public int? IMAGWMH { get; set; }
 
-        [Comment("7a3f. Extensive white-matter hyperintensity (CHS score 7-8+)")]
-        public int? IMAGEWMH { get; set; }
+        [Comment("7a3e1. White-matter hyperintensity severity")]
+        public int? IMAGWMHSEV { get; set; }
 
         [Comment("8. Other biomarker modality - Was another biomarker modality used to support an etiological diagnosis?")]
         public int? OTHBIOM1 { get; set; }
