@@ -7,7 +7,6 @@ namespace UDS.Net.Dto
         public int? TRSPACCESS { get; set; }
         public int? TRANSPROB { get; set; }
         public int? TRANSWORRY { get; set; }
-        public int? TRSPLONGER { get; set; }
         public int? TRSPMED { get; set; }
         public int? INCOMEYR { get; set; }
         public int? FINSATIS { get; set; }
@@ -18,14 +17,7 @@ namespace UDS.Net.Dto
         public int? LESSMEDS { get; set; }
         public int? LESSMEDSYR { get; set; }
         public int? COMPCOMM { get; set; }
-        public int? COMPUSA { get; set; }
-        public int? FAMCOMP { get; set; }
         public int? GUARDEDU { get; set; }
-        public int? GUARDREL { get; set; }
-        public string GUARDRELX { get; set; }
-        public int? GUARD2EDU { get; set; }
-        public int? GUARD2REL { get; set; }
-        public string GUARD2RELX { get; set; }
         public int? EMPTINESS { get; set; }
         public int? MISSPEOPLE { get; set; }
         public int? FRIENDS { get; set; }

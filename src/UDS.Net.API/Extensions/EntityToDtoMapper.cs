@@ -369,7 +369,6 @@ namespace UDS.Net.API.Extensions
                 TRSPACCESS = a1a.TRSPACCESS,
                 TRANSPROB = a1a.TRANSPROB,
                 TRANSWORRY = a1a.TRANSWORRY,
-                TRSPLONGER = a1a.TRSPLONGER,
                 TRSPMED = a1a.TRSPMED,
                 INCOMEYR = a1a.INCOMEYR,
                 FINSATIS = a1a.FINSATIS,
@@ -380,14 +379,7 @@ namespace UDS.Net.API.Extensions
                 LESSMEDS = a1a.LESSMEDS,
                 LESSMEDSYR = a1a.LESSMEDSYR,
                 COMPCOMM = a1a.COMPCOMM,
-                COMPUSA = a1a.COMPUSA,
-                FAMCOMP = a1a.FAMCOMP,
                 GUARDEDU = a1a.GUARDEDU,
-                GUARDREL = a1a.GUARDREL,
-                GUARDRELX = a1a.GUARDRELX,
-                GUARD2EDU = a1a.GUARD2EDU,
-                GUARD2REL = a1a.GUARD2REL,
-                GUARD2RELX = a1a.GUARD2RELX,
                 EMPTINESS = a1a.EMPTINESS,
                 MISSPEOPLE = a1a.MISSPEOPLE,
                 FRIENDS = a1a.FRIENDS,
@@ -436,7 +428,6 @@ namespace UDS.Net.API.Extensions
         {
             A2Dto dto = new A2Dto
             {
-                NEWINF = a2.NEWINF,
                 INRELTO = a2.INRELTO,
                 INKNOWN = a2.INKNOWN,
                 INLIVWTH = a2.INLIVWTH,
@@ -458,8 +449,6 @@ namespace UDS.Net.API.Extensions
         {
             A3Dto dto = new A3Dto
             {
-                AFFFAMM = a3.AFFFAMM,
-                NWINFMUT = a3.NWINFMUT,
                 MOMYOB = a3.MOMYOB,
                 MOMDAGE = a3.MOMDAGE,
                 MOMETPR = a3.MOMETPR,
@@ -473,7 +462,6 @@ namespace UDS.Net.API.Extensions
                 DADMEVAL = a3.DADMEVAL,
                 DADAGEO = a3.DADAGEO,
                 SIBS = a3.SIBS,
-                NWINFSIB = a3.NWINFSIB,
                 SIB1 = a3.SIB1.ToFullDto(a3.Id),
                 SIB2 = a3.SIB2.ToFullDto(a3.Id),
                 SIB3 = a3.SIB3.ToFullDto(a3.Id),
@@ -495,7 +483,6 @@ namespace UDS.Net.API.Extensions
                 SIB19 = a3.SIB19.ToFullDto(a3.Id),
                 SIB20 = a3.SIB20.ToFullDto(a3.Id),
                 KIDS = a3.KIDS,
-                NWINFKID = a3.NWINFKID,
                 KID1 = a3.KID1.ToFullDto(a3.Id),
                 KID2 = a3.KID2.ToFullDto(a3.Id),
                 KID3 = a3.KID3.ToFullDto(a3.Id),
