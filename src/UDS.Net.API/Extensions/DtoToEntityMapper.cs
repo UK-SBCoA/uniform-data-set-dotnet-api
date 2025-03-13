@@ -1537,6 +1537,7 @@ namespace UDS.Net.API.Extensions
                 entity.MSAIF = dto.MSAIF;
                 entity.CTE = dto.CTE;
                 entity.CTEIF = dto.CTEIF;
+                entity.CTECERT = dto.CTECERT;
                 entity.DOWNS = dto.DOWNS;
                 entity.DOWNSIF = dto.DOWNSIF;
                 entity.HUNT = dto.HUNT;

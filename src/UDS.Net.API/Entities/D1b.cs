@@ -269,6 +269,9 @@ namespace UDS.Net.API.Entities
         [Comment("Primary, contributing, or non-contributing - Chronic traumatic encephalopathy")]
         public int? CTEIF { get; set; }
 
+        [Comment("CTE certainty")]
+        public int? CTECERT { get; set; }
+
         [Comment("Down syndrome")]
         public bool? DOWNS { get; set; }
 

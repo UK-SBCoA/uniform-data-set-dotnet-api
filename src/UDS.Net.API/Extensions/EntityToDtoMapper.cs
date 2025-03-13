@@ -1564,6 +1564,7 @@ namespace UDS.Net.API.Extensions
                 MSAIF = d1b.MSAIF,
                 CTE = d1b.CTE,
                 CTEIF = d1b.CTEIF,
+                CTECERT = d1b.CTECERT,
                 DOWNS = d1b.DOWNS,
                 DOWNSIF = d1b.DOWNSIF,
                 HUNT = d1b.HUNT,
