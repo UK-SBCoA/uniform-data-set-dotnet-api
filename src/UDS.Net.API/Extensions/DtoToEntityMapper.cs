@@ -348,7 +348,6 @@ namespace UDS.Net.API.Extensions
                 entity.TRSPACCESS = dto.TRSPACCESS;
                 entity.TRANSPROB = dto.TRANSPROB;
                 entity.TRANSWORRY = dto.TRANSWORRY;
-                entity.TRSPLONGER = dto.TRSPLONGER;
                 entity.TRSPMED = dto.TRSPMED;
                 entity.INCOMEYR = dto.INCOMEYR;
                 entity.FINSATIS = dto.FINSATIS;
@@ -359,14 +358,7 @@ namespace UDS.Net.API.Extensions
                 entity.LESSMEDS = dto.LESSMEDS;
                 entity.LESSMEDSYR = dto.LESSMEDSYR;
                 entity.COMPCOMM = dto.COMPCOMM;
-                entity.COMPUSA = dto.COMPUSA;
-                entity.FAMCOMP = dto.FAMCOMP;
                 entity.GUARDEDU = dto.GUARDEDU;
-                entity.GUARDREL = dto.GUARDREL;
-                entity.GUARDRELX = dto.GUARDRELX;
-                entity.GUARD2EDU = dto.GUARD2EDU;
-                entity.GUARD2REL = dto.GUARD2REL;
-                entity.GUARD2RELX = dto.GUARD2RELX;
                 entity.EMPTINESS = dto.EMPTINESS;
                 entity.MISSPEOPLE = dto.MISSPEOPLE;
                 entity.FRIENDS = dto.FRIENDS;
@@ -417,7 +409,6 @@ namespace UDS.Net.API.Extensions
             {
                 entity.SetBaseProperties(dto);
 
-                entity.NEWINF = dto.NEWINF;
                 entity.INRELTO = dto.INRELTO;
                 entity.INKNOWN = dto.INKNOWN;
                 entity.INLIVWTH = dto.INLIVWTH;
@@ -442,8 +433,6 @@ namespace UDS.Net.API.Extensions
             {
                 entity.SetBaseProperties(dto);
 
-                entity.AFFFAMM = dto.AFFFAMM;
-                entity.NWINFMUT = dto.NWINFMUT;
                 entity.MOMYOB = dto.MOMYOB;
                 entity.MOMDAGE = dto.MOMDAGE;
                 entity.MOMETPR = dto.MOMETPR;
@@ -457,7 +446,6 @@ namespace UDS.Net.API.Extensions
                 entity.DADMEVAL = dto.DADMEVAL;
                 entity.DADAGEO = dto.DADAGEO;
                 entity.SIBS = dto.SIBS;
-                entity.NWINFSIB = dto.NWINFSIB;
                 entity.SIB1.Update(dto.SIB1);
                 entity.SIB2.Update(dto.SIB2);
                 entity.SIB3.Update(dto.SIB3);
@@ -479,7 +467,6 @@ namespace UDS.Net.API.Extensions
                 entity.SIB19.Update(dto.SIB19);
                 entity.SIB20.Update(dto.SIB20);
                 entity.KIDS = dto.KIDS;
-                entity.NWINFKID = dto.NWINFKID;
                 entity.KID1.Update(dto.KID1);
                 entity.KID2.Update(dto.KID2);
                 entity.KID3.Update(dto.KID3);
@@ -1505,8 +1492,8 @@ namespace UDS.Net.API.Extensions
                 entity.IMAGLAC = dto.IMAGLAC;
                 entity.IMAGMACH = dto.IMAGMACH;
                 entity.IMAGMICH = dto.IMAGMICH;
-                entity.IMAGMWMH = dto.IMAGMWMH;
-                entity.IMAGEWMH = dto.IMAGEWMH;
+                entity.IMAGWMH = dto.IMAGWMH;
+                entity.IMAGWMHSEV = dto.IMAGWMHSEV;
                 entity.OTHBIOM1 = dto.OTHBIOM1;
                 entity.OTHBIOMX1 = dto.OTHBIOMX1;
                 entity.BIOMAD1 = dto.BIOMAD1;
@@ -1534,7 +1521,6 @@ namespace UDS.Net.API.Extensions
                 entity.LBDIS = dto.LBDIS;
                 entity.LBDIF = dto.LBDIF;
                 entity.FTLD = dto.FTLD;
-                entity.FTLDIF = dto.FTLDIF;
                 entity.PSP = dto.PSP;
                 entity.PSPIF = dto.PSPIF;
                 entity.CORT = dto.CORT;

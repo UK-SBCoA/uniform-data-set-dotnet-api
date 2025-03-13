@@ -44,8 +44,8 @@ namespace UDS.Net.Dto
         public int? IMAGLAC { get; set; }
         public int? IMAGMACH { get; set; }
         public int? IMAGMICH { get; set; }
-        public int? IMAGMWMH { get; set; }
-        public int? IMAGEWMH { get; set; }
+        public int? IMAGWMH { get; set; }
+        public int? IMAGWMHSEV { get; set; }
         public int? OTHBIOM1 { get; set; }
         public string OTHBIOMX1 { get; set; }
         public int? BIOMAD1 { get; set; }
@@ -73,7 +73,6 @@ namespace UDS.Net.Dto
         public bool? LBDIS { get; set; }
         public int? LBDIF { get; set; }
         public bool? FTLD { get; set; }
-        public int? FTLDIF { get; set; }
         public bool? PSP { get; set; }
         public int? PSPIF { get; set; }
         public bool? CORT { get; set; }

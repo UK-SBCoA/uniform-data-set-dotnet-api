@@ -10,8 +10,6 @@ namespace UDS.Net.API.Entities
     [Table("tbl_A3s")]
     public class A3 : Form
     {
-        public int? AFFFAMM { get; set; } // Assuming these variables will remain in UDS4
-        public int? NWINFMUT { get; set; } // Assuming these variables will remain in UDS4
         public int? MOMYOB { get; set; }
         public int? MOMDAGE { get; set; }
         [MaxLength(2)]
@@ -29,7 +27,6 @@ namespace UDS.Net.API.Entities
         public int? DADMEVAL { get; set; }
         public int? DADAGEO { get; set; }
         public int? SIBS { get; set; }
-        public int? NWINFSIB { get; set; } // Assuming these variables will remain in UDS4
 
         public A3FamilyMember SIB1 { get; set; } = default!;
         public A3FamilyMember SIB2 { get; set; } = default!;
@@ -53,7 +50,6 @@ namespace UDS.Net.API.Entities
         public A3FamilyMember SIB20 { get; set; } = default!;
 
         public int? KIDS { get; set; }
-        public int? NWINFKID { get; set; }
 
         public A3FamilyMember KID1 { get; set; } = default!;
         public A3FamilyMember KID2 { get; set; } = default!;
