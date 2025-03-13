@@ -1521,7 +1521,6 @@ namespace UDS.Net.API.Extensions
                 entity.LBDIS = dto.LBDIS;
                 entity.LBDIF = dto.LBDIF;
                 entity.FTLD = dto.FTLD;
-                entity.FTLDIF = dto.FTLDIF;
                 entity.PSP = dto.PSP;
                 entity.PSPIF = dto.PSPIF;
                 entity.CORT = dto.CORT;

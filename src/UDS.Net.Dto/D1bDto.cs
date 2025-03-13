@@ -73,7 +73,6 @@ namespace UDS.Net.Dto
         public bool? LBDIS { get; set; }
         public int? LBDIF { get; set; }
         public bool? FTLD { get; set; }
-        public int? FTLDIF { get; set; }
         public bool? PSP { get; set; }
         public int? PSPIF { get; set; }
         public bool? CORT { get; set; }

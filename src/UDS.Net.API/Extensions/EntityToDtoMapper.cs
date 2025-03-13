@@ -1548,7 +1548,6 @@ namespace UDS.Net.API.Extensions
                 LBDIS = d1b.LBDIS,
                 LBDIF = d1b.LBDIF,
                 FTLD = d1b.FTLD,
-                FTLDIF = d1b.FTLDIF,
                 PSP = d1b.PSP,
                 PSPIF = d1b.PSPIF,
                 CORT = d1b.CORT,
