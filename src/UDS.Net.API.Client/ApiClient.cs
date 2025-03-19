@@ -32,6 +32,11 @@ namespace UDS.Net.API.Client
                 options.BaseAddress = new Uri(baseAddress);
             });
 
+            services.AddHttpClient<IMilestoneClient, MilestoneClient>(options =>
+            {
+                options.BaseAddress = new Uri(baseAddress);
+            });
+
             // API client registered last
             services.AddSingleton<IApiClient, ApiClient>();
         }
@@ -47,13 +52,15 @@ namespace UDS.Net.API.Client
         public IParticipationClient ParticipationClient { get; }
         public ILookupClient LookupClient { get; }
         public IPacketClient PacketClient { get; }
+        public IMilestoneClient MilestoneClient { get; }
 
-        public ApiClient(IVisitClient visitClient, IParticipationClient participationClient, ILookupClient lookupClient, IPacketClient packetClient)
+        public ApiClient(IVisitClient visitClient, IParticipationClient participationClient, ILookupClient lookupClient, IPacketClient packetClient, IMilestoneClient milestoneClient)
         {
             VisitClient = visitClient;
             ParticipationClient = participationClient;
             LookupClient = lookupClient;
             PacketClient = packetClient;
+            MilestoneClient = milestoneClient;
         }
 
 
