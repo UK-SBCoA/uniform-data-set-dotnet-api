@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 using UDS.Net.Dto;
 
@@ -14,24 +16,16 @@ namespace UDS.Net.API.Client
         {
         }
 
-        public Task<M1Dto> GetMilestone(int id, int formId)
+        public async Task<List<M1Dto>> GetMilestones(int participationId, int pageSize = 10, int pageIndex = 1)
         {
-            throw new NotImplementedException();
-        }
+            List<M1Dto> dto = new List<M1Dto>();
 
-        public Task<List<M1Dto>> GetMilestones(int id)
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task PostMilestone(int id, M1Dto dto)
-        {
-            throw new NotImplementedException();
-        }
+            var response = await GetRequest($"{_BasePath}/ByParticipation?{participationId}&pageSize={pageSize}&pageIndex={pageIndex}");
 
-        public Task PutMilestone(int id, int formId, M1Dto dto)
-        {
-            throw new NotImplementedException();
+            dto = JsonSerializer.Deserialize<List<M1Dto>>(response, options);
+
+            return dto;
         }
     }
 }
