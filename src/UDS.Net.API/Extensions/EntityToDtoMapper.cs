@@ -1608,8 +1608,8 @@ namespace UDS.Net.API.Extensions
         {
             M1Dto dto = new M1Dto
             {
+                Id = m1.FormId, // for some reason the PK of milestone is named FormId
                 ParticipationId = m1.ParticipationId,
-                FormId = m1.FormId,
                 Status = m1.Status,
                 CHANGEMO = m1.CHANGEMO,
                 CHANGEDY = m1.CHANGEDY,
@@ -1645,6 +1645,10 @@ namespace UDS.Net.API.Extensions
                 IsDeleted = m1.IsDeleted,
                 MILESTONETYPE = m1.MILESTONETYPE
             };
+
+            if (m1.Participation != null)
+                dto.Participation = m1.Participation.ToDto();
+
             return dto;
         }
 

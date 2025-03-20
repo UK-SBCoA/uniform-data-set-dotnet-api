@@ -27,6 +27,7 @@ namespace UDS.Net.API.Controllers
         public async Task<IEnumerable<M1Dto>> Get(int pageSize = 10, int pageIndex = 1)
         {
             return await _context.M1s
+                .Include(m => m.Participation)
                 .AsNoTracking()
                 .Skip((pageIndex - 1) * pageSize)
                 .Take(pageSize)
@@ -37,7 +38,11 @@ namespace UDS.Net.API.Controllers
         [HttpGet("{id}")]
         public async Task<M1Dto> Get(int id)
         {
-            return await _context.M1s.Where(m => m.FormId == id).Select(m => m.ToDto()).FirstOrDefaultAsync();
+            return await _context.M1s
+                .Include(m => m.Participation)
+                .Where(m => m.FormId == id)
+                .Select(m => m.ToDto())
+                .FirstOrDefaultAsync();
         }
 
         [HttpPost]
@@ -60,19 +65,27 @@ namespace UDS.Net.API.Controllers
         [HttpPut("{id}")]
         public async Task<M1Dto> Put(int id, [FromBody] M1Dto dto)
         {
-            var milestone = dto.ToEntity();
+            var existingMilestone = await _context.M1s
+                .Where(m => m.FormId == id)
+                .FirstOrDefaultAsync();
 
-            _context.M1s.Update(milestone);
+            if (existingMilestone != null)
+            {
+                existingMilestone.Update(dto);
+                _context.M1s.Update(existingMilestone);
 
-            await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
+                return existingMilestone.ToDto();
+            }
 
-            return milestone.ToDto();
+            return dto;
         }
 
         [HttpGet("ByParticipation", Name = "GetMilestonesByParticipation")]
         public async Task<List<M1Dto>> GetMilestonesByParticipation(int participationId, int pageSize = 10, int pageIndex = 1)
         {
             var milestones = await _context.M1s
+                .Include(m => m.Participation)
                 .Where(m => m.ParticipationId == participationId)
                 .AsNoTracking()
                 .Skip((pageIndex - 1) * pageSize)
