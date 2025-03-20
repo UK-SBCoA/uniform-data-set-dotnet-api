@@ -20,7 +20,6 @@ namespace UDS.Net.API.Client
         {
             List<M1Dto> dto = new List<M1Dto>();
 
-
             var response = await GetRequest($"{_BasePath}/ByParticipation?{participationId}&pageSize={pageSize}&pageIndex={pageIndex}");
 
             dto = JsonSerializer.Deserialize<List<M1Dto>>(response, options);
