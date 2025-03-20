@@ -1,5 +1,4 @@
-﻿using System.Net.NetworkInformation;
-using UDS.Net.API.Entities;
+﻿using UDS.Net.API.Entities;
 using UDS.Net.Dto;
 
 namespace UDS.Net.API.Extensions
@@ -179,8 +178,8 @@ namespace UDS.Net.API.Extensions
         {
             return new M1
             {
+                FormId = dto.Id, // DB breaks convention and calls the PK FormId, but fixing the Dto here
                 ParticipationId = dto.ParticipationId,
-                FormId = dto.FormId,
                 Status = dto.Status,
                 CHANGEMO = dto.CHANGEMO,
                 CHANGEDY = dto.CHANGEDY,
@@ -216,6 +215,51 @@ namespace UDS.Net.API.Extensions
                 IsDeleted = dto.IsDeleted,
                 MILESTONETYPE = dto.MILESTONETYPE
             };
+        }
+
+        public static bool Update(this M1 entity, M1Dto dto)
+        {
+            // DEVNOTE For some reason Milestone PK was named FormId
+            if (entity.FormId == dto.Id)
+            {
+                entity.Status = dto.Status;
+                entity.CHANGEMO = dto.CHANGEMO;
+                entity.CHANGEDY = dto.CHANGEDY;
+                entity.CHANGEYR = dto.CHANGEYR;
+                entity.PROTOCOL = dto.PROTOCOL;
+                entity.ACONSENT = dto.ACONSENT;
+                entity.RECOGIM = dto.RECOGIM;
+                entity.REPHYILL = dto.REPHYILL;
+                entity.REREFUSE = dto.REREFUSE;
+                entity.RENAVAIL = dto.RENAVAIL;
+                entity.RENURSE = dto.RENURSE;
+                entity.NURSEMO = dto.NURSEMO;
+                entity.NURSEDY = dto.NURSEDY;
+                entity.NURSEYR = dto.NURSEYR;
+                entity.REJOIN = dto.REJOIN;
+                entity.FTLDDISC = dto.FTLDDISC;
+                entity.FTLDREAS = dto.FTLDREAS;
+                entity.FTLDREAX = dto.FTLDREAX;
+                entity.DECEASED = dto.DECEASED;
+                entity.DISCONT = dto.DISCONT;
+                entity.DEATHMO = dto.DEATHMO;
+                entity.DEATHDY = dto.DEATHDY;
+                entity.DEATHYR = dto.DEATHYR;
+                entity.AUTOPSY = dto.AUTOPSY;
+                entity.DISCMO = dto.DISCMO;
+                entity.DISCDAY = dto.DISCDAY;
+                entity.DISCYR = dto.DISCYR;
+                entity.DROPREAS = dto.DROPREAS;
+                entity.CreatedAt = dto.CreatedAt;
+                entity.CreatedBy = dto.CreatedBy;
+                entity.ModifiedBy = dto.ModifiedBy;
+                entity.DeletedBy = dto.DeletedBy;
+                entity.IsDeleted = dto.IsDeleted;
+                entity.MILESTONETYPE = dto.MILESTONETYPE;
+
+                return true;
+            }
+            return false;
         }
 
         public static bool Update(this A1 entity, A1Dto dto)

@@ -6,6 +6,7 @@
         IParticipationClient ParticipationClient { get; }
         ILookupClient LookupClient { get; }
         IPacketClient PacketClient { get; }
+        IMilestoneClient MilestoneClient { get; }
     }
 }
 

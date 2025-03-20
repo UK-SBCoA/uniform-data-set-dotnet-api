@@ -15,38 +15,6 @@ namespace UDS.Net.API.Client
         {
         }
 
-        public async Task<List<M1Dto>> GetMilestones(int id)
-        {
-            var response = await GetRequest($"{_BasePath}/{id}/Milestones");
-
-            List<M1Dto> m1s = JsonSerializer.Deserialize<List<M1Dto>>(response, options);
-
-            return m1s;
-        }
-
-        public async Task PostMilestone(int id, M1Dto dto)
-        {
-            string json = JsonSerializer.Serialize(dto);
-
-            var response = await PostRequest($"{_BasePath}/{id}/Milestones", json);
-        }
-
-        public async Task<M1Dto> GetMilestone(int id, int formId)
-        {
-            var response = await GetRequest($"{_BasePath}/{id}/Milestones/{formId}");
-
-            M1Dto m1 = JsonSerializer.Deserialize<M1Dto>(response, options);
-
-            return m1;
-        }
-
-        public async Task PutMilestone(int id, int formId, M1Dto dto)
-        {
-            string json = JsonSerializer.Serialize(dto);
-
-            var response = await PutRequest($"{_BasePath}/{id}/Milestones/{formId}", json);
-        }
-
         public async Task<ParticipationDto> GetByLegacyId(string legacyId)
         {
             var response = await GetRequest($"{_BasePath}/LegacyId/{legacyId}");
