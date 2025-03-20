@@ -16,7 +16,7 @@ namespace UDS.Net.API.Client
         {
         }
 
-        public async Task<List<M1Dto>> GetMilestones(int participationId, int pageSize = 10, int pageIndex = 1)
+        public async Task<List<M1Dto>> GetMilestonesByParticipation(int participationId, int pageSize = 10, int pageIndex = 1)
         {
             List<M1Dto> dto = new List<M1Dto>();
 

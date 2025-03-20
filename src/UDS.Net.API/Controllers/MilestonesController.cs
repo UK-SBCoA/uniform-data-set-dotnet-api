@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using UDS.Net.API.Client;
 using UDS.Net.API.Data;
-using UDS.Net.API.Entities;
 using UDS.Net.API.Extensions;
 using UDS.Net.Dto;
 
@@ -22,16 +17,13 @@ namespace UDS.Net.API.Controllers
             _context = context;
         }
 
+        [HttpGet("Count", Name = "MilestonesCount")]
         public async Task<int> Count()
         {
             return await _context.M1s.CountAsync();
         }
 
-        public Task Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
+        [HttpGet]
         public async Task<IEnumerable<M1Dto>> Get(int pageSize = 10, int pageIndex = 1)
         {
             return await _context.M1s
@@ -42,11 +34,13 @@ namespace UDS.Net.API.Controllers
                 .ToListAsync();
         }
 
+        [HttpGet("{id}")]
         public async Task<M1Dto> Get(int id)
         {
             return await _context.M1s.Where(m => m.FormId == id).Select(m => m.ToDto()).FirstOrDefaultAsync();
         }
 
+        [HttpPost]
         public async Task<M1Dto> Post([FromBody] M1Dto dto)
         {
             var participation = await _context.Participations.FindAsync(dto.ParticipationId);
@@ -63,6 +57,7 @@ namespace UDS.Net.API.Controllers
             return null;
         }
 
+        [HttpPut("{id}")]
         public async Task<M1Dto> Put(int id, [FromBody] M1Dto dto)
         {
             var milestone = dto.ToEntity();
@@ -74,7 +69,8 @@ namespace UDS.Net.API.Controllers
             return milestone.ToDto();
         }
 
-        public async Task<List<M1Dto>> GetMilestones(int participationId, int pageSize = 10, int pageIndex = 1)
+        [HttpGet("ByParticipation", Name = "GetMilestonesByParticipation")]
+        public async Task<List<M1Dto>> GetMilestonesByParticipation(int participationId, int pageSize = 10, int pageIndex = 1)
         {
             var milestones = await _context.M1s
                 .Where(m => m.ParticipationId == participationId)
@@ -87,6 +83,11 @@ namespace UDS.Net.API.Controllers
             return milestones;
         }
 
+        [HttpDelete("{id}")]
+        public Task Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
