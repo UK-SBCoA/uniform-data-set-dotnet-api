@@ -10,7 +10,7 @@ namespace UDS.Net.API.Entities
 	[Keyless]
     public abstract class PacketFormHeader
     {
-        public string PACKET { get; set; } = "I"; // IVP, FVP, TIP, TVP -- Visit.Kind
+        public string PACKET { get; set; } = "I"; // I, I4, F Packet Code,packet,Yes,"I, I4","I, Initial Visit Packet | I4, Initial UDSv4 Visit Packet",String,,"ONLY use the ""I4"" packet code for participants who had previous UDS data and are completing UDSv4 for the first time. Use ""I"" if the participant is newly enrolled"
         public string FORMID { get; set; } = ""; // Entity table name without "tbl_" like "A1"
         public int FORMVER { get; set; } = 3; // Visit.Version
         public string ADCID { get; set; } = ""; // appsettings.json
