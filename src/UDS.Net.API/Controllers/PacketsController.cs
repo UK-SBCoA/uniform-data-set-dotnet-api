@@ -96,9 +96,33 @@ namespace UDS.Net.API.Controllers
                     .AsNoTracking()
                     .FirstOrDefaultAsync();
 
+                if (visit != null)
+                {
+                    // for finalization we need the forms on the main object
+                    dto.Forms.Add(visit.A1.ToFullDto());
+                    dto.Forms.Add(visit.A1a.ToFullDto());
+                    dto.Forms.Add(visit.A2.ToFullDto());
+                    dto.Forms.Add(visit.A3.ToFullDto());
+                    dto.Forms.Add(visit.A4.ToFullDto());
+                    dto.Forms.Add(visit.A4a.ToFullDto());
+                    dto.Forms.Add(visit.A5D2.ToFullDto());
+                    dto.Forms.Add(visit.B1.ToFullDto());
+                    dto.Forms.Add(visit.B3.ToFullDto());
+                    dto.Forms.Add(visit.B4.ToFullDto());
+                    dto.Forms.Add(visit.B5.ToFullDto());
+                    dto.Forms.Add(visit.B6.ToFullDto());
+                    dto.Forms.Add(visit.B7.ToFullDto());
+                    dto.Forms.Add(visit.B8.ToFullDto());
+                    dto.Forms.Add(visit.B9.ToFullDto());
+                    dto.Forms.Add(visit.C2.ToFullDto());
+                    dto.Forms.Add(visit.D1a.ToFullDto());
+                    dto.Forms.Add(visit.D1b.ToFullDto());
+                }
                 if (dto.PacketSubmissions != null && dto.PacketSubmissions.Count() > 0)
                 {
                     // TODO implement temporality so that older versions can be pulled
+                    // select all the forms at the state of submission.SubmissionDate
+                    // for now it will just be the current state
                     foreach (var submission in dto.PacketSubmissions)
                     {
                         submission.Forms.Add(visit.A1.ToFullDto());
