@@ -96,6 +96,28 @@ namespace UDS.Net.API.Controllers
             return milestones;
         }
 
+        [HttpGet("ByLegacyIdAndStatus", Name = "GetMilestonesByLegacyIdAndStatus")]
+        public async Task<List<M1Dto>> GetMilestonesByLegacyIdAndStatus(
+            [FromQuery] string legacyId,
+            [FromQuery] string[] statuses,
+            [FromQuery] int pageSize = 10,
+            [FromQuery] int pageIndex = 1)
+        {
+            if (string.IsNullOrWhiteSpace(legacyId) || statuses == null || statuses.Length == 0)
+                return new List<M1Dto>();
+
+            var milestones = await _context.M1s
+                .Include(m => m.Participation)
+                .Where(m => m.Participation.LegacyId == legacyId && statuses.Contains(m.Status))
+                .AsNoTracking()
+                .Skip((pageIndex - 1) * pageSize)
+                .Take(pageSize)
+                .Select(m => m.ToDto())
+                .ToListAsync();
+
+            return milestones;
+        }
+
         [HttpDelete("{id}")]
         public Task Delete(int id)
         {
