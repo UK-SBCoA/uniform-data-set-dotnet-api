@@ -255,6 +255,28 @@ namespace UDS.Net.API.Controllers
             return dto;
         }
 
+        private async Task<List<VisitDto>> Get(string[] statuses, DateTime startDate, DateTime endDate, int pageSize, int pageIndex)
+        {
+            var enumStatuses = statuses.Convert();
+
+            var query = _context.Visits
+                .Include(v => v.PacketSubmissions)
+                    .ThenInclude(p => p.PacketSubmissionErrors)
+                .AsNoTracking()
+                .Where(v => v.VISIT_DATE >= startDate && v.VISIT_DATE <= endDate);
+
+            if (enumStatuses != null && enumStatuses.Count > 0)
+            {
+                query = query.Where(v => enumStatuses.Contains(v.Status));
+            }
+
+            return await query
+                .Skip((pageIndex - 1) * pageSize)
+                .Take(pageSize)
+                .Select(v => v.ToDto())
+                .ToListAsync();
+        }
+
         [HttpGet]
         public async Task<IEnumerable<VisitDto>> Get(int pageSize = 10, int pageIndex = 1)
         {
@@ -273,6 +295,12 @@ namespace UDS.Net.API.Controllers
             return await Get(statuses, pageSize, pageIndex);
         }
 
+        [HttpGet("ByDateRangeAndStatus")]
+        public async Task<List<VisitDto>> GetVisitsAtDateRangeAndStatus([FromQuery] string[] statuses, [FromQuery] DateTime startDate, [FromQuery] DateTime endDate, int pageSize = 10, int pageIndex = 1)
+        {
+            return await Get(statuses, startDate, endDate, pageSize, pageIndex);
+        }
+
         [HttpGet("Count/ByStatus")]
         public async Task<int> GetCountOfVisitsAtStatus([FromQuery] string[] statuses)
         {
@@ -289,6 +317,28 @@ namespace UDS.Net.API.Controllers
             }
 
             return 0;
+        }
+
+        [HttpGet("Count/ByDateRangeAndStatus")]
+        public async Task<int> GetCountOfVisitsAtDateRangeAndStatus([FromQuery] string[] statuses, [FromQuery] DateTime startDate, [FromQuery] DateTime endDate)
+        {
+            if (startDate > endDate)
+                return 0;
+
+            var query = _context.Visits
+                .AsNoTracking()
+                .Where(v => v.VISIT_DATE >= startDate && v.VISIT_DATE <= endDate);
+
+            if (statuses != null && statuses.Length > 0)
+            {
+                var enumStatuses = statuses.Convert();
+                if (enumStatuses != null && enumStatuses.Count > 0)
+                {
+                    query = query.Where(v => enumStatuses.Contains(v.Status));
+                }
+            }
+
+            return await query.CountAsync();
         }
 
         [HttpGet("{id}")]
