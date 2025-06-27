@@ -18,7 +18,16 @@ namespace UDS.Net.API.Client
 
         public async Task<LookupDrugCodeDto> LookupDrugCodes(int pageSize = 10, int pageIndex = 1, bool? includePopular = null, bool? includeOverTheCounter = null)
         {
-            var response = await GetRequest($"{_BasePath}/DrugCodes?pageSize={pageSize}&pageIndex={pageIndex}");
+            var urlBuilder = new System.Text.StringBuilder();
+            urlBuilder.Append($"{_BasePath}/DrugCodes?pageSize={pageSize}&pageIndex={pageIndex}");
+
+            if (includeOverTheCounter.HasValue)
+                urlBuilder.Append($"&includeOverTheCounter={includeOverTheCounter.Value}");
+
+            if (includePopular.HasValue)
+                urlBuilder.Append($"&includePopular={includePopular}");
+
+            var response = await GetRequest(urlBuilder.ToString());
 
             LookupDrugCodeDto? dto = JsonSerializer.Deserialize<LookupDrugCodeDto>(response, options);
 
