@@ -37,7 +37,7 @@ namespace UDS.Net.API.Client
             return dto;
         }
 
-        public async Task<List<VisitDto>> GetVisitsAtDateRangeAndStatus(string[] statuses, DateTime startDate, DateTime endDate, int pageSize = 10, int pageIndex = 1)
+        public async Task<List<VisitDto>> GetVisitsAtDateRangeAndStatus(string[] statuses, DateTime? startDate, DateTime? endDate, int pageSize = 10, int pageIndex = 1)
         {
             List<VisitDto> dto = new List<VisitDto>();
 
@@ -51,8 +51,12 @@ namespace UDS.Net.API.Client
                 }
             }
 
-            query.Add("startDate", startDate.ToString("o"));
-            query.Add("endDate", endDate.ToString("o"));
+            if (startDate.HasValue)
+                query.Add("startDate", startDate.Value.ToString("o"));
+
+            if (endDate.HasValue)
+                query.Add("endDate", endDate.Value.ToString("o"));
+
             query.Add("pageSize", pageSize.ToString());
             query.Add("pageIndex", pageIndex.ToString());
 
@@ -80,7 +84,7 @@ namespace UDS.Net.API.Client
             }
             return 0;
         }
-        public async Task<int> GetCountOfVisitsAtDateRangeAndStatus(string[] statuses, DateTime startDate, DateTime endDate)
+        public async Task<int> GetCountOfVisitsAtDateRangeAndStatus(string[] statuses, DateTime? startDate, DateTime? endDate)
         {
             NameValueCollection query = System.Web.HttpUtility.ParseQueryString(string.Empty);
 
@@ -92,8 +96,11 @@ namespace UDS.Net.API.Client
                 }
             }
 
-            query.Add("startDate", startDate.ToString("o"));
-            query.Add("endDate", endDate.ToString("o"));
+            if (startDate.HasValue)
+                query.Add("startDate", startDate.Value.ToString("o"));
+
+            if (endDate.HasValue)
+                query.Add("endDate", endDate.Value.ToString("o"));
 
             var response = await GetRequest($"{_BasePath}/Count/ByDateRangeAndStatus?{query}");
 

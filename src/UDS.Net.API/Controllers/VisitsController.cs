@@ -255,15 +255,20 @@ namespace UDS.Net.API.Controllers
             return dto;
         }
 
-        private IQueryable<Visit> GetVisitQuery(string[] statuses, DateTime startDate, DateTime endDate)
+        private IQueryable<Visit> GetVisitQuery(string[] statuses, DateTime? startDate, DateTime? endDate)
         {
             var enumStatuses = statuses.Convert();
 
             var query = _context.Visits
                 .Include(v => v.PacketSubmissions)
                     .ThenInclude(p => p.PacketSubmissionErrors)
-                .AsNoTracking()
-                .Where(v => v.VISIT_DATE >= startDate && v.VISIT_DATE <= endDate);
+                .AsNoTracking();
+
+            if (startDate.HasValue)
+                query = query.Where(v => v.VISIT_DATE.Date >= startDate.Value.Date);
+
+            if (endDate.HasValue)
+                query = query.Where(v => v.VISIT_DATE.Date <= endDate.Value.Date);
 
             if (enumStatuses != null && enumStatuses.Count > 0)
             {
@@ -292,7 +297,7 @@ namespace UDS.Net.API.Controllers
         }
 
         [HttpGet("ByDateRangeAndStatus")]
-        public async Task<List<VisitDto>> GetVisitsAtDateRangeAndStatus([FromQuery] string[] statuses, [FromQuery] DateTime startDate, [FromQuery] DateTime endDate, int pageSize = 10, int pageIndex = 1)
+        public async Task<List<VisitDto>> GetVisitsAtDateRangeAndStatus([FromQuery] string[] statuses, [FromQuery] DateTime? startDate, [FromQuery] DateTime? endDate, int pageSize = 10, int pageIndex = 1)
         {
             var query = GetVisitQuery(statuses, startDate, endDate);
 
@@ -322,9 +327,9 @@ namespace UDS.Net.API.Controllers
         }
 
         [HttpGet("Count/ByDateRangeAndStatus")]
-        public async Task<int> GetCountOfVisitsAtDateRangeAndStatus([FromQuery] string[] statuses, [FromQuery] DateTime startDate, [FromQuery] DateTime endDate)
+        public async Task<int> GetCountOfVisitsAtDateRangeAndStatus([FromQuery] string[] statuses, [FromQuery] DateTime? startDate, [FromQuery] DateTime? endDate)
         {
-            if (startDate > endDate)
+            if (startDate.HasValue && endDate.HasValue && startDate > endDate)
                 return 0;
 
             var query = GetVisitQuery(statuses, startDate, endDate);
