@@ -255,7 +255,7 @@ namespace UDS.Net.API.Controllers
             return dto;
         }
 
-        private async Task<List<VisitDto>> Get(string[] statuses, DateTime startDate, DateTime endDate, int pageSize, int pageIndex)
+        private IQueryable<Visit> GetVisitQuery(string[] statuses, DateTime startDate, DateTime endDate)
         {
             var enumStatuses = statuses.Convert();
 
@@ -270,11 +270,7 @@ namespace UDS.Net.API.Controllers
                 query = query.Where(v => enumStatuses.Contains(v.Status));
             }
 
-            return await query
-                .Skip((pageIndex - 1) * pageSize)
-                .Take(pageSize)
-                .Select(v => v.ToDto())
-                .ToListAsync();
+            return query;
         }
 
         [HttpGet]
@@ -298,7 +294,13 @@ namespace UDS.Net.API.Controllers
         [HttpGet("ByDateRangeAndStatus")]
         public async Task<List<VisitDto>> GetVisitsAtDateRangeAndStatus([FromQuery] string[] statuses, [FromQuery] DateTime startDate, [FromQuery] DateTime endDate, int pageSize = 10, int pageIndex = 1)
         {
-            return await Get(statuses, startDate, endDate, pageSize, pageIndex);
+            var query = GetVisitQuery(statuses, startDate, endDate);
+
+            return await query
+                .Skip((pageIndex - 1) * pageSize)
+                .Take(pageSize)
+                .Select(v => v.ToDto())
+                .ToListAsync();
         }
 
         [HttpGet("Count/ByStatus")]
@@ -325,19 +327,7 @@ namespace UDS.Net.API.Controllers
             if (startDate > endDate)
                 return 0;
 
-            var query = _context.Visits
-                .AsNoTracking()
-                .Where(v => v.VISIT_DATE >= startDate && v.VISIT_DATE <= endDate);
-
-            if (statuses != null && statuses.Length > 0)
-            {
-                var enumStatuses = statuses.Convert();
-                if (enumStatuses != null && enumStatuses.Count > 0)
-                {
-                    query = query.Where(v => enumStatuses.Contains(v.Status));
-                }
-            }
-
+            var query = GetVisitQuery(statuses, startDate, endDate);
             return await query.CountAsync();
         }
 
