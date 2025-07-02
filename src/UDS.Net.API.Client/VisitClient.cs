@@ -36,28 +36,29 @@ namespace UDS.Net.API.Client
 
             return dto;
         }
+
         public async Task<List<VisitDto>> GetVisitsAtDateRangeAndStatus(string[] statuses, DateTime startDate, DateTime endDate, int pageSize = 10, int pageIndex = 1)
         {
             List<VisitDto> dto = new List<VisitDto>();
 
-            if (statuses != null && statuses.Length > 0)
-            {
-                NameValueCollection query = System.Web.HttpUtility.ParseQueryString(string.Empty);
+            NameValueCollection query = System.Web.HttpUtility.ParseQueryString(string.Empty);
 
+            if (statuses != null)
+            {
                 foreach (var status in statuses)
                 {
                     query.Add("statuses", status);
                 }
-
-                query.Add("startDate", startDate.ToString("o"));
-                query.Add("endDate", endDate.ToString("o"));
-                query.Add("pageSize", pageSize.ToString());
-                query.Add("pageIndex", pageIndex.ToString());
-
-                var response = await GetRequest($"{_BasePath}/ByDateRangeAndStatus?{query.ToString()}");
-
-                dto = JsonSerializer.Deserialize<List<VisitDto>>(response, options);
             }
+
+            query.Add("startDate", startDate.ToString("o"));
+            query.Add("endDate", endDate.ToString("o"));
+            query.Add("pageSize", pageSize.ToString());
+            query.Add("pageIndex", pageIndex.ToString());
+
+            var response = await GetRequest($"{_BasePath}/ByDateRangeAndStatus?{query}");
+
+            dto = JsonSerializer.Deserialize<List<VisitDto>>(response, options);
 
             return dto;
         }
