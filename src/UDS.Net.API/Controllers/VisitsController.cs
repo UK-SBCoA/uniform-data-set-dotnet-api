@@ -265,10 +265,16 @@ namespace UDS.Net.API.Controllers
                 .AsNoTracking();
 
             if (startDate.HasValue)
-                query = query.Where(v => v.VISIT_DATE.Date >= startDate.Value.Date);
+            {
+                var start = startDate.Value.Date;
+                query = query.Where(v => v.VISIT_DATE >= start);
+            }
 
             if (endDate.HasValue)
-                query = query.Where(v => v.VISIT_DATE.Date <= endDate.Value.Date);
+            {
+                var endExclusive = endDate.Value.Date.AddDays(1);
+                query = query.Where(v => v.VISIT_DATE < endExclusive);
+            }
 
             if (enumStatuses != null && enumStatuses.Count > 0)
             {
