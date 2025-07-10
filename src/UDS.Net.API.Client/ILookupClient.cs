@@ -7,11 +7,11 @@ namespace UDS.Net.API.Client
 {
     public interface ILookupClient : IBaseClient<LookupDto>
     {
-        Task<LookupDrugCodeDto> LookupDrugCodes(int pageSize = 10, int pageIndex = 1);
+        Task<LookupDrugCodeDto> LookupDrugCodes(int pageSize = 10, int pageIndex = 1, bool? includePopular = null, bool? includeOverTheCounter = null);
 
         Task<LookupDrugCodeDto> SearchDrugCodes(int pageSize = 10, int pageIndex = 1, string? searchTerm = "");
 
-        Task<LookupDrugCodeDto> FindDrugCode(int rxCUI);
+        Task<LookupDrugCodeDto> FindDrugCodes(int[] rxCUIs);
 
         Task<DrugCodeDto> AddDrugCode(DrugCodeDto dto);
 

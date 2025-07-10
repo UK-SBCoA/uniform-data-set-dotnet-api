@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Linq;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using UDS.Net.API.Client;
 using UDS.Net.API.Data;
@@ -34,10 +35,51 @@ namespace UDS.Net.API.Controllers
             return drugCodeQuery;
         }
 
+        /// <summary>
+        /// This can return any combination of drug lists (popular, OTC, or custom)
+        /// 
+        /* 
+            +-------------+---------------------------+------------------+------------------------------+
+            |  Include?   |       OTC = null          |      false       |             true             |
+            +-------------+---------------------------+------------------+------------------------------+
+            | Popular =   |                           |                  |                              |
+            | null        | all                       | anything not OTC | OTC, no regard to popularity |
+            | false       | anything not popular      | custom           | only OTC                     |
+            | true        | popular, no regard to OTC | only popular     | only popular and OTC         |
+            +-------------+---------------------------+------------------+------------------------------+
+        */
+        /// </summary>
         [HttpGet("DrugCodes", Name = "LookupDrugCodes")]
-        public async Task<LookupDrugCodeDto> LookupDrugCodes(int pageSize = 10, int pageIndex = 1)
+        public async Task<LookupDrugCodeDto> LookupDrugCodes(int pageSize = 10, int pageIndex = 1, bool? includePopular = null, bool? includeOverTheCounter = null)
         {
-            var query = GetDrugCodeQuery();
+            var query = _context.DrugCodesLookup.AsQueryable();
+
+            if (includePopular.HasValue || includeOverTheCounter.HasValue)
+            {
+                if (includePopular.HasValue)
+                {
+                    if (includeOverTheCounter.HasValue)
+                    {
+                        // consider both
+                        query = query.Where(d => d.IsPopular == includePopular.Value && d.IsOverTheCounter == includeOverTheCounter.Value);
+                    }
+                    else
+                    {
+                        // includeOverTheCounter not defined, only consider is popular
+                        query = query.Where(d => d.IsPopular == includePopular.Value);
+                    }
+                }
+                else if (includeOverTheCounter.HasValue)
+                {
+                    // includePopular not defined, only consider over the counter
+                    query = query.Where(d => d.IsOverTheCounter == includeOverTheCounter.Value);
+                }
+            }
+            else
+            {
+                // no filter
+            }
+
             var totalRecords = await query.CountAsync();
 
             var results = await query
@@ -55,7 +97,7 @@ namespace UDS.Net.API.Controllers
                 PageIndex = pageSize,
                 TotalResultsCount = totalRecords,
                 Results = results,
-                LookupParameters = new { },
+                LookupParameters = new { PageSize = pageSize, PageIndex = pageIndex, IncludePopular = includePopular, IncludeOverTheCounter = includeOverTheCounter },
                 Error = new ErrorDto()
             };
         }
@@ -88,44 +130,41 @@ namespace UDS.Net.API.Controllers
             };
         }
 
-        [HttpGet("DrugCodes/Find/{rxCUI}", Name = "FindDrugCodes")]
-        public async Task<LookupDrugCodeDto> FindDrugCode(int rxCUI)
+        [HttpGet("DrugCodes/Find", Name = "FindDrugCodes")]
+        public async Task<LookupDrugCodeDto> FindDrugCodes([FromQuery] int[] rxCUIs)
         {
-            var drugCode = await _context.DrugCodesLookup
-                .Where(d => d.RxNormId == rxCUI)
-                .FirstOrDefaultAsync();
+            if (rxCUIs != null && rxCUIs.Count() > 0)
+            {
+                var drugCodes = await _context.DrugCodesLookup
+                    .Where(d => EF.Constant(rxCUIs).Contains(d.RxNormId))
+                    .ToListAsync();
 
-            if (drugCode != null)
-            {
-                return new LookupDrugCodeDto
+                if (drugCodes != null)
                 {
-                    LookupType = "DrugCode",
-                    SearchTerm = rxCUI.ToString(),
-                    PageSize = 1,
-                    PageIndex = 1,
-                    TotalResultsCount = 1,
-                    Results = new List<DrugCodeDto>
+                    return new LookupDrugCodeDto
                     {
-                        drugCode.ToDto()
-                    },
-                    LookupParameters = new { RxCUI = rxCUI },
-                    Error = new ErrorDto()
-                };
+                        LookupType = "DrugCode",
+                        SearchTerm = string.Join(", ", rxCUIs),
+                        PageSize = 1,
+                        PageIndex = 1,
+                        TotalResultsCount = 1,
+                        Results = drugCodes.ToDto(),
+                        LookupParameters = new { RxCUI = rxCUIs },
+                        Error = new ErrorDto()
+                    };
+                }
             }
-            else
+            return new LookupDrugCodeDto
             {
-                return new LookupDrugCodeDto
-                {
-                    LookupType = "DrugCode",
-                    SearchTerm = rxCUI.ToString(),
-                    PageSize = 1,
-                    PageIndex = 1,
-                    TotalResultsCount = 0,
-                    Results = new List<DrugCodeDto>(),
-                    LookupParameters = new { RxCUI = rxCUI },
-                    Error = new ErrorDto()
-                };
-            }
+                LookupType = "DrugCode",
+                SearchTerm = "",
+                PageSize = 1,
+                PageIndex = 1,
+                TotalResultsCount = 0,
+                Results = new List<DrugCodeDto>(),
+                LookupParameters = new { RxCUI = rxCUIs },
+                Error = new ErrorDto()
+            };
         }
 
         [HttpPost("DrugCodes", Name = "AddDrugCode")]
@@ -213,7 +252,6 @@ namespace UDS.Net.API.Controllers
 
             };
         }
-
     }
 }
 

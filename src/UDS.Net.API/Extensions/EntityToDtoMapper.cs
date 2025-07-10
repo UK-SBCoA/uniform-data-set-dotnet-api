@@ -1671,6 +1671,11 @@ namespace UDS.Net.API.Extensions
             return dto;
         }
 
+        public static List<DrugCodeDto> ToDto(this List<DrugCodeLookup> drugCodes)
+        {
+            return drugCodes.Select(d => d.ToDto()).ToList();
+        }
+
         public static DrugCodeDto ToDto(this DrugCodeLookup drugCode)
         {
             return new DrugCodeDto
