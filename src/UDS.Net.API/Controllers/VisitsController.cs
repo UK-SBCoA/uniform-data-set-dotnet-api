@@ -255,6 +255,35 @@ namespace UDS.Net.API.Controllers
             return dto;
         }
 
+        private IQueryable<Visit> GetVisitQuery(string[] statuses, DateTime? startDate, DateTime? endDate)
+        {
+            var enumStatuses = statuses.Convert();
+
+            var query = _context.Visits
+                .Include(v => v.PacketSubmissions)
+                    .ThenInclude(p => p.PacketSubmissionErrors)
+                .AsNoTracking();
+
+            if (startDate.HasValue)
+            {
+                var start = startDate.Value.Date;
+                query = query.Where(v => v.VISIT_DATE >= start);
+            }
+
+            if (endDate.HasValue)
+            {
+                var endExclusive = endDate.Value.Date.AddDays(1);
+                query = query.Where(v => v.VISIT_DATE < endExclusive);
+            }
+
+            if (enumStatuses != null && enumStatuses.Count > 0)
+            {
+                query = query.Where(v => enumStatuses.Contains(v.Status));
+            }
+
+            return query;
+        }
+
         [HttpGet]
         public async Task<IEnumerable<VisitDto>> Get(int pageSize = 10, int pageIndex = 1)
         {
@@ -273,6 +302,18 @@ namespace UDS.Net.API.Controllers
             return await Get(statuses, pageSize, pageIndex);
         }
 
+        [HttpGet("ByDateRangeAndStatus")]
+        public async Task<List<VisitDto>> GetVisitsAtDateRangeAndStatus([FromQuery] string[] statuses, [FromQuery] DateTime? startDate, [FromQuery] DateTime? endDate, int pageSize = 10, int pageIndex = 1)
+        {
+            var query = GetVisitQuery(statuses, startDate, endDate);
+
+            return await query
+                .Skip((pageIndex - 1) * pageSize)
+                .Take(pageSize)
+                .Select(v => v.ToDto())
+                .ToListAsync();
+        }
+
         [HttpGet("Count/ByStatus")]
         public async Task<int> GetCountOfVisitsAtStatus([FromQuery] string[] statuses)
         {
@@ -289,6 +330,16 @@ namespace UDS.Net.API.Controllers
             }
 
             return 0;
+        }
+
+        [HttpGet("Count/ByDateRangeAndStatus")]
+        public async Task<int> GetCountOfVisitsAtDateRangeAndStatus([FromQuery] string[] statuses, [FromQuery] DateTime? startDate, [FromQuery] DateTime? endDate)
+        {
+            if (startDate.HasValue && endDate.HasValue && startDate > endDate)
+                return 0;
+
+            var query = GetVisitQuery(statuses, startDate, endDate);
+            return await query.CountAsync();
         }
 
         [HttpGet("{id}")]

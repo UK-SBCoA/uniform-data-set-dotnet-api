@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net.Http;
 using System.Text.Json;
@@ -36,6 +37,36 @@ namespace UDS.Net.API.Client
             return dto;
         }
 
+        public async Task<List<VisitDto>> GetVisitsAtDateRangeAndStatus(string[] statuses, DateTime? startDate, DateTime? endDate, int pageSize = 10, int pageIndex = 1)
+        {
+            List<VisitDto> dto = new List<VisitDto>();
+
+            NameValueCollection query = System.Web.HttpUtility.ParseQueryString(string.Empty);
+
+            if (statuses != null)
+            {
+                foreach (var status in statuses)
+                {
+                    query.Add("statuses", status);
+                }
+            }
+
+            if (startDate.HasValue)
+                query.Add("startDate", startDate.Value.ToString("o"));
+
+            if (endDate.HasValue)
+                query.Add("endDate", endDate.Value.ToString("o"));
+
+            query.Add("pageSize", pageSize.ToString());
+            query.Add("pageIndex", pageIndex.ToString());
+
+            var response = await GetRequest($"{_BasePath}/ByDateRangeAndStatus?{query}");
+
+            dto = JsonSerializer.Deserialize<List<VisitDto>>(response, options);
+
+            return dto;
+        }
+
         public async Task<int> GetCountOfVisitsAtStatus(string[] statuses)
         {
             if (statuses != null && statuses.Length > 0)
@@ -52,6 +83,28 @@ namespace UDS.Net.API.Client
                 return JsonSerializer.Deserialize<int>(response, options);
             }
             return 0;
+        }
+        public async Task<int> GetCountOfVisitsAtDateRangeAndStatus(string[] statuses, DateTime? startDate, DateTime? endDate)
+        {
+            NameValueCollection query = System.Web.HttpUtility.ParseQueryString(string.Empty);
+
+            if (statuses != null)
+            {
+                foreach (var status in statuses)
+                {
+                    query.Add("statuses", status);
+                }
+            }
+
+            if (startDate.HasValue)
+                query.Add("startDate", startDate.Value.ToString("o"));
+
+            if (endDate.HasValue)
+                query.Add("endDate", endDate.Value.ToString("o"));
+
+            var response = await GetRequest($"{_BasePath}/Count/ByDateRangeAndStatus?{query}");
+
+            return JsonSerializer.Deserialize<int>(response, options);
         }
 
         public async Task<VisitDto> GetWithForm(int id, string formKind)

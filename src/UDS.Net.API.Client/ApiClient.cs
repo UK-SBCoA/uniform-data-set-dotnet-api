@@ -5,7 +5,7 @@ namespace UDS.Net.API.Client
 {
     public static class UDSApiExtensions
     {
-        public static void AddUDSApiClient(this IServiceCollection services, string baseAddress)
+        public static void AddUDSApiClient(this IServiceCollection services, string baseAddress, double timeoutSeconds = 100)
         {
             if (!baseAddress.EndsWith("/"))
                 baseAddress += "/"; // you MUST place a slash at the end of the baseaddress
@@ -15,26 +15,31 @@ namespace UDS.Net.API.Client
             services.AddHttpClient<IVisitClient, VisitClient>(options =>
             {
                 options.BaseAddress = new Uri(baseAddress);
+                options.Timeout = TimeSpan.FromSeconds(timeoutSeconds);
             });
 
             services.AddHttpClient<IParticipationClient, ParticipationClient>(options =>
             {
                 options.BaseAddress = new Uri(baseAddress);
+                options.Timeout = TimeSpan.FromSeconds(timeoutSeconds);
             });
 
             services.AddHttpClient<ILookupClient, LookupClient>(options =>
             {
                 options.BaseAddress = new Uri(baseAddress);
+                options.Timeout = TimeSpan.FromSeconds(timeoutSeconds);
             });
 
             services.AddHttpClient<IPacketClient, PacketClient>(options =>
             {
                 options.BaseAddress = new Uri(baseAddress);
+                options.Timeout = TimeSpan.FromSeconds(timeoutSeconds);
             });
 
             services.AddHttpClient<IMilestoneClient, MilestoneClient>(options =>
             {
                 options.BaseAddress = new Uri(baseAddress);
+                options.Timeout = TimeSpan.FromSeconds(timeoutSeconds);
             });
 
             // API client registered last
