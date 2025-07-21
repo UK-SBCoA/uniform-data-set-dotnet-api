@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -15,9 +16,18 @@ namespace UDS.Net.API.Client
         {
         }
 
-        public async Task<LookupDrugCodeDto> LookupDrugCodes(int pageSize = 10, int pageIndex = 1)
+        public async Task<LookupDrugCodeDto> LookupDrugCodes(int pageSize = 10, int pageIndex = 1, bool? includePopular = null, bool? includeOverTheCounter = null)
         {
-            var response = await GetRequest($"{_BasePath}/DrugCodes?pageSize={pageSize}&pageIndex={pageIndex}");
+            var urlBuilder = new System.Text.StringBuilder();
+            urlBuilder.Append($"{_BasePath}/DrugCodes?pageSize={pageSize}&pageIndex={pageIndex}");
+
+            if (includeOverTheCounter.HasValue)
+                urlBuilder.Append($"&includeOverTheCounter={includeOverTheCounter.Value}");
+
+            if (includePopular.HasValue)
+                urlBuilder.Append($"&includePopular={includePopular}");
+
+            var response = await GetRequest(urlBuilder.ToString());
 
             LookupDrugCodeDto? dto = JsonSerializer.Deserialize<LookupDrugCodeDto>(response, options);
 
@@ -33,9 +43,21 @@ namespace UDS.Net.API.Client
             return dto;
         }
 
-        public async Task<LookupDrugCodeDto> FindDrugCode(int rxCUI)
+        public async Task<LookupDrugCodeDto> FindDrugCodes(int[] rxCUIs)
         {
-            var response = await GetRequest($"{_BasePath}/DrugCodes/Find/{rxCUI}");
+            // Example: Find?rxCUIs=11&rxCUIs=12
+            var urlBuilder = new System.Text.StringBuilder();
+            urlBuilder.Append($"{_BasePath}/DrugCodes/Find?");
+
+            if (rxCUIs != null)
+            {
+                // TODO? System.Uri.EscapeDataString
+                foreach (var cuid in rxCUIs) { urlBuilder.Append(System.Uri.EscapeDataString("rxCUIs") + "=").Append(cuid.ToString()).Append("&"); }
+            }
+
+            urlBuilder.Length--;// remove the final &
+
+            var response = await GetRequest(urlBuilder.ToString());
 
             LookupDrugCodeDto? dto = JsonSerializer.Deserialize<LookupDrugCodeDto>(response, options);
 
@@ -61,8 +83,6 @@ namespace UDS.Net.API.Client
 
             return dto;
         }
-
-
     }
 }
 

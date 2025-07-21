@@ -4,7 +4,7 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<ReleaseVersion>8.0.1</ReleaseVersion>
+		<ReleaseVersion>8.0.2</ReleaseVersion>
 		<DockerComposeProjectPath>../docker-compose.dcproj</DockerComposeProjectPath>
 		<UserSecretsId>c1dd1715-6fa0-4515-bcf2-6a7f6a0c11a5</UserSecretsId>
 		<Configurations>Release;Debug</Configurations>
