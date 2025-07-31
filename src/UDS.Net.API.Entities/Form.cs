@@ -12,7 +12,8 @@ namespace UDS.Net.API.Entities
         public int Id { get; set; }
 
         [Column(Order = 1)]
-        public int VisitId { get; set; }
+        public int PacketId { get; set; }
+        public Packet Packet { get; set; }
 
         [MaxLength(20)]
         [Column(Order = 2)]

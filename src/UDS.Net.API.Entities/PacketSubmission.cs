@@ -17,9 +17,9 @@ namespace UDS.Net.API.Entities
 
         public DateTime SubmissionDate { get; set; }
 
-        public Visit Visit { get; set; } = default!;
+        public Packet Packet { get; set; } = default!;
 
-        public int VisitId { get; set; }
+        public int PacketId { get; set; }
 
         public int? ErrorCount { get; set; } // null means no results yet, 0 means no errors
 

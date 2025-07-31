@@ -5,12 +5,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UDS.Net.API.Entities
 {
-    [Table("tbl_Visits")]
-    public class Visit : BaseEntity
+    [Table("tbl_Packets")]
+    public class Packet : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("VisitId")]
+        [Column("PacketId")]
         public int Id { get; set; }
 
         public int ParticipationId { get; set; }

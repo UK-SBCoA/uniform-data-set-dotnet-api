@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace UDS.Net.API.Entities
 {
+    // TODO rename visits to packets
     [Table("tbl_Visits")]
     [Index(nameof(ParticipationId), nameof(VISITNUM), IsUnique = true)]
     public class Visit : BaseEntity
