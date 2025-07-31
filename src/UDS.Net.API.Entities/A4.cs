@@ -8,46 +8,47 @@ namespace UDS.Net.API.Entities
     {
         public int? ANYMEDS { get; set; }
 
-        public A4D RXNORMID1 { get; set; } = default!;
-        public A4D RXNORMID2 { get; set; } = default!;
-        public A4D RXNORMID3 { get; set; } = default!;
-        public A4D RXNORMID4 { get; set; } = default!;
-        public A4D RXNORMID5 { get; set; } = default!;
-        public A4D RXNORMID6 { get; set; } = default!;
-        public A4D RXNORMID7 { get; set; } = default!;
-        public A4D RXNORMID8 { get; set; } = default!;
-        public A4D RXNORMID9 { get; set; } = default!;
-        public A4D RXNORMID10 { get; set; } = default!;
-        public A4D RXNORMID11 { get; set; } = default!;
-        public A4D RXNORMID12 { get; set; } = default!;
-        public A4D RXNORMID13 { get; set; } = default!;
-        public A4D RXNORMID14 { get; set; } = default!;
-        public A4D RXNORMID15 { get; set; } = default!;
-        public A4D RXNORMID16 { get; set; } = default!;
-        public A4D RXNORMID17 { get; set; } = default!;
-        public A4D RXNORMID18 { get; set; } = default!;
-        public A4D RXNORMID19 { get; set; } = default!;
-        public A4D RXNORMID20 { get; set; } = default!;
-        public A4D RXNORMID21 { get; set; } = default!;
-        public A4D RXNORMID22 { get; set; } = default!;
-        public A4D RXNORMID23 { get; set; } = default!;
-        public A4D RXNORMID24 { get; set; } = default!;
-        public A4D RXNORMID25 { get; set; } = default!;
-        public A4D RXNORMID26 { get; set; } = default!;
-        public A4D RXNORMID27 { get; set; } = default!;
-        public A4D RXNORMID28 { get; set; } = default!;
-        public A4D RXNORMID29 { get; set; } = default!;
-        public A4D RXNORMID30 { get; set; } = default!;
-        public A4D RXNORMID31 { get; set; } = default!;
-        public A4D RXNORMID32 { get; set; } = default!;
-        public A4D RXNORMID33 { get; set; } = default!;
-        public A4D RXNORMID34 { get; set; } = default!;
-        public A4D RXNORMID35 { get; set; } = default!;
-        public A4D RXNORMID36 { get; set; } = default!;
-        public A4D RXNORMID37 { get; set; } = default!;
-        public A4D RXNORMID38 { get; set; } = default!;
-        public A4D RXNORMID39 { get; set; } = default!;
-        public A4D RXNORMID40 { get; set; } = default!;
+        // TODO setup foreign key constraints and navigation properties to DrugCodeLookup
+        public int? RXNORMID1 { get; set; } = default!;
+        public int? RXNORMID2 { get; set; } = default!;
+        public int? RXNORMID3 { get; set; } = default!;
+        public int? RXNORMID4 { get; set; } = default!;
+        public int? RXNORMID5 { get; set; } = default!;
+        public int? RXNORMID6 { get; set; } = default!;
+        public int? RXNORMID7 { get; set; } = default!;
+        public int? RXNORMID8 { get; set; } = default!;
+        public int? RXNORMID9 { get; set; } = default!;
+        public int? RXNORMID10 { get; set; } = default!;
+        public int? RXNORMID11 { get; set; } = default!;
+        public int? RXNORMID12 { get; set; } = default!;
+        public int? RXNORMID13 { get; set; } = default!;
+        public int? RXNORMID14 { get; set; } = default!;
+        public int? RXNORMID15 { get; set; } = default!;
+        public int? RXNORMID16 { get; set; } = default!;
+        public int? RXNORMID17 { get; set; } = default!;
+        public int? RXNORMID18 { get; set; } = default!;
+        public int? RXNORMID19 { get; set; } = default!;
+        public int? RXNORMID20 { get; set; } = default!;
+        public int? RXNORMID21 { get; set; } = default!;
+        public int? RXNORMID22 { get; set; } = default!;
+        public int? RXNORMID23 { get; set; } = default!;
+        public int? RXNORMID24 { get; set; } = default!;
+        public int? RXNORMID25 { get; set; } = default!;
+        public int? RXNORMID26 { get; set; } = default!;
+        public int? RXNORMID27 { get; set; } = default!;
+        public int? RXNORMID28 { get; set; } = default!;
+        public int? RXNORMID29 { get; set; } = default!;
+        public int? RXNORMID30 { get; set; } = default!;
+        public int? RXNORMID31 { get; set; } = default!;
+        public int? RXNORMID32 { get; set; } = default!;
+        public int? RXNORMID33 { get; set; } = default!;
+        public int? RXNORMID34 { get; set; } = default!;
+        public int? RXNORMID35 { get; set; } = default!;
+        public int? RXNORMID36 { get; set; } = default!;
+        public int? RXNORMID37 { get; set; } = default!;
+        public int? RXNORMID38 { get; set; } = default!;
+        public int? RXNORMID39 { get; set; } = default!;
+        public int? RXNORMID40 { get; set; } = default!;
 
     }
 }
