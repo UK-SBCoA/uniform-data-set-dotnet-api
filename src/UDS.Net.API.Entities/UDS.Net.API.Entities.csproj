@@ -1,18 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
+		<Nullable>enable</Nullable>
 		<OutputType>Library</OutputType>
-		<PackageId>UDS.Net.Dto</PackageId>
+		<PackageId>UDS.Net.API.Entities</PackageId>
 		<Version>8.0.3-preview.2</Version>
 		<Authors>Sanders-Brown Center on Aging</Authors>
-		<Description>UDS data transfer objects for use with API</Description>
+		<Description>UDS database entities</Description>
 		<Owners>UK-SBCoA</Owners>
-		<PackageDescription>Dtos for API</PackageDescription>
+		<PackageDescription>Entities for API</PackageDescription>
 		<RepositoryUrl>https://github.com/UK-SBCoA/uniform-data-set-dotnet-api</RepositoryUrl>
 		<ReleaseVersion>8.0.3-preview.2</ReleaseVersion>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="System.Text.Json" Version="8.0.5" />
+		<PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
 	</ItemGroup>
 </Project>

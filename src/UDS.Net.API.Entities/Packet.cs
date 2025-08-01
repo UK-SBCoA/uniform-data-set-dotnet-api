@@ -1,23 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace UDS.Net.API.Entities
 {
-    // TODO rename visits to packets
-    [Table("tbl_Visits")]
-    [Index(nameof(ParticipationId), nameof(VISITNUM), IsUnique = true)]
-    public class Visit : BaseEntity
+    [Table("tbl_Packets")]
+    public class Packet : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("VisitId")]
+        [Column("PacketId")]
         public int Id { get; set; }
 
         public int ParticipationId { get; set; }
-
-        [ForeignKey("ParticipationId")]
-        public virtual Participation Participation { get; set; } = default!;
 
         [Column("VISITNUM")]
         public int VISITNUM { get; set; }
@@ -72,15 +68,11 @@ namespace UDS.Net.API.Entities
 
         public virtual B9 B9 { get; set; } = default!; // B9 required at least for IVP
 
-        public virtual C1 C1 { get; set; } = default!; // not allowed?
-
         public virtual C2 C2 { get; set; } = default!; // C2 required at least for IVP
 
         public virtual D1a D1a { get; set; } = default!; // D1a required at least for IVP
 
         public virtual D1b D1b { get; set; } = default!; // D1b required at least for IVP
-
-        public virtual T1? T1 { get; set; } // T1 only required for TIP, TFP visits
 
         public List<PacketSubmission> PacketSubmissions { get; set; } = new List<PacketSubmission>();
     }
