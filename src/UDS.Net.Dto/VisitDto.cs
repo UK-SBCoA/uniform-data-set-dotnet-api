@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace UDS.Net.Dto
 {
+    // TODO rename to PacketDto
     public class VisitDto : BaseDto
     {
         public int ParticipationId { get; set; }

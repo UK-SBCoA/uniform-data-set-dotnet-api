@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using UDS.Net.API.Entities;
+using UDS.Net.Dto;
 
 namespace UDS.Net.API.Entities
 {
@@ -20,7 +22,7 @@ namespace UDS.Net.API.Entities
         /// </summary>
         public string LegacyId { get; set; } = default!;
 
-        public virtual IEnumerable<Visit> Visits { get; set; } = new List<Visit>();
+        public virtual IEnumerable<Packet> Packets { get; set; } = new List<Packet>();
 
         public virtual List<M1> M1s { get; set; } = new List<M1>();
     }
