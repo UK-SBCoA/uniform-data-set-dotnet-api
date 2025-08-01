@@ -1,37 +1,40 @@
-﻿using UDS.Net.API.Entities;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using UDS.Net.API.Entities;
 using UDS.Net.Dto;
 
 namespace UDS.Net.API.Extensions
 {
     public static class EntityToDtoMapper
     {
-        private static VisitDto ConvertVisitToDto(Visit visit)
+        private static VisitDto ConvertVisitToDto(Packet packet)
         {
             return new VisitDto()
             {
-                Id = visit.Id,
-                ParticipationId = visit.ParticipationId,
-                CreatedAt = visit.CreatedAt,
-                CreatedBy = visit.CreatedBy,
-                ModifiedBy = visit.ModifiedBy,
-                DeletedBy = visit.DeletedBy,
-                IsDeleted = visit.IsDeleted,
-                VISITNUM = visit.VISITNUM,
-                PACKET = visit.PACKET,
-                FORMVER = visit.FORMVER,
-                VISIT_DATE = visit.VISIT_DATE,
-                INITIALS = visit.INITIALS,
-                Status = visit.Status.ToString()
+                Id = packet.Id,
+                ParticipationId = packet.ParticipationId,
+                CreatedAt = packet.CreatedAt,
+                CreatedBy = packet.CreatedBy,
+                ModifiedBy = packet.ModifiedBy,
+                DeletedBy = packet.DeletedBy,
+                IsDeleted = packet.IsDeleted,
+                VISITNUM = packet.VISITNUM,
+                PACKET = packet.PACKET,
+                FORMVER = packet.FORMVER,
+                VISIT_DATE = packet.VISIT_DATE,
+                INITIALS = packet.INITIALS,
+                Status = packet.Status.ToString()
             };
         }
 
-        private static VisitDto UpdateWithSubmissions(this VisitDto dto, Visit visit)
+        private static VisitDto UpdateWithSubmissions(this VisitDto dto, Packet packet)
         {
-            if (visit.PacketSubmissions != null)
+            if (packet.PacketSubmissions != null)
             {
                 int? unresolvedErrorsCount = null;
                 var unresolvedErrors = new List<PacketSubmissionErrorDto>();
-                foreach (var submission in visit.PacketSubmissions)
+                foreach (var submission in packet.PacketSubmissions)
                 {
                     if (submission != null && submission.ErrorCount.HasValue && submission.PacketSubmissionErrors != null)
                     {
@@ -68,29 +71,29 @@ namespace UDS.Net.API.Extensions
             return dto;
         }
 
-        public static PacketDto ToPacketDto(this Visit visit)
+        public static PacketDto ToPacketDto(this Packet packet)
         {
             PacketDto dto = new PacketDto()
             {
-                Id = visit.Id,
-                ParticipationId = visit.ParticipationId,
-                CreatedAt = visit.CreatedAt,
-                CreatedBy = visit.CreatedBy,
-                ModifiedBy = visit.ModifiedBy,
-                DeletedBy = visit.DeletedBy,
-                IsDeleted = visit.IsDeleted,
-                VISITNUM = visit.VISITNUM,
-                PACKET = visit.PACKET,
-                FORMVER = visit.FORMVER,
-                VISIT_DATE = visit.VISIT_DATE,
-                INITIALS = visit.INITIALS,
-                Status = visit.Status.ToString()
+                Id = packet.Id,
+                ParticipationId = packet.ParticipationId,
+                CreatedAt = packet.CreatedAt,
+                CreatedBy = packet.CreatedBy,
+                ModifiedBy = packet.ModifiedBy,
+                DeletedBy = packet.DeletedBy,
+                IsDeleted = packet.IsDeleted,
+                VISITNUM = packet.VISITNUM,
+                PACKET = packet.PACKET,
+                FORMVER = packet.FORMVER,
+                VISIT_DATE = packet.VISIT_DATE,
+                INITIALS = packet.INITIALS,
+                Status = packet.Status.ToString()
             };
 
-            if (visit.PacketSubmissions != null && visit.PacketSubmissions.Count() > 0)
+            if (packet.PacketSubmissions != null && packet.PacketSubmissions.Count() > 0)
             {
-                dto.PacketSubmissionCount = visit.PacketSubmissions.Count();
-                dto.PacketSubmissions = visit.PacketSubmissions.ToDto();
+                dto.PacketSubmissionCount = packet.PacketSubmissions.Count();
+                dto.PacketSubmissions = packet.PacketSubmissions.ToDto();
                 int? unresolvedErrorsCount = null;
                 foreach (var submission in dto.PacketSubmissions)
                 {
@@ -103,14 +106,14 @@ namespace UDS.Net.API.Extensions
             return dto;
         }
 
-        public static VisitDto ToDto(this Visit visit)
+        public static VisitDto ToDto(this Packet packet)
         {
-            var dto = ConvertVisitToDto(visit);
+            var dto = ConvertVisitToDto(packet);
 
-            if (visit.FormStatuses != null)
+            if (packet.FormStatuses != null)
             {
                 // since we aren't returning any specific details of any form, return the summary and status of all
-                foreach (var formStatus in visit.FormStatuses.OrderBy(f => f.Kind).ToList())
+                foreach (var formStatus in packet.FormStatuses.OrderBy(f => f.Kind).ToList())
                 {
                     var formDto = formStatus.ToSummaryDto(formStatus.Kind);
 
@@ -118,83 +121,77 @@ namespace UDS.Net.API.Extensions
                 }
             }
 
-            dto.UpdateWithSubmissions(visit);
+            dto.UpdateWithSubmissions(packet);
 
             return dto;
         }
 
-        public static VisitDto ToDto(this Visit visit, string formKind)
+        public static VisitDto ToDto(this Packet packet, string formKind)
         {
-            var dto = ConvertVisitToDto(visit);
+            var dto = ConvertVisitToDto(packet);
 
             // Attach form based on kind
             if (!String.IsNullOrWhiteSpace(formKind))
             {
-                foreach (var form in visit.FormStatuses)
+                foreach (var form in packet.FormStatuses)
                 {
                     FormDto formDto = new FormDto();
 
                     if (form.Kind == formKind)
                     {
-                        if (formKind == "A1" && visit.A1 != null)
-                            formDto = visit.A1.ToFullDto();
+                        if (formKind == "A1" && packet.A1 != null)
+                            formDto = packet.A1.ToFullDto();
 
-                        if (formKind == "A1a" && visit.A1a != null)
-                            formDto = visit.A1a.ToFullDto();
+                        if (formKind == "A1a" && packet.A1a != null)
+                            formDto = packet.A1a.ToFullDto();
 
-                        if (formKind == "A2" && visit.A2 != null)
-                            formDto = visit.A2.ToFullDto();
+                        if (formKind == "A2" && packet.A2 != null)
+                            formDto = packet.A2.ToFullDto();
 
-                        if (formKind == "A3" && visit.A3 != null)
-                            formDto = visit.A3.ToFullDto();
+                        if (formKind == "A3" && packet.A3 != null)
+                            formDto = packet.A3.ToFullDto();
 
-                        if (formKind == "A4" && visit.A4 != null)
-                            formDto = visit.A4.ToFullDto();
+                        if (formKind == "A4" && packet.A4 != null)
+                            formDto = packet.A4.ToFullDto();
 
-                        if (formKind == "A4a" && visit.A4a != null)
-                            formDto = visit.A4a.ToFullDto();
+                        if (formKind == "A4a" && packet.A4a != null)
+                            formDto = packet.A4a.ToFullDto();
 
-                        if (formKind == "A5D2" && visit.A5D2 != null)
-                            formDto = visit.A5D2.ToFullDto();
+                        if (formKind == "A5D2" && packet.A5D2 != null)
+                            formDto = packet.A5D2.ToFullDto();
 
-                        if (formKind == "B1" && visit.B1 != null)
-                            formDto = visit.B1.ToFullDto();
+                        if (formKind == "B1" && packet.B1 != null)
+                            formDto = packet.B1.ToFullDto();
 
-                        if (formKind == "B3" && visit.B3 != null)
-                            formDto = visit.B3.ToFullDto();
+                        if (formKind == "B3" && packet.B3 != null)
+                            formDto = packet.B3.ToFullDto();
 
-                        if (formKind == "B4" && visit.B4 != null)
-                            formDto = visit.B4.ToFullDto();
+                        if (formKind == "B4" && packet.B4 != null)
+                            formDto = packet.B4.ToFullDto();
 
-                        if (formKind == "B5" && visit.B5 != null)
-                            formDto = visit.B5.ToFullDto();
+                        if (formKind == "B5" && packet.B5 != null)
+                            formDto = packet.B5.ToFullDto();
 
-                        if (formKind == "B6" && visit.B6 != null)
-                            formDto = visit.B6.ToFullDto();
+                        if (formKind == "B6" && packet.B6 != null)
+                            formDto = packet.B6.ToFullDto();
 
-                        if (formKind == "B7" && visit.B7 != null)
-                            formDto = visit.B7.ToFullDto();
+                        if (formKind == "B7" && packet.B7 != null)
+                            formDto = packet.B7.ToFullDto();
 
-                        if (formKind == "B8" && visit.B8 != null)
-                            formDto = visit.B8.ToFullDto();
+                        if (formKind == "B8" && packet.B8 != null)
+                            formDto = packet.B8.ToFullDto();
 
-                        if (formKind == "B9" && visit.B9 != null)
-                            formDto = visit.B9.ToFullDto();
+                        if (formKind == "B9" && packet.B9 != null)
+                            formDto = packet.B9.ToFullDto();
 
-                        if (formKind == "C1" && visit.C1 != null)
-                            formDto = visit.C1.ToFullDto();
+                        if (formKind == "C2" && packet.C2 != null)
+                            formDto = packet.C2.ToFullDto();
 
-                        if (formKind == "C2" && visit.C2 != null)
-                            formDto = visit.C2.ToFullDto();
+                        if (formKind == "D1a" && packet.D1a != null)
+                            formDto = packet.D1a.ToFullDto();
 
-                        if (formKind == "D1a" && visit.D1a != null)
-                            formDto = visit.D1a.ToFullDto();
-
-                        if (formKind == "D1b" && visit.D1b != null)
-                            formDto = visit.D1b.ToFullDto();
-
-                        if (formKind == "T1" && visit.T1 != null)
-                            formDto = visit.T1.ToFullDto();
+                        if (formKind == "D1b" && packet.D1b != null)
+                            formDto = packet.D1b.ToFullDto();
                     }
                     else
                     {
@@ -205,7 +202,7 @@ namespace UDS.Net.API.Extensions
 
             }
 
-            dto.UpdateWithSubmissions(visit);
+            dto.UpdateWithSubmissions(packet);
 
             return dto;
         }
@@ -215,7 +212,7 @@ namespace UDS.Net.API.Extensions
             if (form != null)
             {
                 dto.Id = form.Id;
-                dto.VisitId = form.VisitId;
+                dto.VisitId = form.PacketId; // TODO rename dto property to PacketId
                 if (String.IsNullOrWhiteSpace(formKind))
                     dto.Kind = form.GetType().Name;
                 else
@@ -615,11 +612,12 @@ namespace UDS.Net.API.Extensions
             return dto;
         }
 
-        public static bool ToFullDto(this A4D a4d, out int rxNormId)
+        // TODO remove this, it isn't needed because we are now mapping ints to ints
+        public static bool ToFullDto(this int? a4d, out int rxNormId)
         {
-            if (a4d != null && a4d.RxNormId.HasValue)
+            if (a4d != null && a4d.HasValue)
             {
-                rxNormId = a4d.RxNormId.Value;
+                rxNormId = a4d.Value;
                 return true;
             }
             rxNormId = 0;
@@ -1170,63 +1168,6 @@ namespace UDS.Net.API.Extensions
             return dto;
         }
 
-        [Obsolete]
-        public static C1Dto ToFullDto(this C1 c1)
-        {
-            C1Dto dto = new C1Dto
-            {
-                MMSECOMP = c1.MMSECOMP,
-                MMSEREAS = c1.MMSEREAS,
-                MMSELOC = c1.MMSELOC,
-                MMSELAN = c1.MMSELAN,
-                MMSELANX = c1.MMSELANX,
-                MMSEVIS = c1.MMSEVIS,
-                MMSEHEAR = c1.MMSEHEAR,
-                MMSEORDA = c1.MMSEORDA,
-                MMSEORLO = c1.MMSEORLO,
-                PENTAGON = c1.PENTAGON,
-                MMSE = c1.MMSE,
-                NPSYCLOC = c1.NPSYCLOC,
-                NPSYLAN = c1.NPSYLAN,
-                NPSYLANX = c1.NPSYLANX,
-                LOGIMO = c1.LOGIMO,
-                LOGIDAY = c1.LOGIDAY,
-                LOGIYR = c1.LOGIYR,
-                LOGIPREV = c1.LOGIPREV,
-                LOGIMEM = c1.LOGIMEM,
-                UDSBENTC = c1.UDSBENTC,
-                DIGIF = c1.DIGIF,
-                DIGIFLEN = c1.DIGIFLEN,
-                DIGIB = c1.DIGIB,
-                DIGIBLEN = c1.DIGIBLEN,
-                ANIMALS = c1.ANIMALS,
-                VEG = c1.VEG,
-                TRAILA = c1.TRAILA,
-                TRAILARR = c1.TRAILARR,
-                TRAILALI = c1.TRAILALI,
-                TRAILB = c1.TRAILB,
-                TRAILBRR = c1.TRAILBRR,
-                TRAILBLI = c1.TRAILBLI,
-                MEMUNITS = c1.MEMUNITS,
-                MEMTIME = c1.MEMTIME,
-                UDSBENTD = c1.UDSBENTD,
-                UDSBENRS = c1.UDSBENRS,
-                BOSTON = c1.BOSTON,
-                UDSVERFC = c1.UDSVERFC,
-                UDSVERFN = c1.UDSVERFN,
-                UDSVERNF = c1.UDSVERNF,
-                UDSVERLC = c1.UDSVERLC,
-                UDSVERLR = c1.UDSVERLR,
-                UDSVERLN = c1.UDSVERLN,
-                UDSVERTN = c1.UDSVERTN,
-                UDSVERTE = c1.UDSVERTE,
-                UDSVERTI = c1.UDSVERTI,
-                COGSTAT = c1.COGSTAT
-            };
-            dto.SetBaseFormProperties(c1);
-            return dto;
-        }
-
         public static C2Dto ToFullDto(this C2 c2)
         {
             C2Dto dto = new C2Dto
@@ -1584,26 +1525,6 @@ namespace UDS.Net.API.Extensions
             return dto;
         }
 
-        [Obsolete]
-        public static T1Dto ToFullDto(this T1 t1)
-        {
-            T1Dto dto = new T1Dto
-            {
-                TELCOG = t1.TELCOG,
-                TELILL = t1.TELILL,
-                TELHOME = t1.TELHOME,
-                TELREFU = t1.TELREFU,
-                TELCOV = t1.TELCOV,
-                TELOTHR = t1.TELOTHR,
-                TELOTHRX = t1.TELOTHRX,
-                TELMOD = t1.TELMOD,
-                TELINPER = t1.TELINPER,
-                TELMILE = t1.TELMILE
-            };
-            dto.SetBaseFormProperties(t1);
-            return dto;
-        }
-
         public static M1Dto ToDto(this M1 m1)
         {
             M1Dto dto = new M1Dto
@@ -1646,27 +1567,8 @@ namespace UDS.Net.API.Extensions
                 MILESTONETYPE = m1.MILESTONETYPE
             };
 
-            if (m1.Participation != null)
-                dto.Participation = m1.Participation.ToDto();
-
-            return dto;
-        }
-
-        public static ParticipationDto ToDto(this Participation participation)
-        {
-            var dto = new ParticipationDto()
-            {
-                Id = participation.Id,
-                LegacyId = participation.LegacyId,
-                CreatedAt = participation.CreatedAt,
-                CreatedBy = participation.CreatedBy,
-                ModifiedBy = participation.ModifiedBy,
-                DeletedBy = participation.DeletedBy,
-                IsDeleted = participation.IsDeleted,
-                Visits = participation.Visits.Select(v => v.ToDto()).ToList(),
-                VisitCount = participation.Visits != null ? participation.Visits.Count() : 0,
-                LastVisitNumber = participation.Visits != null ? (participation.Visits.Any() ? participation.Visits.OrderByDescending(v => v.VISITNUM).Select(v => v.VISITNUM).First() : 0) : 0
-            };
+            //if (m1.Participation != null)
+            //    dto.Participation = m1.Participation.ToDto();
 
             return dto;
         }
@@ -1705,7 +1607,7 @@ namespace UDS.Net.API.Extensions
             var dto = new PacketSubmissionDto
             {
                 Id = packetSubmission.Id,
-                PacketId = packetSubmission.VisitId, // PacketId == VisitId
+                PacketId = packetSubmission.PacketId,
                 SubmissionDate = packetSubmission.SubmissionDate,
                 CreatedAt = packetSubmission.CreatedAt,
                 CreatedBy = packetSubmission.CreatedBy,

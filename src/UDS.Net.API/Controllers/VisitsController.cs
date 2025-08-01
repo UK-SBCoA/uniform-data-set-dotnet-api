@@ -8,6 +8,7 @@ using UDS.Net.Dto;
 
 namespace UDS.Net.API.Controllers
 {
+    // TODO we probably no longer need a separate visitscontroller, it coul dbe combined with packetscontroller
     /// <summary>
     /// Agrees to VisitClient interface to always ensure client and api endpoints are in-sync. 
     /// </summary>
@@ -21,11 +22,11 @@ namespace UDS.Net.API.Controllers
             _context = context;
         }
 
-        private async Task<Visit> Get(int id, string formKind)
+        private async Task<Packet> Get(int id, string formKind)
         {
             if (!String.IsNullOrWhiteSpace(formKind))
             {
-                var visit = await _context.Visits
+                var visit = await _context.Packets
                     .Include(v => v.FormStatuses)
                     .Include(v => v.PacketSubmissions)
                         .ThenInclude(p => p.PacketSubmissionErrors)
@@ -36,7 +37,7 @@ namespace UDS.Net.API.Controllers
                 if (formKind == "A1") // participant demographics
                 {
                     var a1 = await _context.A1s
-                        .Where(a => a.VisitId == id)
+                        .Where(a => a.PacketId == id)
                         .FirstOrDefaultAsync();
 
                     if (a1 != null)
@@ -45,7 +46,7 @@ namespace UDS.Net.API.Controllers
                 else if (formKind == "A1a") // social determinants
                 {
                     var a1a = await _context.A1as
-                        .Where(a => a.VisitId == id)
+                        .Where(a => a.PacketId == id)
                         .FirstOrDefaultAsync();
 
                     if (a1a != null)
@@ -54,7 +55,7 @@ namespace UDS.Net.API.Controllers
                 else if (formKind == "A2") // co-participant demogrpahics
                 {
                     var a2 = await _context.A2s
-                        .Where(a => a.VisitId == id)
+                        .Where(a => a.PacketId == id)
                         .FirstOrDefaultAsync();
 
                     if (a2 != null)
@@ -63,7 +64,7 @@ namespace UDS.Net.API.Controllers
                 else if (formKind == "A3") // family history
                 {
                     var a3 = await _context.A3s
-                        .Where(a => a.VisitId == id)
+                        .Where(a => a.PacketId == id)
                         .FirstOrDefaultAsync();
 
                     if (a3 != null)
@@ -72,7 +73,7 @@ namespace UDS.Net.API.Controllers
                 else if (formKind == "A4") // medications
                 {
                     var a4 = await _context.A4s
-                        .Where(a => a.VisitId == id)
+                        .Where(a => a.PacketId == id)
                         .FirstOrDefaultAsync();
 
                     if (a4 != null)
@@ -81,7 +82,7 @@ namespace UDS.Net.API.Controllers
                 else if (formKind == "A4a") // ADRD-specific treatment
                 {
                     var a4a = await _context.A4as
-                        .Where(a => a.VisitId == id)
+                        .Where(a => a.PacketId == id)
                         .FirstOrDefaultAsync();
 
                     if (a4a != null)
@@ -90,7 +91,7 @@ namespace UDS.Net.API.Controllers
                 else if (formKind == "A5D2") // health history and clinician-assessed medical conditions
                 {
                     var a5d2 = await _context.A5D2s
-                        .Where(a => a.VisitId == id)
+                        .Where(a => a.PacketId == id)
                         .FirstOrDefaultAsync();
 
                     if (a5d2 != null)
@@ -99,7 +100,7 @@ namespace UDS.Net.API.Controllers
                 else if (formKind == "B1") // evaluation form - physical
                 {
                     var b1 = await _context.B1s
-                        .Where(a => a.VisitId == id)
+                        .Where(a => a.PacketId == id)
                         .FirstOrDefaultAsync();
 
                     if (b1 != null)
@@ -108,7 +109,7 @@ namespace UDS.Net.API.Controllers
                 else if (formKind == "B3") // updrs
                 {
                     var b3 = await _context.B3s
-                        .Where(b => b.VisitId == id)
+                        .Where(b => b.PacketId == id)
                         .FirstOrDefaultAsync();
 
                     if (b3 != null)
@@ -117,7 +118,7 @@ namespace UDS.Net.API.Controllers
                 else if (formKind == "B4") // cdr plus ftld
                 {
                     var b4 = await _context.B4s
-                        .Where(a => a.VisitId == id)
+                        .Where(a => a.PacketId == id)
                         .FirstOrDefaultAsync();
 
                     if (b4 != null)
@@ -126,7 +127,7 @@ namespace UDS.Net.API.Controllers
                 else if (formKind == "B5") // npi-q
                 {
                     var b5 = await _context.B5s
-                        .Where(a => a.VisitId == id)
+                        .Where(a => a.PacketId == id)
                         .FirstOrDefaultAsync();
 
                     if (b5 != null)
@@ -135,7 +136,7 @@ namespace UDS.Net.API.Controllers
                 else if (formKind == "B6") // gds
                 {
                     var b6 = await _context.B6s
-                        .Where(a => a.VisitId == id)
+                        .Where(a => a.PacketId == id)
                         .FirstOrDefaultAsync();
 
                     if (b6 != null)
@@ -144,7 +145,7 @@ namespace UDS.Net.API.Controllers
                 else if (formKind == "B7") // faqs
                 {
                     var b7 = await _context.B7s
-                        .Where(a => a.VisitId == id)
+                        .Where(a => a.PacketId == id)
                         .FirstOrDefaultAsync();
 
                     if (b7 != null)
@@ -153,7 +154,7 @@ namespace UDS.Net.API.Controllers
                 else if (formKind == "B8") // neurological examination findings
                 {
                     var b8 = await _context.B8s
-                        .Where(a => a.VisitId == id)
+                        .Where(a => a.PacketId == id)
                         .FirstOrDefaultAsync();
 
                     if (b8 != null)
@@ -162,25 +163,16 @@ namespace UDS.Net.API.Controllers
                 else if (formKind == "B9") // symptoms
                 {
                     var b9 = await _context.B9s
-                        .Where(a => a.VisitId == id)
+                        .Where(a => a.PacketId == id)
                         .FirstOrDefaultAsync();
 
                     if (b9 != null)
                         visit.B9 = b9;
                 }
-                else if (formKind == "C1") // neuro battery scores (mmse, etc.)
-                {
-                    var c1 = await _context.C1s
-                        .Where(a => a.VisitId == id)
-                        .FirstOrDefaultAsync();
-
-                    if (c1 != null)
-                        visit.C1 = c1;
-                }
                 else if (formKind == "C2") // neuro battery scores (moca, etc.)
                 {
                     var c2 = await _context.C2s
-                        .Where(a => a.VisitId == id)
+                        .Where(a => a.PacketId == id)
                         .FirstOrDefaultAsync();
 
                     if (c2 != null)
@@ -189,7 +181,7 @@ namespace UDS.Net.API.Controllers
                 else if (formKind == "D1a") // clinician diagnosis
                 {
                     var d1a = await _context.D1as
-                        .Where(a => a.VisitId == id)
+                        .Where(a => a.PacketId == id)
                         .FirstOrDefaultAsync();
 
                     if (d1a != null)
@@ -198,20 +190,11 @@ namespace UDS.Net.API.Controllers
                 else if (formKind == "D1b") // clinician diagnosis
                 {
                     var d1b = await _context.D1bs
-                        .Where(a => a.VisitId == id)
+                        .Where(a => a.PacketId == id)
                         .FirstOrDefaultAsync();
 
                     if (d1b != null)
                         visit.D1b = d1b;
-                }
-                else if (formKind == "T1") // telephone inclusion
-                {
-                    var t1 = await _context.T1s
-                        .Where(a => a.VisitId == id)
-                        .FirstOrDefaultAsync();
-
-                    if (t1 != null)
-                        visit.T1 = t1;
                 }
 
                 return visit;
@@ -225,7 +208,7 @@ namespace UDS.Net.API.Controllers
             var dto = new List<VisitDto>();
             if (statuses == null || statuses.Count() == 0)
             {
-                dto = await _context.Visits
+                dto = await _context.Packets
                     .Include(v => v.PacketSubmissions)
                         .ThenInclude(p => p.PacketSubmissionErrors)
                     .AsNoTracking()
@@ -240,7 +223,7 @@ namespace UDS.Net.API.Controllers
 
                 if (enumStatuses != null && enumStatuses.Count() > 0)
                 {
-                    dto = await _context.Visits
+                    dto = await _context.Packets
                         .Include(v => v.PacketSubmissions)
                             .ThenInclude(p => p.PacketSubmissionErrors)
                         .AsNoTracking()
@@ -255,11 +238,11 @@ namespace UDS.Net.API.Controllers
             return dto;
         }
 
-        private IQueryable<Visit> GetVisitQuery(string[] statuses, DateTime? startDate, DateTime? endDate)
+        private IQueryable<Packet> GetVisitQuery(string[] statuses, DateTime? startDate, DateTime? endDate)
         {
             var enumStatuses = statuses.Convert();
 
-            var query = _context.Visits
+            var query = _context.Packets
                 .Include(v => v.PacketSubmissions)
                     .ThenInclude(p => p.PacketSubmissionErrors)
                 .AsNoTracking();
@@ -293,7 +276,7 @@ namespace UDS.Net.API.Controllers
         [HttpGet("Count", Name = "VisitsCount")]
         public async Task<int> Count()
         {
-            return await _context.Visits.CountAsync();
+            return await _context.Packets.CountAsync();
         }
 
         [HttpGet("ByStatus")]
@@ -324,7 +307,7 @@ namespace UDS.Net.API.Controllers
 
             if (enumStatuses != null && enumStatuses.Count() > 0)
             {
-                return await _context.Visits
+                return await _context.Packets
                     .Where(v => enumStatuses.Contains(v.Status))
                     .CountAsync();
             }
@@ -345,7 +328,7 @@ namespace UDS.Net.API.Controllers
         [HttpGet("{id}")]
         public async Task<VisitDto> Get(int id)
         {
-            var dto = await _context.Visits
+            var dto = await _context.Packets
                 .Include(v => v.FormStatuses)
                 .Include(v => v.PacketSubmissions)
                     .ThenInclude(p => p.PacketSubmissionErrors)
@@ -373,7 +356,7 @@ namespace UDS.Net.API.Controllers
         {
             var visit = dto.Convert();
 
-            _context.Visits.Add(visit);
+            _context.Packets.Add(visit);
             await _context.SaveChangesAsync();
 
             return visit.ToDto();
@@ -416,22 +399,18 @@ namespace UDS.Net.API.Controllers
                         formKind = "B8";
                     else if (form is B9Dto)
                         formKind = "B9";
-                    else if (form is C1Dto)
-                        formKind = "C1";
                     else if (form is C2Dto)
                         formKind = "C2";
                     else if (form is D1aDto)
                         formKind = "D1a";
                     else if (form is D1bDto)
                         formKind = "D1b";
-                    else if (form is T1Dto)
-                        formKind = "T1";
                 }
             }
             return formKind;
         }
 
-        private void CreateOrUpdateFormInModel(Visit visit, FormDto formDto)
+        private void CreateOrUpdateFormInModel(Packet visit, FormDto formDto)
         {
             if (formDto is A1Dto)
             {
@@ -570,12 +549,6 @@ namespace UDS.Net.API.Controllers
                     visit.B9 = new B9();
                 visit.B9.Update((B9Dto)formDto);
             }
-            else if (formDto is C1Dto)
-            {
-                if (visit.C1 == null)
-                    visit.C1 = new C1();
-                visit.C1.Update((C1Dto)formDto);
-            }
             else if (formDto is C2Dto)
             {
                 if (visit.C2 == null)
@@ -595,12 +568,6 @@ namespace UDS.Net.API.Controllers
                     visit.D1b = new D1b();
                 visit.D1b.Update((D1bDto)formDto);
             }
-            else if (formDto is T1Dto)
-            {
-                if (visit.T1 == null)
-                    visit.T1 = new T1();
-                visit.T1.Update((T1Dto)formDto);
-            }
         }
 
         [HttpPost("{id}/Forms/{formKind}", Name = "PostWithForm")]
@@ -612,15 +579,15 @@ namespace UDS.Net.API.Controllers
                 string formKindInVisit = GetFormKind(dto);
                 if (formKind.Trim() == formKindInVisit)
                 {
-                    Visit? visit = await Get(id, formKind);
+                    Packet? packet = await Get(id, formKind);
 
-                    if (visit != null)
+                    if (packet != null)
                     {
                         var formDto = dto.Forms.Where(f => f.Kind == formKind).FirstOrDefault();
 
-                        CreateOrUpdateFormInModel(visit, formDto);
+                        CreateOrUpdateFormInModel(packet, formDto);
 
-                        _context.Visits.Update(visit);
+                        _context.Packets.Update(packet);
                         await _context.SaveChangesAsync();
                     }
                     else
@@ -639,11 +606,11 @@ namespace UDS.Net.API.Controllers
             // check to see if the dto has a full form
             string formKind = GetFormKind(dto);
 
-            Visit? visit;
+            Packet? visit;
             if (String.IsNullOrEmpty(formKind))
             {
                 // there could be status updates for form bases
-                visit = await _context.Visits
+                visit = await _context.Packets
                     .Include(v => v.FormStatuses)
                     .Where(v => v.Id == id)
                     .FirstOrDefaultAsync();
@@ -664,7 +631,7 @@ namespace UDS.Net.API.Controllers
                     CreateOrUpdateFormInModel(visit, formDto);
                 }
 
-                _context.Visits.Update(visit);
+                _context.Packets.Update(visit);
                 await _context.SaveChangesAsync();
 
                 return visit.ToDto();
@@ -676,12 +643,12 @@ namespace UDS.Net.API.Controllers
         [HttpDelete("{id}")]
         public async Task Delete(int id)
         {
-            var visit = await _context.Visits.FindAsync(id);
+            var visit = await _context.Packets.FindAsync(id);
 
             if (visit == null)
                 return;
 
-            _context.Visits.Remove(visit);
+            _context.Packets.Remove(visit);
 
             await _context.SaveChangesAsync();
         }

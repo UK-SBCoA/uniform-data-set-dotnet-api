@@ -321,6 +321,10 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int?>("PRIOCC")
                         .HasColumnType("int");
 
+                    b.Property<int>("PacketId")
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
+
                     b.Property<int?>("RACEAIAN")
                         .HasColumnType("int");
 
@@ -430,17 +434,13 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasColumnOrder(2);
 
-                    b.Property<int>("VisitId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(1);
-
                     b.Property<string>("ZIP")
                         .HasMaxLength(3)
                         .HasColumnType("nvarchar(3)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("VisitId")
+                    b.HasIndex("PacketId")
                         .IsUnique();
 
                     b.ToTable("tbl_A1s");
@@ -457,28 +457,22 @@ namespace UDS.Net.API.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int?>("ABANDONED")
-                        .HasColumnType("int")
-                        .HasComment("I often feel abandoned");
+                        .HasColumnType("int");
 
                     b.Property<int?>("ACTAFRAID")
-                        .HasColumnType("int")
-                        .HasComment("In your day-to-day life how often do people act as if they are afraid of you?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BILLPAY")
-                        .HasColumnType("int")
-                        .HasComment("How difficult is it for you to meet monthly payments on your bills?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("CHILDCOMM")
-                        .HasColumnType("int")
-                        .HasComment("If you have children, how often do you have contact with your children (including child[ren]-in-law and stepchild[ren]) either in person, by phone, mail, or email (e.g., any online interaction)?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("CLOSEFRND")
-                        .HasColumnType("int")
-                        .HasComment("I miss having a really good friend");
+                        .HasColumnType("int");
 
                     b.Property<int?>("COMPCOMM")
-                        .HasColumnType("int")
-                        .HasComment("Where would you place yourself on this ladder compared to others in your community (or neighborhood)? Please mark the number where you would place yourself.");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -488,107 +482,82 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("DELAYMED")
-                        .HasColumnType("int")
-                        .HasComment("In the past year, how often did you delay seeking medical attention for a problem that was bothering you?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("DOCADVICE")
-                        .HasColumnType("int")
-                        .HasComment("In the past year, how often did you follow a doctor's advice or treatment plan when it was given?");
+                        .HasColumnType("int");
 
                     b.Property<string>("DeletedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("EATLESS")
-                        .HasColumnType("int")
-                        .HasComment("At any time, did you ever eat less than you felt you should because there wasn't enough money to buy food?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("EATLESSYR")
-                        .HasColumnType("int")
-                        .HasComment("In the last 12 months, did you ever eat less than you felt you should because there wasn't enough money to buy food?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("EMPTINESS")
-                        .HasColumnType("int")
-                        .HasComment("I experience a general sense of emptiness");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("EXPAGE")
-                        .HasColumnType("bit")
-                        .HasComment("Main reason--Your age");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("EXPANCEST")
-                        .HasColumnType("bit")
-                        .HasComment("Main reason--Your Ancestry or National Origins");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("EXPAPPEAR")
-                        .HasColumnType("bit")
-                        .HasComment("Main reason--Some other aspect of your physical appearance");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("EXPDISAB")
-                        .HasColumnType("bit")
-                        .HasComment("Main reason--A physical disability");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("EXPEDUCINC")
-                        .HasColumnType("bit")
-                        .HasComment("Main reason--Your education or income level");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("EXPGENDER")
-                        .HasColumnType("bit")
-                        .HasComment("Main reason--Your gender");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("EXPHEIGHT")
-                        .HasColumnType("bit")
-                        .HasComment("Main reason--Your height");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("EXPNOANS")
-                        .HasColumnType("bit")
-                        .HasComment("Main reason--Prefer not to answer");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("EXPNOTAPP")
-                        .HasColumnType("bit")
-                        .HasComment("Main reason -- not applicable - I do not have these experiences in my day to day life");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("EXPOTHER")
-                        .HasColumnType("bit")
-                        .HasComment("Main reason -- Other");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("EXPRACE")
-                        .HasColumnType("bit")
-                        .HasComment("Main reason--Your race");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("EXPRELIG")
-                        .HasColumnType("bit")
-                        .HasComment("Main reason--Your religion");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("EXPSEXORN")
-                        .HasColumnType("bit")
-                        .HasComment("Main reason--Your sexual orientation");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("EXPSKIN")
-                        .HasColumnType("bit")
-                        .HasComment("Main reason--Your shade of skin color");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("EXPSTRS")
-                        .HasColumnType("int")
-                        .HasComment("When you have had day-to-day experiences like those in questions 33 to 38, would you say they have been very stressful, moderately stressful, or not stressful?");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("EXPWEIGHT")
-                        .HasColumnType("bit")
-                        .HasComment("Main reason--Your weight");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("FINSATIS")
-                        .HasColumnType("int")
-                        .HasComment("How satisfied are you with your current personal financial condition?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("FINUPSET")
-                        .HasColumnType("int")
-                        .HasComment("If you have had financial problems that lasted twelve months or longer, how upsetting has it been to you?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("FRIENDCOMM")
-                        .HasColumnType("int")
-                        .HasComment("How often do you have contact with close friends either in person, by phone, mail, or email (e.g., any online interaction)?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("FRIENDS")
-                        .HasColumnType("int")
-                        .HasComment("I feel like I don't have enough friends");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("FRMDATE")
                         .HasColumnType("datetime2")
@@ -596,16 +565,13 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(3);
 
                     b.Property<int?>("GUARDEDU")
-                        .HasColumnType("int")
-                        .HasComment("Thinking of the person who raised you, what was their highest level of education completed?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("HEALTHACC")
-                        .HasColumnType("int")
-                        .HasComment("Overall, which of these describes your health insurance, access to healthcare services, and access to medications?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("INCOMEYR")
-                        .HasColumnType("int")
-                        .HasComment("Which of these income groups represents your household income for the past year? Include income from all sources such as wages, salaries, social security or retirement benefits, help from relatives, rent from property, and so forth.");
+                        .HasColumnType("int");
 
                     b.Property<string>("INITIALS")
                         .IsRequired()
@@ -623,24 +589,19 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(5);
 
                     b.Property<int?>("LESSCOURT")
-                        .HasColumnType("int")
-                        .HasComment("In your day-to-day life how often are you treated with less courtesy or respect than other people?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("LESSMEDS")
-                        .HasColumnType("int")
-                        .HasComment("At any time, have you ended up taking less medication than was prescribed for you because of the cost?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("LESSMEDSYR")
-                        .HasColumnType("int")
-                        .HasComment("In the last 12 months, have you ended up taking less medication than was prescribed for you because of the cost?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("MISSEDFUP")
-                        .HasColumnType("int")
-                        .HasComment("In the past year, how often did you miss a follow-up medical appointment that was scheduled?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("MISSPEOPLE")
-                        .HasColumnType("int")
-                        .HasComment("I miss having people around");
+                        .HasColumnType("int");
 
                     b.Property<int?>("MODE")
                         .HasColumnType("int")
@@ -656,28 +617,26 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(9);
 
                     b.Property<int?>("NOTSMART")
-                        .HasColumnType("int")
-                        .HasComment("In your day-to-day life how often do people act as if they think you are not smart?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("OWNSCAR")
-                        .HasColumnType("int")
-                        .HasComment("Do you or someone in your household currently own a car?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("PARENTCOMM")
-                        .HasColumnType("int")
-                        .HasComment("If your parents are still alive, how often do you have contact with them (including mother, father, mother-in-law, and father-in-law) either in person, by phone, mail, or email (e.g., any online interaction)?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("PARTICIPATE")
-                        .HasColumnType("int")
-                        .HasComment("How often do you participate in activities outside the home (e.g., religious activities, educational activities, volunteer work, paid work, or activities with groups or organizations)?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("POORMEDTRT")
-                        .HasColumnType("int")
-                        .HasComment("How frequently did you receive poorer service or treatment from doctors or in hospitals compared to other people?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("POORSERV")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PacketId")
                         .HasColumnType("int")
-                        .HasComment("In your day-to-day life how often do you receive poorer service than other people at restaurants or stores?");
+                        .HasColumnOrder(1);
 
                     b.Property<int?>("RMMODE")
                         .HasColumnType("int")
@@ -690,16 +649,13 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(7);
 
                     b.Property<int?>("SAFECOMM")
-                        .HasColumnType("int")
-                        .HasComment("How safe do you feel in your community (or neighborhood)?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("SAFEHOME")
-                        .HasColumnType("int")
-                        .HasComment("How safe do you feel in your home?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("SCRIPTPROB")
-                        .HasColumnType("int")
-                        .HasComment("In the past year, how often did you experience challenges in filling a prescription?");
+                        .HasColumnType("int");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -708,32 +664,23 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(2);
 
                     b.Property<int?>("THREATENED")
-                        .HasColumnType("int")
-                        .HasComment("In your day-to-day life how often are you threatened or harassed?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("TRANSPROB")
-                        .HasColumnType("int")
-                        .HasComment("In the past 30 days, how often were you not able to leave the house when you wanted to because of a problem with transportation?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("TRANSWORRY")
-                        .HasColumnType("int")
-                        .HasComment("In the past 30 days, how often did you worry about whether or not you would be able to get somewhere because of a problem with transportation?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("TRSPACCESS")
-                        .HasColumnType("int")
-                        .HasComment("Do you have consistent access to transportation?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("TRSPMED")
-                        .HasColumnType("int")
-                        .HasComment("In the past 30 days, how often has a lack of transportation kept you from medical appointments or from doing things needed for daily living?");
-
-                    b.Property<int>("VisitId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(1);
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("VisitId")
+                    b.HasIndex("PacketId")
                         .IsUnique();
 
                     b.ToTable("tbl_A1as");
@@ -826,6 +773,10 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnName("NOT")
                         .HasColumnOrder(9);
 
+                    b.Property<int>("PacketId")
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
+
                     b.Property<int?>("RMMODE")
                         .HasColumnType("int")
                         .HasColumnName("RMMODE")
@@ -842,13 +793,9 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasColumnOrder(2);
 
-                    b.Property<int>("VisitId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(1);
-
                     b.HasKey("Id");
 
-                    b.HasIndex("VisitId")
+                    b.HasIndex("PacketId")
                         .IsUnique();
 
                     b.ToTable("tbl_A2s");
@@ -950,6 +897,10 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnName("NOT")
                         .HasColumnOrder(9);
 
+                    b.Property<int>("PacketId")
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
+
                     b.Property<int?>("RMMODE")
                         .HasColumnType("int")
                         .HasColumnName("RMMODE")
@@ -969,13 +920,9 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasColumnOrder(2);
 
-                    b.Property<int>("VisitId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(1);
-
                     b.HasKey("Id");
 
-                    b.HasIndex("VisitId")
+                    b.HasIndex("PacketId")
                         .IsUnique();
 
                     b.ToTable("tbl_A3s");
@@ -1037,6 +984,10 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnName("NOT")
                         .HasColumnOrder(9);
 
+                    b.Property<int>("PacketId")
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
+
                     b.Property<int?>("RMMODE")
                         .HasColumnType("int")
                         .HasColumnName("RMMODE")
@@ -1047,19 +998,135 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnName("RMREASON")
                         .HasColumnOrder(7);
 
+                    b.Property<int?>("RXNORMID1")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID10")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID11")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID12")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID13")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID14")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID15")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID16")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID17")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID18")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID19")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID2")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID20")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID21")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID22")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID23")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID24")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID25")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID26")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID27")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID28")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID29")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID3")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID30")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID31")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID32")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID33")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID34")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID35")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID36")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID37")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID38")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID39")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID4")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID40")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID5")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID6")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID7")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID8")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RXNORMID9")
+                        .HasColumnType("int");
+
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)")
                         .HasColumnOrder(2);
 
-                    b.Property<int>("VisitId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(1);
-
                     b.HasKey("Id");
 
-                    b.HasIndex("VisitId")
+                    b.HasIndex("PacketId")
                         .IsUnique();
 
                     b.ToTable("tbl_A4s");
@@ -1134,6 +1201,10 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnName("NOT")
                         .HasColumnOrder(9);
 
+                    b.Property<int>("PacketId")
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
+
                     b.Property<int?>("RMMODE")
                         .HasColumnType("int")
                         .HasColumnName("RMMODE")
@@ -1153,13 +1224,9 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int?>("TRTBIOMARK")
                         .HasColumnType("int");
 
-                    b.Property<int>("VisitId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(1);
-
                     b.HasKey("Id");
 
-                    b.HasIndex("VisitId")
+                    b.HasIndex("PacketId")
                         .IsUnique();
 
                     b.ToTable("tbl_A4as");
@@ -1176,259 +1243,196 @@ namespace UDS.Net.API.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int?>("ALCBINGE")
-                        .HasColumnType("int")
-                        .HasComment("In the past 12 months, how often did the participant have six or more drinks containing alcohol in one day?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("ALCDRINKS")
-                        .HasColumnType("int")
-                        .HasComment("On a day when the participant drinks alcoholic beverages, how many standard drinks does the participant typically consume?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("ALCFREQYR")
-                        .HasColumnType("int")
-                        .HasComment("In the past 12 months, how often has the participant had a drink containing alcohol?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("ANGIOCP")
-                        .HasColumnType("int")
-                        .HasComment("Carotid artery surgery or stenting?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("ANXIETY")
-                        .HasColumnType("int")
-                        .HasComment("Anxiety disorder (DSM-5-TR criteria)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("APNEA")
-                        .HasColumnType("int")
-                        .HasComment("Sleep apnea");
+                        .HasColumnType("int");
 
                     b.Property<int?>("APNEAORAL")
-                        .HasColumnType("int")
-                        .HasComment("Typical use of an oral device for sleep apnea at night over the past 12 months?");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("ARTHLOEX")
-                        .HasColumnType("bit")
-                        .HasComment("Lower extremity affected by arthritis");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("ARTHRIT")
-                        .HasColumnType("int")
-                        .HasComment("Arthritis");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("ARTHROSTEO")
-                        .HasColumnType("bit")
-                        .HasComment("Type of arthritis: Osteoarthritis");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("ARTHROTHR")
-                        .HasColumnType("bit")
-                        .HasComment("Type of arthritis: Other");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("ARTHRRHEUM")
-                        .HasColumnType("bit")
-                        .HasComment("Type of arthritis: Rheumatoid");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("ARTHSPIN")
-                        .HasColumnType("bit")
-                        .HasComment("Spine affected by arthritis");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("ARTHTYPUNK")
-                        .HasColumnType("bit")
-                        .HasComment("Type of arthritis: Unknown");
+                        .HasColumnType("bit");
 
                     b.Property<string>("ARTHTYPX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("Specify other type of arthritis");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<bool?>("ARTHUNK")
-                        .HasColumnType("bit")
-                        .HasComment("Region affected by arthritis unknown");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("ARTHUPEX")
-                        .HasColumnType("bit")
-                        .HasComment("Upper extremity affected by arthritis");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("B12DEF")
-                        .HasColumnType("int")
-                        .HasComment("B12 deficiency");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BCENDAGE")
-                        .HasColumnType("int")
-                        .HasComment("Age at last use of birth control pills");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BCPILLS")
-                        .HasColumnType("int")
-                        .HasComment("Has the participant ever taken birth control pills?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BCPILLSYR")
-                        .HasColumnType("int")
-                        .HasComment("Total number of years participant has taken birth control pills");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BCSTARTAGE")
-                        .HasColumnType("int")
-                        .HasComment("Age at first use of birth control pills");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BIPOLAR")
-                        .HasColumnType("int")
-                        .HasComment("Bipolar disorder(DSM - 5 - TR criteria)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BYPASSAGE")
-                        .HasColumnType("int")
-                        .HasComment("Age at most recent coronary artery bypass surgery");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("CANCBLOOD")
-                        .HasColumnType("bit")
-                        .HasComment("Primary site of cancer: Blood");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("CANCBONE")
-                        .HasColumnType("bit")
-                        .HasComment("Type of cancer treatment: Bone marrow transplant");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("CANCBREAST")
-                        .HasColumnType("bit")
-                        .HasComment("Primary site of cancer: Breast");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("CANCCHEMO")
-                        .HasColumnType("bit")
-                        .HasComment("Type of cancer treatment: Chemotherapy");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("CANCCOLON")
-                        .HasColumnType("bit")
-                        .HasComment("Primary site of cancer: Colon");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("CANCERACTV")
-                        .HasColumnType("int")
-                        .HasComment("Cancer, primary or metastatic (Report all known diagnoses. Exclude non-melanoma skin cancer.)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("CANCERAGE")
-                        .HasColumnType("int")
-                        .HasComment("Age at most recent cancer diagnosis");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("CANCERMETA")
-                        .HasColumnType("bit")
-                        .HasComment("Type of cancer: Metastatic");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("CANCERPRIM")
-                        .HasColumnType("bit")
-                        .HasComment("Type of cancer: Primary/non-metastatic");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("CANCERUNK")
-                        .HasColumnType("bit")
-                        .HasComment("Type of cancer: Unknown");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("CANCHORM")
-                        .HasColumnType("bit")
-                        .HasComment("Type of cancer treatment: Hormone therapy");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("CANCIMMUNO")
-                        .HasColumnType("bit")
-                        .HasComment("Type of cancer treatment: Immunotherapy");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("CANCLUNG")
-                        .HasColumnType("bit")
-                        .HasComment("Primary site of cancer: Lung");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("CANCMETBR")
-                        .HasColumnType("bit")
-                        .HasComment("Type of metastatic cancer: Metatstic to brain");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("CANCMETOTH")
-                        .HasColumnType("bit")
-                        .HasComment("Type of metastatic cancer: Metastatic to sites other than brain");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("CANCOTHER")
-                        .HasColumnType("bit")
-                        .HasComment("Primary site of cancer: Other");
+                        .HasColumnType("bit");
 
                     b.Property<string>("CANCOTHERX")
-                        .HasColumnType("nvarchar(max)")
-                        .HasComment("Specify other primary site of cancer");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool?>("CANCPROST")
-                        .HasColumnType("bit")
-                        .HasComment("Primary site of cancer: Prostate");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("CANCRAD")
-                        .HasColumnType("bit")
-                        .HasComment("Type of cancer treatment: Radiation");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("CANCRESECT")
-                        .HasColumnType("bit")
-                        .HasComment("Type of cancer treatment: Surgical resection");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("CANCTROTH")
-                        .HasColumnType("bit")
-                        .HasComment("Type of cancer treatment: Other");
+                        .HasColumnType("bit");
 
                     b.Property<string>("CANCTROTHX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("Specify other type of cancer treatment");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<int?>("CANNABIS")
-                        .HasColumnType("int")
-                        .HasComment("In the past 12 months, how often has the participant consumed cannabis (edibles, smoked, or vaporized)?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("CARDARRAGE")
-                        .HasColumnType("int")
-                        .HasComment("Age at most recent cardiac arrest");
+                        .HasColumnType("int");
 
                     b.Property<int?>("CARDARREST")
-                        .HasColumnType("int")
-                        .HasComment("Cardiac arrest (heart stopped)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("CAROTIDAGE")
-                        .HasColumnType("int")
-                        .HasComment("Age at most recent carotid artery surgery or stenting");
+                        .HasColumnType("int");
 
                     b.Property<int?>("CBSTROKE")
-                        .HasColumnType("int")
-                        .HasComment("Stroke by history, not exam (imaging is not required)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("CBTIA")
-                        .HasColumnType("int")
-                        .HasComment("Transient ischemic attack (TIA)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("COVID19")
-                        .HasColumnType("int")
-                        .HasComment("COVID-19 infection");
+                        .HasColumnType("int");
 
                     b.Property<int?>("COVIDHOSP")
-                        .HasColumnType("int")
-                        .HasComment("COVID-19 infection requiring hospitalization?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("CPAP")
-                        .HasColumnType("int")
-                        .HasComment("Typical use of breathing machine (e.g. CPAP) at night over the past 12 months");
+                        .HasColumnType("int");
 
                     b.Property<int?>("CVAFIB")
-                        .HasColumnType("int")
-                        .HasComment("Atrial fibrillation");
+                        .HasColumnType("int");
 
                     b.Property<int?>("CVANGIO")
-                        .HasColumnType("int")
-                        .HasComment("Coronary artery angioplasty / endarterectomy / stenting");
+                        .HasColumnType("int");
 
                     b.Property<int?>("CVBYPASS")
-                        .HasColumnType("int")
-                        .HasComment("Coronary artery bypass procedure");
+                        .HasColumnType("int");
 
                     b.Property<int?>("CVCHF")
-                        .HasColumnType("int")
-                        .HasComment("Congestive heart failure (including pulmonary edema)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("CVHVALVE")
-                        .HasColumnType("int")
-                        .HasComment("Heart valve replacement or repair");
+                        .HasColumnType("int");
 
                     b.Property<int?>("CVOTHR")
-                        .HasColumnType("int")
-                        .HasComment("Other cardiovascular disease");
+                        .HasColumnType("int");
 
                     b.Property<string>("CVOTHRX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("Specify other cardiovascular disease");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<int?>("CVPACDEF")
-                        .HasColumnType("int")
-                        .HasComment("Pacemaker and/or defibrillator implantation");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -1438,51 +1442,40 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool?>("DEPRTREAT")
-                        .HasColumnType("bit")
-                        .HasComment("Choose if treated or untreated");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("DIABAGE")
-                        .HasColumnType("int")
-                        .HasComment("Age at diabetes diagnosis");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("DIABDIET")
-                        .HasColumnType("bit")
-                        .HasComment("Diabetes treated with: Diet");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("DIABETES")
-                        .HasColumnType("int")
-                        .HasComment("Diabetes");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("DIABGLP1")
-                        .HasColumnType("bit")
-                        .HasComment("GLP-1 receptor activators");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("DIABINS")
-                        .HasColumnType("bit")
-                        .HasComment("Diabetes treated with: Insulin");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("DIABMEDS")
-                        .HasColumnType("bit")
-                        .HasComment("Diabetes treated with: Oral medications");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("DIABRECACT")
-                        .HasColumnType("bit")
-                        .HasComment("Other non-insulin, non-GLP-1 receptor activator injection medication");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("DIABTYPE")
-                        .HasColumnType("int")
-                        .HasComment("Diabetes type");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("DIABUNK")
-                        .HasColumnType("bit")
-                        .HasComment("Diabetes treated with: Unknown");
+                        .HasColumnType("bit");
 
                     b.Property<string>("DeletedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("FIRSTTBI")
-                        .HasColumnType("int")
-                        .HasComment("Age of first head injury");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("FRMDATE")
                         .HasColumnType("datetime2")
@@ -1490,141 +1483,107 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(3);
 
                     b.Property<int?>("GENERALANX")
-                        .HasColumnType("int")
-                        .HasComment("Generalized Anxiety Disorder");
+                        .HasColumnType("int");
 
                     b.Property<int?>("HEADACHE")
-                        .HasColumnType("int")
-                        .HasComment("Chronic headaches");
+                        .HasColumnType("int");
 
                     b.Property<int?>("HEADIMP")
-                        .HasColumnType("int")
-                        .HasComment("epetitive head impacts (e.g. from contact sports, intimate partner violence, or military duty), regardless of whether it caused symptoms.");
+                        .HasColumnType("int");
 
                     b.Property<int?>("HEADINJCON")
-                        .HasColumnType("int")
-                        .HasComment("After a head injury, what was the longest period...");
+                        .HasColumnType("int");
 
                     b.Property<int?>("HEADINJNUM")
-                        .HasColumnType("int")
-                        .HasComment("Total number of head injuries");
+                        .HasColumnType("int");
 
                     b.Property<int?>("HEADINJUNC")
-                        .HasColumnType("int")
-                        .HasComment("After a head injury, what was the longest period of time that the participant was unconscious?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("HEADINJURY")
-                        .HasColumnType("int")
-                        .HasComment("Head injury (e.g. in a vehicle accident, being hit by an object...)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("HIVAGE")
-                        .HasColumnType("int")
-                        .HasComment("Age at HIV diagnosis");
+                        .HasColumnType("int");
 
                     b.Property<int?>("HIVDIAG")
-                        .HasColumnType("int")
-                        .HasComment("Human Immunodeficiency Virus");
+                        .HasColumnType("int");
 
                     b.Property<int?>("HRT")
-                        .HasColumnType("int")
-                        .HasComment("Has the participant taken female hormone replacement pills or patches (e.g. estrogen)?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("HRTATTACK")
-                        .HasColumnType("int")
-                        .HasComment("Heart attack (heart artery blockage)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("HRTATTAGE")
-                        .HasColumnType("int")
-                        .HasComment("Age at most recent heart attack");
+                        .HasColumnType("int");
 
                     b.Property<int?>("HRTATTMULT")
-                        .HasColumnType("int")
-                        .HasComment("More than one heart attack?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("HRTENDAGE")
-                        .HasColumnType("int")
-                        .HasComment("Age at last use of female hormone replacement pills");
+                        .HasColumnType("int");
 
                     b.Property<int?>("HRTSTRTAGE")
-                        .HasColumnType("int")
-                        .HasComment("Age at first use of female hormone replacement pills");
+                        .HasColumnType("int");
 
                     b.Property<int?>("HRTYEARS")
-                        .HasColumnType("int")
-                        .HasComment("Total number of years participant has taken female hormone replacement pills");
+                        .HasColumnType("int");
 
                     b.Property<int?>("HYDROCEPH")
-                        .HasColumnType("int")
-                        .HasComment("Normal-pressure hydrocephalus");
+                        .HasColumnType("int");
 
                     b.Property<int?>("HYPERCHAGE")
-                        .HasColumnType("int")
-                        .HasComment("Age at hypercholesterolemia diagnosis");
+                        .HasColumnType("int");
 
                     b.Property<int?>("HYPERCHO")
-                        .HasColumnType("int")
-                        .HasComment("Hypercholesterolemia (or taking medication for high cholesterol)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("HYPERTAGE")
-                        .HasColumnType("int")
-                        .HasComment("Age at hypertension diagnosis");
+                        .HasColumnType("int");
 
                     b.Property<int?>("HYPERTEN")
-                        .HasColumnType("int")
-                        .HasComment("Hypertension (or taking medication for hypertension)");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("IMPAMFOOT")
-                        .HasColumnType("bit")
-                        .HasComment("Source of exposure for repeated hits to the head: American football");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("IMPASSAULT")
-                        .HasColumnType("bit")
-                        .HasComment("Source of exposure for repeated hits to the head: Physical assault");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("IMPBOXING")
-                        .HasColumnType("bit")
-                        .HasComment("Source of exposure for repeated hits to the head: Boxing or mixed martial arts");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("IMPHOCKEY")
-                        .HasColumnType("bit")
-                        .HasComment("Source of exposure for repeated hits to the head: Ice hockey");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("IMPIPV")
-                        .HasColumnType("bit")
-                        .HasComment("Source of exposure for repeated hits to the head: Intimate partner violence");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("IMPMILIT")
-                        .HasColumnType("bit")
-                        .HasComment("Source of exposure for repeated hits to the head: Military service");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("IMPOTHER")
-                        .HasColumnType("bit")
-                        .HasComment("Source of exposure for repeated hits to the head: Other cause");
+                        .HasColumnType("bit");
 
                     b.Property<string>("IMPOTHERX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("Specify other source of exposure for repeated hits to the head");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<bool?>("IMPSOCCER")
-                        .HasColumnType("bit")
-                        .HasComment("Source of exposure for repeated hits to the head: Soccer");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("IMPSPORT")
-                        .HasColumnType("bit")
-                        .HasComment("Source of exposure for repeated hits to the head: Other contact sport");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("IMPYEARS")
-                        .HasColumnType("int")
-                        .HasComment("The total length of time in years that the participant was exposed to repeated hits to the head (e.g. playing American football for 7 years)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("INCONTF")
-                        .HasColumnType("int")
-                        .HasComment("Incontinence—bowel (occurring at least weekly)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("INCONTU")
-                        .HasColumnType("int")
-                        .HasComment("Incontinence—urinary (occurring at least weekly)");
+                        .HasColumnType("int");
 
                     b.Property<string>("INITIALS")
                         .IsRequired()
@@ -1634,19 +1593,16 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(4);
 
                     b.Property<int?>("INSOMN")
-                        .HasColumnType("int")
-                        .HasComment("Hyposomnia/Insomnia (occurring at least weekly or requiring medication)");
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<int?>("KIDNEY")
-                        .HasColumnType("int")
-                        .HasComment("Chronic kidney disease");
+                        .HasColumnType("int");
 
                     b.Property<int?>("KIDNEYAGE")
-                        .HasColumnType("int")
-                        .HasComment("Age at chronic kidney disease diagnosis");
+                        .HasColumnType("int");
 
                     b.Property<int?>("LANG")
                         .HasColumnType("int")
@@ -1654,24 +1610,19 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(5);
 
                     b.Property<int?>("LASTTBI")
-                        .HasColumnType("int")
-                        .HasComment("Age of most recent head injury");
+                        .HasColumnType("int");
 
                     b.Property<int?>("LIVER")
-                        .HasColumnType("int")
-                        .HasComment("Liver disease");
+                        .HasColumnType("int");
 
                     b.Property<int?>("LIVERAGE")
-                        .HasColumnType("int")
-                        .HasComment("Age at liver disease diagnosis");
+                        .HasColumnType("int");
 
                     b.Property<int?>("MAJORDEP")
-                        .HasColumnType("int")
-                        .HasComment("Major depressive disorder (DSM-5-TR criteria)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("MENARCHE")
-                        .HasColumnType("int")
-                        .HasComment("How old was the participant when they had their first menstrual period?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("MODE")
                         .HasColumnType("int")
@@ -1679,56 +1630,44 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(6);
 
                     b.Property<int?>("MS")
-                        .HasColumnType("int")
-                        .HasComment("Multiple sclerosis");
+                        .HasColumnType("int");
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("NOMENSAGE")
-                        .HasColumnType("int")
-                        .HasComment("How old was the participant when they had their last menstrual period?");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("NOMENSCHEM")
-                        .HasColumnType("bit")
-                        .HasComment("Participant has stopped having menstrual periods due to chemotherapy for cancer or another condition");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("NOMENSESTR")
-                        .HasColumnType("bit")
-                        .HasComment("Participant has stopped having menstrual periods due to anti-estrogen medication");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("NOMENSHORM")
-                        .HasColumnType("bit")
-                        .HasComment("Participant has stopped having menstrual periods due to hormonal supplements (e.g. the Pill, injections, Mirena, HRT)");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("NOMENSHYST")
-                        .HasColumnType("bit")
-                        .HasComment("Participant has stopped having menstrual periods due to hysterectomy (surgical removal of uterus)");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("NOMENSNAT")
-                        .HasColumnType("bit")
-                        .HasComment("Participant has stopped having menstrual periods due to natural menopause");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("NOMENSOTH")
-                        .HasColumnType("bit")
-                        .HasComment("Other reason participant has stopped having menstrual periods");
+                        .HasColumnType("bit");
 
                     b.Property<string>("NOMENSOTHX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("Specify other reason participant has stopped having menstrual periods");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<bool?>("NOMENSRAD")
-                        .HasColumnType("bit")
-                        .HasComment("Participant has stopped having menstrual periods due to radiation treatment or other damage/injury to reproductive organs");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("NOMENSSURG")
-                        .HasColumnType("bit")
-                        .HasComment("Participant has stopped having menstrual periods due to surgical removal of both ovaries");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("NOMENSUNK")
-                        .HasColumnType("bit")
-                        .HasComment("Unsure of reason participant has stopped having menstrual periods");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("NOT")
                         .HasColumnType("int")
@@ -1736,103 +1675,83 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(9);
 
                     b.Property<int?>("NPSYDEV")
-                        .HasColumnType("int")
-                        .HasComment("Developmental neuropsychiatric disorders");
+                        .HasColumnType("int");
 
                     b.Property<int?>("OCD")
-                        .HasColumnType("int")
-                        .HasComment("Obsessive-compulsive disorder (OCD)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("OTHANXDIS")
-                        .HasColumnType("int")
-                        .HasComment("Other anxiety disorder");
+                        .HasColumnType("int");
 
                     b.Property<string>("OTHANXDISX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("Specify other anxiety disorder");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("OTHCONDX")
-                        .HasColumnType("nvarchar(max)")
-                        .HasComment("Specify other medical conditions or procedures");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("OTHERCOND")
-                        .HasColumnType("int")
-                        .HasComment("Other medical conditions or procedures");
+                        .HasColumnType("int");
 
                     b.Property<int?>("OTHERDEP")
-                        .HasColumnType("int")
-                        .HasComment("Other specified depressive disorder (DSm-5-TR criteria)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("OTHSLEEP")
-                        .HasColumnType("int")
-                        .HasComment("Other sleep disorder");
+                        .HasColumnType("int");
 
                     b.Property<string>("OTHSLEEX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("Specify other sleep disorder");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<int?>("PACDEFAGE")
-                        .HasColumnType("int")
-                        .HasComment("Age at first pacemaker and/or defibrillator implantation");
+                        .HasColumnType("int");
 
                     b.Property<int?>("PACKSPER")
-                        .HasColumnType("int")
-                        .HasComment("Average number of packs smoked per day");
+                        .HasColumnType("int");
 
                     b.Property<int?>("PANICDIS")
-                        .HasColumnType("int")
-                        .HasComment("Panic Disorder");
+                        .HasColumnType("int");
 
                     b.Property<int?>("PD")
-                        .HasColumnType("int")
-                        .HasComment("Parkinson’s disease (PD)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("PDAGE")
-                        .HasColumnType("int")
-                        .HasComment("Age at estimated PD symptom onset");
+                        .HasColumnType("int");
 
                     b.Property<int?>("PDOTHR")
-                        .HasColumnType("int")
-                        .HasComment("Other parkinsonism disorder (e.g., DLB)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("PDOTHRAGE")
-                        .HasColumnType("int")
-                        .HasComment("Age at parkinsonism disorder diagnosis");
+                        .HasColumnType("int");
 
                     b.Property<int?>("PSYCDIS")
-                        .HasColumnType("int")
-                        .HasComment("Other psychiatric disorders");
+                        .HasColumnType("int");
 
                     b.Property<string>("PSYCDISX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("Specify other psychiatric disorders");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<int?>("PTSD")
-                        .HasColumnType("int")
-                        .HasComment("Post-traumatic stress disorder (PTSD) (DSM-5-TR criteria)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("PULMONARY")
-                        .HasColumnType("int")
-                        .HasComment("Asthma/COPD/pulmonary disease");
+                        .HasColumnType("int");
 
                     b.Property<int?>("PVD")
-                        .HasColumnType("int")
-                        .HasComment("Peripheral vascular disease");
+                        .HasColumnType("int");
 
                     b.Property<int?>("PVDAGE")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PacketId")
                         .HasColumnType("int")
-                        .HasComment("Age at peripheral vascular disease diagnosis");
+                        .HasColumnOrder(1);
 
                     b.Property<int?>("QUITSMOK")
-                        .HasColumnType("int")
-                        .HasComment("If the participant quit smoking, specify the age at which they last smoked (i.e., quit)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("RBD")
-                        .HasColumnType("int")
-                        .HasComment("REM sleep behavior disorder");
+                        .HasColumnType("int");
 
                     b.Property<int?>("RMMODE")
                         .HasColumnType("int")
@@ -1845,44 +1764,34 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(7);
 
                     b.Property<int?>("SCHIZ")
-                        .HasColumnType("int")
-                        .HasComment("Schizophrenia or other psychosis disorder (DSM-5-TR criteria)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("SEIZAGE")
-                        .HasColumnType("int")
-                        .HasComment("Age at first seizure (excluding childhood febrile seizures)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("SEIZNUM")
-                        .HasColumnType("int")
-                        .HasComment("How many seizures has the participant had in the past 12 months?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("SEIZURES")
-                        .HasColumnType("int")
-                        .HasComment("Epilepsy and/or history of seizures (excluding childhood febrile seizures)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("SMOKYRS")
-                        .HasColumnType("int")
-                        .HasComment("Total years smoked");
+                        .HasColumnType("int");
 
                     b.Property<int?>("STROKAGE")
-                        .HasColumnType("int")
-                        .HasComment("Age at most recent stroke");
+                        .HasColumnType("int");
 
                     b.Property<int?>("STROKMUL")
-                        .HasColumnType("int")
-                        .HasComment("More than one stroke?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("STROKSTAT")
-                        .HasColumnType("int")
-                        .HasComment("What is status of stroke symptoms?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("SUBSTPAST")
-                        .HasColumnType("int")
-                        .HasComment("Participant used substances including prescription or recreational drugs that caused significant impairment in work, legal, driving, or social areas prior to 12 months ago");
+                        .HasColumnType("int");
 
                     b.Property<int?>("SUBSTYEAR")
-                        .HasColumnType("int")
-                        .HasComment("Participant used substances including prescription or recreational drugs that caused significant impairment in work, legal, driving, or social areas within the past 12 months");
+                        .HasColumnType("int");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -1891,32 +1800,23 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(2);
 
                     b.Property<int?>("THYROID")
-                        .HasColumnType("int")
-                        .HasComment("Thyroid disease");
+                        .HasColumnType("int");
 
                     b.Property<int?>("TIAAGE")
-                        .HasColumnType("int")
-                        .HasComment("Age at most recent TIA");
+                        .HasColumnType("int");
 
                     b.Property<int?>("TOBAC100")
-                        .HasColumnType("int")
-                        .HasComment("Has participant smoked more than 100 cigarettes in their life?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("TOBAC30")
-                        .HasColumnType("int")
-                        .HasComment("Has participant smoked within the last 30 days?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("VALVEAGE")
-                        .HasColumnType("int")
-                        .HasComment("Age at most recent heart valve replacement or repair procedure");
-
-                    b.Property<int>("VisitId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(1);
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("VisitId")
+                    b.HasIndex("PacketId")
                         .IsUnique();
 
                     b.ToTable("tbl_A5D2s");
@@ -1933,36 +1833,28 @@ namespace UDS.Net.API.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int?>("BPDIASL1")
-                        .HasColumnType("int")
-                        .HasComment(" Participant blood pressure - Left arm: Diastolic Reading 1");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BPDIASL2")
-                        .HasColumnType("int")
-                        .HasComment(" Participant blood pressure - Left arm: Diastolic Reading 2");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BPDIASR1")
-                        .HasColumnType("int")
-                        .HasComment("Participant blood pressure - Right arm: Diastolic Reading 1");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BPDIASR2")
-                        .HasColumnType("int")
-                        .HasComment("Participant blood pressure - Right arm: Diastolic Reading 2");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BPSYSL1")
-                        .HasColumnType("int")
-                        .HasComment("Participant blood pressure - Left arm: Systolic Reading 1");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BPSYSL2")
-                        .HasColumnType("int")
-                        .HasComment("Participant blood pressure - Left arm: Systolic Reading 2");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BPSYSR1")
-                        .HasColumnType("int")
-                        .HasComment("Participant blood pressure - Right arm: Systolic Reading 1");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BPSYSR2")
-                        .HasColumnType("int")
-                        .HasComment("Participant blood pressure - Right arm: Systolic Reading 2");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -1980,20 +1872,16 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(3);
 
                     b.Property<decimal?>("HEIGHT")
-                        .HasColumnType("decimal(3,1)")
-                        .HasComment("Participant height (inches)");
+                        .HasColumnType("decimal(3,1)");
 
                     b.Property<int?>("HIP1")
-                        .HasColumnType("int")
-                        .HasComment("Hip circumference measurements (inches): Measurement 1");
+                        .HasColumnType("int");
 
                     b.Property<int?>("HIP2")
-                        .HasColumnType("int")
-                        .HasComment("Hip circumference measurements (inches): Measurement 2");
+                        .HasColumnType("int");
 
                     b.Property<int?>("HRATE")
-                        .HasColumnType("int")
-                        .HasComment("Participant resting heart rate (pulse)");
+                        .HasColumnType("int");
 
                     b.Property<string>("INITIALS")
                         .IsRequired()
@@ -2023,6 +1911,10 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnName("NOT")
                         .HasColumnOrder(9);
 
+                    b.Property<int>("PacketId")
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
+
                     b.Property<int?>("RMMODE")
                         .HasColumnType("int")
                         .HasColumnName("RMMODE")
@@ -2039,25 +1931,18 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasColumnOrder(2);
 
-                    b.Property<int>("VisitId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(1);
-
                     b.Property<int?>("WAIST1")
-                        .HasColumnType("int")
-                        .HasComment("Waist circumference measurements (inches): Measurement 1");
+                        .HasColumnType("int");
 
                     b.Property<int?>("WAIST2")
-                        .HasColumnType("int")
-                        .HasComment("Waist circumference measurements (inches): Measurement 2");
+                        .HasColumnType("int");
 
                     b.Property<int?>("WEIGHT")
-                        .HasColumnType("int")
-                        .HasComment("Participant weight (lbs.)");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("VisitId")
+                    b.HasIndex("PacketId")
                         .IsUnique();
 
                     b.ToTable("tbl_B1s");
@@ -2203,6 +2088,10 @@ namespace UDS.Net.API.Data.Migrations
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
 
+                    b.Property<int>("PacketId")
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
+
                     b.Property<int?>("RIGDLOLF")
                         .HasColumnType("int");
 
@@ -2327,13 +2216,9 @@ namespace UDS.Net.API.Data.Migrations
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
 
-                    b.Property<int>("VisitId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(1);
-
                     b.HasKey("Id");
 
-                    b.HasIndex("VisitId")
+                    b.HasIndex("PacketId")
                         .IsUnique();
 
                     b.ToTable("tbl_B3s");
@@ -2422,6 +2307,10 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<decimal?>("PERSCARE")
                         .HasColumnType("decimal(2,1)");
 
+                    b.Property<int>("PacketId")
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
+
                     b.Property<int?>("RMMODE")
                         .HasColumnType("int")
                         .HasColumnName("RMMODE")
@@ -2438,13 +2327,9 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasColumnOrder(2);
 
-                    b.Property<int>("VisitId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(1);
-
                     b.HasKey("Id");
 
-                    b.HasIndex("VisitId")
+                    b.HasIndex("PacketId")
                         .IsUnique();
 
                     b.ToTable("tbl_B4s");
@@ -2582,6 +2467,10 @@ namespace UDS.Net.API.Data.Migrations
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
 
+                    b.Property<int>("PacketId")
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
+
                     b.Property<int?>("RMMODE")
                         .HasColumnType("int")
                         .HasColumnName("RMMODE")
@@ -2598,13 +2487,9 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasColumnOrder(2);
 
-                    b.Property<int>("VisitId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(1);
-
                     b.HasKey("Id");
 
-                    b.HasIndex("VisitId")
+                    b.HasIndex("PacketId")
                         .IsUnique();
 
                     b.ToTable("tbl_B5s");
@@ -2699,6 +2584,10 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnName("NOT")
                         .HasColumnOrder(9);
 
+                    b.Property<int>("PacketId")
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
+
                     b.Property<int?>("RMMODE")
                         .HasColumnType("int")
                         .HasColumnName("RMMODE")
@@ -2724,10 +2613,6 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasColumnOrder(2);
 
-                    b.Property<int>("VisitId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(1);
-
                     b.Property<int?>("WONDRFUL")
                         .HasColumnType("int");
 
@@ -2736,7 +2621,7 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("VisitId")
+                    b.HasIndex("PacketId")
                         .IsUnique();
 
                     b.ToTable("tbl_B6s");
@@ -2810,6 +2695,10 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int?>("PAYATTN")
                         .HasColumnType("int");
 
+                    b.Property<int>("PacketId")
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
+
                     b.Property<int?>("REMDATES")
                         .HasColumnType("int");
 
@@ -2841,13 +2730,9 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int?>("TRAVEL")
                         .HasColumnType("int");
 
-                    b.Property<int>("VisitId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(1);
-
                     b.HasKey("Id");
 
-                    b.HasIndex("VisitId")
+                    b.HasIndex("PacketId")
                         .IsUnique();
 
                     b.ToTable("tbl_B7s");
@@ -2985,6 +2870,10 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int?>("PSPOAGNO")
                         .HasColumnType("int");
 
+                    b.Property<int>("PacketId")
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
+
                     b.Property<int?>("RIGIDARM")
                         .HasColumnType("int");
 
@@ -3037,13 +2926,9 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int?>("VHGAZEPAL")
                         .HasColumnType("int");
 
-                    b.Property<int>("VisitId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(1);
-
                     b.HasKey("Id");
 
-                    b.HasIndex("VisitId")
+                    b.HasIndex("PacketId")
                         .IsUnique();
 
                     b.ToTable("tbl_B8s");
@@ -3060,182 +2945,138 @@ namespace UDS.Net.API.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool?>("ALCUSE")
-                        .HasColumnType("bit")
-                        .HasComment("Alcohol use");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("BEAGGRS")
-                        .HasColumnType("int")
-                        .HasComment("Participant currently manifests meaningful change in behavior — Aggression");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BEAGIT")
-                        .HasColumnType("int")
-                        .HasComment("Participant currently manifests meaningful change in behavior — Agitation");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BEAHALL")
-                        .HasColumnType("int")
-                        .HasComment("Participant currently manifests meaningful change in behavior — Psychosis — Auditory hallucinations");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BEAHCOMP")
-                        .HasColumnType("int")
-                        .HasComment("IF YES, do the auditory hallucinations include complex sounds like voices speaking words, or music?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BEAHSIMP")
-                        .HasColumnType("int")
-                        .HasComment("IF YES, do the auditory hallucinations include simple sounds like knocks or other simple sounds?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BEANGER")
-                        .HasColumnType("int")
-                        .HasComment("Participant currently manifests meaningful change in behavior — Explosive anger");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BEANX")
-                        .HasColumnType("int")
-                        .HasComment("Participant currently manifests meaningful change in behavior — Anxiety");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BEAPATHY")
-                        .HasColumnType("int")
-                        .HasComment("Participant currently manifests meaningful change in behavior — Apathy, withdrawal");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BEDEL")
-                        .HasColumnType("int")
-                        .HasComment("Participant currently manifests meaningful change in behavior — Psychosis — Abnormal, false, or delusional beliefs");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BEDEP")
-                        .HasColumnType("int")
-                        .HasComment("Participant currently manifests meaningful change in behavior — Depressed mood");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BEDISIN")
-                        .HasColumnType("int")
-                        .HasComment("Participant currently manifests meaningful change in behavior — Disinhibition");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BEEMPATH")
-                        .HasColumnType("int")
-                        .HasComment("Participant currently manifests meaningful change in behavior — Loss of empathy");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BEEUPH")
-                        .HasColumnType("int")
-                        .HasComment("Participant currently manifests meaningful change in behavior - Euphoria");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BEHAGE")
-                        .HasColumnType("int")
-                        .HasComment("If any of the mood-related behavioral symptoms in 12a-12f are present, at what age did they begin?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BEIRRIT")
-                        .HasColumnType("int")
-                        .HasComment("Participant currently manifests meaningful change in behavior — Irritability");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BEMODE")
-                        .HasColumnType("int")
-                        .HasComment("Overall mode of onset for behavioral symptoms");
+                        .HasColumnType("int");
 
                     b.Property<string>("BEMODEX")
-                        .HasColumnType("nvarchar(max)")
-                        .HasComment("Other mode of onset - specify");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("BEOBCOM")
-                        .HasColumnType("int")
-                        .HasComment("Participant currently manifests meaningful change in behavior — Obsessions/compulsions");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BEOTHR")
-                        .HasColumnType("int")
-                        .HasComment("Other behavioral symptom");
+                        .HasColumnType("int");
 
                     b.Property<string>("BEOTHRX")
-                        .HasColumnType("nvarchar(max)")
-                        .HasComment("Participant currently manifests meaningful change in behavior - Other, specify");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("BEPERCH")
-                        .HasColumnType("int")
-                        .HasComment("Participant currently manifests meaningful change in behavior — Personality change");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BEREM")
-                        .HasColumnType("int")
-                        .HasComment("Participant currently manifests meaningful change in behavior — REM sleep behavior disorder");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BEREMAGO")
-                        .HasColumnType("int")
-                        .HasComment("IF YES, at what age did the dream enactment behavior begin?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BEREMCONF")
-                        .HasColumnType("int")
-                        .HasComment("Was REM sleep behavior disorder confirmed by polysomnography?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BESUBAB")
-                        .HasColumnType("int")
-                        .HasComment("Participant currently manifests meaningful change in behavior - Substance use");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BEVHALL")
-                        .HasColumnType("int")
-                        .HasComment("Participant currently manifests meaningful change in behavior — Psychosis — Visual hallucinations");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BEVPATT")
-                        .HasColumnType("int")
-                        .HasComment("IF YES, do their hallucinations include patterns that are not definite objects, such as pixelation of flat uniform surfaces?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BEVWELL")
-                        .HasColumnType("int")
-                        .HasComment("IF YES, do their hallucinations include well formed and detailed images of objects or people, either as independent images or as part of other objects?");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("CANNABUSE")
-                        .HasColumnType("bit")
-                        .HasComment("Cannabis use");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("COCAINEUSE")
-                        .HasColumnType("bit")
-                        .HasComment("Cocaine use");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("COGAGE")
-                        .HasColumnType("int")
-                        .HasComment("If any of the cognitive-related behavioral symptoms in 9a-9h are present, at what age did they begin?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("COGATTN")
-                        .HasColumnType("int")
-                        .HasComment("Indicate whether the participant currently is meaningfully impaired in attention/concentration");
+                        .HasColumnType("int");
 
                     b.Property<int?>("COGFLUC")
-                        .HasColumnType("int")
-                        .HasComment("Indicate whether the participant currently has fluctuating cognition");
+                        .HasColumnType("int");
 
                     b.Property<int?>("COGJUDG")
-                        .HasColumnType("int")
-                        .HasComment("Indicate whether the participant currently is meaningfully impaired in executive function (judgment, planning, and problem-solving)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("COGLANG")
-                        .HasColumnType("int")
-                        .HasComment("Indicate whether the participant currently is meaningfully impaired in language");
+                        .HasColumnType("int");
 
                     b.Property<int?>("COGMEM")
-                        .HasColumnType("int")
-                        .HasComment("Indicate whether the participant currently is meaningfully impaired in memory.");
+                        .HasColumnType("int");
 
                     b.Property<int?>("COGMODE")
-                        .HasColumnType("int")
-                        .HasComment("Indicate the mode of onset for the most prominent cognitive problem that is causing the participant's complaints and/or affecting the participant's function.");
+                        .HasColumnType("int");
 
                     b.Property<string>("COGMODEX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("Specify other mode of onset of cognitive symptoms");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<int?>("COGORI")
-                        .HasColumnType("int")
-                        .HasComment("Indicate whether the participant currently is meaningfully impaired in orientation.");
+                        .HasColumnType("int");
 
                     b.Property<int?>("COGOTHR")
-                        .HasColumnType("int")
-                        .HasComment("Other cognitive impairment");
+                        .HasColumnType("int");
 
                     b.Property<string>("COGOTHRX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("Specify other cognitive domains");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<int?>("COGVIS")
-                        .HasColumnType("int")
-                        .HasComment("Indicate whether the participant currently is meaningfully impaired in visuospatial function");
+                        .HasColumnType("int");
 
                     b.Property<int?>("COURSE")
-                        .HasColumnType("int")
-                        .HasComment("Overall course of decline of cognitive / behavorial / motor syndrome");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -3245,36 +3086,28 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("DECCLBE")
-                        .HasColumnType("int")
-                        .HasComment("Based on the clinician’s judgment, is the participant currently experiencing any kind of behavioral symptoms?");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("DECCLCOG")
-                        .HasColumnType("bit")
-                        .HasComment("Based on the clinician’s judgment, is the participant currently experiencing meaningful impairment in cognition?");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("DECCLIN")
-                        .HasColumnType("bit")
-                        .HasComment("Does the participant have any neuropsychiatric/behavioral symptoms or declines in any cognitive or motor domain?");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("DECCLMOT")
-                        .HasColumnType("bit")
-                        .HasComment("Based on the clinician’s judgment, is the participant currently experiencing any motor symptoms?");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("DECCOG")
-                        .HasColumnType("int")
-                        .HasComment("Does the participant report a decline in any cognitive domain (relative to stable baseline prior to onset of current syndrome)?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("DECCOGIN")
-                        .HasColumnType("int")
-                        .HasComment("Does the co-participant report a decline in any cognitive domain (relative to stable baseline prior to onset of current syndrome)?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("DECMOT")
-                        .HasColumnType("int")
-                        .HasComment("Does the participant report a decline in any motor domain (relative to stable baseline prior to onset of current syndrome)?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("DECMOTIN")
-                        .HasColumnType("int")
-                        .HasComment("Does the co-participant report a change in any motor domain (relative to stable baseline prior to onset of current syndrome)?");
+                        .HasColumnType("int");
 
                     b.Property<string>("DeletedBy")
                         .HasColumnType("nvarchar(max)");
@@ -3285,8 +3118,7 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(3);
 
                     b.Property<int?>("FRSTCHG")
-                        .HasColumnType("int")
-                        .HasComment("Indicate the predominant domain that was first recognized as changed in the participant");
+                        .HasColumnType("int");
 
                     b.Property<string>("INITIALS")
                         .IsRequired()
@@ -3309,52 +3141,40 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(6);
 
                     b.Property<int?>("MOFACE")
-                        .HasColumnType("int")
-                        .HasComment("Indicate whether the participant currently has meaningful changes in motor function — Change in facial expression");
+                        .HasColumnType("int");
 
                     b.Property<int?>("MOFALLS")
-                        .HasColumnType("int")
-                        .HasComment("Indicate whether the participant currently has meaningful changes in motor function — Falls");
+                        .HasColumnType("int");
 
                     b.Property<int?>("MOGAIT")
-                        .HasColumnType("int")
-                        .HasComment("Indicate whether the participant currently has meaningful changes in motor function — Gait disorder");
+                        .HasColumnType("int");
 
                     b.Property<int?>("MOLIMB")
-                        .HasColumnType("int")
-                        .HasComment("Indicate whether the participant currently has meaningful changes in motor function — Limb weakness");
+                        .HasColumnType("int");
 
                     b.Property<int?>("MOMOALS")
-                        .HasColumnType("int")
-                        .HasComment("Were changes in motor function suggestive of amyotrophic lateral sclerosis?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("MOMODE")
-                        .HasColumnType("int")
-                        .HasComment("Indicate the mode of onset for the most prominent motor problem that is causing the participant's complaints and/or affecting the participant's function.");
+                        .HasColumnType("int");
 
                     b.Property<string>("MOMODEX")
-                        .HasColumnType("nvarchar(max)")
-                        .HasComment("Indicate mode of onset for the most prominent motor problem that is causing the participant's complains and or affecting the participant's function - Other, specify");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("MOMOPARK")
-                        .HasColumnType("int")
-                        .HasComment("Were changes in motor function suggestive of parkinsonism?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("MOSLOW")
-                        .HasColumnType("int")
-                        .HasComment("Indicate whether the participant currently has meaningful changes in motor function — Slowness");
+                        .HasColumnType("int");
 
                     b.Property<int?>("MOSPEECH")
-                        .HasColumnType("int")
-                        .HasComment("Indicate whether the participant currently has meaningful changes in motor function — Change in speech");
+                        .HasColumnType("int");
 
                     b.Property<int?>("MOTORAGE")
-                        .HasColumnType("int")
-                        .HasComment("If changes in motor function are present in 15a-15g, at what age did they begin?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("MOTREM")
-                        .HasColumnType("int")
-                        .HasComment("Indicate whether the participant currently has meaningful changes in motor function — Tremor");
+                        .HasColumnType("int");
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
@@ -3365,33 +3185,30 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(9);
 
                     b.Property<bool?>("OPIATEUSE")
-                        .HasColumnType("bit")
-                        .HasComment("Opiate use");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("OTHSUBUSE")
-                        .HasColumnType("bit")
-                        .HasComment("Other substance use");
+                        .HasColumnType("bit");
 
                     b.Property<string>("OTHSUBUSEX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("Specify other substance use");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<int?>("PERCHAGE")
-                        .HasColumnType("int")
-                        .HasComment("If any of the personality-related behavioral symptoms in 12m-12r are present, at what age did they begin?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("PSYCHAGE")
-                        .HasColumnType("int")
-                        .HasComment("If any of the psychosis and impulse control-related behavioral symptoms in 12h-12k are present, at what age did they begin?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("PSYCHSYM")
-                        .HasColumnType("int")
-                        .HasComment("Does the participant report the development of any significant neuropsychiatric/behavioral symptoms (relative to stable baseline prior to onset of current syndrome)?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("PSYCHSYMIN")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PacketId")
                         .HasColumnType("int")
-                        .HasComment("Does the co-participant report the development of any significant neuropsychiatric/behavioral symptoms (relative to stable baseline prior to onset of current syndrome)?");
+                        .HasColumnOrder(1);
 
                     b.Property<int?>("RMMODE")
                         .HasColumnType("int")
@@ -3404,8 +3221,7 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(7);
 
                     b.Property<bool?>("SEDUSE")
-                        .HasColumnType("bit")
-                        .HasComment("Sedative/hypnotic use");
+                        .HasColumnType("bit");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -3413,240 +3229,12 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasColumnOrder(2);
 
-                    b.Property<int>("VisitId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(1);
-
                     b.HasKey("Id");
 
-                    b.HasIndex("VisitId")
+                    b.HasIndex("PacketId")
                         .IsUnique();
 
                     b.ToTable("tbl_B9s");
-                });
-
-            modelBuilder.Entity("UDS.Net.API.Entities.C1", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("FormId")
-                        .HasColumnOrder(0);
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("ANIMALS")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("BOSTON")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("COGSTAT")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("DIGIB")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("DIGIBLEN")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("DIGIF")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("DIGIFLEN")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("FRMDATE")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("FRMDATE")
-                        .HasColumnOrder(3);
-
-                    b.Property<string>("INITIALS")
-                        .IsRequired()
-                        .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)")
-                        .HasColumnName("INITIALS")
-                        .HasColumnOrder(4);
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("LANG")
-                        .HasColumnType("int")
-                        .HasColumnName("LANG")
-                        .HasColumnOrder(5);
-
-                    b.Property<int?>("LOGIDAY")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("LOGIMEM")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("LOGIMO")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("LOGIPREV")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("LOGIYR")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MEMTIME")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MEMUNITS")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MMSE")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MMSECOMP")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MMSEHEAR")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MMSELAN")
-                        .HasColumnType("int");
-
-                    b.Property<string>("MMSELANX")
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
-
-                    b.Property<int?>("MMSELOC")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MMSEORDA")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MMSEORLO")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MMSEREAS")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MMSEVIS")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MODE")
-                        .HasColumnType("int")
-                        .HasColumnName("MODE")
-                        .HasColumnOrder(6);
-
-                    b.Property<string>("ModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("NOT")
-                        .HasColumnType("int")
-                        .HasColumnName("NOT")
-                        .HasColumnOrder(9);
-
-                    b.Property<int?>("NPSYCLOC")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("NPSYLAN")
-                        .HasColumnType("int");
-
-                    b.Property<string>("NPSYLANX")
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
-
-                    b.Property<int?>("PENTAGON")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RMMODE")
-                        .HasColumnType("int")
-                        .HasColumnName("RMMODE")
-                        .HasColumnOrder(8);
-
-                    b.Property<int?>("RMREAS")
-                        .HasColumnType("int")
-                        .HasColumnName("RMREASON")
-                        .HasColumnOrder(7);
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)")
-                        .HasColumnOrder(2);
-
-                    b.Property<int?>("TRAILA")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TRAILALI")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TRAILARR")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TRAILB")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TRAILBLI")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TRAILBRR")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UDSBENRS")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UDSBENTC")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UDSBENTD")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UDSVERFC")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UDSVERFN")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UDSVERLC")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UDSVERLN")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UDSVERLR")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UDSVERNF")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UDSVERTE")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UDSVERTI")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UDSVERTN")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("VEG")
-                        .HasColumnType("int");
-
-                    b.Property<int>("VisitId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(1);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("VisitId")
-                        .IsUnique();
-
-                    b.ToTable("tbl_C1s");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.C2", b =>
@@ -3920,6 +3508,10 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int?>("OTRLBRR")
                         .HasColumnType("int");
 
+                    b.Property<int>("PacketId")
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
+
                     b.Property<int?>("RESPASST")
                         .HasColumnType("int");
 
@@ -4093,13 +3685,9 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<int?>("VNTTOTW")
                         .HasColumnType("int");
 
-                    b.Property<int>("VisitId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(1);
-
                     b.HasKey("Id");
 
-                    b.HasIndex("VisitId")
+                    b.HasIndex("PacketId")
                         .IsUnique();
 
                     b.ToTable("tbl_C2s");
@@ -4141,135 +3729,103 @@ namespace UDS.Net.API.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool?>("ALCDEM")
-                        .HasColumnType("bit")
-                        .HasComment("27. Cognitive impairment due to alcohol abuse (present)");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("ALCDEMIF")
-                        .HasColumnType("int")
-                        .HasComment("27a. Cognitive impairment due to alcohol abuse (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("AMNDEM")
-                        .HasColumnType("bit")
-                        .HasComment("8a. Amnestic predominant syndrome");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("ANXIET")
-                        .HasColumnType("bit")
-                        .HasComment("14. Anxiety disorder (present)");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("ANXIETIF")
-                        .HasColumnType("int")
-                        .HasComment("14a. Anxiety disorder (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("APNEADX")
-                        .HasColumnType("bit")
-                        .HasComment("25. Sleep apnea (i.e., obstructive, central, mixed or complex sleep apnea) (present)");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("APNEADXIF")
-                        .HasColumnType("int")
-                        .HasComment("25a. Sleep apnea (i.e., obstructive, central, mixed or complex sleep apnea) (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BDOMAFREG")
-                        .HasColumnType("int")
-                        .HasComment("7b. MBI affected domains - Affective regulation");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BDOMIMP")
-                        .HasColumnType("int")
-                        .HasComment("7c. MBI affected domains - Impulse control");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BDOMMOT")
-                        .HasColumnType("int")
-                        .HasComment("7a. MBI affected domains - Motivation");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BDOMSOCIAL")
-                        .HasColumnType("int")
-                        .HasComment("7d. MBI affected domains - Social appropriateness");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BDOMTHTS")
-                        .HasColumnType("int")
-                        .HasComment("7e. MBI affected domains - Thought content/perception");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BIPOLDIF")
-                        .HasColumnType("int")
-                        .HasComment("12a. Bipolar disorder (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("BIPOLDX")
-                        .HasColumnType("bit")
-                        .HasComment("12. Bipolar disorder (present)");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("CBSSYN")
-                        .HasColumnType("bit")
-                        .HasComment("8j. Corticobasal syndrome (CBS)");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("CDOMAPRAX")
-                        .HasColumnType("bit")
-                        .HasComment("6g. Dementia and MCI affected domains - Apraxia");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("CDOMATTN")
-                        .HasColumnType("bit")
-                        .HasComment("6c. Dementia and MCI affected domains - Attention");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("CDOMBEH")
-                        .HasColumnType("bit")
-                        .HasComment("6f. Dementia and MCI affected domains - Behavioral");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("CDOMEXEC")
-                        .HasColumnType("bit")
-                        .HasComment("6d. Dementia and MCI affected domains - Executive");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("CDOMLANG")
-                        .HasColumnType("bit")
-                        .HasComment("6b. Dementia and MCI affected domains - Language");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("CDOMMEM")
-                        .HasColumnType("bit")
-                        .HasComment("6a. Dementia and MCI affected domains - Memory");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("CDOMVISU")
-                        .HasColumnType("bit")
-                        .HasComment("6e. Dementia and MCI affected domains - Visuospatial");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("COGOTH")
-                        .HasColumnType("bit")
-                        .HasComment("30. Cognitive impairment not otherwise specified (NOS) (present)");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("COGOTH2")
-                        .HasColumnType("bit")
-                        .HasComment("31. Cognitive impairment not otherwise specified (NOS) (present)");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("COGOTH2F")
-                        .HasColumnType("int")
-                        .HasComment("31a. Cognitive impairment NOS (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<string>("COGOTH2X")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("31b. Cognitive impairment NOS (specify)");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<bool?>("COGOTH3")
-                        .HasColumnType("bit")
-                        .HasComment("32. Cognitive impairment not otherwise specified (NOS) (present)");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("COGOTH3F")
-                        .HasColumnType("int")
-                        .HasComment("32a. Cognitive impairment NOS (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<string>("COGOTH3X")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("32b. Cognitive impairment NOS (specify)");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<int?>("COGOTHIF")
-                        .HasColumnType("int")
-                        .HasComment("30a. Cognitive impairment NOS (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<string>("COGOTHX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("30b. Cognitive impairment NOS (specify)");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<bool?>("CTESYN")
-                        .HasColumnType("bit")
-                        .HasComment("8i. Traumatic encephalopathy syndrome");
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -4279,35 +3835,28 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool?>("DELIR")
-                        .HasColumnType("bit")
-                        .HasComment("17. Delirium (present)");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("DELIRIF")
-                        .HasColumnType("int")
-                        .HasComment("17a. Delirium (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("DEMENTED")
-                        .HasColumnType("int")
-                        .HasComment("3. Does the participant meet criteria for dementia?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("DXMETHOD")
-                        .HasColumnType("int")
-                        .HasComment("1. Diagnosis method—responses in this form are based on diagnosis by a:");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("DYEXECSYN")
-                        .HasColumnType("bit")
-                        .HasComment("8b. Dysexecutive predominant syndrome");
+                        .HasColumnType("bit");
 
                     b.Property<string>("DeletedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool?>("EPILEP")
-                        .HasColumnType("bit")
-                        .HasComment("20. Epilepsy (present)");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("EPILEPIF")
-                        .HasColumnType("int")
-                        .HasComment("20a. Epilepsy (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("FRMDATE")
                         .HasColumnType("datetime2")
@@ -4315,61 +3864,47 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(3);
 
                     b.Property<bool?>("FTDSYN")
-                        .HasColumnType("bit")
-                        .HasComment("8e. Behavioral variant frontotemporal (bvFTD) syndrome");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("GENANX")
-                        .HasColumnType("bit")
-                        .HasComment("14b. Generalized Anxiety Disorder");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("HIV")
-                        .HasColumnType("bit")
-                        .HasComment("23. Human Immunodeficiency Virus (HIV) infection (present)");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("HIVIF")
-                        .HasColumnType("int")
-                        .HasComment("23a. Human Immunodeficiency Virus (HIV) infection (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("HYCEPH")
-                        .HasColumnType("bit")
-                        .HasComment("21. Normal-pressure hydrocephalus (present)");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("HYCEPHIF")
-                        .HasColumnType("int")
-                        .HasComment("21a. Normal-pressure hydrocephalus (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("IMPNOMCI")
-                        .HasColumnType("bit")
-                        .HasComment("5b. Cognitively impaired, not MCI");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("IMPNOMCICG")
-                        .HasColumnType("bit")
-                        .HasComment("5a2. Cognitively impaired, not MCI reason - Cognitive testing is abnormal but no clinical concern or functional decline (e.g., CDR SB=0 and FAS=0)");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("IMPNOMCIFU")
-                        .HasColumnType("bit")
-                        .HasComment("5a1. Cognitively impaired, not MCI reason - Evidence of functional impairment (e.g., CDR SB>0 and/or FAS>0), but available cognitive testing is judged to be normal");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("IMPNOMCIO")
-                        .HasColumnType("bit")
-                        .HasComment("5a4. Cognitively impaired, not MCI reason - Other");
+                        .HasColumnType("bit");
 
                     b.Property<string>("IMPNOMCIOX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("5a4a. Cognitively impaired, not MCI reason - Other (specify)");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<bool?>("IMPNOMCLCD")
-                        .HasColumnType("bit")
-                        .HasComment("5a3. Cognitively impaired, not MCI reason - Longstanding cognitive difficulties, not representing a change from their usual function");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("IMPSUB")
-                        .HasColumnType("bit")
-                        .HasComment("28. Cognitive impairment due to substance use or abuse (present)");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("IMPSUBIF")
-                        .HasColumnType("int")
-                        .HasComment("28a. Cognitive impairment due to substance use or abuse (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<string>("INITIALS")
                         .IsRequired()
@@ -4387,48 +3922,37 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(5);
 
                     b.Property<bool?>("LBDSYN")
-                        .HasColumnType("bit")
-                        .HasComment("8f. Lewy body syndrome");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("LBDSYNT")
-                        .HasColumnType("int")
-                        .HasComment("8f1. Lewy body syndrome - type");
+                        .HasColumnType("int");
 
                     b.Property<int?>("MAJDEPDIF")
-                        .HasColumnType("int")
-                        .HasComment("10a. Major depressive disorder (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("MAJDEPDX")
-                        .HasColumnType("bit")
-                        .HasComment("10. Major depressive disorder (present)");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("MBI")
-                        .HasColumnType("int")
-                        .HasComment("7. Does the participant meet criteria for MBI");
+                        .HasColumnType("int");
 
                     b.Property<int?>("MCI")
-                        .HasColumnType("int")
-                        .HasComment("4b. Does the participant meet criteria for MCI (amnestic or non-amnestic)?");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("MCICRITCLN")
-                        .HasColumnType("bit")
-                        .HasComment("4a1. MCI criteria - Clinical concern about decline in cognition compared to participant’s prior level of lifelong or usual cognitive function");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("MCICRITFUN")
-                        .HasColumnType("bit")
-                        .HasComment("4a3. MCI criteria - Largely preserved functional independence OR functional dependence that is not related to cognitive decline");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("MCICRITIMP")
-                        .HasColumnType("bit")
-                        .HasComment("4a2. MCI criteria - Impairment in one or more cognitive domains, compared to participant’s estimated prior level of lifelong or usual cognitive function, or supported by objective longitudinal neuropsychological evidence of decline");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("MEDS")
-                        .HasColumnType("bit")
-                        .HasComment("29. Cognitive impairment due to medications (present)");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("MEDSIF")
-                        .HasColumnType("int")
-                        .HasComment("29a. Cognitive impairment due to medications (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("MODE")
                         .HasColumnType("int")
@@ -4436,43 +3960,34 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(6);
 
                     b.Property<bool?>("MSASYN")
-                        .HasColumnType("bit")
-                        .HasComment("8k. Multiple system atrophy (MSA) syndrome");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("MSASYNT")
-                        .HasColumnType("int")
-                        .HasComment("8k1. Multiple system atrophy (MSA) syndrome - type");
+                        .HasColumnType("int");
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool?>("NAMNDEM")
-                        .HasColumnType("bit")
-                        .HasComment("8g. Non-amnestic multidomain syndrome, not PCA, PPA, bvFT, or DLB syndrome");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("NDEVDIS")
-                        .HasColumnType("bit")
-                        .HasComment("16. Developmental neuropsychiatric disorders (e.g., autism spectrum disorder (ASD), attention-deficit hyperactivity disorder (ADHD), dyslexia) (present)");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("NDEVDISIF")
-                        .HasColumnType("int")
-                        .HasComment("16a. Developmental neuropsychiatric disorders (e.g., autism spectrum disorder (ASD), attention-deficit hyperactivity disorder (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("NEOP")
-                        .HasColumnType("bit")
-                        .HasComment("22. CNS Neoplasm (present)");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("NEOPIF")
-                        .HasColumnType("int")
-                        .HasComment("22a. CNS Neoplasm (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("NEOPSTAT")
-                        .HasColumnType("int")
-                        .HasComment("22b. CNS Neoplasm - benign or malignant");
+                        .HasColumnType("int");
 
                     b.Property<int?>("NORMCOG")
-                        .HasColumnType("int")
-                        .HasComment("2. Does the participant have unimpaired cognition & behavior");
+                        .HasColumnType("int");
 
                     b.Property<int?>("NOT")
                         .HasColumnType("int")
@@ -4480,104 +3995,84 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(9);
 
                     b.Property<bool?>("OCDDX")
-                        .HasColumnType("bit")
-                        .HasComment("14d. Obsessive-compulsive disorder (OCD)");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("OTHANXD")
-                        .HasColumnType("bit")
-                        .HasComment("14e. Other anxiety disorder");
+                        .HasColumnType("bit");
 
                     b.Property<string>("OTHANXDX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("14e1. Other anxiety disorder (specify)");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<int?>("OTHCILLIF")
-                        .HasColumnType("int")
-                        .HasComment("26a. Cognitive impairment due to other neurologic, genetic, infectious conditions (not listed above), or systemic disease/medical illness (as indicated on Form A5/D2) (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("OTHCOGILL")
-                        .HasColumnType("bit")
-                        .HasComment("26. Cognitive impairment due to other neurologic, genetic, infectious conditions (not listed above), or systemic disease/medical illness (as indicated on Form A5/D2) (present)");
+                        .HasColumnType("bit");
 
                     b.Property<string>("OTHCOGILLX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("26b. Specify cognitive impairment due to other neurologic, genetic, infection conditions or systemic disease");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<int?>("OTHDEPDIF")
-                        .HasColumnType("int")
-                        .HasComment("11a. Other specified depressive disorder (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("OTHDEPDX")
-                        .HasColumnType("bit")
-                        .HasComment("11. Other specified depressive disorder (present)");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("OTHPSY")
-                        .HasColumnType("bit")
-                        .HasComment("18. Other psychiatric disorder (present)");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("OTHPSYIF")
-                        .HasColumnType("int")
-                        .HasComment("18a. Other psychiatric disorder (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<string>("OTHPSYX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("18b. Other psychiatric disorder (specify)");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<bool?>("OTHSYN")
-                        .HasColumnType("bit")
-                        .HasComment("8l. Other syndrome");
+                        .HasColumnType("bit");
 
                     b.Property<string>("OTHSYNX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("8l1. Other syndrome (specify)");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<bool?>("PANICDISDX")
-                        .HasColumnType("bit")
-                        .HasComment("14c. Panic Disorder");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("PCA")
-                        .HasColumnType("bit")
-                        .HasComment("8c. Primary visual presentation (such as posterior cortical atrophy (PCA) syndrome)");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("POSTC19")
-                        .HasColumnType("bit")
-                        .HasComment("24. Post COVID-19 cognitive impairment (present)");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("POSTC19IF")
-                        .HasColumnType("int")
-                        .HasComment("24a. Post COVID-19 cognitive impairment (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("PPASYN")
-                        .HasColumnType("bit")
-                        .HasComment("8d. Primary progressive aphasia (PPA) syndrome");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("PPASYNT")
-                        .HasColumnType("int")
-                        .HasComment("8d1. Primary progressive aphasia (PPA) syndrome - type");
+                        .HasColumnType("int");
 
                     b.Property<int?>("PREDOMSYN")
-                        .HasColumnType("int")
-                        .HasComment("8. Is there a predominant clinical syndrome?");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("PSPSYN")
-                        .HasColumnType("bit")
-                        .HasComment("8h. Primary supranuclear palsy (PSP) syndrome");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("PSPSYNT")
-                        .HasColumnType("int")
-                        .HasComment("8h1. Primary supranuclear palsy (PSP) syndrome - type");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("PTSDDX")
-                        .HasColumnType("bit")
-                        .HasComment("15. Post-traumatic stress disorder (PTSD) (present)");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("PTSDDXIF")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PacketId")
                         .HasColumnType("int")
-                        .HasComment("15a. Post-traumatic stress disorder (PTSD) (primary/contributing/non-contributing)");
+                        .HasColumnOrder(1);
 
                     b.Property<int?>("RMMODE")
                         .HasColumnType("int")
@@ -4590,32 +4085,25 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(7);
 
                     b.Property<int?>("SCD")
-                        .HasColumnType("int")
-                        .HasComment("2a. Does the participant report 1) significant concerns about changes in cognition AND 2) no neuropsychological evidence of decline AND 3) no functional decline?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("SCDDXCONF")
-                        .HasColumnType("int")
-                        .HasComment("2b. As a clinician, are you confident that the subjective cognitive decline is clinically meaningful?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("SCHIZOIF")
-                        .HasColumnType("int")
-                        .HasComment("13a. Schizophrenia or other psychotic disorder (primary/contributing/non-contributing)");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("SCHIZOP")
-                        .HasColumnType("bit")
-                        .HasComment("13. Schizophrenia or other psychotic disorder (present)");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("SYNINFBIOM")
-                        .HasColumnType("bit")
-                        .HasComment("9c. Indicate the source(s) of information used to assign the clinical syndrome - Biomarkers (MRI, PET, CSF, plasma)");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("SYNINFCLIN")
-                        .HasColumnType("bit")
-                        .HasComment("9a. Indicate the source(s) of information used to assign the clinical syndrome - Clinical information (history, CDR)");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("SYNINFCTST")
-                        .HasColumnType("bit")
-                        .HasComment("9b. Indicate the source(s) of information used to assign the clinical syndrome - Cognitive testing");
+                        .HasColumnType("bit");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -4624,20 +4112,14 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(2);
 
                     b.Property<bool?>("TBIDX")
-                        .HasColumnType("bit")
-                        .HasComment("19. Traumatic brain injury (present)");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("TBIDXIF")
-                        .HasColumnType("int")
-                        .HasComment("19a. Traumatic brain injury (primary/contributing/non-contributing)");
-
-                    b.Property<int>("VisitId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(1);
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("VisitId")
+                    b.HasIndex("PacketId")
                         .IsUnique();
 
                     b.ToTable("tbl_D1as");
@@ -4654,165 +4136,126 @@ namespace UDS.Net.API.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool?>("ALZDIS")
-                        .HasColumnType("bit")
-                        .HasComment("Alzheimer's disease");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("ALZDISIF")
-                        .HasColumnType("int")
-                        .HasComment("Primary, contributing, or non-contributing - Alzheimer's disease");
+                        .HasColumnType("int");
 
                     b.Property<int?>("AMYLPET")
-                        .HasColumnType("int")
-                        .HasComment("Elevated amyloid");
+                        .HasColumnType("int");
 
                     b.Property<int?>("AUTDOMMUT")
-                        .HasColumnType("int")
-                        .HasComment("Is there an autosomal dominant pathogenic variant to support an etiological diagnosis?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BIOMAD1")
-                        .HasColumnType("int")
-                        .HasComment("Other biomarker modality - Consistent with AD");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BIOMAD2")
-                        .HasColumnType("int")
-                        .HasComment("Other biomarker modality - Consistent with AD");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BIOMAD3")
-                        .HasColumnType("int")
-                        .HasComment("Other biomarker modality - Consistent with AD");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BIOMARKDX")
-                        .HasColumnType("int")
-                        .HasComment("Were any biomarker results used to support the current etiological diagnosis?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BIOMFTLD1")
-                        .HasColumnType("int")
-                        .HasComment("8b. Other biomarker modality - Consistent with FTLD");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BIOMFTLD2")
-                        .HasColumnType("int")
-                        .HasComment("Other biomarker modality - Consistent with FTLD");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BIOMFTLD3")
-                        .HasColumnType("int")
-                        .HasComment("Other biomarker modality - Consistent with FTLD");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BIOMLBD1")
-                        .HasColumnType("int")
-                        .HasComment("Other biomarker modality - Consistent with LBD");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BIOMLBD2")
-                        .HasColumnType("int")
-                        .HasComment("Other biomarker modality - Consistent with LBD");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BIOMLBD3")
-                        .HasColumnType("int")
-                        .HasComment("Other biomarker modality - Consistent with LBD");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BIOMOTH1")
-                        .HasColumnType("int")
-                        .HasComment("Other biomarker modality - Consistent with other etiology");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BIOMOTH2")
-                        .HasColumnType("int")
-                        .HasComment("Other biomarker modality - Consistent with other etiology");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BIOMOTH3")
-                        .HasColumnType("int")
-                        .HasComment("Other biomarker modality - Consistent with other etiology");
+                        .HasColumnType("int");
 
                     b.Property<string>("BIOMOTHX1")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("Other biomarker modality - Consistent with other etiology (specify)");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("BIOMOTHX2")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("Other biomarker modality - Consistent with other etiology (specify)");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("BIOMOTHX3")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("Other biomarker modality - Consistent with other etiology (specify)");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<int?>("BLOODAD")
-                        .HasColumnType("int")
-                        .HasComment("Blood-based biomarkers - Consistent with AD");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BLOODFTLD")
-                        .HasColumnType("int")
-                        .HasComment("Blood-based biomarkers - Consistent with FTLD");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BLOODLBD")
-                        .HasColumnType("int")
-                        .HasComment("Blood-based biomarkers - Consistent with LBD");
+                        .HasColumnType("int");
 
                     b.Property<int?>("BLOODOTH")
-                        .HasColumnType("int")
-                        .HasComment("Blood-based biomarkers - Consistent with other etiology");
+                        .HasColumnType("int");
 
                     b.Property<string>("BLOODOTHX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("Blood-based biomarkers - Consistent with other etiology (specify)");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<bool?>("CAA")
-                        .HasColumnType("bit")
-                        .HasComment("Cerebral amyloid angiopathy");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("CAAIF")
-                        .HasColumnType("int")
-                        .HasComment("Primary, contributing, or non-contributing - Cerebral amyloid angiopathy");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("CORT")
-                        .HasColumnType("bit")
-                        .HasComment("Corticobasal degeneration (CBD)");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("CORTIF")
-                        .HasColumnType("int")
-                        .HasComment("Primary, contributing, or non-contributing - Corticobasal degeneration (CBD)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("CSFAD")
-                        .HasColumnType("int")
-                        .HasComment("CSF-based biomarkers - Consistent with AD");
+                        .HasColumnType("int");
 
                     b.Property<int?>("CSFFTLD")
-                        .HasColumnType("int")
-                        .HasComment("CSF-based biomarkers - Consistent with FTLD");
+                        .HasColumnType("int");
 
                     b.Property<int?>("CSFLBD")
-                        .HasColumnType("int")
-                        .HasComment("CSF-based biomarkers - Consistent with LBD");
+                        .HasColumnType("int");
 
                     b.Property<int?>("CSFOTH")
-                        .HasColumnType("int")
-                        .HasComment("CSF-based biomarkers - Consistent with other etiology");
+                        .HasColumnType("int");
 
                     b.Property<string>("CSFOTHX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("CSF-based biomarkers - Consistent with other etiology (specify)");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<bool?>("CTE")
-                        .HasColumnType("bit")
-                        .HasComment("Chronic traumatic encephalopathy");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("CTECERT")
-                        .HasColumnType("int")
-                        .HasComment("CTE certainty");
+                        .HasColumnType("int");
 
                     b.Property<int?>("CTEIF")
-                        .HasColumnType("int")
-                        .HasComment("Primary, contributing, or non-contributing - Chronic traumatic encephalopathy");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("CVD")
-                        .HasColumnType("bit")
-                        .HasComment("Vascular brain injury (based on clinical and imaging evidence according to your Center's standards)");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("CVDIF")
-                        .HasColumnType("int")
-                        .HasComment("Primary, contributing, or non-contributing - Vascular brain injury");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -4822,48 +4265,38 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("DATSCANDX")
-                        .HasColumnType("int")
-                        .HasComment("Dopamine Transporter (DAT) Scan - Was DAT Scan data or information used to support an etiological diagnosis?");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("DOWNS")
-                        .HasColumnType("bit")
-                        .HasComment("Down syndrome");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("DOWNSIF")
-                        .HasColumnType("int")
-                        .HasComment("Primary, contributing, or non-contributing - Down syndrome");
+                        .HasColumnType("int");
 
                     b.Property<string>("DeletedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("FDGAD")
-                        .HasColumnType("int")
-                        .HasComment("FDG PET - Consistent with AD");
+                        .HasColumnType("int");
 
                     b.Property<int?>("FDGFTLD")
-                        .HasColumnType("int")
-                        .HasComment("FDG PET - Consistent with FTLD");
+                        .HasColumnType("int");
 
                     b.Property<int?>("FDGLBD")
-                        .HasColumnType("int")
-                        .HasComment("FDG PET - Consistent with LBD");
+                        .HasColumnType("int");
 
                     b.Property<int?>("FDGOTH")
-                        .HasColumnType("int")
-                        .HasComment("FDG PET - Consistent with other etiology");
+                        .HasColumnType("int");
 
                     b.Property<string>("FDGOTHX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("FDG PET - Consistent with other etiology (specify)");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<int?>("FDGPETDX")
-                        .HasColumnType("int")
-                        .HasComment("FDG PET - Was FDG PET data or information used to support an etiological diagnosis?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("FLUIDBIOM")
-                        .HasColumnType("int")
-                        .HasComment("Fluid Biomarkers - Were fluid biomarkers used for assessing the etiological diagnosis?");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("FRMDATE")
                         .HasColumnType("datetime2")
@@ -4871,69 +4304,53 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(3);
 
                     b.Property<bool?>("FTLD")
-                        .HasColumnType("bit")
-                        .HasComment("Frontotemporal lobar degeneration");
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("FTLDMO")
-                        .HasColumnType("bit")
-                        .HasComment("FTLD with motor neuron disease");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("FTLDMOIF")
-                        .HasColumnType("int")
-                        .HasComment("Primary, contributing, or non-contributing - FTLD with motor neuron disease");
+                        .HasColumnType("int");
 
                     b.Property<int?>("FTLDNOIF")
-                        .HasColumnType("int")
-                        .HasComment("Primary, contributing, or non-contributing - FTLD not otherwise specified (NOS)");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("FTLDNOS")
-                        .HasColumnType("bit")
-                        .HasComment("FTLD not otherwise specified (NOS)");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("FTLDSUBT")
-                        .HasColumnType("int")
-                        .HasComment("FTLD subtype");
+                        .HasColumnType("int");
 
                     b.Property<string>("FTLDSUBX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("Other FTLD subtype (specify)");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<bool?>("HUNT")
-                        .HasColumnType("bit")
-                        .HasComment("Huntington's disease");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("HUNTIF")
-                        .HasColumnType("int")
-                        .HasComment("Primary, contributing, or non-contributing - Huntington's disease");
+                        .HasColumnType("int");
 
                     b.Property<int?>("IMAGINGDX")
-                        .HasColumnType("int")
-                        .HasComment("Imaging - Was imaging used for assessing etiological diagnosis?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("IMAGLAC")
-                        .HasColumnType("int")
-                        .HasComment("Lacunar infarct(s)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("IMAGLINF")
-                        .HasColumnType("int")
-                        .HasComment("Large vessel infarct(s)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("IMAGMACH")
-                        .HasColumnType("int")
-                        .HasComment("Macrohemorrhage(s)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("IMAGMICH")
-                        .HasColumnType("int")
-                        .HasComment("icrohemorrhage(s)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("IMAGWMH")
-                        .HasColumnType("int")
-                        .HasComment("White-matter hyperintensity");
+                        .HasColumnType("int");
 
                     b.Property<int?>("IMAGWMHSEV")
-                        .HasColumnType("int")
-                        .HasComment("White-matter hyperintensity severity");
+                        .HasColumnType("int");
 
                     b.Property<string>("INITIALS")
                         .IsRequired()
@@ -4951,20 +4368,16 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(5);
 
                     b.Property<bool?>("LATE")
-                        .HasColumnType("bit")
-                        .HasComment("LATE: Limbic-predominant age-related TDP-43 encephalopathy");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("LATEIF")
-                        .HasColumnType("int")
-                        .HasComment("Primary, contributing, or non-contributing - LATE");
+                        .HasColumnType("int");
 
                     b.Property<int?>("LBDIF")
-                        .HasColumnType("int")
-                        .HasComment("Primary, contributing, or non-contributing - Lewy body disease");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("LBDIS")
-                        .HasColumnType("bit")
-                        .HasComment("Lewy body disease");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("MODE")
                         .HasColumnType("int")
@@ -4972,12 +4385,10 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(6);
 
                     b.Property<bool?>("MSA")
-                        .HasColumnType("bit")
-                        .HasComment("Multiple system atrophy");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("MSAIF")
-                        .HasColumnType("int")
-                        .HasComment("Primary, contributing, or non-contributing - Multiple system atrophy");
+                        .HasColumnType("int");
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
@@ -4988,64 +4399,54 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(9);
 
                     b.Property<int?>("OTHBIOM1")
-                        .HasColumnType("int")
-                        .HasComment("Other biomarker modality - Was another biomarker modality used to support an etiological diagnosis?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("OTHBIOM2")
-                        .HasColumnType("int")
-                        .HasComment("Other biomarker modality - Was another biomarker modality used to support an etiological diagnosis?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("OTHBIOM3")
-                        .HasColumnType("int")
-                        .HasComment("Other biomarker modality - Was another biomarker modality used to support an etiological diagnosis?");
+                        .HasColumnType("int");
 
                     b.Property<string>("OTHBIOMX1")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("Other biomarker modality - Was another biomarker modality used to support an etiological diagnosis? (specify)	OTHBI");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("OTHBIOMX2")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("Other biomarker modality - Was another biomarker modality used to support an etiological diagnosis? (specify)");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("OTHBIOMX3")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("Other biomarker modality - Was another biomarker modality used to support an etiological diagnosis? (specify)");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<bool?>("OTHCOG")
-                        .HasColumnType("bit")
-                        .HasComment("Other");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("OTHCOGIF")
-                        .HasColumnType("int")
-                        .HasComment("Primary, contributing, or non-contributing - Other");
+                        .HasColumnType("int");
 
                     b.Property<string>("OTHCOGX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("Other (specify)");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<int?>("PETDX")
-                        .HasColumnType("int")
-                        .HasComment("Tracer-based PET - Were tracer-based PET measures used in assessing an etiological diagnosis?");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("PRION")
-                        .HasColumnType("bit")
-                        .HasComment("Prion disease (CJD, other)");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("PRIONIF")
-                        .HasColumnType("int")
-                        .HasComment("Primary, contributing, or non-contributing - Prion disease (CJD, other)");
+                        .HasColumnType("int");
 
                     b.Property<bool?>("PSP")
-                        .HasColumnType("bit")
-                        .HasComment("Primary supranuclear palsy (PSP)");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("PSPIF")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PacketId")
                         .HasColumnType("int")
-                        .HasComment("Primary, contributing, or non-contributing - Primary supranuclear palsy (PSP)");
+                        .HasColumnOrder(1);
 
                     b.Property<int?>("RMMODE")
                         .HasColumnType("int")
@@ -5058,20 +4459,16 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(7);
 
                     b.Property<int?>("STRUCTAD")
-                        .HasColumnType("int")
-                        .HasComment("Atrophy pattern consistent with AD");
+                        .HasColumnType("int");
 
                     b.Property<int?>("STRUCTCVD")
-                        .HasColumnType("int")
-                        .HasComment("Consistent with cerebrovascular disease (CVD)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("STRUCTDX")
-                        .HasColumnType("int")
-                        .HasComment("Structural Imaging (i.e., MRI or CT) - Was structural imaging data or information used to support an etiological diagnosis?");
+                        .HasColumnType("int");
 
                     b.Property<int?>("STRUCTFTLD")
-                        .HasColumnType("int")
-                        .HasComment("Atrophy pattern consistent with FTLD");
+                        .HasColumnType("int");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -5080,46 +4477,34 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnOrder(2);
 
                     b.Property<int?>("TAUPET")
-                        .HasColumnType("int")
-                        .HasComment("Elevated tau pathology");
+                        .HasColumnType("int");
 
                     b.Property<int?>("TRACERAD")
-                        .HasColumnType("int")
-                        .HasComment("Other tracer-based imaging - Consistent with AD");
+                        .HasColumnType("int");
 
                     b.Property<int?>("TRACERFTLD")
-                        .HasColumnType("int")
-                        .HasComment("Other tracer-based imaging - Consistent with FTLD");
+                        .HasColumnType("int");
 
                     b.Property<int?>("TRACERLBD")
-                        .HasColumnType("int")
-                        .HasComment("Other tracer-based imaging - Consistent with LBD");
+                        .HasColumnType("int");
 
                     b.Property<int?>("TRACEROTH")
-                        .HasColumnType("int")
-                        .HasComment("Other tracer-based imaging - Consistent with other etiology");
+                        .HasColumnType("int");
 
                     b.Property<string>("TRACEROTHX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("Other tracer-based imaging - Consistent with other etiology (specify)");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<int?>("TRACOTHDX")
-                        .HasColumnType("int")
-                        .HasComment("Other tracer-based imaging - Were other tracer-based imaging used to support an etiological diagnosis?");
+                        .HasColumnType("int");
 
                     b.Property<string>("TRACOTHDXX")
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
-                        .HasComment("Other tracer-based imaging - Were other tracer-based imaging used to support an etiological diagnosis? (specify)");
-
-                    b.Property<int>("VisitId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(1);
+                        .HasColumnType("nvarchar(60)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("VisitId")
+                    b.HasIndex("PacketId")
                         .IsUnique();
 
                     b.ToTable("tbl_D1bs");
@@ -5152,7 +4537,7 @@ namespace UDS.Net.API.Data.Migrations
 
             modelBuilder.Entity("UDS.Net.API.Entities.FormStatus", b =>
                 {
-                    b.Property<int>("VisitId")
+                    b.Property<int>("PacketId")
                         .HasColumnType("int")
                         .HasColumnOrder(1);
 
@@ -5225,7 +4610,7 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasColumnOrder(2);
 
-                    b.HasKey("VisitId", "Kind");
+                    b.HasKey("PacketId", "Kind");
 
                     b.ToTable((string)null);
 
@@ -5356,6 +4741,71 @@ namespace UDS.Net.API.Data.Migrations
                     b.ToTable("tbl_M1s");
                 });
 
+            modelBuilder.Entity("UDS.Net.API.Entities.Packet", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("PacketId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DSSDUB")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FORMVER")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)")
+                        .HasColumnName("FORMVER");
+
+                    b.Property<string>("INITIALS")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PACKET")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)")
+                        .HasColumnName("PACKET");
+
+                    b.Property<int>("ParticipationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<int>("VISITNUM")
+                        .HasColumnType("int")
+                        .HasColumnName("VISITNUM");
+
+                    b.Property<DateTime>("VISIT_DATE")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParticipationId");
+
+                    b.ToTable("tbl_Packets");
+                });
+
             modelBuilder.Entity("UDS.Net.API.Entities.PacketSubmission", b =>
                 {
                     b.Property<int>("Id")
@@ -5385,15 +4835,15 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("PacketId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("SubmissionDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("VisitId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("VisitId");
+                    b.HasIndex("PacketId");
 
                     b.ToTable("PacketSubmissions");
                 });
@@ -5486,216 +4936,44 @@ namespace UDS.Net.API.Data.Migrations
                     b.ToTable("Participation");
                 });
 
-            modelBuilder.Entity("UDS.Net.API.Entities.T1", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("FormId")
-                        .HasColumnOrder(0);
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DeletedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("FRMDATE")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("FRMDATE")
-                        .HasColumnOrder(3);
-
-                    b.Property<string>("INITIALS")
-                        .IsRequired()
-                        .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)")
-                        .HasColumnName("INITIALS")
-                        .HasColumnOrder(4);
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("LANG")
-                        .HasColumnType("int")
-                        .HasColumnName("LANG")
-                        .HasColumnOrder(5);
-
-                    b.Property<int?>("MODE")
-                        .HasColumnType("int")
-                        .HasColumnName("MODE")
-                        .HasColumnOrder(6);
-
-                    b.Property<string>("ModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("NOT")
-                        .HasColumnType("int")
-                        .HasColumnName("NOT")
-                        .HasColumnOrder(9);
-
-                    b.Property<int?>("RMMODE")
-                        .HasColumnType("int")
-                        .HasColumnName("RMMODE")
-                        .HasColumnOrder(8);
-
-                    b.Property<int?>("RMREAS")
-                        .HasColumnType("int")
-                        .HasColumnName("RMREASON")
-                        .HasColumnOrder(7);
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)")
-                        .HasColumnOrder(2);
-
-                    b.Property<int?>("TELCOG")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TELCOV")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TELHOME")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TELILL")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TELINPER")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TELMILE")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TELMOD")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TELOTHR")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TELOTHRX")
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
-
-                    b.Property<int?>("TELREFU")
-                        .HasColumnType("int");
-
-                    b.Property<int>("VisitId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(1);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("VisitId")
-                        .IsUnique();
-
-                    b.ToTable("tbl_T1s");
-                });
-
-            modelBuilder.Entity("UDS.Net.API.Entities.Visit", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("VisitId");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("DSSDUB")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FORMVER")
-                        .IsRequired()
-                        .HasMaxLength(1)
-                        .HasColumnType("nvarchar(1)")
-                        .HasColumnName("FORMVER");
-
-                    b.Property<string>("INITIALS")
-                        .IsRequired()
-                        .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PACKET")
-                        .IsRequired()
-                        .HasMaxLength(2)
-                        .HasColumnType("nvarchar(2)")
-                        .HasColumnName("PACKET");
-
-                    b.Property<int>("ParticipationId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<int>("VISITNUM")
-                        .HasColumnType("int")
-                        .HasColumnName("VISITNUM");
-
-                    b.Property<DateTime>("VISIT_DATE")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ParticipationId", "VISITNUM")
-                        .IsUnique();
-
-                    b.ToTable("tbl_Visits");
-                });
-
             modelBuilder.Entity("UDS.Net.API.Entities.A1", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", null)
+                    b.HasOne("UDS.Net.API.Entities.Packet", "Packet")
                         .WithOne("A1")
-                        .HasForeignKey("UDS.Net.API.Entities.A1", "VisitId")
+                        .HasForeignKey("UDS.Net.API.Entities.A1", "PacketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Packet");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.A1a", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", null)
+                    b.HasOne("UDS.Net.API.Entities.Packet", "Packet")
                         .WithOne("A1a")
-                        .HasForeignKey("UDS.Net.API.Entities.A1a", "VisitId")
+                        .HasForeignKey("UDS.Net.API.Entities.A1a", "PacketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Packet");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.A2", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", null)
+                    b.HasOne("UDS.Net.API.Entities.Packet", "Packet")
                         .WithOne("A2")
-                        .HasForeignKey("UDS.Net.API.Entities.A2", "VisitId")
+                        .HasForeignKey("UDS.Net.API.Entities.A2", "PacketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Packet");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.A3", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", null)
+                    b.HasOne("UDS.Net.API.Entities.Packet", "Packet")
                         .WithOne("A3")
-                        .HasForeignKey("UDS.Net.API.Entities.A3", "VisitId")
+                        .HasForeignKey("UDS.Net.API.Entities.A3", "PacketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -6899,6 +6177,8 @@ namespace UDS.Net.API.Data.Migrations
                     b.Navigation("KID9")
                         .IsRequired();
 
+                    b.Navigation("Packet");
+
                     b.Navigation("SIB1")
                         .IsRequired();
 
@@ -6962,1098 +6242,20 @@ namespace UDS.Net.API.Data.Migrations
 
             modelBuilder.Entity("UDS.Net.API.Entities.A4", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", null)
+                    b.HasOne("UDS.Net.API.Entities.Packet", "Packet")
                         .WithOne("A4")
-                        .HasForeignKey("UDS.Net.API.Entities.A4", "VisitId")
+                        .HasForeignKey("UDS.Net.API.Entities.A4", "PacketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID1", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID10", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID11", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID12", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID13", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID14", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID15", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID16", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID17", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID18", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID19", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID2", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID20", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID21", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID22", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID23", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID24", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID25", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID26", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID27", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID28", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID29", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID3", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID30", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID31", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID32", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID33", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID34", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID35", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID36", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID37", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID38", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID39", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID4", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID40", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID5", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID6", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID7", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID8", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.OwnsOne("UDS.Net.API.Entities.A4D", "RXNORMID9", b1 =>
-                        {
-                            b1.Property<int>("A4Id")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("RxNormId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("A4Id");
-
-                            b1.HasIndex("RxNormId");
-
-                            b1.ToTable("tbl_A4s");
-
-                            b1.WithOwner()
-                                .HasForeignKey("A4Id");
-
-                            b1.HasOne("UDS.Net.API.Entities.DrugCodeLookup", "DrugCode")
-                                .WithMany()
-                                .HasForeignKey("RxNormId");
-
-                            b1.Navigation("DrugCode");
-                        });
-
-                    b.Navigation("RXNORMID1")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID10")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID11")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID12")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID13")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID14")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID15")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID16")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID17")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID18")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID19")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID2")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID20")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID21")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID22")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID23")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID24")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID25")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID26")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID27")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID28")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID29")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID3")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID30")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID31")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID32")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID33")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID34")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID35")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID36")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID37")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID38")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID39")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID4")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID40")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID5")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID6")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID7")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID8")
-                        .IsRequired();
-
-                    b.Navigation("RXNORMID9")
-                        .IsRequired();
+                    b.Navigation("Packet");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.A4a", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", null)
+                    b.HasOne("UDS.Net.API.Entities.Packet", "Packet")
                         .WithOne("A4a")
-                        .HasForeignKey("UDS.Net.API.Entities.A4a", "VisitId")
+                        .HasForeignKey("UDS.Net.API.Entities.A4a", "PacketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -8063,63 +6265,49 @@ namespace UDS.Net.API.Data.Migrations
                                 .HasColumnType("int");
 
                             b1.Property<int?>("CARETRIAL")
-                                .HasColumnType("int")
-                                .HasColumnName("CARETRIAL1");
+                                .HasColumnType("int");
 
                             b1.Property<int?>("ENDMO")
-                                .HasColumnType("int")
-                                .HasColumnName("ENDMO1");
+                                .HasColumnType("int");
 
                             b1.Property<int?>("ENDYEAR")
-                                .HasColumnType("int")
-                                .HasColumnName("ENDYEAR1");
+                                .HasColumnType("int");
 
                             b1.Property<string>("NCTNUM")
                                 .HasMaxLength(60)
-                                .HasColumnType("nvarchar(60)")
-                                .HasColumnName("NCTNUM1");
+                                .HasColumnType("nvarchar(60)");
 
                             b1.Property<int?>("STARTMO")
-                                .HasColumnType("int")
-                                .HasColumnName("STARTMO1");
+                                .HasColumnType("int");
 
                             b1.Property<int?>("STARTYEAR")
-                                .HasColumnType("int")
-                                .HasColumnName("STARTYEAR1");
+                                .HasColumnType("int");
 
                             b1.Property<bool?>("TARGETAB")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETAB1");
+                                .HasColumnType("bit");
 
                             b1.Property<bool?>("TARGETINF")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETINF1");
+                                .HasColumnType("bit");
 
                             b1.Property<bool?>("TARGETOTH")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETOTH1");
+                                .HasColumnType("bit");
 
                             b1.Property<string>("TARGETOTX")
                                 .HasMaxLength(60)
-                                .HasColumnType("nvarchar(60)")
-                                .HasColumnName("TARGETOTX1");
+                                .HasColumnType("nvarchar(60)");
 
                             b1.Property<bool?>("TARGETSYN")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETSYN1");
+                                .HasColumnType("bit");
 
                             b1.Property<bool?>("TARGETTAU")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETTAU1");
+                                .HasColumnType("bit");
 
                             b1.Property<int?>("TRIALGRP")
-                                .HasColumnType("int")
-                                .HasColumnName("TRIALGRP1");
+                                .HasColumnType("int");
 
                             b1.Property<string>("TRTTRIAL")
                                 .HasMaxLength(60)
-                                .HasColumnType("nvarchar(60)")
-                                .HasColumnName("TRTTRIAL1");
+                                .HasColumnType("nvarchar(60)");
 
                             b1.HasKey("A4aId");
 
@@ -8135,63 +6323,49 @@ namespace UDS.Net.API.Data.Migrations
                                 .HasColumnType("int");
 
                             b1.Property<int?>("CARETRIAL")
-                                .HasColumnType("int")
-                                .HasColumnName("CARETRIAL2");
+                                .HasColumnType("int");
 
                             b1.Property<int?>("ENDMO")
-                                .HasColumnType("int")
-                                .HasColumnName("ENDMO2");
+                                .HasColumnType("int");
 
                             b1.Property<int?>("ENDYEAR")
-                                .HasColumnType("int")
-                                .HasColumnName("ENDYEAR2");
+                                .HasColumnType("int");
 
                             b1.Property<string>("NCTNUM")
                                 .HasMaxLength(60)
-                                .HasColumnType("nvarchar(60)")
-                                .HasColumnName("NCTNUM2");
+                                .HasColumnType("nvarchar(60)");
 
                             b1.Property<int?>("STARTMO")
-                                .HasColumnType("int")
-                                .HasColumnName("STARTMO2");
+                                .HasColumnType("int");
 
                             b1.Property<int?>("STARTYEAR")
-                                .HasColumnType("int")
-                                .HasColumnName("STARTYEAR2");
+                                .HasColumnType("int");
 
                             b1.Property<bool?>("TARGETAB")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETAB2");
+                                .HasColumnType("bit");
 
                             b1.Property<bool?>("TARGETINF")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETINF2");
+                                .HasColumnType("bit");
 
                             b1.Property<bool?>("TARGETOTH")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETOTH2");
+                                .HasColumnType("bit");
 
                             b1.Property<string>("TARGETOTX")
                                 .HasMaxLength(60)
-                                .HasColumnType("nvarchar(60)")
-                                .HasColumnName("TARGETOTX2");
+                                .HasColumnType("nvarchar(60)");
 
                             b1.Property<bool?>("TARGETSYN")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETSYN2");
+                                .HasColumnType("bit");
 
                             b1.Property<bool?>("TARGETTAU")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETTAU2");
+                                .HasColumnType("bit");
 
                             b1.Property<int?>("TRIALGRP")
-                                .HasColumnType("int")
-                                .HasColumnName("TRIALGRP2");
+                                .HasColumnType("int");
 
                             b1.Property<string>("TRTTRIAL")
                                 .HasMaxLength(60)
-                                .HasColumnType("nvarchar(60)")
-                                .HasColumnName("TRTTRIAL2");
+                                .HasColumnType("nvarchar(60)");
 
                             b1.HasKey("A4aId");
 
@@ -8207,63 +6381,49 @@ namespace UDS.Net.API.Data.Migrations
                                 .HasColumnType("int");
 
                             b1.Property<int?>("CARETRIAL")
-                                .HasColumnType("int")
-                                .HasColumnName("CARETRIAL3");
+                                .HasColumnType("int");
 
                             b1.Property<int?>("ENDMO")
-                                .HasColumnType("int")
-                                .HasColumnName("ENDMO3");
+                                .HasColumnType("int");
 
                             b1.Property<int?>("ENDYEAR")
-                                .HasColumnType("int")
-                                .HasColumnName("ENDYEAR3");
+                                .HasColumnType("int");
 
                             b1.Property<string>("NCTNUM")
                                 .HasMaxLength(60)
-                                .HasColumnType("nvarchar(60)")
-                                .HasColumnName("NCTNUM3");
+                                .HasColumnType("nvarchar(60)");
 
                             b1.Property<int?>("STARTMO")
-                                .HasColumnType("int")
-                                .HasColumnName("STARTMO3");
+                                .HasColumnType("int");
 
                             b1.Property<int?>("STARTYEAR")
-                                .HasColumnType("int")
-                                .HasColumnName("STARTYEAR3");
+                                .HasColumnType("int");
 
                             b1.Property<bool?>("TARGETAB")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETAB3");
+                                .HasColumnType("bit");
 
                             b1.Property<bool?>("TARGETINF")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETINF3");
+                                .HasColumnType("bit");
 
                             b1.Property<bool?>("TARGETOTH")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETOTH3");
+                                .HasColumnType("bit");
 
                             b1.Property<string>("TARGETOTX")
                                 .HasMaxLength(60)
-                                .HasColumnType("nvarchar(60)")
-                                .HasColumnName("TARGETOTX3");
+                                .HasColumnType("nvarchar(60)");
 
                             b1.Property<bool?>("TARGETSYN")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETSYN3");
+                                .HasColumnType("bit");
 
                             b1.Property<bool?>("TARGETTAU")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETTAU3");
+                                .HasColumnType("bit");
 
                             b1.Property<int?>("TRIALGRP")
-                                .HasColumnType("int")
-                                .HasColumnName("TRIALGRP3");
+                                .HasColumnType("int");
 
                             b1.Property<string>("TRTTRIAL")
                                 .HasMaxLength(60)
-                                .HasColumnType("nvarchar(60)")
-                                .HasColumnName("TRTTRIAL3");
+                                .HasColumnType("nvarchar(60)");
 
                             b1.HasKey("A4aId");
 
@@ -8279,63 +6439,49 @@ namespace UDS.Net.API.Data.Migrations
                                 .HasColumnType("int");
 
                             b1.Property<int?>("CARETRIAL")
-                                .HasColumnType("int")
-                                .HasColumnName("CARETRIAL4");
+                                .HasColumnType("int");
 
                             b1.Property<int?>("ENDMO")
-                                .HasColumnType("int")
-                                .HasColumnName("ENDMO4");
+                                .HasColumnType("int");
 
                             b1.Property<int?>("ENDYEAR")
-                                .HasColumnType("int")
-                                .HasColumnName("ENDYEAR4");
+                                .HasColumnType("int");
 
                             b1.Property<string>("NCTNUM")
                                 .HasMaxLength(60)
-                                .HasColumnType("nvarchar(60)")
-                                .HasColumnName("NCTNUM4");
+                                .HasColumnType("nvarchar(60)");
 
                             b1.Property<int?>("STARTMO")
-                                .HasColumnType("int")
-                                .HasColumnName("STARTMO4");
+                                .HasColumnType("int");
 
                             b1.Property<int?>("STARTYEAR")
-                                .HasColumnType("int")
-                                .HasColumnName("STARTYEAR4");
+                                .HasColumnType("int");
 
                             b1.Property<bool?>("TARGETAB")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETAB4");
+                                .HasColumnType("bit");
 
                             b1.Property<bool?>("TARGETINF")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETINF4");
+                                .HasColumnType("bit");
 
                             b1.Property<bool?>("TARGETOTH")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETOTH4");
+                                .HasColumnType("bit");
 
                             b1.Property<string>("TARGETOTX")
                                 .HasMaxLength(60)
-                                .HasColumnType("nvarchar(60)")
-                                .HasColumnName("TARGETOTX4");
+                                .HasColumnType("nvarchar(60)");
 
                             b1.Property<bool?>("TARGETSYN")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETSYN4");
+                                .HasColumnType("bit");
 
                             b1.Property<bool?>("TARGETTAU")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETTAU4");
+                                .HasColumnType("bit");
 
                             b1.Property<int?>("TRIALGRP")
-                                .HasColumnType("int")
-                                .HasColumnName("TRIALGRP4");
+                                .HasColumnType("int");
 
                             b1.Property<string>("TRTTRIAL")
                                 .HasMaxLength(60)
-                                .HasColumnType("nvarchar(60)")
-                                .HasColumnName("TRTTRIAL4");
+                                .HasColumnType("nvarchar(60)");
 
                             b1.HasKey("A4aId");
 
@@ -8351,63 +6497,49 @@ namespace UDS.Net.API.Data.Migrations
                                 .HasColumnType("int");
 
                             b1.Property<int?>("CARETRIAL")
-                                .HasColumnType("int")
-                                .HasColumnName("CARETRIAL5");
+                                .HasColumnType("int");
 
                             b1.Property<int?>("ENDMO")
-                                .HasColumnType("int")
-                                .HasColumnName("ENDMO5");
+                                .HasColumnType("int");
 
                             b1.Property<int?>("ENDYEAR")
-                                .HasColumnType("int")
-                                .HasColumnName("ENDYEAR5");
+                                .HasColumnType("int");
 
                             b1.Property<string>("NCTNUM")
                                 .HasMaxLength(60)
-                                .HasColumnType("nvarchar(60)")
-                                .HasColumnName("NCTNUM5");
+                                .HasColumnType("nvarchar(60)");
 
                             b1.Property<int?>("STARTMO")
-                                .HasColumnType("int")
-                                .HasColumnName("STARTMO5");
+                                .HasColumnType("int");
 
                             b1.Property<int?>("STARTYEAR")
-                                .HasColumnType("int")
-                                .HasColumnName("STARTYEAR5");
+                                .HasColumnType("int");
 
                             b1.Property<bool?>("TARGETAB")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETAB5");
+                                .HasColumnType("bit");
 
                             b1.Property<bool?>("TARGETINF")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETINF5");
+                                .HasColumnType("bit");
 
                             b1.Property<bool?>("TARGETOTH")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETOTH5");
+                                .HasColumnType("bit");
 
                             b1.Property<string>("TARGETOTX")
                                 .HasMaxLength(60)
-                                .HasColumnType("nvarchar(60)")
-                                .HasColumnName("TARGETOTX5");
+                                .HasColumnType("nvarchar(60)");
 
                             b1.Property<bool?>("TARGETSYN")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETSYN5");
+                                .HasColumnType("bit");
 
                             b1.Property<bool?>("TARGETTAU")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETTAU5");
+                                .HasColumnType("bit");
 
                             b1.Property<int?>("TRIALGRP")
-                                .HasColumnType("int")
-                                .HasColumnName("TRIALGRP5");
+                                .HasColumnType("int");
 
                             b1.Property<string>("TRTTRIAL")
                                 .HasMaxLength(60)
-                                .HasColumnType("nvarchar(60)")
-                                .HasColumnName("TRTTRIAL5");
+                                .HasColumnType("nvarchar(60)");
 
                             b1.HasKey("A4aId");
 
@@ -8423,63 +6555,49 @@ namespace UDS.Net.API.Data.Migrations
                                 .HasColumnType("int");
 
                             b1.Property<int?>("CARETRIAL")
-                                .HasColumnType("int")
-                                .HasColumnName("CARETRIAL6");
+                                .HasColumnType("int");
 
                             b1.Property<int?>("ENDMO")
-                                .HasColumnType("int")
-                                .HasColumnName("ENDMO6");
+                                .HasColumnType("int");
 
                             b1.Property<int?>("ENDYEAR")
-                                .HasColumnType("int")
-                                .HasColumnName("ENDYEAR6");
+                                .HasColumnType("int");
 
                             b1.Property<string>("NCTNUM")
                                 .HasMaxLength(60)
-                                .HasColumnType("nvarchar(60)")
-                                .HasColumnName("NCTNUM6");
+                                .HasColumnType("nvarchar(60)");
 
                             b1.Property<int?>("STARTMO")
-                                .HasColumnType("int")
-                                .HasColumnName("STARTMO6");
+                                .HasColumnType("int");
 
                             b1.Property<int?>("STARTYEAR")
-                                .HasColumnType("int")
-                                .HasColumnName("STARTYEAR6");
+                                .HasColumnType("int");
 
                             b1.Property<bool?>("TARGETAB")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETAB6");
+                                .HasColumnType("bit");
 
                             b1.Property<bool?>("TARGETINF")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETINF6");
+                                .HasColumnType("bit");
 
                             b1.Property<bool?>("TARGETOTH")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETOTH6");
+                                .HasColumnType("bit");
 
                             b1.Property<string>("TARGETOTX")
                                 .HasMaxLength(60)
-                                .HasColumnType("nvarchar(60)")
-                                .HasColumnName("TARGETOTX6");
+                                .HasColumnType("nvarchar(60)");
 
                             b1.Property<bool?>("TARGETSYN")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETSYN6");
+                                .HasColumnType("bit");
 
                             b1.Property<bool?>("TARGETTAU")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETTAU6");
+                                .HasColumnType("bit");
 
                             b1.Property<int?>("TRIALGRP")
-                                .HasColumnType("int")
-                                .HasColumnName("TRIALGRP6");
+                                .HasColumnType("int");
 
                             b1.Property<string>("TRTTRIAL")
                                 .HasMaxLength(60)
-                                .HasColumnType("nvarchar(60)")
-                                .HasColumnName("TRTTRIAL6");
+                                .HasColumnType("nvarchar(60)");
 
                             b1.HasKey("A4aId");
 
@@ -8495,63 +6613,49 @@ namespace UDS.Net.API.Data.Migrations
                                 .HasColumnType("int");
 
                             b1.Property<int?>("CARETRIAL")
-                                .HasColumnType("int")
-                                .HasColumnName("CARETRIAL7");
+                                .HasColumnType("int");
 
                             b1.Property<int?>("ENDMO")
-                                .HasColumnType("int")
-                                .HasColumnName("ENDMO7");
+                                .HasColumnType("int");
 
                             b1.Property<int?>("ENDYEAR")
-                                .HasColumnType("int")
-                                .HasColumnName("ENDYEAR7");
+                                .HasColumnType("int");
 
                             b1.Property<string>("NCTNUM")
                                 .HasMaxLength(60)
-                                .HasColumnType("nvarchar(60)")
-                                .HasColumnName("NCTNUM7");
+                                .HasColumnType("nvarchar(60)");
 
                             b1.Property<int?>("STARTMO")
-                                .HasColumnType("int")
-                                .HasColumnName("STARTMO7");
+                                .HasColumnType("int");
 
                             b1.Property<int?>("STARTYEAR")
-                                .HasColumnType("int")
-                                .HasColumnName("STARTYEAR7");
+                                .HasColumnType("int");
 
                             b1.Property<bool?>("TARGETAB")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETAB7");
+                                .HasColumnType("bit");
 
                             b1.Property<bool?>("TARGETINF")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETINF7");
+                                .HasColumnType("bit");
 
                             b1.Property<bool?>("TARGETOTH")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETOTH7");
+                                .HasColumnType("bit");
 
                             b1.Property<string>("TARGETOTX")
                                 .HasMaxLength(60)
-                                .HasColumnType("nvarchar(60)")
-                                .HasColumnName("TARGETOTX7");
+                                .HasColumnType("nvarchar(60)");
 
                             b1.Property<bool?>("TARGETSYN")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETSYN7");
+                                .HasColumnType("bit");
 
                             b1.Property<bool?>("TARGETTAU")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETTAU7");
+                                .HasColumnType("bit");
 
                             b1.Property<int?>("TRIALGRP")
-                                .HasColumnType("int")
-                                .HasColumnName("TRIALGRP7");
+                                .HasColumnType("int");
 
                             b1.Property<string>("TRTTRIAL")
                                 .HasMaxLength(60)
-                                .HasColumnType("nvarchar(60)")
-                                .HasColumnName("TRTTRIAL7");
+                                .HasColumnType("nvarchar(60)");
 
                             b1.HasKey("A4aId");
 
@@ -8567,63 +6671,49 @@ namespace UDS.Net.API.Data.Migrations
                                 .HasColumnType("int");
 
                             b1.Property<int?>("CARETRIAL")
-                                .HasColumnType("int")
-                                .HasColumnName("CARETRIAL8");
+                                .HasColumnType("int");
 
                             b1.Property<int?>("ENDMO")
-                                .HasColumnType("int")
-                                .HasColumnName("ENDMO8");
+                                .HasColumnType("int");
 
                             b1.Property<int?>("ENDYEAR")
-                                .HasColumnType("int")
-                                .HasColumnName("ENDYEAR8");
+                                .HasColumnType("int");
 
                             b1.Property<string>("NCTNUM")
                                 .HasMaxLength(60)
-                                .HasColumnType("nvarchar(60)")
-                                .HasColumnName("NCTNUM8");
+                                .HasColumnType("nvarchar(60)");
 
                             b1.Property<int?>("STARTMO")
-                                .HasColumnType("int")
-                                .HasColumnName("STARTMO8");
+                                .HasColumnType("int");
 
                             b1.Property<int?>("STARTYEAR")
-                                .HasColumnType("int")
-                                .HasColumnName("STARTYEAR8");
+                                .HasColumnType("int");
 
                             b1.Property<bool?>("TARGETAB")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETAB8");
+                                .HasColumnType("bit");
 
                             b1.Property<bool?>("TARGETINF")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETINF8");
+                                .HasColumnType("bit");
 
                             b1.Property<bool?>("TARGETOTH")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETOTH8");
+                                .HasColumnType("bit");
 
                             b1.Property<string>("TARGETOTX")
                                 .HasMaxLength(60)
-                                .HasColumnType("nvarchar(60)")
-                                .HasColumnName("TARGETOTX8");
+                                .HasColumnType("nvarchar(60)");
 
                             b1.Property<bool?>("TARGETSYN")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETSYN8");
+                                .HasColumnType("bit");
 
                             b1.Property<bool?>("TARGETTAU")
-                                .HasColumnType("bit")
-                                .HasColumnName("TARGETTAU8");
+                                .HasColumnType("bit");
 
                             b1.Property<int?>("TRIALGRP")
-                                .HasColumnType("int")
-                                .HasColumnName("TRIALGRP8");
+                                .HasColumnType("int");
 
                             b1.Property<string>("TRTTRIAL")
                                 .HasMaxLength(60)
-                                .HasColumnType("nvarchar(60)")
-                                .HasColumnName("TRTTRIAL8");
+                                .HasColumnType("nvarchar(60)");
 
                             b1.HasKey("A4aId");
 
@@ -8632,6 +6722,8 @@ namespace UDS.Net.API.Data.Migrations
                             b1.WithOwner()
                                 .HasForeignKey("A4aId");
                         });
+
+                    b.Navigation("Packet");
 
                     b.Navigation("Treatment1")
                         .IsRequired();
@@ -8660,150 +6752,174 @@ namespace UDS.Net.API.Data.Migrations
 
             modelBuilder.Entity("UDS.Net.API.Entities.A5D2", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", null)
+                    b.HasOne("UDS.Net.API.Entities.Packet", "Packet")
                         .WithOne("A5D2")
-                        .HasForeignKey("UDS.Net.API.Entities.A5D2", "VisitId")
+                        .HasForeignKey("UDS.Net.API.Entities.A5D2", "PacketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Packet");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.B1", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", null)
+                    b.HasOne("UDS.Net.API.Entities.Packet", "Packet")
                         .WithOne("B1")
-                        .HasForeignKey("UDS.Net.API.Entities.B1", "VisitId")
+                        .HasForeignKey("UDS.Net.API.Entities.B1", "PacketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Packet");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.B3", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", null)
+                    b.HasOne("UDS.Net.API.Entities.Packet", "Packet")
                         .WithOne("B3")
-                        .HasForeignKey("UDS.Net.API.Entities.B3", "VisitId")
+                        .HasForeignKey("UDS.Net.API.Entities.B3", "PacketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Packet");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.B4", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", null)
+                    b.HasOne("UDS.Net.API.Entities.Packet", "Packet")
                         .WithOne("B4")
-                        .HasForeignKey("UDS.Net.API.Entities.B4", "VisitId")
+                        .HasForeignKey("UDS.Net.API.Entities.B4", "PacketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Packet");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.B5", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", null)
+                    b.HasOne("UDS.Net.API.Entities.Packet", "Packet")
                         .WithOne("B5")
-                        .HasForeignKey("UDS.Net.API.Entities.B5", "VisitId")
+                        .HasForeignKey("UDS.Net.API.Entities.B5", "PacketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Packet");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.B6", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", null)
+                    b.HasOne("UDS.Net.API.Entities.Packet", "Packet")
                         .WithOne("B6")
-                        .HasForeignKey("UDS.Net.API.Entities.B6", "VisitId")
+                        .HasForeignKey("UDS.Net.API.Entities.B6", "PacketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Packet");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.B7", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", null)
+                    b.HasOne("UDS.Net.API.Entities.Packet", "Packet")
                         .WithOne("B7")
-                        .HasForeignKey("UDS.Net.API.Entities.B7", "VisitId")
+                        .HasForeignKey("UDS.Net.API.Entities.B7", "PacketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Packet");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.B8", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", null)
+                    b.HasOne("UDS.Net.API.Entities.Packet", "Packet")
                         .WithOne("B8")
-                        .HasForeignKey("UDS.Net.API.Entities.B8", "VisitId")
+                        .HasForeignKey("UDS.Net.API.Entities.B8", "PacketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Packet");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.B9", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", null)
+                    b.HasOne("UDS.Net.API.Entities.Packet", "Packet")
                         .WithOne("B9")
-                        .HasForeignKey("UDS.Net.API.Entities.B9", "VisitId")
+                        .HasForeignKey("UDS.Net.API.Entities.B9", "PacketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
 
-            modelBuilder.Entity("UDS.Net.API.Entities.C1", b =>
-                {
-                    b.HasOne("UDS.Net.API.Entities.Visit", null)
-                        .WithOne("C1")
-                        .HasForeignKey("UDS.Net.API.Entities.C1", "VisitId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Packet");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.C2", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", null)
+                    b.HasOne("UDS.Net.API.Entities.Packet", "Packet")
                         .WithOne("C2")
-                        .HasForeignKey("UDS.Net.API.Entities.C2", "VisitId")
+                        .HasForeignKey("UDS.Net.API.Entities.C2", "PacketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Packet");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.D1a", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", null)
+                    b.HasOne("UDS.Net.API.Entities.Packet", "Packet")
                         .WithOne("D1a")
-                        .HasForeignKey("UDS.Net.API.Entities.D1a", "VisitId")
+                        .HasForeignKey("UDS.Net.API.Entities.D1a", "PacketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Packet");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.D1b", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", null)
+                    b.HasOne("UDS.Net.API.Entities.Packet", "Packet")
                         .WithOne("D1b")
-                        .HasForeignKey("UDS.Net.API.Entities.D1b", "VisitId")
+                        .HasForeignKey("UDS.Net.API.Entities.D1b", "PacketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Packet");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.FormStatus", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", null)
+                    b.HasOne("UDS.Net.API.Entities.Packet", "Packet")
                         .WithMany("FormStatuses")
-                        .HasForeignKey("VisitId")
+                        .HasForeignKey("PacketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Packet");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.M1", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Participation", "Participation")
+                    b.HasOne("UDS.Net.API.Entities.Participation", null)
                         .WithMany("M1s")
                         .HasForeignKey("ParticipationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
 
-                    b.Navigation("Participation");
+            modelBuilder.Entity("UDS.Net.API.Entities.Packet", b =>
+                {
+                    b.HasOne("UDS.Net.API.Entities.Participation", null)
+                        .WithMany("Packets")
+                        .HasForeignKey("ParticipationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.PacketSubmission", b =>
                 {
-                    b.HasOne("UDS.Net.API.Entities.Visit", "Visit")
+                    b.HasOne("UDS.Net.API.Entities.Packet", "Packet")
                         .WithMany("PacketSubmissions")
-                        .HasForeignKey("VisitId")
+                        .HasForeignKey("PacketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Visit");
+                    b.Navigation("Packet");
                 });
 
             modelBuilder.Entity("UDS.Net.API.Entities.PacketSubmissionError", b =>
@@ -8817,39 +6933,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.Navigation("PacketSubmission");
                 });
 
-            modelBuilder.Entity("UDS.Net.API.Entities.T1", b =>
-                {
-                    b.HasOne("UDS.Net.API.Entities.Visit", null)
-                        .WithOne("T1")
-                        .HasForeignKey("UDS.Net.API.Entities.T1", "VisitId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("UDS.Net.API.Entities.Visit", b =>
-                {
-                    b.HasOne("UDS.Net.API.Entities.Participation", "Participation")
-                        .WithMany("Visits")
-                        .HasForeignKey("ParticipationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Participation");
-                });
-
-            modelBuilder.Entity("UDS.Net.API.Entities.PacketSubmission", b =>
-                {
-                    b.Navigation("PacketSubmissionErrors");
-                });
-
-            modelBuilder.Entity("UDS.Net.API.Entities.Participation", b =>
-                {
-                    b.Navigation("M1s");
-
-                    b.Navigation("Visits");
-                });
-
-            modelBuilder.Entity("UDS.Net.API.Entities.Visit", b =>
+            modelBuilder.Entity("UDS.Net.API.Entities.Packet", b =>
                 {
                     b.Navigation("A1")
                         .IsRequired();
@@ -8896,9 +6980,6 @@ namespace UDS.Net.API.Data.Migrations
                     b.Navigation("B9")
                         .IsRequired();
 
-                    b.Navigation("C1")
-                        .IsRequired();
-
                     b.Navigation("C2")
                         .IsRequired();
 
@@ -8911,8 +6992,18 @@ namespace UDS.Net.API.Data.Migrations
                     b.Navigation("FormStatuses");
 
                     b.Navigation("PacketSubmissions");
+                });
 
-                    b.Navigation("T1");
+            modelBuilder.Entity("UDS.Net.API.Entities.PacketSubmission", b =>
+                {
+                    b.Navigation("PacketSubmissionErrors");
+                });
+
+            modelBuilder.Entity("UDS.Net.API.Entities.Participation", b =>
+                {
+                    b.Navigation("M1s");
+
+                    b.Navigation("Packets");
                 });
 #pragma warning restore 612, 618
         }

@@ -8,6 +8,28 @@ using UDS.Net.Dto;
 
 namespace UDS.Net.API.Controllers
 {
+    public static class ParticipationMapper
+    {
+        public static ParticipationDto ToDto(this Participation participation)
+        {
+            var dto = new ParticipationDto()
+            {
+                Id = participation.Id,
+                LegacyId = participation.LegacyId,
+                CreatedAt = participation.CreatedAt,
+                CreatedBy = participation.CreatedBy,
+                ModifiedBy = participation.ModifiedBy,
+                DeletedBy = participation.DeletedBy,
+                IsDeleted = participation.IsDeleted,
+                Visits = participation.Packets.Select(v => v.ToDto()).ToList(),
+                VisitCount = participation.Packets != null ? participation.Packets.Count() : 0,
+                LastVisitNumber = participation.Packets != null ? (participation.Packets.Any() ? participation.Packets.OrderByDescending(v => v.VISITNUM).Select(v => v.VISITNUM).First() : 0) : 0
+            };
+
+            return dto;
+        }
+    }
+
     [Route("api/[controller]")]
     public class ParticipationsController : Controller, IParticipationClient
     {
@@ -22,7 +44,7 @@ namespace UDS.Net.API.Controllers
         public async Task<IEnumerable<ParticipationDto>> Get(int pageSize = 10, int pageIndex = 1)
         {
             return await _context.Participations
-                .Include(p => p.Visits)
+                .Include(p => p.Packets)
                 .AsNoTracking()
                 .Skip((pageIndex - 1) * pageSize)
                 .Take(pageSize)
@@ -40,7 +62,7 @@ namespace UDS.Net.API.Controllers
         public async Task<ParticipationDto> Get(int id)
         {
             return await _context.Participations
-                .Include(p => p.Visits)
+                .Include(p => p.Packets)
                 .Where(p => p.Id == id)
                 .Select(p => p.ToDto())
                 .FirstOrDefaultAsync();
