@@ -27,21 +27,39 @@ namespace UDS.Net.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<M1Dto>> Get(int pageSize = 10, int pageIndex = 1)
         {
-            return await _context.M1s
+            var dto = await _context.M1s
                 .AsNoTracking()
                 .Skip((pageIndex - 1) * pageSize)
                 .Take(pageSize)
                 .Select(m => m.ToDto())
                 .ToListAsync();
+
+            foreach (var m1 in dto)
+            {
+                m1.Participation = await _context.Participations
+                    .AsNoTracking()
+                    .Where(p => p.Id == m1.ParticipationId)
+                    .Select(p => p.ToDto())
+                    .FirstOrDefaultAsync();
+            }
+
+            return dto;
         }
 
         [HttpGet("{id}")]
         public async Task<M1Dto> Get(int id)
         {
-            return await _context.M1s
+            var dto = await _context.M1s
                 .Where(m => m.FormId == id)
                 .Select(m => m.ToDto())
                 .FirstOrDefaultAsync();
+
+            dto.Participation = await _context.Participations
+                .Where(p => p.Id == dto.ParticipationId)
+                .Select(p => p.ToDto())
+                .FirstOrDefaultAsync();
+
+            return dto;
         }
 
         [HttpPost]
@@ -83,6 +101,12 @@ namespace UDS.Net.API.Controllers
         [HttpGet("ByParticipation", Name = "GetMilestonesByParticipation")]
         public async Task<List<M1Dto>> GetMilestonesByParticipation(int participationId, int pageSize = 10, int pageIndex = 1)
         {
+            var participation = await _context.Participations
+                .Where(p => p.Id == participationId)
+                .AsNoTracking()
+                .Select(p => p.ToDto())
+                .FirstOrDefaultAsync();
+
             var milestones = await _context.M1s
                 .Where(m => m.ParticipationId == participationId)
                 .AsNoTracking()
@@ -90,6 +114,11 @@ namespace UDS.Net.API.Controllers
                 .Take(pageSize)
                 .Select(m => m.ToDto())
                 .ToListAsync();
+
+            foreach (var milestone in milestones)
+            {
+                milestone.Participation = participation;
+            }
 
             return milestones;
         }
@@ -115,7 +144,7 @@ namespace UDS.Net.API.Controllers
             if (participation != null && participation.M1s != null)
             {
                 dto = participation.M1s
-                    .Where(m => EF.Constant(statuses).Contains(m.Status))
+                    .Where(m => statuses.Contains(m.Status))
                     .OrderBy(m => m.CHANGEYR)
                     .ThenBy(m => m.CHANGEMO)
                     .ThenBy(m => m.CHANGEDY)
@@ -123,6 +152,13 @@ namespace UDS.Net.API.Controllers
                     .Take(pageSize)
                     .Select(m => m.ToDto())
                     .ToList();
+
+                // add the participation record
+                var participationDto = participation.ToDto();
+                foreach (var milestone in dto)
+                {
+                    milestone.Participation = participationDto;
+                }
             }
 
             return dto;
