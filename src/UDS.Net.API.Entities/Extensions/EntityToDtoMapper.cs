@@ -1567,9 +1567,6 @@ namespace UDS.Net.API.Extensions
                 MILESTONETYPE = m1.MILESTONETYPE
             };
 
-            //if (m1.Participation != null)
-            //    dto.Participation = m1.Participation.ToDto();
-
             return dto;
         }
 
