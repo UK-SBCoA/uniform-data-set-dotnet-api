@@ -150,6 +150,84 @@ namespace UDS.Net.API.Controllers
             return dto;
         }
 
+        [HttpGet("IncludeForms")]
+        public async Task<List<PacketDto>> GetPacketsWithForms(int[] ids)
+        {
+            var dtos = await _context.Visits
+                .Include(v => v.PacketSubmissions)
+                .ThenInclude(p => p.PacketSubmissionErrors)
+                .Where(v => ids.Contains(v.Id))
+                .AsNoTracking()
+                .Select(v => v.ToPacketDto())
+                .ToListAsync();
+
+            if (dtos.Count == 0)
+                return dtos;
+
+            var visits = await _context.Visits
+                .Include(v => v.A1)
+                .Include(v => v.A1a)
+                .Include(v => v.A2)
+                .Include(v => v.A3)
+                .Include(v => v.A4)
+                .Include(v => v.A4a)
+                .Include(v => v.A5D2)
+                .Include(v => v.B1)
+                .Include(v => v.B3)
+                .Include(v => v.B4)
+                .Include(v => v.B5)
+                .Include(v => v.B6)
+                .Include(v => v.B7)
+                .Include(v => v.B8)
+                .Include(v => v.B9)
+                .Include(v => v.C2)
+                .Include(v => v.D1a)
+                .Include(v => v.D1b)
+                .Where(v => ids.Contains(v.Id))
+                .AsNoTracking()
+                .ToListAsync();
+
+            foreach (var dto in dtos)
+            {
+                var visit = visits.FirstOrDefault(v => v.Id == dto.Id);
+                if (visit == null) continue;
+
+                var forms = new List<FormDto?>
+                {
+                   visit.A1?.ToFullDto(),
+                   visit.A1a?.ToFullDto(),
+                   visit.A2?.ToFullDto(),
+                   visit.A3?.ToFullDto(),
+                   visit.A4?.ToFullDto(),
+                   visit.A4a?.ToFullDto(),
+                   visit.A5D2?.ToFullDto(),
+                   visit.B1?.ToFullDto(),
+                   visit.B3?.ToFullDto(),
+                   visit.B4?.ToFullDto(),
+                   visit.B5?.ToFullDto(),
+                   visit.B6?.ToFullDto(),
+                   visit.B7?.ToFullDto(),
+                   visit.B8?.ToFullDto(),
+                   visit.B9?.ToFullDto(),
+                   visit.C2?.ToFullDto(),
+                   visit.D1a?.ToFullDto(),
+                   visit.D1b?.ToFullDto()
+                }.Where(f => f != null).ToList();
+
+                dto.Forms.AddRange(forms);
+
+                if (dto.PacketSubmissions != null && dto.PacketSubmissions.Count > 0)
+                {
+                    foreach (var submission in dto.PacketSubmissions)
+                    {
+                        submission.Forms.AddRange(forms);
+                    }
+                }
+            }
+
+            return dtos;
+        }
+
         /// <summary>
         /// Packets are not created, visits are the initial object
         /// </summary>
