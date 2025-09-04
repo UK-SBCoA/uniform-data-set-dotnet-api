@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -22,6 +23,16 @@ namespace UDS.Net.API.Client
             PacketDto dto = JsonSerializer.Deserialize<PacketDto>(response, options);
 
             return dto;
+        }
+
+        public async Task<List<PacketDto>> GetPacketsWithForms(int[] ids)
+        {
+            var query = string.Join("&", ids.Select(id => $"ids={id}"));
+            var response = await GetRequest($"{_BasePath}/IncludeForms?{query}");
+
+            List<PacketDto> dtos = JsonSerializer.Deserialize<List<PacketDto>>(response, options);
+
+            return dtos;
         }
 
         public async Task<int> CountByStatusAndAssignee(string[] statuses, string assignedTo)
