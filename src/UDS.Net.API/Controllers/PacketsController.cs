@@ -218,6 +218,7 @@ namespace UDS.Net.API.Controllers
 
                 if (dto.PacketSubmissions != null && dto.PacketSubmissions.Count > 0)
                 {
+                    //TODO Use temporal data to pull the state of the packet at the time the submission record was created
                     foreach (var submission in dto.PacketSubmissions)
                     {
                         submission.Forms.AddRange(forms);

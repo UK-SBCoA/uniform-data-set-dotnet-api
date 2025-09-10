@@ -27,12 +27,16 @@ namespace UDS.Net.API.Client
 
         public async Task<List<PacketDto>> GetPacketsWithForms(int[] ids)
         {
-            var query = string.Join("&", ids.Select(id => $"ids={id}"));
-            var response = await GetRequest($"{_BasePath}/IncludeForms?{query}");
+            if (ids != null && ids.Length > 0)
+            {
+                var query = string.Join("&", ids.Select(id => $"ids={id}"));
+                var response = await GetRequest($"{_BasePath}/IncludeForms?{query}");
 
-            List<PacketDto> dtos = JsonSerializer.Deserialize<List<PacketDto>>(response, options);
+                List<PacketDto> dtos = JsonSerializer.Deserialize<List<PacketDto>>(response, options);
 
-            return dtos;
+                return dtos;
+            }
+            return new List<PacketDto>();
         }
 
         public async Task<int> CountByStatusAndAssignee(string[] statuses, string assignedTo)
