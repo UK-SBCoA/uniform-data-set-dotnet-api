@@ -1751,7 +1751,9 @@ namespace UDS.Net.API.Extensions
                 CreatedBy = packetSubmissionError.CreatedBy,
                 ModifiedBy = packetSubmissionError.ModifiedBy,
                 IsDeleted = packetSubmissionError.IsDeleted,
-                DeletedBy = packetSubmissionError.DeletedBy
+                DeletedBy = packetSubmissionError.DeletedBy,
+                Value = packetSubmissionError.Value,
+                Location = packetSubmissionError.Location,
             };
         }
     }

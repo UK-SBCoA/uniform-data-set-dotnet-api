@@ -162,7 +162,9 @@ namespace UDS.Net.API.Extensions
                 CreatedBy = dto.CreatedBy,
                 ModifiedBy = dto.ModifiedBy,
                 IsDeleted = dto.IsDeleted,
-                DeletedBy = dto.DeletedBy
+                DeletedBy = dto.DeletedBy,
+                Location = dto.Location,
+                Value = dto.Value
             };
 
             if (!string.IsNullOrWhiteSpace(dto.Level))

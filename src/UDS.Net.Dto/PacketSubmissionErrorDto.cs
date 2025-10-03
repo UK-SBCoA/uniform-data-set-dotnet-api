@@ -15,6 +15,10 @@
         public string Level { get; set; }
 
         public string ResolvedBy { get; set; }
+
+        public string Location { get; set; }
+
+        public string Value { get; set; }
     }
 }
 
