@@ -5,13 +5,13 @@
 		<Nullable>enable</Nullable>
 		<OutputType>Library</OutputType>
 		<PackageId>UDS.Net.API.Entities</PackageId>
-		<Version>8.0.4</Version>
+		<Version>8.1.1-preview.1</Version>
 		<Authors>Sanders-Brown Center on Aging</Authors>
 		<Description>UDS database entities</Description>
 		<Owners>UK-SBCoA</Owners>
 		<PackageDescription>Entities for API</PackageDescription>
 		<RepositoryUrl>https://github.com/UK-SBCoA/uniform-data-set-dotnet-api</RepositoryUrl>
-		<ReleaseVersion>8.0.4</ReleaseVersion>
+		<ReleaseVersion>8.1.1-preview.1</ReleaseVersion>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
