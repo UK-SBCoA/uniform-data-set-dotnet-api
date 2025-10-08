@@ -19,6 +19,8 @@
         public string Location { get; set; }
 
         public string Value { get; set; }
+
+        public bool IgnoreStatus { get; set; }
     }
 }
 

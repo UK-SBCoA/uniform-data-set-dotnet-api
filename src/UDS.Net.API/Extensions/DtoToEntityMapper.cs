@@ -164,7 +164,8 @@ namespace UDS.Net.API.Extensions
                 IsDeleted = dto.IsDeleted,
                 DeletedBy = dto.DeletedBy,
                 Location = dto.Location,
-                Value = dto.Value
+                Value = dto.Value,
+                IgnoreStatus = dto.IgnoreStatus,
             };
 
             if (!string.IsNullOrWhiteSpace(dto.Level))

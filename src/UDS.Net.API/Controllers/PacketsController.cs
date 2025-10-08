@@ -306,6 +306,7 @@ namespace UDS.Net.API.Controllers
                                             existingError.DeletedBy = errorDto.DeletedBy;
                                             existingError.Location = errorDto.Location;
                                             existingError.Value = errorDto.Value;
+                                            existingError.IgnoreStatus = errorDto.IgnoreStatus;
                                         }
                                     }
                                 }

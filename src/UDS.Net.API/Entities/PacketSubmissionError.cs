@@ -29,6 +29,7 @@ namespace UDS.Net.API.Entities
         public string? Location { get; set; }
         [MaxLength(100)]
         public string? Value { get; set; }
+        public bool IgnoreStatus { get; set; }
     }
 }
 
