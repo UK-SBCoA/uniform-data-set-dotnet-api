@@ -21,7 +21,8 @@
 			</GlobalPropertiesToRemove>
 		</ProjectReference>
 		<ProjectReference Include="..\UDS.Net.API.Entities\UDS.Net.API.Entities.csproj">
-		  <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+			<GlobalPropertiesToRemove>
+			</GlobalPropertiesToRemove>
 		</ProjectReference>
 	</ItemGroup>
 	<ItemGroup>
@@ -36,13 +37,5 @@
 		</PackageReference>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.10" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
-	</ItemGroup>
-	<ItemGroup>
-	  <None Remove="Entities\" />
-	  <None Remove="Data\Migrations\" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Entities\" />
-	  <Folder Include="Data\Migrations\" />
 	</ItemGroup>
 </Project>
