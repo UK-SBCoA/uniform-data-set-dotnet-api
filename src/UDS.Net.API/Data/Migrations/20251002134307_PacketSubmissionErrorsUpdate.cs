@@ -23,6 +23,13 @@ namespace UDS.Net.API.Data.Migrations
                 type: "nvarchar(100)",
                 maxLength: 100,
                 nullable: true);
+
+            migrationBuilder.AddColumn<bool>(
+                name: "IgnoreStatus",
+                table: "PacketSubmissionErrors",
+                type: "bit",
+                nullable: false,
+                defaultValue: false);
         }
 
         /// <inheritdoc />
@@ -34,6 +41,10 @@ namespace UDS.Net.API.Data.Migrations
 
             migrationBuilder.DropColumn(
                 name: "Value",
+                table: "PacketSubmissionErrors");
+
+            migrationBuilder.DropColumn(
+                name: "IgnoreStatus",
                 table: "PacketSubmissionErrors");
         }
     }
