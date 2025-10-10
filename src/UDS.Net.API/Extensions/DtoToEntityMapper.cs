@@ -157,7 +157,7 @@ namespace UDS.Net.API.Extensions
                 FormKind = dto.FormKind,
                 Message = dto.Message,
                 AssignedTo = dto.AssignedTo,
-                ResolvedBy = dto.ResolvedBy,
+                StatusChangedBy = dto.StatusChangedBy,
                 CreatedAt = dto.CreatedAt,
                 CreatedBy = dto.CreatedBy,
                 ModifiedBy = dto.ModifiedBy,
@@ -165,13 +165,18 @@ namespace UDS.Net.API.Extensions
                 DeletedBy = dto.DeletedBy,
                 Location = dto.Location,
                 Value = dto.Value,
-                IgnoreStatus = dto.IgnoreStatus,
             };
 
             if (!string.IsNullOrWhiteSpace(dto.Level))
             {
                 if (Enum.TryParse(dto.Level, true, out PacketSubmissionErrorLevel level))
                     entity.Level = level;
+            }
+
+            if (!string.IsNullOrWhiteSpace(dto.Status))
+            {
+                if (Enum.TryParse(dto.Level, true, out PacketSubmissionErrorStatus status))
+                    entity.Status = status;
             }
 
             return entity;

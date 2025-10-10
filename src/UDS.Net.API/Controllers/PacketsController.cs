@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using UDS.Net.API.Client;
 using UDS.Net.API.Data;
+using UDS.Net.API.Entities;
 using UDS.Net.API.Extensions;
 using UDS.Net.Dto;
 
@@ -298,7 +299,7 @@ namespace UDS.Net.API.Controllers
                                         if (existingError != null)
                                         {
                                             existingError.AssignedTo = errorDto.AssignedTo;
-                                            existingError.ResolvedBy = errorDto.ResolvedBy;
+                                            existingError.StatusChangedBy = errorDto.StatusChangedBy;
                                             existingError.FormKind = errorDto.FormKind;
                                             existingError.Message = errorDto.Message;
                                             existingError.ModifiedBy = errorDto.ModifiedBy;
@@ -306,7 +307,12 @@ namespace UDS.Net.API.Controllers
                                             existingError.DeletedBy = errorDto.DeletedBy;
                                             existingError.Location = errorDto.Location;
                                             existingError.Value = errorDto.Value;
-                                            existingError.IgnoreStatus = errorDto.IgnoreStatus;
+
+                                            if (!string.IsNullOrWhiteSpace(errorDto.Status))
+                                            {
+                                                if (Enum.TryParse(dto.Status, true, out PacketSubmissionErrorStatus status))
+                                                    existingError.Status = status;
+                                            }
                                         }
                                     }
                                 }
@@ -358,7 +364,7 @@ namespace UDS.Net.API.Controllers
                         bool assigneeAssignedToThisVisit = false;
                         foreach (var submission in visit.PacketSubmissions)
                         {
-                            if (submission.PacketSubmissionErrors.Any(p => String.IsNullOrWhiteSpace(p.ResolvedBy) == true && p.AssignedTo == assignedTo))
+                            if (submission.PacketSubmissionErrors.Any(p => String.IsNullOrWhiteSpace(p.StatusChangedBy) == true && p.AssignedTo == assignedTo))
                                 assigneeAssignedToThisVisit = true;
                         }
                         if (assigneeAssignedToThisVisit)
@@ -403,7 +409,7 @@ namespace UDS.Net.API.Controllers
                         bool assigneeAssignedToThisVisit = false;
                         foreach (var submission in visit.PacketSubmissions)
                         {
-                            if (submission.PacketSubmissionErrors.Any(p => String.IsNullOrWhiteSpace(p.ResolvedBy) == true && p.AssignedTo == assignedTo))
+                            if (submission.PacketSubmissionErrors.Any(p => String.IsNullOrWhiteSpace(p.StatusChangedBy) == true && p.AssignedTo == assignedTo))
                                 assigneeAssignedToThisVisit = true;
                         }
 
