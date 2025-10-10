@@ -24,12 +24,17 @@ namespace UDS.Net.API.Data.Migrations
                 maxLength: 100,
                 nullable: true);
 
-            migrationBuilder.AddColumn<bool>(
-                name: "IgnoreStatus",
+            migrationBuilder.RenameColumn(
+                name: "ResolvedBy",
                 table: "PacketSubmissionErrors",
-                type: "bit",
+                newName: "StatusChangedBy");
+
+            migrationBuilder.AddColumn<int>(
+                name: "Status",
+                table: "PacketSubmissionErrors",
+                type: "int",
                 nullable: false,
-                defaultValue: false);
+                defaultValue: 0);
         }
 
         /// <inheritdoc />
@@ -44,8 +49,20 @@ namespace UDS.Net.API.Data.Migrations
                 table: "PacketSubmissionErrors");
 
             migrationBuilder.DropColumn(
-                name: "IgnoreStatus",
+                name: "Status",
                 table: "PacketSubmissionErrors");
+
+            migrationBuilder.RenameColumn(
+                name: "StatusChangedBy",
+                table: "PacketSubmissionErrors",
+                newName: "ResolvedBy");
+
+            migrationBuilder.AddColumn<bool>(
+                name: "IgnoreStatus",
+                table: "PacketSubmissionErrors",
+                type: "bit",
+                nullable: false,
+                defaultValue: false);
         }
     }
 }
