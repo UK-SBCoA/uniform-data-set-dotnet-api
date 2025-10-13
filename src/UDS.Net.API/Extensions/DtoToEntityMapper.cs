@@ -175,7 +175,7 @@ namespace UDS.Net.API.Extensions
 
             if (!string.IsNullOrWhiteSpace(dto.Status))
             {
-                if (Enum.TryParse(dto.Level, true, out PacketSubmissionErrorStatus status))
+                if (Enum.TryParse(dto.Status, true, out PacketSubmissionErrorStatus status))
                     entity.Status = status;
             }
 

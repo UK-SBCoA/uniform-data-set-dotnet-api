@@ -310,7 +310,7 @@ namespace UDS.Net.API.Controllers
 
                                             if (!string.IsNullOrWhiteSpace(errorDto.Status))
                                             {
-                                                if (Enum.TryParse(dto.Status, true, out PacketSubmissionErrorStatus status))
+                                                if (Enum.TryParse(errorDto.Status, true, out PacketSubmissionErrorStatus status))
                                                     existingError.Status = status;
                                             }
                                         }
