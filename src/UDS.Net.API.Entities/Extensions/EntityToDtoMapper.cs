@@ -34,36 +34,42 @@ namespace UDS.Net.API.Extensions
             {
                 int? unresolvedErrorsCount = null;
                 var unresolvedErrors = new List<PacketSubmissionErrorDto>();
+
                 foreach (var submission in packet.PacketSubmissions)
                 {
                     if (submission != null && submission.ErrorCount.HasValue && submission.PacketSubmissionErrors != null)
                     {
                         foreach (var error in submission.PacketSubmissionErrors)
                         {
-                            if (error != null && String.IsNullOrWhiteSpace(error.ResolvedBy))
+                            if (error != null && error.Status == PacketSubmissionErrorStatus.Pending)
                             {
                                 if (!unresolvedErrorsCount.HasValue)
                                     unresolvedErrorsCount = 1;
                                 else
                                     unresolvedErrorsCount += 1;
-                                unresolvedErrors.Add(error.ToDto());
+
+                                var errorDto = error.ToDto();
+                                unresolvedErrors.Add(errorDto);
+
                                 if (dto.Forms != null)
                                 {
-                                    // if there are forms, also update the number of unresolved errors and errors list per form
-                                    var formDto = dto.Forms.Where(f => f.Kind == error.FormKind).FirstOrDefault();
+                                    // If there are forms, update error counts per form
+                                    var formDto = dto.Forms.FirstOrDefault(f => f.Kind == error.FormKind);
                                     if (formDto != null)
                                     {
                                         if (!formDto.UnresolvedErrorCount.HasValue)
                                             formDto.UnresolvedErrorCount = 1;
                                         else
                                             formDto.UnresolvedErrorCount += 1;
-                                        formDto.UnresolvedErrors.Add(error.ToDto());
+
+                                        formDto.UnresolvedErrors.Add(errorDto);
                                     }
                                 }
                             }
                         }
                     }
                 }
+
                 dto.TotalUnresolvedErrorCount = unresolvedErrorsCount;
                 dto.UnresolvedErrors = unresolvedErrors;
             }
@@ -97,8 +103,10 @@ namespace UDS.Net.API.Extensions
                 int? unresolvedErrorsCount = null;
                 foreach (var submission in dto.PacketSubmissions)
                 {
-                    int? unresolvedCountPerSubmission = submission.PacketSubmissionErrors.Where(e => String.IsNullOrWhiteSpace(e.ResolvedBy)).Count();
-                    unresolvedErrorsCount += unresolvedCountPerSubmission;
+                    int count = submission.PacketSubmissionErrors
+                        .Count(e => Enum.TryParse<PacketSubmissionErrorStatus>(e.Status, out var status) && status == PacketSubmissionErrorStatus.Pending);
+
+                    unresolvedErrorsCount += count;
                 }
                 dto.TotalUnresolvedErrorCount = unresolvedErrorsCount;
             }
@@ -1645,12 +1653,15 @@ namespace UDS.Net.API.Extensions
                 Level = packetSubmissionError.Level.ToString(),
                 Message = packetSubmissionError.Message,
                 AssignedTo = packetSubmissionError.AssignedTo,
-                ResolvedBy = packetSubmissionError.ResolvedBy,
+                StatusChangedBy = packetSubmissionError.StatusChangedBy,
                 CreatedAt = packetSubmissionError.CreatedAt,
                 CreatedBy = packetSubmissionError.CreatedBy,
                 ModifiedBy = packetSubmissionError.ModifiedBy,
                 IsDeleted = packetSubmissionError.IsDeleted,
-                DeletedBy = packetSubmissionError.DeletedBy
+                DeletedBy = packetSubmissionError.DeletedBy,
+                Value = packetSubmissionError.Value,
+                Location = packetSubmissionError.Location,
+                Status = packetSubmissionError.Status.ToString(),
             };
         }
     }
