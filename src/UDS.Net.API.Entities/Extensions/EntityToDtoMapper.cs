@@ -433,6 +433,7 @@ namespace UDS.Net.API.Extensions
         {
             A2Dto dto = new A2Dto
             {
+                NEWINF = a2.NEWINF,
                 INRELTO = a2.INRELTO,
                 INKNOWN = a2.INKNOWN,
                 INLIVWTH = a2.INLIVWTH,
@@ -454,6 +455,7 @@ namespace UDS.Net.API.Extensions
         {
             A3Dto dto = new A3Dto
             {
+                NWINFPAR = a3.NWINFPAR,
                 MOMYOB = a3.MOMYOB,
                 MOMDAGE = a3.MOMDAGE,
                 MOMETPR = a3.MOMETPR,
@@ -467,6 +469,7 @@ namespace UDS.Net.API.Extensions
                 DADMEVAL = a3.DADMEVAL,
                 DADAGEO = a3.DADAGEO,
                 SIBS = a3.SIBS,
+                NWINFSIB = a3.NWINFSIB,
                 SIB1 = a3.SIB1.ToFullDto(a3.Id),
                 SIB2 = a3.SIB2.ToFullDto(a3.Id),
                 SIB3 = a3.SIB3.ToFullDto(a3.Id),
@@ -488,6 +491,7 @@ namespace UDS.Net.API.Extensions
                 SIB19 = a3.SIB19.ToFullDto(a3.Id),
                 SIB20 = a3.SIB20.ToFullDto(a3.Id),
                 KIDS = a3.KIDS,
+                NWINFKID = a3.NWINFKID,
                 KID1 = a3.KID1.ToFullDto(a3.Id),
                 KID2 = a3.KID2.ToFullDto(a3.Id),
                 KID3 = a3.KID3.ToFullDto(a3.Id),
@@ -637,6 +641,7 @@ namespace UDS.Net.API.Extensions
             A4aDto dto = new A4aDto
             {
                 TRTBIOMARK = a4a.TRTBIOMARK,
+                NEWTREAT = a4a.NEWTREAT,
                 Treatment1 = a4a.Treatment1.ToFullDto(a4a.Id),
                 Treatment2 = a4a.Treatment2.ToFullDto(a4a.Id),
                 Treatment3 = a4a.Treatment3.ToFullDto(a4a.Id),
@@ -645,6 +650,7 @@ namespace UDS.Net.API.Extensions
                 Treatment6 = a4a.Treatment6.ToFullDto(a4a.Id),
                 Treatment7 = a4a.Treatment7.ToFullDto(a4a.Id),
                 Treatment8 = a4a.Treatment8.ToFullDto(a4a.Id),
+                NEWADEVENT = a4a.NEWADEVENT,
                 ADVEVENT = a4a.ADVEVENT,
                 ARIAE = a4a.ARIAE,
                 ARIAH = a4a.ARIAH,

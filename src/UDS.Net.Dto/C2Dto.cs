@@ -118,14 +118,14 @@ namespace UDS.Net.Dto
         public int? MINTPCNC { get; set; }
         public int? COGSTAT { get; set; }
         public int? RESPVAL { get; set; }
-        public int? RESPHEAR { get; set; }
-        public int? RESPDIST { get; set; }
-        public int? RESPINTR { get; set; }
-        public int? RESPDISN { get; set; }
-        public int? RESPFATG { get; set; }
-        public int? RESPEMOT { get; set; }
-        public int? RESPASST { get; set; }
-        public int? RESPOTH { get; set; }
+        public bool? RESPHEAR { get; set; }
+        public bool? RESPDIST { get; set; }
+        public bool? RESPINTR { get; set; }
+        public bool? RESPDISN { get; set; }
+        public bool? RESPFATG { get; set; }
+        public bool? RESPEMOT { get; set; }
+        public bool? RESPASST { get; set; }
+        public bool? RESPOTH { get; set; }
         public string RESPOTHX { get; set; }
     }
 }

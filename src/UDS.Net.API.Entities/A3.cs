@@ -10,6 +10,8 @@ namespace UDS.Net.API.Entities
     [Table("tbl_A3s")]
     public class A3 : Form
     {
+        public int? NWINFPAR { get; set; }
+
         public int? MOMYOB { get; set; }
         public int? MOMDAGE { get; set; }
         [MaxLength(2)]
@@ -26,6 +28,8 @@ namespace UDS.Net.API.Entities
         public string? DADETSEC { get; set; }
         public int? DADMEVAL { get; set; }
         public int? DADAGEO { get; set; }
+
+        public int? NWINFSIB { get; set; }
         public int? SIBS { get; set; }
 
         public A3FamilyMember SIB1 { get; set; } = default!;
@@ -49,6 +53,7 @@ namespace UDS.Net.API.Entities
         public A3FamilyMember SIB19 { get; set; } = default!;
         public A3FamilyMember SIB20 { get; set; } = default!;
 
+        public int? NWINFKID { get; set; }
         public int? KIDS { get; set; }
 
         public A3FamilyMember KID1 { get; set; } = default!;

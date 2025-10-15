@@ -465,6 +465,7 @@ namespace UDS.Net.API.Extensions
             {
                 entity.SetBaseProperties(dto);
 
+                entity.NEWINF = dto.NEWINF;
                 entity.INRELTO = dto.INRELTO;
                 entity.INKNOWN = dto.INKNOWN;
                 entity.INLIVWTH = dto.INLIVWTH;
@@ -489,6 +490,7 @@ namespace UDS.Net.API.Extensions
             {
                 entity.SetBaseProperties(dto);
 
+                entity.NWINFPAR = dto.NWINFPAR;
                 entity.MOMYOB = dto.MOMYOB;
                 entity.MOMDAGE = dto.MOMDAGE;
                 entity.MOMETPR = dto.MOMETPR;
@@ -502,6 +504,7 @@ namespace UDS.Net.API.Extensions
                 entity.DADMEVAL = dto.DADMEVAL;
                 entity.DADAGEO = dto.DADAGEO;
                 entity.SIBS = dto.SIBS;
+                entity.NWINFSIB = dto.NWINFSIB;
                 entity.SIB1.Update(dto.SIB1);
                 entity.SIB2.Update(dto.SIB2);
                 entity.SIB3.Update(dto.SIB3);
@@ -523,6 +526,7 @@ namespace UDS.Net.API.Extensions
                 entity.SIB19.Update(dto.SIB19);
                 entity.SIB20.Update(dto.SIB20);
                 entity.KIDS = dto.KIDS;
+                entity.NWINFKID = dto.NWINFKID;
                 entity.KID1.Update(dto.KID1);
                 entity.KID2.Update(dto.KID2);
                 entity.KID3.Update(dto.KID3);
@@ -625,13 +629,16 @@ namespace UDS.Net.API.Extensions
             if (entity.Id == dto.Id)
             {
                 entity.SetBaseProperties(dto);
+
                 entity.TRTBIOMARK = dto.TRTBIOMARK;
+                entity.NEWADEVENT = dto.NEWADEVENT;
                 entity.ADVEVENT = dto.ADVEVENT;
                 entity.ARIAE = dto.ARIAE;
                 entity.ARIAH = dto.ARIAH;
                 entity.ADVERSEOTH = dto.ADVERSEOTH;
                 entity.ADVERSEOTX = dto.ADVERSEOTX;
 
+                entity.NEWTREAT = dto.NEWTREAT;
                 entity.Treatment1.Update(dto.Treatment1);
                 entity.Treatment2.Update(dto.Treatment2);
                 entity.Treatment3.Update(dto.Treatment3);

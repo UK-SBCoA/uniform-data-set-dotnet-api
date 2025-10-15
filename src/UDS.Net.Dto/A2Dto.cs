@@ -3,6 +3,7 @@ namespace UDS.Net.Dto
 {
     public class A2Dto : FormDto
     {
+        public bool? NEWINF { get; set; }
         public int? INRELTO { get; set; }
         public int? INKNOWN { get; set; }
         public int? INLIVWTH { get; set; }
