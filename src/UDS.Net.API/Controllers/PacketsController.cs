@@ -24,7 +24,7 @@ namespace UDS.Net.API.Controllers
         [HttpGet("Count", Name = "PacketsCount")]
         public async Task<int> Count()
         {
-            return await _context.Visits
+            return await _context.Packets
                 .CountAsync();
         }
 
@@ -37,7 +37,7 @@ namespace UDS.Net.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<PacketDto>> Get(int pageSize = 10, int pageIndex = 1)
         {
-            return await _context.Visits
+            return await _context.Packets
                 .Include(v => v.PacketSubmissions)
                     .ThenInclude(p => p.PacketSubmissionErrors)
                 .AsNoTracking()
@@ -51,7 +51,7 @@ namespace UDS.Net.API.Controllers
         [HttpGet("{id}")]
         public async Task<PacketDto> Get(int id)
         {
-            var dto = await _context.Visits
+            var dto = await _context.Packets
                 .Include(v => v.PacketSubmissions)
                     .ThenInclude(p => p.PacketSubmissionErrors)
                 .Where(v => v.Id == id)
@@ -64,7 +64,7 @@ namespace UDS.Net.API.Controllers
         [HttpGet("{id}/IncludeForms")]
         public async Task<PacketDto> GetPacketWithForms(int id)
         {
-            var dto = await _context.Visits
+            var dto = await _context.Packets
                 .Include(v => v.PacketSubmissions)
                     .ThenInclude(p => p.PacketSubmissionErrors)
                 .Where(v => v.Id == id)
@@ -74,7 +74,7 @@ namespace UDS.Net.API.Controllers
 
             if (dto != null)
             {
-                var visit = await _context.Visits
+                var visit = await _context.Packets
                     .Include(v => v.A1)
                     .Include(v => v.A1a)
                     .Include(v => v.A2)
@@ -154,7 +154,7 @@ namespace UDS.Net.API.Controllers
         [HttpGet("IncludeForms")]
         public async Task<List<PacketDto>> GetPacketsWithForms(int[] ids)
         {
-            var dtos = await _context.Visits
+            var dtos = await _context.Packets
                 .Include(v => v.PacketSubmissions)
                 .ThenInclude(p => p.PacketSubmissionErrors)
                 .Where(v => ids.Contains(v.Id))
@@ -165,7 +165,7 @@ namespace UDS.Net.API.Controllers
             if (dtos.Count == 0)
                 return dtos;
 
-            var visits = await _context.Visits
+            var visits = await _context.Packets
                 .Include(v => v.A1)
                 .Include(v => v.A1a)
                 .Include(v => v.A2)
@@ -253,7 +253,7 @@ namespace UDS.Net.API.Controllers
         {
             if (dto != null)
             {
-                var existingPacket = await _context.Visits
+                var existingPacket = await _context.Packets
                     .Include(v => v.PacketSubmissions)
                         .ThenInclude(p => p.PacketSubmissionErrors)
                     .Where(p => p.Id == id)
@@ -320,7 +320,7 @@ namespace UDS.Net.API.Controllers
                         }
                     }
 
-                    _context.Visits.Update(existingPacket);
+                    _context.Packets.Update(existingPacket);
                     await _context.SaveChangesAsync();
 
                     return existingPacket.ToPacketDto();
@@ -345,13 +345,13 @@ namespace UDS.Net.API.Controllers
             {
                 if (string.IsNullOrWhiteSpace(assignedTo))
                 {
-                    return await _context.Visits
+                    return await _context.Packets
                         .Where(v => enumStatuses.Contains(v.Status))
                         .CountAsync();
                 }
                 else
                 {
-                    var visitsAtStatus = await _context.Visits
+                    var visitsAtStatus = await _context.Packets
                         .Include(v => v.PacketSubmissions)
                             .ThenInclude(p => p.PacketSubmissionErrors)
                         .Where(v => enumStatuses.Contains(v.Status))
@@ -386,7 +386,7 @@ namespace UDS.Net.API.Controllers
             {
                 if (string.IsNullOrWhiteSpace(assignedTo))
                 {
-                    dto = await _context.Visits
+                    dto = await _context.Packets
                         .Include(v => v.PacketSubmissions)
                             .ThenInclude(p => p.PacketSubmissionErrors)
                         .Where(v => enumStatuses.Contains(v.Status))
@@ -398,7 +398,7 @@ namespace UDS.Net.API.Controllers
                 }
                 else
                 {
-                    var visitsAtStatus = await _context.Visits
+                    var visitsAtStatus = await _context.Packets
                         .Include(v => v.PacketSubmissions)
                             .ThenInclude(p => p.PacketSubmissionErrors)
                         .Where(v => enumStatuses.Contains(v.Status))

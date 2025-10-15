@@ -3,6 +3,7 @@ namespace UDS.Net.Dto
 {
     public class A3Dto : FormDto
     {
+        public int? NWINFPAR { get; set; }
         public int? MOMYOB { get; set; }
         public int? MOMDAGE { get; set; }
         public string MOMETPR { get; set; }
@@ -15,6 +16,8 @@ namespace UDS.Net.Dto
         public string DADETSEC { get; set; }
         public int? DADMEVAL { get; set; }
         public int? DADAGEO { get; set; }
+
+        public int? NWINFSIB { get; set; }
         public int? SIBS { get; set; }
 
         public A3FamilyMemberDto SIB1 { get; set; }
@@ -38,6 +41,7 @@ namespace UDS.Net.Dto
         public A3FamilyMemberDto SIB19 { get; set; }
         public A3FamilyMemberDto SIB20 { get; set; }
 
+        public int? NWINFKID { get; set; }
         public int? KIDS { get; set; }
 
         public A3FamilyMemberDto KID1 { get; set; }

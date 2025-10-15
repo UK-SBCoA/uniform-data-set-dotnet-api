@@ -1,4 +1,7 @@
-﻿using UDS.Net.API.Entities;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using UDS.Net.API.Entities;
 using UDS.Net.Dto;
 
 namespace UDS.Net.API.Extensions
@@ -90,9 +93,10 @@ namespace UDS.Net.API.Extensions
             return PacketStatus.Pending;
         }
 
-        public static Visit Convert(this VisitDto dto)
+        // TODO VisitDto should be renamed to packet dto
+        public static Packet Convert(this VisitDto dto)
         {
-            var visit = new Visit
+            var visit = new Packet
             {
                 PACKET = dto.PACKET,
                 VISITNUM = dto.VISITNUM,
@@ -113,7 +117,7 @@ namespace UDS.Net.API.Extensions
             return visit;
         }
 
-        public static bool Update(this Visit entity, VisitDto dto)
+        public static bool Update(this Packet entity, VisitDto dto)
         {
             if (entity != null)
             {
@@ -136,7 +140,7 @@ namespace UDS.Net.API.Extensions
             return new PacketSubmission
             {
                 Id = dto.Id,
-                VisitId = dto.PacketId, //  VisitId == PacketId
+                PacketId = dto.PacketId,
                 SubmissionDate = dto.SubmissionDate,
                 CreatedAt = dto.CreatedAt,
                 CreatedBy = dto.CreatedBy,
@@ -461,6 +465,7 @@ namespace UDS.Net.API.Extensions
             {
                 entity.SetBaseProperties(dto);
 
+                entity.NEWINF = dto.NEWINF;
                 entity.INRELTO = dto.INRELTO;
                 entity.INKNOWN = dto.INKNOWN;
                 entity.INLIVWTH = dto.INLIVWTH;
@@ -485,6 +490,7 @@ namespace UDS.Net.API.Extensions
             {
                 entity.SetBaseProperties(dto);
 
+                entity.NWINFPAR = dto.NWINFPAR;
                 entity.MOMYOB = dto.MOMYOB;
                 entity.MOMDAGE = dto.MOMDAGE;
                 entity.MOMETPR = dto.MOMETPR;
@@ -498,6 +504,7 @@ namespace UDS.Net.API.Extensions
                 entity.DADMEVAL = dto.DADMEVAL;
                 entity.DADAGEO = dto.DADAGEO;
                 entity.SIBS = dto.SIBS;
+                entity.NWINFSIB = dto.NWINFSIB;
                 entity.SIB1.Update(dto.SIB1);
                 entity.SIB2.Update(dto.SIB2);
                 entity.SIB3.Update(dto.SIB3);
@@ -519,6 +526,7 @@ namespace UDS.Net.API.Extensions
                 entity.SIB19.Update(dto.SIB19);
                 entity.SIB20.Update(dto.SIB20);
                 entity.KIDS = dto.KIDS;
+                entity.NWINFKID = dto.NWINFKID;
                 entity.KID1.Update(dto.KID1);
                 entity.KID2.Update(dto.KID2);
                 entity.KID3.Update(dto.KID3);
@@ -561,46 +569,46 @@ namespace UDS.Net.API.Extensions
                 entity.ANYMEDS = dto.ANYMEDS;
 
                 // reset entity
-                entity.RXNORMID1 = new A4D();
-                entity.RXNORMID2 = new A4D();
-                entity.RXNORMID3 = new A4D();
-                entity.RXNORMID4 = new A4D();
-                entity.RXNORMID5 = new A4D();
-                entity.RXNORMID6 = new A4D();
-                entity.RXNORMID7 = new A4D();
-                entity.RXNORMID8 = new A4D();
-                entity.RXNORMID9 = new A4D();
-                entity.RXNORMID10 = new A4D();
-                entity.RXNORMID11 = new A4D();
-                entity.RXNORMID12 = new A4D();
-                entity.RXNORMID13 = new A4D();
-                entity.RXNORMID14 = new A4D();
-                entity.RXNORMID15 = new A4D();
-                entity.RXNORMID16 = new A4D();
-                entity.RXNORMID17 = new A4D();
-                entity.RXNORMID18 = new A4D();
-                entity.RXNORMID19 = new A4D();
-                entity.RXNORMID20 = new A4D();
-                entity.RXNORMID21 = new A4D();
-                entity.RXNORMID22 = new A4D();
-                entity.RXNORMID23 = new A4D();
-                entity.RXNORMID24 = new A4D();
-                entity.RXNORMID25 = new A4D();
-                entity.RXNORMID26 = new A4D();
-                entity.RXNORMID27 = new A4D();
-                entity.RXNORMID28 = new A4D();
-                entity.RXNORMID29 = new A4D();
-                entity.RXNORMID30 = new A4D();
-                entity.RXNORMID31 = new A4D();
-                entity.RXNORMID32 = new A4D();
-                entity.RXNORMID33 = new A4D();
-                entity.RXNORMID34 = new A4D();
-                entity.RXNORMID35 = new A4D();
-                entity.RXNORMID36 = new A4D();
-                entity.RXNORMID37 = new A4D();
-                entity.RXNORMID38 = new A4D();
-                entity.RXNORMID39 = new A4D();
-                entity.RXNORMID40 = new A4D();
+                entity.RXNORMID1 = null;
+                entity.RXNORMID2 = null;
+                entity.RXNORMID3 = null;
+                entity.RXNORMID4 = null;
+                entity.RXNORMID5 = null;
+                entity.RXNORMID6 = null;
+                entity.RXNORMID7 = null;
+                entity.RXNORMID8 = null;
+                entity.RXNORMID9 = null;
+                entity.RXNORMID10 = null;
+                entity.RXNORMID11 = null;
+                entity.RXNORMID12 = null;
+                entity.RXNORMID13 = null;
+                entity.RXNORMID14 = null;
+                entity.RXNORMID15 = null;
+                entity.RXNORMID16 = null;
+                entity.RXNORMID17 = null;
+                entity.RXNORMID18 = null;
+                entity.RXNORMID19 = null;
+                entity.RXNORMID20 = null;
+                entity.RXNORMID21 = null;
+                entity.RXNORMID22 = null;
+                entity.RXNORMID23 = null;
+                entity.RXNORMID24 = null;
+                entity.RXNORMID25 = null;
+                entity.RXNORMID26 = null;
+                entity.RXNORMID27 = null;
+                entity.RXNORMID28 = null;
+                entity.RXNORMID29 = null;
+                entity.RXNORMID30 = null;
+                entity.RXNORMID31 = null;
+                entity.RXNORMID32 = null;
+                entity.RXNORMID33 = null;
+                entity.RXNORMID34 = null;
+                entity.RXNORMID35 = null;
+                entity.RXNORMID36 = null;
+                entity.RXNORMID37 = null;
+                entity.RXNORMID38 = null;
+                entity.RXNORMID39 = null;
+                entity.RXNORMID40 = null;
 
                 const int MAXINUMRECORDCOUNT = 40; // dto allows an infinite list, but we can only persist and send 40 to NACC
                 if (dto.ANYMEDS.HasValue && dto.ANYMEDS.Value == 1)
@@ -621,13 +629,16 @@ namespace UDS.Net.API.Extensions
             if (entity.Id == dto.Id)
             {
                 entity.SetBaseProperties(dto);
+
                 entity.TRTBIOMARK = dto.TRTBIOMARK;
+                entity.NEWADEVENT = dto.NEWADEVENT;
                 entity.ADVEVENT = dto.ADVEVENT;
                 entity.ARIAE = dto.ARIAE;
                 entity.ARIAH = dto.ARIAH;
                 entity.ADVERSEOTH = dto.ADVERSEOTH;
                 entity.ADVERSEOTX = dto.ADVERSEOTX;
 
+                entity.NEWTREAT = dto.NEWTREAT;
                 entity.Treatment1.Update(dto.Treatment1);
                 entity.Treatment2.Update(dto.Treatment2);
                 entity.Treatment3.Update(dto.Treatment3);
@@ -1183,66 +1194,6 @@ namespace UDS.Net.API.Extensions
             return false;
         }
 
-        [Obsolete]
-        public static bool Update(this C1 entity, C1Dto dto)
-        {
-            if (entity.Id == dto.Id)
-            {
-                entity.SetBaseProperties(dto);
-
-                entity.MMSECOMP = dto.MMSECOMP;
-                entity.MMSEREAS = dto.MMSEREAS;
-                entity.MMSELOC = dto.MMSELOC;
-                entity.MMSELAN = dto.MMSELAN;
-                entity.MMSELANX = dto.MMSELANX;
-                entity.MMSEVIS = dto.MMSEVIS;
-                entity.MMSEHEAR = dto.MMSEHEAR;
-                entity.MMSEORDA = dto.MMSEORDA;
-                entity.MMSEORLO = dto.MMSEORLO;
-                entity.PENTAGON = dto.PENTAGON;
-                entity.MMSE = dto.MMSE;
-                entity.NPSYCLOC = dto.NPSYCLOC;
-                entity.NPSYLAN = dto.NPSYLAN;
-                entity.NPSYLANX = dto.NPSYLANX;
-                entity.LOGIMO = dto.LOGIMO;
-                entity.LOGIDAY = dto.LOGIDAY;
-                entity.LOGIYR = dto.LOGIYR;
-                entity.LOGIPREV = dto.LOGIPREV;
-                entity.LOGIMEM = dto.LOGIMEM;
-                entity.UDSBENTC = dto.UDSBENTC;
-                entity.DIGIF = dto.DIGIF;
-                entity.DIGIFLEN = dto.DIGIFLEN;
-                entity.DIGIB = dto.DIGIB;
-                entity.DIGIBLEN = dto.DIGIBLEN;
-                entity.ANIMALS = dto.ANIMALS;
-                entity.VEG = dto.VEG;
-                entity.TRAILA = dto.TRAILA;
-                entity.TRAILARR = dto.TRAILARR;
-                entity.TRAILALI = dto.TRAILALI;
-                entity.TRAILB = dto.TRAILB;
-                entity.TRAILBRR = dto.TRAILBRR;
-                entity.TRAILBLI = dto.TRAILBLI;
-                entity.MEMUNITS = dto.MEMUNITS;
-                entity.MEMTIME = dto.MEMTIME;
-                entity.UDSBENTD = dto.UDSBENTD;
-                entity.UDSBENRS = dto.UDSBENRS;
-                entity.BOSTON = dto.BOSTON;
-                entity.UDSVERFC = dto.UDSVERFC;
-                entity.UDSVERFN = dto.UDSVERFN;
-                entity.UDSVERNF = dto.UDSVERNF;
-                entity.UDSVERLC = dto.UDSVERLC;
-                entity.UDSVERLR = dto.UDSVERLR;
-                entity.UDSVERLN = dto.UDSVERLN;
-                entity.UDSVERTN = dto.UDSVERTN;
-                entity.UDSVERTE = dto.UDSVERTE;
-                entity.UDSVERTI = dto.UDSVERTI;
-                entity.COGSTAT = dto.COGSTAT;
-
-                return true;
-            }
-            return false;
-        }
-
         public static bool Update(this C2 entity, C2Dto dto)
         {
             if (entity.Id == dto.Id)
@@ -1608,31 +1559,6 @@ namespace UDS.Net.API.Extensions
                 return true;
             }
 
-            return false;
-
-
-        }
-
-        [Obsolete]
-        public static bool Update(this T1 entity, T1Dto dto)
-        {
-            if (entity.Id == dto.Id)
-            {
-                entity.SetBaseProperties(dto);
-
-                entity.TELCOG = dto.TELCOG;
-                entity.TELILL = dto.TELILL;
-                entity.TELHOME = dto.TELHOME;
-                entity.TELREFU = dto.TELREFU;
-                entity.TELCOV = dto.TELCOV;
-                entity.TELOTHR = dto.TELOTHR;
-                entity.TELOTHRX = dto.TELOTHRX;
-                entity.TELMOD = dto.TELMOD;
-                entity.TELINPER = dto.TELINPER;
-                entity.TELMILE = dto.TELMILE;
-
-                return true;
-            }
             return false;
         }
 

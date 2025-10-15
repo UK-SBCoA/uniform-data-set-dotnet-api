@@ -4,7 +4,7 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<ReleaseVersion>9.0.1</ReleaseVersion>
+		<ReleaseVersion>10.0.0-preview.1</ReleaseVersion>
 		<DockerComposeProjectPath>../docker-compose.dcproj</DockerComposeProjectPath>
 		<UserSecretsId>c1dd1715-6fa0-4515-bcf2-6a7f6a0c11a5</UserSecretsId>
 		<Configurations>Release;Debug</Configurations>
@@ -17,6 +17,14 @@
 			</GlobalPropertiesToRemove>
 		</ProjectReference>
 		<ProjectReference Include="..\UDS.Net.API.Client\UDS.Net.API.Client.csproj">
+			<GlobalPropertiesToRemove>
+			</GlobalPropertiesToRemove>
+		</ProjectReference>
+		<ProjectReference Include="..\UDS.Net.API.Entities\UDS.Net.API.Entities.csproj">
+			<GlobalPropertiesToRemove>
+			</GlobalPropertiesToRemove>
+		</ProjectReference>
+		<ProjectReference Include="..\UDS.Net.API.Extensions\UDS.Net.API.Extensions.csproj">
 			<GlobalPropertiesToRemove>
 			</GlobalPropertiesToRemove>
 		</ProjectReference>

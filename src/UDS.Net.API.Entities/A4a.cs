@@ -9,6 +9,7 @@ namespace UDS.Net.API.Entities
     {
         public int? TRTBIOMARK { get; set; }
 
+        public int? NEWTREAT { get; set; }
         public A4aTreatment Treatment1 { get; set; } = default!;
         public A4aTreatment Treatment2 { get; set; } = default!;
         public A4aTreatment Treatment3 { get; set; } = default!;
@@ -18,6 +19,7 @@ namespace UDS.Net.API.Entities
         public A4aTreatment Treatment7 { get; set; } = default!;
         public A4aTreatment Treatment8 { get; set; } = default!;
 
+        public int? NEWADEVENT { get; set; }
         public int? ADVEVENT { get; set; }
         public bool? ARIAE { get; set; }
         public bool? ARIAH { get; set; }
