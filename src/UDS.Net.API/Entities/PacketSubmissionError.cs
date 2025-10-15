@@ -20,7 +20,15 @@ namespace UDS.Net.API.Entities
 
         public PacketSubmissionErrorLevel Level { get; set; }
 
-        public string? ResolvedBy { get; set; }
+        [MaxLength(50)]
+        public string? Location { get; set; }
+
+        [MaxLength(100)]
+        public string? Value { get; set; }
+
+        public PacketSubmissionErrorStatus Status { get; set; }
+
+        public string? StatusChangedBy { get; set; }
 
         public PacketSubmission PacketSubmission { get; set; } = default!;
 
