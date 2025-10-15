@@ -11,7 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UDS.Net.Dto", "UDS.Net.Dto\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UDS.Net.API.Entities", "UDS.Net.API.Entities\UDS.Net.API.Entities.csproj", "{EE90F6D5-7BD2-43DA-8780-CC6400D68320}"
 EndProject
-Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "docker-compose", "docker-compose.dcproj", "{31D4D212-1723-4C9D-9EF2-C061AA91CA15}"
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "docker-compose", "docker-compose.dcproj", "{23363800-1744-4376-A2D4-90EEF2C18A07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UDS.Net.API.Extensions", "UDS.Net.API.Extensions\UDS.Net.API.Extensions.csproj", "{0762A57D-BA00-4514-9B19-CE7B4DF6FD95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +37,14 @@ Global
 		{EE90F6D5-7BD2-43DA-8780-CC6400D68320}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE90F6D5-7BD2-43DA-8780-CC6400D68320}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE90F6D5-7BD2-43DA-8780-CC6400D68320}.Release|Any CPU.Build.0 = Release|Any CPU
-		{31D4D212-1723-4C9D-9EF2-C061AA91CA15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{31D4D212-1723-4C9D-9EF2-C061AA91CA15}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{31D4D212-1723-4C9D-9EF2-C061AA91CA15}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{31D4D212-1723-4C9D-9EF2-C061AA91CA15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23363800-1744-4376-A2D4-90EEF2C18A07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23363800-1744-4376-A2D4-90EEF2C18A07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23363800-1744-4376-A2D4-90EEF2C18A07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23363800-1744-4376-A2D4-90EEF2C18A07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0762A57D-BA00-4514-9B19-CE7B4DF6FD95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0762A57D-BA00-4514-9B19-CE7B4DF6FD95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0762A57D-BA00-4514-9B19-CE7B4DF6FD95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0762A57D-BA00-4514-9B19-CE7B4DF6FD95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -47,6 +53,6 @@ Global
 		SolutionGuid = {D39D5BFF-1FB6-4543-9752-418308400A84}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		version = 9.0.1-preview.1
+		version = 10.0.0-preview.1
 	EndGlobalSection
 EndGlobal
