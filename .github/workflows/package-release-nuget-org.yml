@@ -33,6 +33,9 @@ jobs:
     
     - name: Pack UDS.Net.API.Entities
       run: dotnet pack src/UDS.Net.API.Entities -c Release -o .
+    
+    - name: Pack UDS.Net.API.Extensions
+      run: dotnet pack src/UDS.Net.API.Extensions -c Release -o .
 
     - name: Pack UDS.Net.Dto
       run: dotnet pack src/UDS.Net.Dto -c Release -o .

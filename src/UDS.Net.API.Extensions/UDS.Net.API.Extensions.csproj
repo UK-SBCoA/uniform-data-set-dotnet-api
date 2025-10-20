@@ -1,17 +1,17 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<Nullable>enable</Nullable>
 		<OutputType>Library</OutputType>
 		<PackageId>UDS.Net.API.Extensions</PackageId>
-		<Version>10.0.0-preview.1</Version>
+		<Version>10.0.0-preview.2</Version>
 		<Authors>Sanders-Brown Center on Aging</Authors>
 		<Description>UDS extensions for mapping between entities and dtos</Description>
 		<Owners>UK-SBCoA</Owners>
 		<PackageDescription>Mappers for entities and dtos</PackageDescription>
 		<RepositoryUrl>https://github.com/UK-SBCoA/uniform-data-set-dotnet-api</RepositoryUrl>
-		<ReleaseVersion>10.0.0-preview.1</ReleaseVersion>
+		<ReleaseVersion>10.0.0-preview.2</ReleaseVersion>
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\UDS.Net.Dto\UDS.Net.Dto.csproj" />
