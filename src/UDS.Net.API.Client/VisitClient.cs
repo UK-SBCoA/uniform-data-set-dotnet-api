@@ -116,9 +116,9 @@ namespace UDS.Net.API.Client
             return dto;
         }
 
-        public async Task<VisitDto> GetByVisitNumber(int packetId, int visitNumber, string formKind)
+        public async Task<VisitDto> GetByVisitNumber(int participantId, int visitNumber, string formKind)
         {
-            var response = await GetRequest($"{_BasePath}/Packet{packetId}/Visit{visitNumber}");
+            var response = await GetRequest($"{_BasePath}/Participant/{participantId}/Visit/{visitNumber}/Forms/{formKind}");
 
             VisitDto dto = JsonSerializer.Deserialize<VisitDto>(response, options);
 

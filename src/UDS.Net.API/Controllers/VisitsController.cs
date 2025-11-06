@@ -191,21 +191,26 @@ namespace UDS.Net.API.Controllers
         }
 
 
-        [HttpGet("Packet{packetId}/Visit{visitNumber}", Name = "GetByVisitNumber")]
-        public async Task<VisitDto> GetByVisitNumber(int packetId, int visitNumber, string formKind)
+        [HttpGet("Participant/{participantId}/Visit/{visitNumber}/Forms/{formKind}", Name = "GetByVisitNumber")]
+        public async Task<VisitDto> GetByVisitNumber(int participantId, int visitNumber, string formKind)
         {
-            var visit = await _context.Packets
-                .Include(v => v.FormStatuses)
-                .Include(v => v.PacketSubmissions)
-                    .ThenInclude(p => p.PacketSubmissionErrors)
-                .Where(v => v.Id == packetId && v.VISITNUM == visitNumber)
-                .FirstOrDefaultAsync();
-            if (visit == null)
+            if (!String.IsNullOrWhiteSpace(formKind))
+            {
+                var visit = await _context.Packets
+                    .Include(v => v.FormStatuses)
+                    .Include(v => v.PacketSubmissions)
+                        .ThenInclude(p => p.PacketSubmissionErrors)
+                    .Where(v => v.ParticipationId == participantId && v.VISITNUM == visitNumber)
+                    .FirstOrDefaultAsync();
+
+                if (visit != null)
+                {
+                    await GetFormDataAsync(visit, formKind, visit.Id);
+                    return visit.ToDto(formKind);
+                }
                 return null;
-
-            await GetFormDataAsync(visit, formKind, packetId);
-
-            return visit.ToDto(formKind);
+            }
+            throw new Exception("Must include a form id.");
         }
         [HttpPost]
         public async Task<VisitDto> Post([FromBody] VisitDto dto)
