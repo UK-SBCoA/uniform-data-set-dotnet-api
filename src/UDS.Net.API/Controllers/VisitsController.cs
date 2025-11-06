@@ -33,173 +33,12 @@ namespace UDS.Net.API.Controllers
                     .Where(v => v.Id == id)
                     .FirstOrDefaultAsync();
 
-                // get details for form requested
-                if (formKind == "A1") // participant demographics
+                if (visit != null)
                 {
-                    var a1 = await _context.A1s
-                        .Where(a => a.PacketId == id)
-                        .FirstOrDefaultAsync();
-
-                    if (a1 != null)
-                        visit.A1 = a1;
+                    await GetFormDataAsync(visit, formKind, id);
+                    return visit;
                 }
-                else if (formKind == "A1a") // social determinants
-                {
-                    var a1a = await _context.A1as
-                        .Where(a => a.PacketId == id)
-                        .FirstOrDefaultAsync();
-
-                    if (a1a != null)
-                        visit.A1a = a1a;
-                }
-                else if (formKind == "A2") // co-participant demogrpahics
-                {
-                    var a2 = await _context.A2s
-                        .Where(a => a.PacketId == id)
-                        .FirstOrDefaultAsync();
-
-                    if (a2 != null)
-                        visit.A2 = a2;
-                }
-                else if (formKind == "A3") // family history
-                {
-                    var a3 = await _context.A3s
-                        .Where(a => a.PacketId == id)
-                        .FirstOrDefaultAsync();
-
-                    if (a3 != null)
-                        visit.A3 = a3;
-                }
-                else if (formKind == "A4") // medications
-                {
-                    var a4 = await _context.A4s
-                        .Where(a => a.PacketId == id)
-                        .FirstOrDefaultAsync();
-
-                    if (a4 != null)
-                        visit.A4 = a4;
-                }
-                else if (formKind == "A4a") // ADRD-specific treatment
-                {
-                    var a4a = await _context.A4as
-                        .Where(a => a.PacketId == id)
-                        .FirstOrDefaultAsync();
-
-                    if (a4a != null)
-                        visit.A4a = a4a;
-                }
-                else if (formKind == "A5D2") // health history and clinician-assessed medical conditions
-                {
-                    var a5d2 = await _context.A5D2s
-                        .Where(a => a.PacketId == id)
-                        .FirstOrDefaultAsync();
-
-                    if (a5d2 != null)
-                        visit.A5D2 = a5d2;
-                }
-                else if (formKind == "B1") // evaluation form - physical
-                {
-                    var b1 = await _context.B1s
-                        .Where(a => a.PacketId == id)
-                        .FirstOrDefaultAsync();
-
-                    if (b1 != null)
-                        visit.B1 = b1;
-                }
-                else if (formKind == "B3") // updrs
-                {
-                    var b3 = await _context.B3s
-                        .Where(b => b.PacketId == id)
-                        .FirstOrDefaultAsync();
-
-                    if (b3 != null)
-                        visit.B3 = b3;
-                }
-                else if (formKind == "B4") // cdr plus ftld
-                {
-                    var b4 = await _context.B4s
-                        .Where(a => a.PacketId == id)
-                        .FirstOrDefaultAsync();
-
-                    if (b4 != null)
-                        visit.B4 = b4;
-                }
-                else if (formKind == "B5") // npi-q
-                {
-                    var b5 = await _context.B5s
-                        .Where(a => a.PacketId == id)
-                        .FirstOrDefaultAsync();
-
-                    if (b5 != null)
-                        visit.B5 = b5;
-                }
-                else if (formKind == "B6") // gds
-                {
-                    var b6 = await _context.B6s
-                        .Where(a => a.PacketId == id)
-                        .FirstOrDefaultAsync();
-
-                    if (b6 != null)
-                        visit.B6 = b6;
-                }
-                else if (formKind == "B7") // faqs
-                {
-                    var b7 = await _context.B7s
-                        .Where(a => a.PacketId == id)
-                        .FirstOrDefaultAsync();
-
-                    if (b7 != null)
-                        visit.B7 = b7;
-                }
-                else if (formKind == "B8") // neurological examination findings
-                {
-                    var b8 = await _context.B8s
-                        .Where(a => a.PacketId == id)
-                        .FirstOrDefaultAsync();
-
-                    if (b8 != null)
-                        visit.B8 = b8;
-                }
-                else if (formKind == "B9") // symptoms
-                {
-                    var b9 = await _context.B9s
-                        .Where(a => a.PacketId == id)
-                        .FirstOrDefaultAsync();
-
-                    if (b9 != null)
-                        visit.B9 = b9;
-                }
-                else if (formKind == "C2") // neuro battery scores (moca, etc.)
-                {
-                    var c2 = await _context.C2s
-                        .Where(a => a.PacketId == id)
-                        .FirstOrDefaultAsync();
-
-                    if (c2 != null)
-                        visit.C2 = c2;
-                }
-                else if (formKind == "D1a") // clinician diagnosis
-                {
-                    var d1a = await _context.D1as
-                        .Where(a => a.PacketId == id)
-                        .FirstOrDefaultAsync();
-
-                    if (d1a != null)
-                        visit.D1a = d1a;
-                }
-                else if (formKind == "D1b") // clinician diagnosis
-                {
-                    var d1b = await _context.D1bs
-                        .Where(a => a.PacketId == id)
-                        .FirstOrDefaultAsync();
-
-                    if (d1b != null)
-                        visit.D1b = d1b;
-                }
-
-                return visit;
             }
-
             return null;
         }
 
@@ -351,6 +190,23 @@ namespace UDS.Net.API.Controllers
             throw new Exception("Must include a form id.");
         }
 
+
+        [HttpGet("Packet{packetId}/Visit{visitNumber}", Name = "GetByVisitNumber")]
+        public async Task<VisitDto> GetByVisitNumber(int packetId, int visitNumber, string formKind)
+        {
+            var visit = await _context.Packets
+                .Include(v => v.FormStatuses)
+                .Include(v => v.PacketSubmissions)
+                    .ThenInclude(p => p.PacketSubmissionErrors)
+                .Where(v => v.Id == packetId && v.VISITNUM == visitNumber)
+                .FirstOrDefaultAsync();
+            if (visit == null)
+                return null;
+
+            await GetFormDataAsync(visit, formKind, packetId);
+
+            return visit.ToDto(formKind);
+        }
         [HttpPost]
         public async Task<VisitDto> Post([FromBody] VisitDto dto)
         {
@@ -408,6 +264,173 @@ namespace UDS.Net.API.Controllers
                 }
             }
             return formKind;
+        }
+
+        private async Task GetFormDataAsync(Packet visit, string formKind, int packetId)
+        {
+            // get details for form requested
+            if (formKind == "A1") // participant demographics
+            {
+                var a1 = await _context.A1s
+                    .Where(a => a.PacketId == packetId)
+                    .FirstOrDefaultAsync();
+
+                if (a1 != null)
+                    visit.A1 = a1;
+            }
+            else if (formKind == "A1a") // social determinants
+            {
+                var a1a = await _context.A1as
+                    .Where(a => a.PacketId == packetId)
+                    .FirstOrDefaultAsync();
+
+                if (a1a != null)
+                    visit.A1a = a1a;
+            }
+            else if (formKind == "A2") // co-participant demogrpahics
+            {
+                var a2 = await _context.A2s
+                    .Where(a => a.PacketId == packetId)
+                    .FirstOrDefaultAsync();
+
+                if (a2 != null)
+                    visit.A2 = a2;
+            }
+            else if (formKind == "A3") // family history
+            {
+                var a3 = await _context.A3s
+                    .Where(a => a.PacketId == packetId)
+                    .FirstOrDefaultAsync();
+
+                if (a3 != null)
+                    visit.A3 = a3;
+            }
+            else if (formKind == "A4") // medications
+            {
+                var a4 = await _context.A4s
+                    .Where(a => a.PacketId == packetId)
+                    .FirstOrDefaultAsync();
+
+                if (a4 != null)
+                    visit.A4 = a4;
+            }
+            else if (formKind == "A4a") // ADRD-specific treatment
+            {
+                var a4a = await _context.A4as
+                    .Where(a => a.PacketId == packetId)
+                    .FirstOrDefaultAsync();
+
+                if (a4a != null)
+                    visit.A4a = a4a;
+            }
+            else if (formKind == "A5D2") // health history and clinician-assessed medical conditions
+            {
+                var a5d2 = await _context.A5D2s
+                    .Where(a => a.PacketId == packetId)
+                    .FirstOrDefaultAsync();
+
+                if (a5d2 != null)
+                    visit.A5D2 = a5d2;
+            }
+            else if (formKind == "B1") // evaluation form - physical
+            {
+                var b1 = await _context.B1s
+                    .Where(a => a.PacketId == packetId)
+                    .FirstOrDefaultAsync();
+
+                if (b1 != null)
+                    visit.B1 = b1;
+            }
+            else if (formKind == "B3") // updrs
+            {
+                var b3 = await _context.B3s
+                    .Where(b => b.PacketId == packetId)
+                    .FirstOrDefaultAsync();
+
+                if (b3 != null)
+                    visit.B3 = b3;
+            }
+            else if (formKind == "B4") // cdr plus ftld
+            {
+                var b4 = await _context.B4s
+                    .Where(a => a.PacketId == packetId)
+                    .FirstOrDefaultAsync();
+
+                if (b4 != null)
+                    visit.B4 = b4;
+            }
+            else if (formKind == "B5") // npi-q
+            {
+                var b5 = await _context.B5s
+                    .Where(a => a.PacketId == packetId)
+                    .FirstOrDefaultAsync();
+
+                if (b5 != null)
+                    visit.B5 = b5;
+            }
+            else if (formKind == "B6") // gds
+            {
+                var b6 = await _context.B6s
+                    .Where(a => a.PacketId == packetId)
+                    .FirstOrDefaultAsync();
+
+                if (b6 != null)
+                    visit.B6 = b6;
+            }
+            else if (formKind == "B7") // faqs
+            {
+                var b7 = await _context.B7s
+                    .Where(a => a.PacketId == packetId)
+                    .FirstOrDefaultAsync();
+
+                if (b7 != null)
+                    visit.B7 = b7;
+            }
+            else if (formKind == "B8") // neurological examination findings
+            {
+                var b8 = await _context.B8s
+                    .Where(a => a.PacketId == packetId)
+                    .FirstOrDefaultAsync();
+
+                if (b8 != null)
+                    visit.B8 = b8;
+            }
+            else if (formKind == "B9") // symptoms
+            {
+                var b9 = await _context.B9s
+                    .Where(a => a.PacketId == packetId)
+                    .FirstOrDefaultAsync();
+
+                if (b9 != null)
+                    visit.B9 = b9;
+            }
+            else if (formKind == "C2") // neuro battery scores (moca, etc.)
+            {
+                var c2 = await _context.C2s
+                    .Where(a => a.PacketId == packetId)
+                    .FirstOrDefaultAsync();
+
+                if (c2 != null)
+                    visit.C2 = c2;
+            }
+            else if (formKind == "D1a") // clinician diagnosis
+            {
+                var d1a = await _context.D1as
+                    .Where(a => a.PacketId == packetId)
+                    .FirstOrDefaultAsync();
+
+                if (d1a != null)
+                    visit.D1a = d1a;
+            }
+            else if (formKind == "D1b") // clinician diagnosis
+            {
+                var d1b = await _context.D1bs
+                    .Where(a => a.PacketId == packetId)
+                    .FirstOrDefaultAsync();
+
+                if (d1b != null)
+                    visit.D1b = d1b;
+            }
         }
 
         private void CreateOrUpdateFormInModel(Packet visit, FormDto formDto)

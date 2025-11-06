@@ -17,6 +17,8 @@ namespace UDS.Net.API.Client
 
         Task<VisitDto> GetWithForm(int id, string formKind);
 
+        Task<VisitDto> GetByVisitNumber(int packetId, int visitNumber, string formKind);
+
         Task PostWithForm(int id, string formKind, VisitDto dto);
     }
 }
