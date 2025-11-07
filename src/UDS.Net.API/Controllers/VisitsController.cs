@@ -197,6 +197,7 @@ namespace UDS.Net.API.Controllers
             if (!String.IsNullOrWhiteSpace(formKind))
             {
                 var visit = await _context.Packets
+                    .AsNoTracking()
                     .Include(v => v.FormStatuses)
                     .Include(v => v.PacketSubmissions)
                         .ThenInclude(p => p.PacketSubmissionErrors)
