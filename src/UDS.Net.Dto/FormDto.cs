@@ -43,6 +43,8 @@ namespace UDS.Net.Dto
 
         public string RMMODE { get; set; }
 
+        public string ADMIN { get; set; }
+
         public string NOT { get; set; }
 
         public int? UnresolvedErrorCount { get; set; }

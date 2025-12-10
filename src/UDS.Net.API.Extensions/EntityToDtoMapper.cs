@@ -237,6 +237,7 @@ namespace UDS.Net.API.Extensions
                 dto.MODE = form.MODE.HasValue ? ((int)form.MODE).ToString() : "";
                 dto.RMREAS = form.RMREAS.HasValue ? ((int)form.RMREAS).ToString() : "";
                 dto.RMMODE = form.RMMODE.HasValue ? ((int)form.RMMODE).ToString() : "";
+                dto.ADMIN = form.ADMIN.HasValue ? ((int)form.ADMIN).ToString() : "";
                 dto.NOT = form.NOT.HasValue ? ((int)form.NOT).ToString() : "";
             }
         }
