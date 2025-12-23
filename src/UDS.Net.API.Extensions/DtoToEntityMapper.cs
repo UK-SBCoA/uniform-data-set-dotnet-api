@@ -59,6 +59,14 @@ namespace UDS.Net.API.Extensions
                     entity.RMMODE = remoteMode;
             }
 
+            if (String.IsNullOrWhiteSpace(dto.ADMIN))
+                entity.ADMIN = null;
+            else
+            {
+                if (Enum.TryParse(dto.ADMIN, true, out AdministrationFormat administratedBy))
+                    entity.ADMIN = administratedBy;
+            }
+
             if (String.IsNullOrWhiteSpace(dto.NOT))
                 entity.NOT = null;
             else

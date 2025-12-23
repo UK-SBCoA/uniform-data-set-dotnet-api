@@ -40,6 +40,9 @@ namespace UDS.Net.API.Entities
 
         [Column("NOT", Order = 9)] // A2NOT, A4NOT, A4ANOT, B1NOT, B3NOT, B5NOT, B6NOT, B7NOT
         public NotIncludedReasonCode? NOT { get; set; }
+
+        [Column("ADMIN", Order = 10)]
+        public AdministrationFormat? ADMIN { get; set; }
     }
 }
 
