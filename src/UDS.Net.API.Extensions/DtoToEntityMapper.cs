@@ -160,6 +160,24 @@ namespace UDS.Net.API.Extensions
             };
         }
 
+        public static M1Submission Convert(this M1SubmissionDto dto)
+        {
+            return new M1Submission
+            {
+                Id = dto.Id,
+                SubmissionDate = dto.SubmissionDate,
+                CreatedAt = dto.CreatedAt,
+                CreatedBy = dto.CreatedBy,
+                ModifiedBy = dto.ModifiedBy,
+                IsDeleted = dto.IsDeleted,
+                DeletedBy = dto.DeletedBy,
+                ErrorCount = dto.ErrorCount,
+                M1SubmissionErrors = dto.M1SubmissionErrors?
+                    .Select(e => e.Convert())
+                    .ToList() ?? new List<M1SubmissionError>()
+            };
+        }
+
         public static PacketSubmissionError Convert(this PacketSubmissionErrorDto dto)
         {
             var entity = new PacketSubmissionError
@@ -191,6 +209,38 @@ namespace UDS.Net.API.Extensions
                     entity.Status = status;
             }
 
+            return entity;
+        }
+
+        public static M1SubmissionError Convert(this M1SubmissionErrorDto dto)
+        {
+            var entity = new M1SubmissionError
+            {
+                Id = dto.Id,
+                M1SubmissionId = dto.M1SubmissionId,
+                FormKind = dto.FormKind,
+                Message = dto.Message,
+                AssignedTo = dto.AssignedTo,
+                StatusChangedBy = dto.StatusChangedBy,
+                CreatedAt = dto.CreatedAt,
+                CreatedBy = dto.CreatedBy,
+                ModifiedBy = dto.ModifiedBy,
+                IsDeleted = dto.IsDeleted,
+                DeletedBy = dto.DeletedBy,
+                Location = dto.Location,
+                Value = dto.Value,
+            };
+
+            if (!string.IsNullOrWhiteSpace(dto.Level))
+            {
+                if (Enum.TryParse(dto.Level, true, out M1SubmissionErrorLevel level))
+                    entity.Level = level;
+            }
+            if (!string.IsNullOrWhiteSpace(dto.Status))
+            {
+                if (Enum.TryParse(dto.Status, true, out M1SubmissionErrorStatus status))
+                    entity.Status = status;
+            }
             return entity;
         }
 
