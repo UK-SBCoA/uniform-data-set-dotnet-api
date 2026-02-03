@@ -1661,9 +1661,9 @@ namespace UDS.Net.API.Extensions
                 IsDeleted = m1Submission.IsDeleted,
                 DeletedBy = m1Submission.DeletedBy,
                 ErrorCount = m1Submission.ErrorCount,
-                M1SubmissionErrors = m1Submission.M1SubmissionErrors
+                M1SubmissionErrors = m1Submission.M1SubmissionErrors?
                     .Select(e => e.ToDto())
-                    .ToList()
+                    .ToList() ?? new List<M1SubmissionErrorDto>()
             };
 
             return dto;

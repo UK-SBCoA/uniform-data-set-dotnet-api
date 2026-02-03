@@ -28,6 +28,8 @@ namespace UDS.Net.API.Controllers
         public async Task<IEnumerable<M1Dto>> Get(int pageSize = 10, int pageIndex = 1)
         {
             var dto = await _context.M1s
+                .Include(m => m.M1Submissions)
+                    .ThenInclude(s => s.M1SubmissionErrors)
                 .AsNoTracking()
                 .Skip((pageIndex - 1) * pageSize)
                 .Take(pageSize)
@@ -50,6 +52,8 @@ namespace UDS.Net.API.Controllers
         public async Task<M1Dto> Get(int id)
         {
             var dto = await _context.M1s
+                .Include(m => m.M1Submissions)
+                    .ThenInclude(s => s.M1SubmissionErrors)
                 .Where(m => m.FormId == id)
                 .Select(m => m.ToDto())
                 .FirstOrDefaultAsync();
