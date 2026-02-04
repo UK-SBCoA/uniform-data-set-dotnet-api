@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace UDS.Net.Dto
 {
-    public class M1Dto : BaseDto
+    public class M1Dto : FormDto
     {
         public int ParticipationId { get; set; }
         public ParticipationDto Participation { get; set; }

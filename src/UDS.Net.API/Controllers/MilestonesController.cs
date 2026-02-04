@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using UDS.Net.API.Client;
 using UDS.Net.API.Data;
+using UDS.Net.API.Entities;
 using UDS.Net.API.Extensions;
 using UDS.Net.Dto;
 
@@ -86,19 +87,75 @@ namespace UDS.Net.API.Controllers
         [HttpPut("{id}")]
         public async Task<M1Dto> Put(int id, [FromBody] M1Dto dto)
         {
-            var existingMilestone = await _context.M1s
-                .Where(m => m.FormId == id)
-                .FirstOrDefaultAsync();
-
-            if (existingMilestone != null)
+            if (dto != null)
             {
-                existingMilestone.Update(dto);
-                _context.M1s.Update(existingMilestone);
+                var existingM1 = await _context.M1s
+                    .Include(v => v.M1Submissions)
+                        .ThenInclude(p => p.M1SubmissionErrors)
+                    .Where(m => m.FormId == id)
+                    .FirstOrDefaultAsync();
 
-                await _context.SaveChangesAsync();
-                return existingMilestone.ToDto();
+                if (existingM1 != null)
+                {
+                    existingM1.Status = dto.Status;
+                    existingM1.ModifiedBy = dto.ModifiedBy;
+
+                    foreach (var submissionDto in dto.M1Submissions ?? Enumerable.Empty<M1SubmissionDto>())
+                    {
+                        if (submissionDto.Id == 0)
+                        {
+                            var newSubmission = submissionDto.Convert();
+                            existingM1.M1Submissions.Add(newSubmission);
+                        }
+                        else
+                        {
+                            var existingSubmission = existingM1.M1Submissions.Where(p => p.Id == submissionDto.Id).FirstOrDefault();
+                            if (existingSubmission != null)
+                            {
+                                existingSubmission.ErrorCount = submissionDto.ErrorCount;
+                                existingSubmission.ModifiedBy = submissionDto.ModifiedBy;
+                                existingSubmission.IsDeleted = submissionDto.IsDeleted;
+                                existingSubmission.DeletedBy = submissionDto.DeletedBy;
+
+                                foreach (var errorDto in submissionDto.M1SubmissionErrors)
+                                {
+                                    if (errorDto.Id == 0)
+                                    {
+                                        var newError = errorDto.Convert();
+                                        existingSubmission.M1SubmissionErrors.Add(newError);
+                                    }
+                                    else
+                                    {
+                                        var existingError = existingSubmission.M1SubmissionErrors.Where(e => e.Id == errorDto.Id).FirstOrDefault();
+                                        if (existingError != null)
+                                        {
+                                            existingError.AssignedTo = errorDto.AssignedTo;
+                                            existingError.StatusChangedBy = errorDto.StatusChangedBy;
+                                            existingError.FormKind = errorDto.FormKind;
+                                            existingError.Message = errorDto.Message;
+                                            existingError.ModifiedBy = errorDto.ModifiedBy;
+                                            existingError.IsDeleted = errorDto.IsDeleted;
+                                            existingError.DeletedBy = errorDto.DeletedBy;
+                                            existingError.Location = errorDto.Location;
+                                            existingError.Value = errorDto.Value;
+
+                                            if (!string.IsNullOrWhiteSpace(errorDto.Status))
+                                            {
+                                                if (Enum.TryParse(errorDto.Status, true, out M1SubmissionErrorStatus status))
+                                                    existingError.Status = status;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    _context.M1s.Update(existingM1);
+                    await _context.SaveChangesAsync();
+
+                    return existingM1.ToDto();
+                }
             }
-
             return dto;
         }
 
