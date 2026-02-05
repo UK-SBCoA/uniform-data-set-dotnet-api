@@ -12,8 +12,8 @@ using UDS.Net.API.Data;
 namespace UDS.Net.API.Data.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    [Migration("20260204195201_AddM1Submission2")]
-    partial class AddM1Submission2
+    [Migration("20260205143839_AddM1Submission")]
+    partial class AddM1Submission
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -4802,9 +4802,6 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<string>("FTLDREAX")
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
-
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");

@@ -12,7 +12,7 @@ namespace UDS.Net.API.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "M1Submission",
+                name: "M1Submissions",
                 columns: table => new
                 {
                     MilestoneSubmissionId = table.Column<int>(type: "int", nullable: false)
@@ -29,9 +29,9 @@ namespace UDS.Net.API.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_M1Submission", x => x.MilestoneSubmissionId);
+                    table.PrimaryKey("PK_M1Submissions", x => x.MilestoneSubmissionId);
                     table.ForeignKey(
-                        name: "FK_M1Submission_tbl_M1s_M1FormId",
+                        name: "FK_M1Submissions_tbl_M1s_M1FormId",
                         column: x => x.M1FormId,
                         principalTable: "tbl_M1s",
                         principalColumn: "FormId",
@@ -39,7 +39,7 @@ namespace UDS.Net.API.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "M1SubmissionError",
+                name: "M1SubmissionErrors",
                 columns: table => new
                 {
                     M1SubmissionErrorId = table.Column<int>(type: "int", nullable: false)
@@ -61,34 +61,34 @@ namespace UDS.Net.API.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_M1SubmissionError", x => x.M1SubmissionErrorId);
+                    table.PrimaryKey("PK_M1SubmissionErrors", x => x.M1SubmissionErrorId);
                     table.ForeignKey(
-                        name: "FK_M1SubmissionError_M1Submission_M1SubmissionId",
+                        name: "FK_M1SubmissionErrors_M1Submissions_M1SubmissionId",
                         column: x => x.M1SubmissionId,
-                        principalTable: "M1Submission",
+                        principalTable: "M1Submissions",
                         principalColumn: "MilestoneSubmissionId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_M1Submission_M1FormId",
-                table: "M1Submission",
-                column: "M1FormId");
+                name: "IX_M1SubmissionErrors_M1SubmissionId",
+                table: "M1SubmissionErrors",
+                column: "M1SubmissionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_M1SubmissionError_M1SubmissionId",
-                table: "M1SubmissionError",
-                column: "M1SubmissionId");
+                name: "IX_M1Submissions_M1FormId",
+                table: "M1Submissions",
+                column: "M1FormId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "M1SubmissionError");
+                name: "M1SubmissionErrors");
 
             migrationBuilder.DropTable(
-                name: "M1Submission");
+                name: "M1Submissions");
         }
     }
 }
