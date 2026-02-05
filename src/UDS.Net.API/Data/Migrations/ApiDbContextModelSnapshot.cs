@@ -4880,7 +4880,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int>("M1FormId")
+                    b.Property<int>("M1Id")
                         .HasColumnType("int");
 
                     b.Property<string>("ModifiedBy")
@@ -4894,7 +4894,7 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("M1FormId");
+                    b.HasIndex("M1Id");
 
                     b.ToTable("M1Submissions");
                 });
@@ -7138,7 +7138,7 @@ namespace UDS.Net.API.Data.Migrations
                 {
                     b.HasOne("UDS.Net.API.Entities.M1", "M1")
                         .WithMany("M1Submissions")
-                        .HasForeignKey("M1FormId")
+                        .HasForeignKey("M1Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

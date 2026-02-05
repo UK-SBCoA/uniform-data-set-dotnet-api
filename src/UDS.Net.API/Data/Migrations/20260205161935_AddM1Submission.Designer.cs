@@ -12,7 +12,7 @@ using UDS.Net.API.Data;
 namespace UDS.Net.API.Data.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    [Migration("20260205143839_AddM1Submission")]
+    [Migration("20260205161935_AddM1Submission")]
     partial class AddM1Submission
     {
         /// <inheritdoc />
@@ -4883,7 +4883,7 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int>("M1FormId")
+                    b.Property<int>("M1Id")
                         .HasColumnType("int");
 
                     b.Property<string>("ModifiedBy")
@@ -4897,7 +4897,7 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("M1FormId");
+                    b.HasIndex("M1Id");
 
                     b.ToTable("M1Submissions");
                 });
@@ -7141,7 +7141,7 @@ namespace UDS.Net.API.Data.Migrations
                 {
                     b.HasOne("UDS.Net.API.Entities.M1", "M1")
                         .WithMany("M1Submissions")
-                        .HasForeignKey("M1FormId")
+                        .HasForeignKey("M1Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

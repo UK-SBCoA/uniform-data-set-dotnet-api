@@ -18,9 +18,9 @@ namespace UDS.Net.API.Data.Migrations
                     MilestoneSubmissionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SubmissionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    M1FormId = table.Column<int>(type: "int", nullable: false),
                     PacketId = table.Column<int>(type: "int", nullable: false),
                     ErrorCount = table.Column<int>(type: "int", nullable: true),
+                    M1Id = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -31,8 +31,8 @@ namespace UDS.Net.API.Data.Migrations
                 {
                     table.PrimaryKey("PK_M1Submissions", x => x.MilestoneSubmissionId);
                     table.ForeignKey(
-                        name: "FK_M1Submissions_tbl_M1s_M1FormId",
-                        column: x => x.M1FormId,
+                        name: "FK_M1Submissions_tbl_M1s_M1Id",
+                        column: x => x.M1Id,
                         principalTable: "tbl_M1s",
                         principalColumn: "FormId",
                         onDelete: ReferentialAction.Cascade);
@@ -76,9 +76,9 @@ namespace UDS.Net.API.Data.Migrations
                 column: "M1SubmissionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_M1Submissions_M1FormId",
+                name: "IX_M1Submissions_M1Id",
                 table: "M1Submissions",
-                column: "M1FormId");
+                column: "M1Id");
         }
 
         /// <inheritdoc />
