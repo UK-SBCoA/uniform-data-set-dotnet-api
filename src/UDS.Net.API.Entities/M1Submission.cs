@@ -22,5 +22,6 @@ namespace UDS.Net.API.Entities
         public int? ErrorCount { get; set; } // null means no results yet, 0 means no errors
 
         public List<M1SubmissionError> M1SubmissionErrors { get; set; } = new List<M1SubmissionError>();
+        public int M1Id { get; set; }
     }
 }

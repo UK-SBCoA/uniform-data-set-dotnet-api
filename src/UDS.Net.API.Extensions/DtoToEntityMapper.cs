@@ -160,11 +160,12 @@ namespace UDS.Net.API.Extensions
             };
         }
 
-        public static M1Submission Convert(this M1SubmissionDto dto)
+        public static M1Submission Convert(this M1SubmissionDto dto, int m1Id)
         {
             return new M1Submission
             {
                 Id = dto.Id,
+                M1Id = m1Id,
                 SubmissionDate = dto.SubmissionDate,
                 CreatedAt = dto.CreatedAt,
                 CreatedBy = dto.CreatedBy,

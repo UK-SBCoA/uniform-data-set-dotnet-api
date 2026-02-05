@@ -104,7 +104,7 @@ namespace UDS.Net.API.Controllers
                     {
                         if (submissionDto.Id == 0)
                         {
-                            var newSubmission = submissionDto.Convert();
+                            var newSubmission = submissionDto.Convert(existingM1.FormId);
                             existingM1.M1Submissions.Add(newSubmission);
                         }
                         else
@@ -117,7 +117,7 @@ namespace UDS.Net.API.Controllers
                                 existingSubmission.IsDeleted = submissionDto.IsDeleted;
                                 existingSubmission.DeletedBy = submissionDto.DeletedBy;
 
-                                foreach (var errorDto in submissionDto.M1SubmissionErrors)
+                                foreach (var errorDto in submissionDto.M1SubmissionErrors ?? Enumerable.Empty<M1SubmissionErrorDto>())
                                 {
                                     if (errorDto.Id == 0)
                                     {
