@@ -330,6 +330,12 @@ namespace UDS.Net.API.Controllers
             return dto;
         }
 
+        [HttpPost]
+        public async Task<List<VisitDto>> CreatePacketSubmissionErrors()
+        {
+            return null;
+        }
+
         [HttpDelete("{id}")]
         public async Task Delete(int id)
         {
