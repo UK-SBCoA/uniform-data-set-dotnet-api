@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
 using UDS.Net.API.Client;
 using UDS.Net.API.Data;
 using UDS.Net.API.Entities;
@@ -30,12 +32,16 @@ namespace UDS.Net.API.Controllers
         {
             var dto = await _context.M1s
                 .Include(m => m.M1Submissions)
-                    .ThenInclude(s => s.M1SubmissionErrors)
+                    .ThenInclude(s => s.M1SubmissionErrors)                   
                 .AsNoTracking()
                 .Skip((pageIndex - 1) * pageSize)
                 .Take(pageSize)
                 .Select(m => m.ToDto())
                 .ToListAsync();
+
+            var m1Submissions = await _context.M1Submissions.ToListAsync();
+
+            var m1SubmissionErrors = await _context.M1SubmissionErrors.ToListAsync();
 
             foreach (var m1 in dto)
             {

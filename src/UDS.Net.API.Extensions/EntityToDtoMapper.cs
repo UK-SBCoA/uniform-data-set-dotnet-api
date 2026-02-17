@@ -1579,9 +1579,15 @@ namespace UDS.Net.API.Extensions
                 ModifiedBy = m1.ModifiedBy,
                 DeletedBy = m1.DeletedBy,
                 IsDeleted = m1.IsDeleted,
-                MILESTONETYPE = m1.MILESTONETYPE
+                MILESTONETYPE = m1.MILESTONETYPE,
+
             };
 
+            if (m1.M1Submissions != null && m1.M1Submissions.Count() > 0)
+                {
+                    dto.M1SubmissionCount = m1.M1Submissions.Count();
+                    dto.M1Submissions = m1.M1Submissions.ToDto();
+                }
             return dto;
         }
 
