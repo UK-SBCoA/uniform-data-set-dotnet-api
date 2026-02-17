@@ -5,7 +5,7 @@ using UDS.Net.API.Entities;
 
 namespace UDS.Net.Dto
 {
-    public class M1Dto : FormDto
+    public class M1Dto : BaseDto
     {
         public int ParticipationId { get; set; }
         public ParticipationDto Participation { get; set; }

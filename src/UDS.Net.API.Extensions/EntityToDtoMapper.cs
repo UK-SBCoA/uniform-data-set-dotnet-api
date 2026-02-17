@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.NetworkInformation;
 using UDS.Net.API.Entities;
 using UDS.Net.Dto;
 
@@ -1248,7 +1247,8 @@ namespace UDS.Net.API.Extensions
                 UDSVERNF = c2.UDSVERNF,
                 UDSVERLC = c2.UDSVERLC,
                 UDSVERLR = c2.UDSVERLR,
-                UDSVERLN = c2.UDSVERTN,
+                UDSVERLN = c2.UDSVERLN,
+                UDSVERTN = c2.UDSVERTN,
                 UDSVERTE = c2.UDSVERTE,
                 UDSVERTI = c2.UDSVERTI,
                 VERBALTEST = c2.VERBALTEST,

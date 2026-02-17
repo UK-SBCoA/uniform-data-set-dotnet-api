@@ -39,10 +39,6 @@ namespace UDS.Net.API.Controllers
                 .Select(m => m.ToDto())
                 .ToListAsync();
 
-            var m1Submissions = await _context.M1Submissions.ToListAsync();
-
-            var m1SubmissionErrors = await _context.M1SubmissionErrors.ToListAsync();
-
             foreach (var m1 in dto)
             {
                 m1.Participation = await _context.Participations
@@ -90,6 +86,25 @@ namespace UDS.Net.API.Controllers
             return null;
         }
 
+        private void MapErrorDtoToError(M1SubmissionErrorDto dto, M1SubmissionError entity)
+        {
+            entity.AssignedTo = dto.AssignedTo;
+            entity.StatusChangedBy = dto.StatusChangedBy;
+            entity.FormKind = dto.FormKind;
+            entity.Message = dto.Message;
+            entity.ModifiedBy = dto.ModifiedBy;
+            entity.IsDeleted = dto.IsDeleted;
+            entity.DeletedBy = dto.DeletedBy;
+            entity.Location = dto.Location;
+            entity.Value = dto.Value;
+
+            if (!string.IsNullOrWhiteSpace(dto.Status) &&
+                Enum.TryParse(dto.Status, true, out M1SubmissionErrorStatus status))
+            {
+                entity.Status = status;
+            }
+        }
+
         [HttpPut("{id}")]
         public async Task<M1Dto> Put(int id, [FromBody] M1Dto dto)
         {
@@ -135,21 +150,7 @@ namespace UDS.Net.API.Controllers
                                         var existingError = existingSubmission.M1SubmissionErrors.Where(e => e.Id == errorDto.Id).FirstOrDefault();
                                         if (existingError != null)
                                         {
-                                            existingError.AssignedTo = errorDto.AssignedTo;
-                                            existingError.StatusChangedBy = errorDto.StatusChangedBy;
-                                            existingError.FormKind = errorDto.FormKind;
-                                            existingError.Message = errorDto.Message;
-                                            existingError.ModifiedBy = errorDto.ModifiedBy;
-                                            existingError.IsDeleted = errorDto.IsDeleted;
-                                            existingError.DeletedBy = errorDto.DeletedBy;
-                                            existingError.Location = errorDto.Location;
-                                            existingError.Value = errorDto.Value;
-
-                                            if (!string.IsNullOrWhiteSpace(errorDto.Status))
-                                            {
-                                                if (Enum.TryParse(errorDto.Status, true, out M1SubmissionErrorStatus status))
-                                                    existingError.Status = status;
-                                            }
+                                            MapErrorDtoToError(errorDto, existingError);
                                         }
                                     }
                                 }
