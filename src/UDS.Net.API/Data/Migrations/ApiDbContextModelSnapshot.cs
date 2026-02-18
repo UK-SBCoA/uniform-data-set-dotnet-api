@@ -4886,9 +4886,6 @@ namespace UDS.Net.API.Data.Migrations
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PacketId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("SubmissionDate")
                         .HasColumnType("datetime2");
 

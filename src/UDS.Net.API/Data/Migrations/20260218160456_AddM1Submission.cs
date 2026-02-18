@@ -18,7 +18,6 @@ namespace UDS.Net.API.Data.Migrations
                     MilestoneSubmissionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SubmissionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PacketId = table.Column<int>(type: "int", nullable: false),
                     ErrorCount = table.Column<int>(type: "int", nullable: true),
                     M1Id = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),

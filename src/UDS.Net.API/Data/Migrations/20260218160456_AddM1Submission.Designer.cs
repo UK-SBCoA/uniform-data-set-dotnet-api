@@ -12,7 +12,7 @@ using UDS.Net.API.Data;
 namespace UDS.Net.API.Data.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    [Migration("20260205161935_AddM1Submission")]
+    [Migration("20260218160456_AddM1Submission")]
     partial class AddM1Submission
     {
         /// <inheritdoc />
@@ -4888,9 +4888,6 @@ namespace UDS.Net.API.Data.Migrations
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PacketId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("SubmissionDate")
                         .HasColumnType("datetime2");
