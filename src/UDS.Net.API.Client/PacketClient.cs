@@ -95,6 +95,11 @@ namespace UDS.Net.API.Client
 
             return dto;
         }
+
+        public async Task<List<PacketDto>> CreatePacketSubmissionErrors(string username, List<NACCErrorDto> errors)
+        {
+            return null;
+        }
     }
 }
 

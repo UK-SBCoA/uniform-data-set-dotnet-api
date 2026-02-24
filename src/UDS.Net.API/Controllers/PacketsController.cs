@@ -330,11 +330,108 @@ namespace UDS.Net.API.Controllers
             return dto;
         }
 
-        [HttpPost]
-        public async Task<List<VisitDto>> CreatePacketSubmissionErrors()
+        /// <summary>
+        /// Import nacc errors and modify packet statuses
+        /// </summary>
+        /// <param name="errorDtos"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        [HttpPost("Import packet submission errors")]
+        public async Task<List<PacketDto>> CreatePacketSubmissionErrors(string username, [FromBody] List<NACCErrorDto> errors)
         {
+            //Group errors by PTID
+            var groupedErrors = errors.GroupBy(e => e.Ptid);
+
+            foreach(var errorGroup in groupedErrors)
+            {
+                var groupPtid = errorGroup.First().Ptid;
+
+                var groupParticipation = await _context.Participations
+                    .Include(p => p.Packets)
+                        .ThenInclude(ps => ps.PacketSubmissions)
+                    .Where(p => p.LegacyId == groupPtid)
+                    .FirstOrDefaultAsync();
+
+                //DEVNOTE: should errors in a file of the same PTID should be the same visit number?
+                var groupPacket = groupParticipation?.Packets.Where(p => p.VISITNUM.ToString() == errorGroup.First().Visitnum).FirstOrDefault();
+
+                var groupSubmission = groupPacket?.PacketSubmissions.Where(p => p.ErrorCount == null).FirstOrDefault();
+
+                //DEVNOTE: If group packet and group submission are found
+                List<PacketSubmissionError> errorsToAddCreate = new List<PacketSubmissionError>();
+
+                foreach (var error in errorGroup)
+                {
+                    PacketSubmissionError newPacketSubmissionError = new PacketSubmissionError()
+                    {
+                        Id = 0,
+                        PacketSubmissionId = groupSubmission.Id,
+                        FormKind = error.Code.Split("-")[0].ToUpper(),
+                        Message = error.Message,
+                        AssignedTo = groupPacket.CreatedBy,
+                        Level = GetErrorLevel(error.Type),
+                        Status = PacketSubmissionErrorStatus.Pending,
+                        StatusChangedBy = null,
+                        CreatedAt = DateTime.Now,
+                        CreatedBy = username,
+                        ModifiedBy = null,
+                        DeletedBy = null,
+                        IsDeleted = false,
+                        Location = error.Location?.ToUpper(),
+                        Value = error.Value
+                    };
+
+                    errorsToAddCreate.Add(newPacketSubmissionError);
+                }
+
+                //DEVNOTE: Update each entity seperately
+                //Packet
+                groupPacket.Status = PacketStatus.FailedErrorChecks;
+                _context.Packets.Update(groupPacket);
+
+                //PacketSubmission
+                groupSubmission.ErrorCount = errorsToAddCreate.Count;
+                _context.PacketSubmissions.Update(groupSubmission);
+
+                //PacketSubmissionErrors
+                //save range of new packetSubmissionErrors
+                _context.PacketSubmissionErrors.AddRange(errorsToAddCreate);
+            }
+
+            //DEVNOTE: why can't i await here? 
+            //_context.SaveChanges();
+            var entries = _context.ChangeTracker.Entries().Where(e => e.State == EntityState.Added || e.State == EntityState.Modified);
+
             return null;
         }
+
+        private static PacketSubmissionErrorLevel GetErrorLevel(string errorType)
+        {
+            if (errorType.Trim().ToLower() == "alert")
+            {
+                return PacketSubmissionErrorLevel.Information;
+            }
+            else if (errorType.Trim().ToLower() == "error")
+            {
+                return PacketSubmissionErrorLevel.Error;
+            }
+
+            //return information as default
+            return PacketSubmissionErrorLevel.Information;
+        }
+
+        //[{
+        //  "message": "Test error",
+        //  "code": "NACCCODE",
+        //  "value": "test",
+        //  "location": "MOMYOB",
+        //  "timestamp": "00:00:0000",
+        //  "approved": "false",
+        //  "type": "error",
+        //  "visitnum": "2",
+        //  "file": "test.csv",
+        //  "ptid": "1"
+        //}]
 
         [HttpDelete("{id}")]
         public async Task Delete(int id)
