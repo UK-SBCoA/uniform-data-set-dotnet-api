@@ -337,7 +337,7 @@ namespace UDS.Net.API.Controllers
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
         [HttpPost("Import packet submission errors")]
-        public async Task<List<PacketDto>> CreatePacketSubmissionErrors(string username, [FromBody] List<NACCErrorDto> errors)
+        public async Task<List<PacketSubmissionErrorDto>> CreatePacketSubmissionErrors(string username, [FromBody] List<NACCErrorDto> errors)
         {
             //Group errors by PTID
             var groupedErrors = errors.GroupBy(e => e.Ptid);
@@ -384,24 +384,18 @@ namespace UDS.Net.API.Controllers
                     errorsToAddCreate.Add(newPacketSubmissionError);
                 }
 
-                //DEVNOTE: Update each entity seperately
-                //Packet
+                //DEVNOTE: Update the packet with new data
                 groupPacket.Status = PacketStatus.FailedErrorChecks;
+                groupPacket.PacketSubmissions.Last().ErrorCount = errorsToAddCreate.Count;
+                groupPacket.PacketSubmissions.Last().PacketSubmissionErrors = errorsToAddCreate;
+
+                //Update the packet
+
+                //var packetUpdating = groupPacket;
                 _context.Packets.Update(groupPacket);
-
-                //PacketSubmission
-                groupSubmission.ErrorCount = errorsToAddCreate.Count;
-                _context.PacketSubmissions.Update(groupSubmission);
-
-                //PacketSubmissionErrors
-                //save range of new packetSubmissionErrors
-                _context.PacketSubmissionErrors.AddRange(errorsToAddCreate);
             }
 
-            //DEVNOTE: why can't i await here? 
-            //_context.SaveChanges();
-            var entries = _context.ChangeTracker.Entries().Where(e => e.State == EntityState.Added || e.State == EntityState.Modified);
-
+            await _context.SaveChangesAsync();
             return null;
         }
 
