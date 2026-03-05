@@ -337,8 +337,11 @@ namespace UDS.Net.API.Controllers
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
         [HttpPost("Import packet submission errors")]
-        public async Task<List<PacketSubmissionErrorDto>> CreatePacketSubmissionErrors(string username, [FromBody] List<NACCErrorDto> errors)
+        public async Task<List<NACCErrorDto>> CreatePacketSubmissionErrors(string username, [FromBody] List<NACCErrorDto> errors)
         {
+            //DEVNOTE: a list of packetsubmission errors to return 
+            List<PacketSubmissionErrorDto> errorsImported = new List<PacketSubmissionErrorDto>();
+
             //Group errors by PTID
             var groupedErrors = errors.GroupBy(e => e.Ptid);
 
@@ -396,7 +399,8 @@ namespace UDS.Net.API.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return null;
+
+            return errors;
         }
 
         private static PacketSubmissionErrorLevel GetErrorLevel(string errorType)
