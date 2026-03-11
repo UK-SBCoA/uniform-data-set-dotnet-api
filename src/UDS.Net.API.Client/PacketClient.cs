@@ -98,7 +98,15 @@ namespace UDS.Net.API.Client
 
         public async Task<List<NACCErrorDto>> CreatePacketSubmissionErrors(string username, List<NACCErrorDto> errors)
         {
-            return null;
+            string json = JsonSerializer.Serialize(errors);
+
+            var response = await PostRequest($"{_BasePath}/CreatePacketSubmissionErrors", json);
+
+            //return data
+            //DrugCodeDto? added = JsonSerializer.Deserialize<DrugCodeDto>(response, options);
+
+            //DEVNOTE: temp return of nacc errors that were sent
+            return errors;
         }
     }
 }
