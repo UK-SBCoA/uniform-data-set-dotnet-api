@@ -335,7 +335,6 @@ namespace UDS.Net.API.Controllers
         /// </summary>
         /// <param name="errorDtos"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         [HttpPost("Import packet submission errors")]
         public async Task<List<NACCErrorDto>> CreatePacketSubmissionErrors(string username, [FromBody] List<NACCErrorDto> errors)
         {
