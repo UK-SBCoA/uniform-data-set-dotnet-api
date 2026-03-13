@@ -96,11 +96,11 @@ namespace UDS.Net.API.Client
             return dto;
         }
 
-        public async Task<List<NACCErrorDto>> CreatePacketSubmissionErrors(string username, List<NACCErrorDto> errors)
+        public async Task<List<NACCErrorDto>> CreatePacketSubmissionErrors(string username, int id, int submissionId, List<NACCErrorDto> errors)
         {
             string json = JsonSerializer.Serialize(errors);
 
-            var response = await PostRequest($"{_BasePath}/CreatePacketSubmissionErrors", json);
+            var response = await PutRequest($"{_BasePath}/{id}/Submissions/{submissionId}", json);
 
             //return data
             //DrugCodeDto? added = JsonSerializer.Deserialize<DrugCodeDto>(response, options);
