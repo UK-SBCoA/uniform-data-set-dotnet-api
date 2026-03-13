@@ -16,5 +16,6 @@ namespace UDS.Net.Dto
         public string Ptid { get; set; }
         public string Visitnum { get; set; }
         public string Approved { get; set; }
+        public string ImportedBy { get; set; }
     }
 }

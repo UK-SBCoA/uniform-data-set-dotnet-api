@@ -14,6 +14,6 @@ namespace UDS.Net.API.Client
 
         Task<List<PacketDto>> GetPacketsByStatusAndAssignee(string[] statuses, string assignedTo, int pageSize = 10, int pageIndex = 1);
 
-        Task<List<NACCErrorDto>> UpdateMultiplePacketsSubmissionsErrors(string username, List<NACCErrorDto> errors);
+        Task<List<NACCErrorDto>> UpdateMultiplePacketsSubmissionsErrors(List<NACCErrorDto> errors);
     }
 }

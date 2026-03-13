@@ -96,7 +96,7 @@ namespace UDS.Net.API.Client
             return dto;
         }
 
-        public async Task<List<NACCErrorDto>> UpdateMultiplePacketsSubmissionsErrors(string username, List<NACCErrorDto> errors)
+        public async Task<List<NACCErrorDto>> UpdateMultiplePacketsSubmissionsErrors(List<NACCErrorDto> errors)
         {
             string json = JsonSerializer.Serialize(errors);
 
