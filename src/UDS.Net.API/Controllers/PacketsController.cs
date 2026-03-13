@@ -335,8 +335,8 @@ namespace UDS.Net.API.Controllers
         /// </summary>
         /// <param name="errorDtos"></param>
         /// <returns></returns>
-        [HttpPut("{id}/Submissions/{submissionId}")]
-        public async Task<List<NACCErrorDto>> CreatePacketSubmissionErrors(string username, int id, int submissionId, [FromBody] List<NACCErrorDto> errors)
+        [HttpPut("UpdateMultiplePacketsSubmissionsErrors")]
+        public async Task<List<NACCErrorDto>> UpdateMultiplePacketsSubmissionsErrors(string username, [FromBody] List<NACCErrorDto> errors)
         {
             //DEVNOTE: a list of packetsubmission errors to return 
             List<PacketSubmissionErrorDto> errorsImported = new List<PacketSubmissionErrorDto>();
