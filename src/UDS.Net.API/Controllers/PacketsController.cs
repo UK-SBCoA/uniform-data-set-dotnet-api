@@ -375,7 +375,7 @@ namespace UDS.Net.API.Controllers
                         Status = PacketSubmissionErrorStatus.Pending,
                         StatusChangedBy = null,
                         CreatedAt = DateTime.Now,
-                        CreatedBy = username,
+                        CreatedBy = error.ImportedBy,
                         ModifiedBy = null,
                         DeletedBy = null,
                         IsDeleted = false,
