@@ -347,7 +347,7 @@ namespace UDS.Net.API.Controllers
 
             foreach(var errorGroup in groupedErrors)
             {
-                var groupPtid = errorGroup.First().Ptid;
+                var groupPtid = errorGroup.Key;
 
                 var groupParticipation = await _context.Participations
                     .Include(p => p.Packets)
