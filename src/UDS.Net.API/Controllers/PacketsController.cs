@@ -330,6 +330,105 @@ namespace UDS.Net.API.Controllers
             return dto;
         }
 
+        /// <summary>
+        /// Import nacc errors and modify packet statuses
+        /// </summary>
+        /// <param name="Dtos"></param>
+        /// <returns></returns>
+        [HttpPut("UpdateMultiplePacketsSubmissionsErrors")]
+        public async Task<List<NACCErrorDto>> UpdateMultiplePacketsSubmissionsErrors([FromBody] List<NACCErrorDto> errors)
+        {
+            if(errors.Count() == 0)
+            {
+                return new List<NACCErrorDto>();
+            }
+
+            var groupedErrors = errors.GroupBy(e => e.Ptid);
+
+            foreach(var errorGroup in groupedErrors)
+            {
+                var groupPtid = errorGroup.Key;
+
+                var groupParticipation = await _context.Participations
+                    .Include(p => p.Packets)
+                        .ThenInclude(ps => ps.PacketSubmissions)
+                    .Where(p => p.LegacyId == groupPtid)
+                    .FirstOrDefaultAsync();
+
+                //DEVNOTE: Group packet assumes errors of the same PTID group are all the same visit number
+                var groupPacket = groupParticipation?.Packets.Where(p => p.VISITNUM.ToString() == errorGroup.First().Visitnum).FirstOrDefault();
+
+                //DEVNOTE: Group submission assumes the packet submission with NULL error count is the one to import errors to
+                var groupSubmission = groupPacket?.PacketSubmissions.Where(p => p.ErrorCount == null).FirstOrDefault();
+
+                if(groupPacket == null || groupSubmission == null)
+                {
+                    return new List<NACCErrorDto>();
+                }
+
+                List<PacketSubmissionError> errorsToAddCreate = new List<PacketSubmissionError>();
+
+                foreach (var error in errorGroup)
+                {
+                    PacketSubmissionError newPacketSubmissionError = new PacketSubmissionError()
+                    {
+                        Id = 0,
+                        PacketSubmissionId = groupSubmission.Id,
+                        FormKind = error.Code.Split("-")[0].ToUpper(),
+                        Message = error.Message,
+                        AssignedTo = groupPacket.CreatedBy,
+                        Level = GetErrorLevel(error.Type),
+                        Status = PacketSubmissionErrorStatus.Pending,
+                        StatusChangedBy = null,
+                        CreatedAt = DateTime.Now,
+                        CreatedBy = error.ImportedBy,
+                        ModifiedBy = null,
+                        DeletedBy = null,
+                        IsDeleted = false,
+                        Location = error.Location?.ToUpper(),
+                        Value = error.Value
+                    };
+
+                    errorsToAddCreate.Add(newPacketSubmissionError);
+                }
+
+                //Update the group packet with new data
+                groupPacket.Status = PacketStatus.FailedErrorChecks;
+                groupPacket.PacketSubmissions.Last().ErrorCount = errorsToAddCreate.Count;
+                groupPacket.PacketSubmissions.Last().PacketSubmissionErrors = errorsToAddCreate;
+
+                _context.Packets.Update(groupPacket);
+            }
+
+
+            try
+            {
+                await _context.SaveChangesAsync();
+
+                return errors;
+            }
+            catch (Exception ex)
+            {
+                return new List<NACCErrorDto>();
+            }
+        }
+
+        private static PacketSubmissionErrorLevel GetErrorLevel(string errorType)
+        {
+            //DEVNOTE: The error file currently returns alerts and errors. Add additional error levels as necessary
+            if (errorType.Trim().ToLower() == "alert")
+            {
+                return PacketSubmissionErrorLevel.Information;
+            }
+            else if (errorType.Trim().ToLower() == "error")
+            {
+                return PacketSubmissionErrorLevel.Error;
+            }
+
+            //return information as default
+            return PacketSubmissionErrorLevel.Error;
+        }
+
         [HttpDelete("{id}")]
         public async Task Delete(int id)
         {

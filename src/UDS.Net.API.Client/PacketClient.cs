@@ -95,6 +95,19 @@ namespace UDS.Net.API.Client
 
             return dto;
         }
+
+        public async Task<List<NACCErrorDto>> UpdateMultiplePacketsSubmissionsErrors(List<NACCErrorDto> errors)
+        {
+            string json = JsonSerializer.Serialize(errors);
+
+            var response = await PutRequest($"{_BasePath}/UpdateMultiplePacketsSubmissionsErrors", json);
+
+            //return data
+            //DrugCodeDto? added = JsonSerializer.Deserialize<DrugCodeDto>(response, options);
+
+            //DEVNOTE: temp return of nacc errors that were sent
+            return errors;
+        }
     }
 }
 
