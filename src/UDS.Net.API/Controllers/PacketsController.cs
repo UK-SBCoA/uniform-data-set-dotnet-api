@@ -333,15 +333,16 @@ namespace UDS.Net.API.Controllers
         /// <summary>
         /// Import nacc errors and modify packet statuses
         /// </summary>
-        /// <param name="errorDtos"></param>
+        /// <param name="Dtos"></param>
         /// <returns></returns>
         [HttpPut("UpdateMultiplePacketsSubmissionsErrors")]
         public async Task<List<NACCErrorDto>> UpdateMultiplePacketsSubmissionsErrors([FromBody] List<NACCErrorDto> errors)
         {
-            //DEVNOTE: a list of packetsubmission errors to return 
-            List<PacketSubmissionErrorDto> errorsImported = new List<PacketSubmissionErrorDto>();
+            if(errors.Count() == 0)
+            {
+                return new List<NACCErrorDto>();
+            }
 
-            //Group errors by PTID
             var groupedErrors = errors.GroupBy(e => e.Ptid);
 
             foreach(var errorGroup in groupedErrors)
@@ -354,12 +355,17 @@ namespace UDS.Net.API.Controllers
                     .Where(p => p.LegacyId == groupPtid)
                     .FirstOrDefaultAsync();
 
-                //DEVNOTE: should errors in a file of the same PTID should be the same visit number?
+                //DEVNOTE: Group packet assumes errors of the same PTID group are all the same visit number
                 var groupPacket = groupParticipation?.Packets.Where(p => p.VISITNUM.ToString() == errorGroup.First().Visitnum).FirstOrDefault();
 
+                //DEVNOTE: Group submission assumes the packet submission with NULL error count is the one to import errors to
                 var groupSubmission = groupPacket?.PacketSubmissions.Where(p => p.ErrorCount == null).FirstOrDefault();
 
-                //DEVNOTE: If group packet and group submission are found
+                if(groupPacket == null || groupSubmission == null)
+                {
+                    return new List<NACCErrorDto>();
+                }
+
                 List<PacketSubmissionError> errorsToAddCreate = new List<PacketSubmissionError>();
 
                 foreach (var error in errorGroup)
@@ -386,24 +392,30 @@ namespace UDS.Net.API.Controllers
                     errorsToAddCreate.Add(newPacketSubmissionError);
                 }
 
-                //DEVNOTE: Update the packet with new data
+                //Update the group packet with new data
                 groupPacket.Status = PacketStatus.FailedErrorChecks;
                 groupPacket.PacketSubmissions.Last().ErrorCount = errorsToAddCreate.Count;
                 groupPacket.PacketSubmissions.Last().PacketSubmissionErrors = errorsToAddCreate;
 
-                //Update the packet
-
-                //var packetUpdating = groupPacket;
                 _context.Packets.Update(groupPacket);
             }
 
-            await _context.SaveChangesAsync();
 
-            return errors;
+            try
+            {
+                await _context.SaveChangesAsync();
+
+                return errors;
+            }
+            catch (Exception ex)
+            {
+                return new List<NACCErrorDto>();
+            }
         }
 
         private static PacketSubmissionErrorLevel GetErrorLevel(string errorType)
         {
+            //DEVNOTE: The error file currently returns alerts and errors. Add additional error levels as necessary
             if (errorType.Trim().ToLower() == "alert")
             {
                 return PacketSubmissionErrorLevel.Information;
@@ -414,21 +426,8 @@ namespace UDS.Net.API.Controllers
             }
 
             //return information as default
-            return PacketSubmissionErrorLevel.Information;
+            return PacketSubmissionErrorLevel.Error;
         }
-
-        //[{
-        //  "message": "Test error",
-        //  "code": "NACCCODE",
-        //  "value": "test",
-        //  "location": "MOMYOB",
-        //  "timestamp": "00:00:0000",
-        //  "approved": "false",
-        //  "type": "error",
-        //  "visitnum": "2",
-        //  "file": "test.csv",
-        //  "ptid": "1"
-        //}]
 
         [HttpDelete("{id}")]
         public async Task Delete(int id)
