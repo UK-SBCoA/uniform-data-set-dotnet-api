@@ -330,6 +330,8 @@ namespace UDS.Net.API.Controllers
             return dto;
         }
 
+        //TODO: Create method for UpdateMultiplePacketsSubmissionsErrors. This method will allow accepting a list of packet Dtos for update
+
         [HttpDelete("{id}")]
         public async Task Delete(int id)
         {
