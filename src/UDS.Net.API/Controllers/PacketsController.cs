@@ -331,6 +331,113 @@ namespace UDS.Net.API.Controllers
         }
 
         //TODO: Create method for UpdateMultiplePacketsSubmissionsErrors. This method will allow accepting a list of packet Dtos for update
+        //The method will be receiving a list of packetDtos. The packets in this list will already have all the packet data and new packet errors addded from the client side. 
+        [HttpPut("UpdateMultiplePacketsSubmissionsErrors")]
+        public async Task<List<PacketDto>> UpdateMultiplePacketsSubmissionsErrors(List<PacketDto> packets)
+        {
+            if (packets.Count > 0)
+            {
+                var packetsToUpdate = new List<Packet>();
+
+                //TODO: Get all the packets by ID from list of packetDto to grab them once
+
+                //TODO: For each packet in the variable grabbed from the packets dto list
+                foreach (var packet in packets)
+                {
+                    //TODO: If packet is not null (exists in database)
+
+                    //TODO: Find packet submission in packet with NULL error count
+
+                    //TODO: Modify necessary data for packet submission with packet dto data
+
+                    //TODO: Loop through errors of the packet dto and add packet submission errors to the packet's packet submission errors list
+                }
+
+                //TODO: after all loops completed, attempt to save context of list packetsToUpdate in try catch. If there is an error, do not modify any data
+
+
+                //------------------------------------------------------------------------------------------------
+                // Reference code for previous singular put request
+
+                //var existingPacket = await _context.Packets
+                //    .Include(v => v.PacketSubmissions)
+                //        .ThenInclude(p => p.PacketSubmissionErrors)
+                //    .Where(p => p.Id == id)
+                //    .FirstOrDefaultAsync();
+
+                //    if (existingPacket != null)
+                //    {
+                //        existingPacket.Status = dto.Status.Convert();
+                //        existingPacket.ModifiedBy = dto.ModifiedBy;
+
+                //        foreach (var submissionDto in dto.PacketSubmissions)
+                //        {
+                //            if (submissionDto.Id == 0)
+                //            {
+                //                // new submission needs to be created
+                //                var newSubmission = submissionDto.Convert();
+                //                existingPacket.PacketSubmissions.Add(newSubmission);
+                //            }
+                //            else
+                //            {
+                //                // existing submission needs to be updated and could affect visit status
+                //                var existingSubmission = existingPacket.PacketSubmissions.Where(p => p.Id == submissionDto.Id).FirstOrDefault();
+                //                if (existingSubmission != null)
+                //                {
+                //                    existingSubmission.ErrorCount = submissionDto.ErrorCount;
+                //                    existingSubmission.ModifiedBy = submissionDto.ModifiedBy;
+                //                    existingSubmission.IsDeleted = submissionDto.IsDeleted;
+                //                    existingSubmission.DeletedBy = submissionDto.DeletedBy;
+
+                //                    // iterate errors
+                //                    foreach (var errorDto in submissionDto.PacketSubmissionErrors)
+                //                    {
+                //                        if (errorDto.Id == 0)
+                //                        {
+                //                            // new error needs to be created and could affect
+                //                            var newError = errorDto.Convert();
+                //                            existingSubmission.PacketSubmissionErrors.Add(newError);
+                //                        }
+                //                        else
+                //                        {
+                //                            // existing error needs to be updated
+                //                            var existingError = existingSubmission.PacketSubmissionErrors.Where(e => e.Id == errorDto.Id).FirstOrDefault();
+                //                            if (existingError != null)
+                //                            {
+                //                                existingError.AssignedTo = errorDto.AssignedTo;
+                //                                existingError.StatusChangedBy = errorDto.StatusChangedBy;
+                //                                existingError.FormKind = errorDto.FormKind;
+                //                                existingError.Message = errorDto.Message;
+                //                                existingError.ModifiedBy = errorDto.ModifiedBy;
+                //                                existingError.IsDeleted = errorDto.IsDeleted;
+                //                                existingError.DeletedBy = errorDto.DeletedBy;
+                //                                existingError.Location = errorDto.Location;
+                //                                existingError.Value = errorDto.Value;
+
+                //                                if (!string.IsNullOrWhiteSpace(errorDto.Status))
+                //                                {
+                //                                    if (Enum.TryParse(errorDto.Status, true, out PacketSubmissionErrorStatus status))
+                //                                        existingError.Status = status;
+                //                                }
+                //                            }
+                //                        }
+                //                    }
+                //                }
+                //            }
+                //        }
+
+                //        _context.Packets.Update(existingPacket);
+                //        await _context.SaveChangesAsync();
+
+                //        return existingPacket.ToPacketDto();
+                //    }
+                //}
+
+                //return dto;
+            }
+
+            return null;
+        }
 
         [HttpDelete("{id}")]
         public async Task Delete(int id)
