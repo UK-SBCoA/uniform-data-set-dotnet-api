@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using UDS.Net.API.Entities;
 using UDS.Net.Dto;
 
@@ -158,6 +159,11 @@ namespace UDS.Net.API.Extensions
                 ErrorCount = dto.ErrorCount,
                 PacketSubmissionErrors = dto.PacketSubmissionErrors.Select(e => e.Convert()).ToList()
             };
+        }
+
+        public static List<PacketSubmission> Convert(this List<PacketSubmissionDto> dtos)
+        {
+            return dtos.Select(p => p.Convert()).ToList();
         }
 
         public static PacketSubmissionError Convert(this PacketSubmissionErrorDto dto)

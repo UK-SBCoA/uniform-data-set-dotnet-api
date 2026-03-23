@@ -339,103 +339,43 @@ namespace UDS.Net.API.Controllers
             {
                 var packetsToUpdate = new List<Packet>();
 
-                //TODO: Get all the packets by ID from list of packetDto to grab them once
+                //List of ids to use for grabbing existing packets
+                var packetsIdList = packets.Select(x => x.Id).ToList();
 
-                //TODO: For each packet in the variable grabbed from the packets dto list
+                //TODO: Get all the packets by ID from list of packetDto to grab them once
+                var existingPackets = await _context.Packets
+                    .Include(v => v.PacketSubmissions)
+                        .ThenInclude(p => p.PacketSubmissionErrors)
+                    .Where(p => packetsIdList.Contains(p.Id))
+                    .ToListAsync();
+
+                //Fail state: if every packet received does not have a existing packet, then return
+                if (existingPackets.Count() != packets.Count()) return null;
+
+                //TODO: loop through each packet given to API and update existing packets with new packet data
                 foreach (var packet in packets)
                 {
-                    //TODO: If packet is not null (exists in database)
+                    var currentPacket = existingPackets.Where(p => p.Id == packet.Id).FirstOrDefault();
 
-                    //TODO: Find packet submission in packet with NULL error count
+                    //If matching existing packet is not found from packets dto list, return null
+                    if(currentPacket == null)
+                    {
+                        return null;
+                    }
 
-                    //TODO: Modify necessary data for packet submission with packet dto data
+                    //TODO: Set existing packet data to updated packet Dto data
+                    currentPacket = packet.Convert();
 
-                    //TODO: Loop through errors of the packet dto and add packet submission errors to the packet's packet submission errors list
+                    packetsToUpdate.Add(currentPacket);
                 }
 
-                //TODO: after all loops completed, attempt to save context of list packetsToUpdate in try catch. If there is an error, do not modify any data
+                _context.Packets.UpdateRange(packetsToUpdate);
+                await _context.SaveChangesAsync();
 
-
-                //------------------------------------------------------------------------------------------------
-                // Reference code for previous singular put request
-
-                //var existingPacket = await _context.Packets
-                //    .Include(v => v.PacketSubmissions)
-                //        .ThenInclude(p => p.PacketSubmissionErrors)
-                //    .Where(p => p.Id == id)
-                //    .FirstOrDefaultAsync();
-
-                //    if (existingPacket != null)
-                //    {
-                //        existingPacket.Status = dto.Status.Convert();
-                //        existingPacket.ModifiedBy = dto.ModifiedBy;
-
-                //        foreach (var submissionDto in dto.PacketSubmissions)
-                //        {
-                //            if (submissionDto.Id == 0)
-                //            {
-                //                // new submission needs to be created
-                //                var newSubmission = submissionDto.Convert();
-                //                existingPacket.PacketSubmissions.Add(newSubmission);
-                //            }
-                //            else
-                //            {
-                //                // existing submission needs to be updated and could affect visit status
-                //                var existingSubmission = existingPacket.PacketSubmissions.Where(p => p.Id == submissionDto.Id).FirstOrDefault();
-                //                if (existingSubmission != null)
-                //                {
-                //                    existingSubmission.ErrorCount = submissionDto.ErrorCount;
-                //                    existingSubmission.ModifiedBy = submissionDto.ModifiedBy;
-                //                    existingSubmission.IsDeleted = submissionDto.IsDeleted;
-                //                    existingSubmission.DeletedBy = submissionDto.DeletedBy;
-
-                //                    // iterate errors
-                //                    foreach (var errorDto in submissionDto.PacketSubmissionErrors)
-                //                    {
-                //                        if (errorDto.Id == 0)
-                //                        {
-                //                            // new error needs to be created and could affect
-                //                            var newError = errorDto.Convert();
-                //                            existingSubmission.PacketSubmissionErrors.Add(newError);
-                //                        }
-                //                        else
-                //                        {
-                //                            // existing error needs to be updated
-                //                            var existingError = existingSubmission.PacketSubmissionErrors.Where(e => e.Id == errorDto.Id).FirstOrDefault();
-                //                            if (existingError != null)
-                //                            {
-                //                                existingError.AssignedTo = errorDto.AssignedTo;
-                //                                existingError.StatusChangedBy = errorDto.StatusChangedBy;
-                //                                existingError.FormKind = errorDto.FormKind;
-                //                                existingError.Message = errorDto.Message;
-                //                                existingError.ModifiedBy = errorDto.ModifiedBy;
-                //                                existingError.IsDeleted = errorDto.IsDeleted;
-                //                                existingError.DeletedBy = errorDto.DeletedBy;
-                //                                existingError.Location = errorDto.Location;
-                //                                existingError.Value = errorDto.Value;
-
-                //                                if (!string.IsNullOrWhiteSpace(errorDto.Status))
-                //                                {
-                //                                    if (Enum.TryParse(errorDto.Status, true, out PacketSubmissionErrorStatus status))
-                //                                        existingError.Status = status;
-                //                                }
-                //                            }
-                //                        }
-                //                    }
-                //                }
-                //            }
-                //        }
-
-                //        _context.Packets.Update(existingPacket);
-                //        await _context.SaveChangesAsync();
-
-                //        return existingPacket.ToPacketDto();
-                //    }
-                //}
-
-                //return dto;
+                return packetsToUpdate.ToDto();
             }
 
+            //packets count was not greater than 0
             return null;
         }
 

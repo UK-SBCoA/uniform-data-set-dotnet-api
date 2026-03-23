@@ -95,6 +95,15 @@ namespace UDS.Net.API.Client
 
             return dto;
         }
+
+        public async Task<List<PacketDto>> UpdateMultiplePacketsSubmissionsErrors(List<PacketDto> packets)
+        {
+            string json = JsonSerializer.Serialize(packets);
+
+            var response = await PutRequest($"{_BasePath}/UpdateMultiplePacketsSubmissionsErrors", json);
+
+            return JsonSerializer.Deserialize<List<PacketDto>>(response, options);
+        }
     }
 }
 
