@@ -116,7 +116,7 @@ namespace UDS.Net.API.Extensions
 
         public static List<PacketDto> ToDto(this List<Packet> packets)
         {
-            return (List<PacketDto>)packets.Select(p => p.ToDto());
+            return packets.Select(p => p.ToPacketDto()).ToList();
         }
 
         public static VisitDto ToDto(this Packet packet)

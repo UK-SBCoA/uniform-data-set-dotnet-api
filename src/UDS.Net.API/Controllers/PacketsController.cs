@@ -333,7 +333,7 @@ namespace UDS.Net.API.Controllers
         //TODO: Create method for UpdateMultiplePacketsSubmissionsErrors. This method will allow accepting a list of packet Dtos for update
         //The method will be receiving a list of packetDtos. The packets in this list will already have all the packet data and new packet errors addded from the client side. 
         [HttpPut("UpdateMultiplePacketsSubmissionsErrors")]
-        public async Task<List<PacketDto>> UpdateMultiplePacketsSubmissionsErrors(List<PacketDto> packets)
+        public async Task<List<PacketDto>> UpdateMultiplePacketsSubmissionsErrors([FromBody] List<PacketDto> packets)
         {
             if (packets.Count > 0)
             {
@@ -363,8 +363,8 @@ namespace UDS.Net.API.Controllers
                         return null;
                     }
 
-                    //TODO: Set existing packet data to updated packet Dto data
-                    currentPacket = packet.Convert();
+                    currentPacket.PacketSubmissions = packet.PacketSubmissions.Convert();
+                    currentPacket.Status = PacketStatus.FailedErrorChecks;
 
                     packetsToUpdate.Add(currentPacket);
                 }
