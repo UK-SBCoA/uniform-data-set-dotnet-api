@@ -339,44 +339,48 @@ namespace UDS.Net.API.Controllers
             {
                 var packetsToUpdate = new List<Packet>();
 
-                //List of ids to use for grabbing existing packets
+                //List of ids to use for grabbing existing packet data
                 var packetsIdList = packets.Select(x => x.Id).ToList();
 
-                //TODO: Get all the packets by ID from list of packetDto to grab them once
                 var existingPackets = await _context.Packets
                     .Include(v => v.PacketSubmissions)
                         .ThenInclude(p => p.PacketSubmissionErrors)
                     .Where(p => packetsIdList.Contains(p.Id))
                     .ToListAsync();
 
-                //Fail state: if every packet received does not have a existing packet, then return
-                if (existingPackets.Count() != packets.Count()) return null;
+                if (existingPackets.Count() != packets.Count()) return new List<PacketDto>();
 
-                //TODO: loop through each packet given to API and update existing packets with new packet data
                 foreach (var packet in packets)
                 {
                     var currentPacket = existingPackets.Where(p => p.Id == packet.Id).FirstOrDefault();
 
-                    //If matching existing packet is not found from packets dto list, return null
-                    if(currentPacket == null)
-                    {
-                        return null;
+                    if(currentPacket != null)
+                    {  
+                        if(Enum.TryParse<PacketStatus>(packet.Status, ignoreCase: true, out PacketStatus status))
+                        {
+                            currentPacket.PacketSubmissions = packet.PacketSubmissions.Convert();
+                            currentPacket.Status = status;
+
+                            packetsToUpdate.Add(currentPacket);
+                        }
                     }
-
-                    currentPacket.PacketSubmissions = packet.PacketSubmissions.Convert();
-                    currentPacket.Status = PacketStatus.FailedErrorChecks;
-
-                    packetsToUpdate.Add(currentPacket);
                 }
 
-                _context.Packets.UpdateRange(packetsToUpdate);
-                await _context.SaveChangesAsync();
+                try
+                {
+                    _context.Packets.UpdateRange(packetsToUpdate);
+                    await _context.SaveChangesAsync();
+                }
+                catch
+                {
+                    return new List<PacketDto>();
+                }
 
                 return packetsToUpdate.ToDto();
             }
 
-            //packets count was not greater than 0
-            return null;
+            
+            return new List<PacketDto>();
         }
 
         [HttpDelete("{id}")]
