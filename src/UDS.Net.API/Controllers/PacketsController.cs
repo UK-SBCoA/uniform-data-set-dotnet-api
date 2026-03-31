@@ -330,8 +330,6 @@ namespace UDS.Net.API.Controllers
             return dto;
         }
 
-        //TODO: Create method for UpdateMultiplePacketsSubmissionsErrors. This method will allow accepting a list of packet Dtos for update
-        //The method will be receiving a list of packetDtos. The packets in this list will already have all the packet data and new packet errors addded from the client side. 
         [HttpPut("UpdateMultiplePacketsSubmissionsErrors")]
         public async Task<List<PacketDto>> UpdateMultiplePacketsSubmissionsErrors([FromBody] List<PacketDto> packets)
         {
@@ -340,25 +338,24 @@ namespace UDS.Net.API.Controllers
                 var packetsToUpdate = new List<Packet>();
 
                 //List of ids to use for grabbing existing packet data
-                var packetsIdList = packets.Select(x => x.Id).ToList();
+                var packetsIdList = packets.Select(x => x.Id).Distinct().ToList();
 
-                var existingPackets = await _context.Packets
+                var existingPackets = await _context.Packets.AsNoTracking()
                     .Include(v => v.PacketSubmissions)
                         .ThenInclude(p => p.PacketSubmissionErrors)
                     .Where(p => packetsIdList.Contains(p.Id))
                     .ToListAsync();
 
-                if (existingPackets.Count() != packets.Count()) return new List<PacketDto>();
-
                 foreach (var packet in packets)
                 {
                     var currentPacket = existingPackets.Where(p => p.Id == packet.Id).FirstOrDefault();
 
-                    if(currentPacket != null)
-                    {  
-                        if(Enum.TryParse<PacketStatus>(packet.Status, ignoreCase: true, out PacketStatus status))
+                    if (currentPacket != null)
+                    {
+                        if (Enum.TryParse<PacketStatus>(packet.Status, ignoreCase: true, out PacketStatus status))
                         {
-                            currentPacket.PacketSubmissions = packet.PacketSubmissions.Convert();
+                            currentPacket.PacketSubmissions.Last().PacketSubmissionErrors.AddRange(packet.PacketSubmissions.Convert().Last().PacketSubmissionErrors);
+                            currentPacket.PacketSubmissions.Last().ErrorCount = packet.PacketSubmissions.Last().ErrorCount;
                             currentPacket.Status = status;
 
                             packetsToUpdate.Add(currentPacket);
@@ -373,13 +370,14 @@ namespace UDS.Net.API.Controllers
                 }
                 catch
                 {
+                    //If failure to save, return emtpy list
                     return new List<PacketDto>();
                 }
 
                 return packetsToUpdate.ToDto();
             }
 
-            
+            //If no packets provided, return empty list
             return new List<PacketDto>();
         }
 
