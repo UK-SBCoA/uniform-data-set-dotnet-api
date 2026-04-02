@@ -674,9 +674,8 @@ namespace UDS.Net.API.Extensions
                 {
                     for (int i = 0; i < dto.A4DetailsDtos.Count && i < MAXINUMRECORDCOUNT; i++)
                     {
-                        var details = entity.GetType().GetProperty("RXNORMID" + (i + 1))?.GetValue(entity);
-
-                        details.GetType().GetProperty("RxNormId").SetValue(details, dto.A4DetailsDtos[i]);
+                        var rxProperty = entity.GetType().GetProperty("RXNORMID" + (i + 1));
+                        rxProperty?.SetValue(entity, dto.A4DetailsDtos[i]);
                     }
                 }
             }
