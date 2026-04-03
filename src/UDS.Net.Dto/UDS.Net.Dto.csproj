@@ -4,7 +4,7 @@
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<OutputType>Library</OutputType>
 		<PackageId>UDS.Net.Dto</PackageId>
-		<Version>11.0.2</Version>
+		<Version>11.0.3</Version>
 		<Authors>Sanders-Brown Center on Aging</Authors>
 		<Description>UDS data transfer objects for use with API</Description>
 		<Owners>UK-SBCoA</Owners>
