@@ -12,7 +12,5 @@ namespace UDS.Net.Dto
         public int? ErrorCount { get; set; } // if the results haven't been returned then the error count will be null
 
         public List<M1SubmissionErrorDto> M1SubmissionErrors { get; set; } = new List<M1SubmissionErrorDto>();
-
-        public List<FormDto> Forms { get; set; } = new List<FormDto>(); // temporal state of forms at time of submission
     }
 }

@@ -7,7 +7,7 @@ namespace UDS.Net.API.Data.Migrations
     /// <inheritdoc />
     public partial class AddAdministrationFormat : Migration
     {
-        /// <inheritdoc />  
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
