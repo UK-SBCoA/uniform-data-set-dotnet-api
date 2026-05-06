@@ -118,8 +118,7 @@ namespace UDS.Net.API.Controllers
 
                 if (existingM1 != null)
                 {
-                    existingM1.Status = dto.Status;
-                    existingM1.ModifiedBy = dto.ModifiedBy;
+                    existingM1.Update(dto);
 
                     foreach (var submissionDto in dto.M1Submissions ?? Enumerable.Empty<M1SubmissionDto>())
                     {
@@ -130,7 +129,9 @@ namespace UDS.Net.API.Controllers
                         }
                         else
                         {
-                            var existingSubmission = existingM1.M1Submissions.Where(p => p.Id == submissionDto.Id).FirstOrDefault();
+                            var existingSubmission = existingM1.M1Submissions
+                                .FirstOrDefault(p => p.Id == submissionDto.Id);
+
                             if (existingSubmission != null)
                             {
                                 existingSubmission.ErrorCount = submissionDto.ErrorCount;
@@ -147,7 +148,8 @@ namespace UDS.Net.API.Controllers
                                     }
                                     else
                                     {
-                                        var existingError = existingSubmission.M1SubmissionErrors.Where(e => e.Id == errorDto.Id).FirstOrDefault();
+                                        var existingError = existingSubmission.M1SubmissionErrors.FirstOrDefault(e => e.Id == errorDto.Id);
+
                                         if (existingError != null)
                                         {
                                             MapErrorDtoToError(errorDto, existingError);
@@ -157,9 +159,7 @@ namespace UDS.Net.API.Controllers
                             }
                         }
                     }
-                    _context.M1s.Update(existingM1);
                     await _context.SaveChangesAsync();
-
                     return existingM1.ToDto();
                 }
             }
