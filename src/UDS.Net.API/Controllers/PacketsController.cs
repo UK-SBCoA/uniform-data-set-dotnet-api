@@ -330,6 +330,60 @@ namespace UDS.Net.API.Controllers
             return dto;
         }
 
+        [HttpPut("UpdateMultiplePacketsSubmissionsErrors")]
+        public async Task<List<PacketDto>> UpdateMultiplePacketsSubmissionsErrors([FromBody] List<PacketDto> packets)
+        {
+            if (packets.Count > 0)
+            {
+                var packetsToUpdate = new List<Packet>();
+
+                //List of ids to use for grabbing existing packet data
+                var packetsIdList = packets.Select(x => x.Id).Distinct().ToList();
+
+                var existingPackets = await _context.Packets.AsNoTracking()
+                    .Include(v => v.PacketSubmissions)
+                        .ThenInclude(p => p.PacketSubmissionErrors)
+                    .Where(p => EF.Constant(packetsIdList).Contains(p.Id))
+                    .ToListAsync();
+
+                foreach (var packet in packets)
+                {
+                    var currentPacket = existingPackets.Where(p => p.Id == packet.Id).FirstOrDefault();
+
+                    if (currentPacket != null)
+                    {
+                        if (Enum.TryParse<PacketStatus>(packet.Status, ignoreCase: true, out PacketStatus status))
+                        {
+                            currentPacket.PacketSubmissions.Last().PacketSubmissionErrors.AddRange(packet.PacketSubmissions.Convert().Last().PacketSubmissionErrors);
+                            currentPacket.PacketSubmissions.Last().ErrorCount = packet.PacketSubmissions.Last().ErrorCount;
+                            currentPacket.Status = status;
+
+                            packetsToUpdate.Add(currentPacket);
+                        }
+                    }
+                }
+
+                if(packetsToUpdate.Count > 0)
+                {
+                    try
+                    {
+                        _context.Packets.UpdateRange(packetsToUpdate);
+                        await _context.SaveChangesAsync();
+
+                        return packetsToUpdate.ToDto();
+                    }
+                    catch
+                    {
+                        //If failure to save, return emtpy list
+                        return new List<PacketDto>();
+                    }
+                }
+            }
+
+            //If no packets provided, return empty list
+            return new List<PacketDto>();
+        }
+
         [HttpDelete("{id}")]
         public async Task Delete(int id)
         {

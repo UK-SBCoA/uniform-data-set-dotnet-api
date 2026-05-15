@@ -160,6 +160,11 @@ namespace UDS.Net.API.Extensions
             };
         }
 
+        public static List<PacketSubmission> Convert(this List<PacketSubmissionDto> dtos)
+        {
+            return dtos.Select(p => p.Convert()).ToList();
+        }
+
         public static PacketSubmissionError Convert(this PacketSubmissionErrorDto dto)
         {
             var entity = new PacketSubmissionError
