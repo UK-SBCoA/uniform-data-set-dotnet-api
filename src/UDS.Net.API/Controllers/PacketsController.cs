@@ -343,7 +343,7 @@ namespace UDS.Net.API.Controllers
                 var existingPackets = await _context.Packets.AsNoTracking()
                     .Include(v => v.PacketSubmissions)
                         .ThenInclude(p => p.PacketSubmissionErrors)
-                    .Where(p => packetsIdList.Contains(p.Id))
+                    .Where(p => EF.Constant(packetsIdList).Contains(p.Id))
                     .ToListAsync();
 
                 foreach (var packet in packets)
@@ -363,18 +363,21 @@ namespace UDS.Net.API.Controllers
                     }
                 }
 
-                try
+                if(packetsToUpdate.Count > 0)
                 {
-                    _context.Packets.UpdateRange(packetsToUpdate);
-                    await _context.SaveChangesAsync();
-                }
-                catch
-                {
-                    //If failure to save, return emtpy list
-                    return new List<PacketDto>();
-                }
+                    try
+                    {
+                        _context.Packets.UpdateRange(packetsToUpdate);
+                        await _context.SaveChangesAsync();
 
-                return packetsToUpdate.ToDto();
+                        return packetsToUpdate.ToDto();
+                    }
+                    catch
+                    {
+                        //If failure to save, return emtpy list
+                        return new List<PacketDto>();
+                    }
+                }
             }
 
             //If no packets provided, return empty list
