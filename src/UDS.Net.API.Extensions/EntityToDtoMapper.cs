@@ -1579,9 +1579,15 @@ namespace UDS.Net.API.Extensions
                 ModifiedBy = m1.ModifiedBy,
                 DeletedBy = m1.DeletedBy,
                 IsDeleted = m1.IsDeleted,
-                MILESTONETYPE = m1.MILESTONETYPE
+                MILESTONETYPE = m1.MILESTONETYPE,
+
             };
 
+            if (m1.M1Submissions != null && m1.M1Submissions.Count() > 0)
+                {
+                    dto.M1SubmissionCount = m1.M1Submissions.Count();
+                    dto.M1Submissions = m1.M1Submissions.ToDto();
+                }
             return dto;
         }
 
@@ -1614,6 +1620,17 @@ namespace UDS.Net.API.Extensions
             return dto;
         }
 
+        public static List<M1SubmissionDto> ToDto(this List<M1Submission> m1Submissions)
+        {
+            List<M1SubmissionDto> dto = new List<M1SubmissionDto>();
+
+            if (m1Submissions != null && m1Submissions.Count() > 0)
+            {
+                dto = m1Submissions.Select(p => p.ToDto()).ToList();
+            }
+            return dto;
+        }
+
         public static PacketSubmissionDto ToDto(this PacketSubmission packetSubmission)
         {
             var dto = new PacketSubmissionDto
@@ -1634,6 +1651,26 @@ namespace UDS.Net.API.Extensions
                 dto.ErrorCount = packetSubmission.ErrorCount;
                 dto.PacketSubmissionErrors = packetSubmission.PacketSubmissionErrors.ToDto();
             }
+
+            return dto;
+        }
+
+        public static M1SubmissionDto ToDto(this M1Submission m1Submission)
+        {
+            var dto = new M1SubmissionDto
+            {
+                Id = m1Submission.Id,
+                SubmissionDate = m1Submission.SubmissionDate,
+                CreatedAt = m1Submission.CreatedAt,
+                CreatedBy = m1Submission.CreatedBy,
+                ModifiedBy = m1Submission.ModifiedBy,
+                IsDeleted = m1Submission.IsDeleted,
+                DeletedBy = m1Submission.DeletedBy,
+                ErrorCount = m1Submission.ErrorCount,
+                M1SubmissionErrors = m1Submission.M1SubmissionErrors?
+                    .Select(e => e.ToDto())
+                    .ToList() ?? new List<M1SubmissionErrorDto>()
+            };
 
             return dto;
         }
@@ -1670,6 +1707,40 @@ namespace UDS.Net.API.Extensions
                 Location = packetSubmissionError.Location,
                 Status = packetSubmissionError.Status.ToString(),
             };
+        }
+
+        public static M1SubmissionErrorDto ToDto(this M1SubmissionError m1SubmissionError)
+        {
+            return new M1SubmissionErrorDto()
+            {
+                Id = m1SubmissionError.Id,
+                M1SubmissionId = m1SubmissionError.M1SubmissionId,
+                FormKind = m1SubmissionError.FormKind,
+                Level = m1SubmissionError.Level.ToString(),
+                Message = m1SubmissionError.Message,
+                AssignedTo = m1SubmissionError.AssignedTo,
+                StatusChangedBy = m1SubmissionError.StatusChangedBy,
+                CreatedAt = m1SubmissionError.CreatedAt,
+                CreatedBy = m1SubmissionError.CreatedBy,
+                ModifiedBy = m1SubmissionError.ModifiedBy,
+                IsDeleted = m1SubmissionError.IsDeleted,
+                DeletedBy = m1SubmissionError.DeletedBy,
+                Value = m1SubmissionError.Value,
+                Location = m1SubmissionError.Location,
+                Status = m1SubmissionError.Status.ToString(),
+            };
+        }
+
+        public static List<M1SubmissionErrorDto> ToDto(this List<M1SubmissionError> m1SubmissionErrors)
+        {
+            List<M1SubmissionErrorDto> dto = new List<M1SubmissionErrorDto>();
+
+            if (m1SubmissionErrors != null && m1SubmissionErrors.Count() > 0)
+            {
+                dto = m1SubmissionErrors.Select(e => e.ToDto()).ToList();
+            }
+
+            return dto;
         }
     }
 }

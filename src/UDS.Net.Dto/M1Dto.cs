@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using UDS.Net.API.Entities;
 
 namespace UDS.Net.Dto
 {
@@ -37,6 +39,9 @@ namespace UDS.Net.Dto
         public int? DISCYR { get; set; }
         public int? DROPREAS { get; set; }
         public int? MILESTONETYPE { get; set; }
+        [JsonPropertyName("m1Submissions")]
+        public List<M1SubmissionDto> M1Submissions { get; set; } = new List<M1SubmissionDto>();
+        public int M1SubmissionCount { get; set; }
     }
 }
 
