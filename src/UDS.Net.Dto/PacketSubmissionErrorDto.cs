@@ -1,4 +1,6 @@
-﻿namespace UDS.Net.Dto
+﻿using System;
+
+namespace UDS.Net.Dto
 {
     public class PacketSubmissionErrorDto : BaseDto
     {
@@ -7,6 +9,9 @@
         public int PacketSubmissionId { get; set; }
 
         public string FormKind { get; set; }
+        public string FileName { get; set; }
+        public string ErrorCode { get; set; }
+        public DateTime ErrorTimeStamp { get; set; }
 
         public string Message { get; set; }
 
