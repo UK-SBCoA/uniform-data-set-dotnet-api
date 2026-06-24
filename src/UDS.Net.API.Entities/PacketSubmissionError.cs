@@ -10,11 +10,16 @@ namespace UDS.Net.API.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("PacketSubmissionErrorId", Order = 0)]
         public int Id { get; set; }
+
+        [MaxLength(100)]
         public string? FileName { get; set; }
 
         [MaxLength(10)]
         public string? FormKind { get; set; } // it might be possible for an error to be at the visit and not a specific form
+
+        [MaxLength(50)]
         public string? ErrorCode { get; set; }
+
         public DateTime ErrorTimeStamp { get; set; }
 
         [MaxLength(500)]

@@ -14,7 +14,8 @@ namespace UDS.Net.API.Data.Migrations
             migrationBuilder.AddColumn<string>(
                 name: "ErrorCode",
                 table: "PacketSubmissionErrors",
-                type: "nvarchar(max)",
+                type: "nvarchar(50)",
+                maxLength: 50,
                 nullable: true);
 
             migrationBuilder.AddColumn<DateTime>(
@@ -27,7 +28,8 @@ namespace UDS.Net.API.Data.Migrations
             migrationBuilder.AddColumn<string>(
                 name: "FileName",
                 table: "PacketSubmissionErrors",
-                type: "nvarchar(max)",
+                type: "nvarchar(100)",
+                maxLength: 100,
                 nullable: true);
         }
 

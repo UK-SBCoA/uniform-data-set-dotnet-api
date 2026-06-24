@@ -12,7 +12,7 @@ using UDS.Net.API.Data;
 namespace UDS.Net.API.Data.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    [Migration("20260616122025_PacketSubmissionErrorsChanges")]
+    [Migration("20260624184456_PacketSubmissionErrorsChanges")]
     partial class PacketSubmissionErrorsChanges
     {
         /// <inheritdoc />
@@ -5094,13 +5094,15 @@ namespace UDS.Net.API.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ErrorCode")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime>("ErrorTimeStamp")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FileName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("FormKind")
                         .HasMaxLength(10)
