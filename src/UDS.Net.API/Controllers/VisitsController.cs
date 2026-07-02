@@ -191,9 +191,9 @@ namespace UDS.Net.API.Controllers
         }
 
         [HttpGet("{id}/Forms/", Name = "GetWithForms")]
-        public async Task<VisitDto> GetWithForms(int id, [FromQuery] List<string> formKinds)
+        public async Task<VisitDto> GetWithForms(int id, [FromQuery] string[] formKinds)
         {
-            if (formKinds != null && formKinds.Count > 0)
+            if (formKinds.Length > 0)
             {
                 var visit = await _context.Packets
                     .Include(v => v.FormStatuses)
@@ -209,9 +209,9 @@ namespace UDS.Net.API.Controllers
                     }
                     return visit.ToDto(formKinds);
                 }
-                throw new Exception($"Visit {id} was not found");
+                throw new Exception($"Visit Id {id} not found");
             }
-            throw new Exception("Must include a form id.");
+            throw new Exception("Must include at least one formkind");
         }
 
 

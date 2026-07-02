@@ -116,6 +116,22 @@ namespace UDS.Net.API.Client
             return dto;
         }
 
+        public async Task<VisitDto> GetWithForms(int id, string[] formKinds)
+        {
+            var query = System.Web.HttpUtility.ParseQueryString(string.Empty);
+
+            foreach (var formKind in formKinds)
+            {
+                query.Add("formKinds", formKind);
+            }
+
+            var response = await GetRequest($"{_BasePath}/{id}/Forms?{query}");
+
+            VisitDto dto = JsonSerializer.Deserialize<VisitDto>(response, options);
+
+            return dto;
+        }
+
         public async Task<VisitDto> GetByVisitNumber(int participantId, int visitNumber, string formKind)
         {
             var response = await GetRequest($"{_BasePath}/Participant/{participantId}/Visit/{visitNumber}/Forms/{formKind}");
