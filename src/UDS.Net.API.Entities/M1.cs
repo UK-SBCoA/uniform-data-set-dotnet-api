@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -49,6 +50,8 @@ namespace UDS.Net.API.Entities
         public int? DISCYR { get; set; }
         public int? DROPREAS { get; set; }
         public int? MILESTONETYPE { get; set; }
+
+        public List<M1Submission> M1Submissions { get; set; } = new List<M1Submission>();
 
     }
 }

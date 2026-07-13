@@ -11,6 +11,8 @@ namespace UDS.Net.API.Data
         public DbSet<Packet> Packets { get; set; }
         public DbSet<PacketSubmission> PacketSubmissions { get; set; }
         public DbSet<PacketSubmissionError> PacketSubmissionErrors { get; set; }
+        public DbSet<M1Submission> M1Submissions { get; set; }
+        public DbSet<M1SubmissionError> M1SubmissionErrors { get; set; }
 
         /* Forms and instruments */
         public DbSet<A1> A1s { get; set; }
