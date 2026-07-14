@@ -301,6 +301,9 @@ namespace UDS.Net.API.Controllers
                                             existingError.AssignedTo = errorDto.AssignedTo;
                                             existingError.StatusChangedBy = errorDto.StatusChangedBy;
                                             existingError.FormKind = errorDto.FormKind;
+                                            existingError.ErrorCode = errorDto.ErrorCode;
+                                            existingError.ErrorTimeStamp = errorDto.ErrorTimeStamp;
+                                            existingError.FileName = errorDto.FileName;
                                             existingError.Message = errorDto.Message;
                                             existingError.ModifiedBy = errorDto.ModifiedBy;
                                             existingError.IsDeleted = errorDto.IsDeleted;
