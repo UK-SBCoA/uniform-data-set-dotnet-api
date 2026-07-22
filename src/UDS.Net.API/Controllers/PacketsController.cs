@@ -343,7 +343,7 @@ namespace UDS.Net.API.Controllers
                 //List of ids to use for grabbing existing packet data
                 var packetsIdList = packets.Select(x => x.Id).Distinct().ToList();
 
-                var existingPackets = await _context.Packets.AsNoTracking()
+                var existingPackets = await _context.Packets
                     .Include(v => v.PacketSubmissions)
                         .ThenInclude(p => p.PacketSubmissionErrors)
                     .Where(p => EF.Constant(packetsIdList).Contains(p.Id))
