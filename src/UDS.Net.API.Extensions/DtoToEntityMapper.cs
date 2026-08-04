@@ -160,6 +160,11 @@ namespace UDS.Net.API.Extensions
             };
         }
 
+        public static List<PacketSubmission> Convert(this List<PacketSubmissionDto> dtos)
+        {
+            return dtos.Select(p => p.Convert()).ToList();
+        }
+
         public static M1Submission Convert(this M1SubmissionDto dto, int m1Id)
         {
             return new M1Submission
