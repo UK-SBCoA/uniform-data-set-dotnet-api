@@ -138,7 +138,50 @@ namespace UDS.Net.API.Extensions
 
             return dto;
         }
+        public static VisitDto ToDto(this Packet packet, IEnumerable<string> formKinds)
+        {
+            var dto = ConvertVisitToDto(packet);
 
+            foreach (var form in packet.FormStatuses)
+            {
+                if (formKinds.Contains(form.Kind))
+                {
+                    dto.Forms.Add(GetFullFormDto(packet, form.Kind));
+                }
+                else
+                {
+                    dto.Forms.Add(form.ToSummaryDto(form.Kind));
+                }
+            }
+            dto.UpdateWithSubmissions(packet);
+
+            return dto;
+        }
+        private static FormDto? GetFullFormDto(Packet packet, string formKind)
+        {
+            return formKind switch
+            {
+                "A1" => packet.A1?.ToFullDto(),
+                "A1a" => packet.A1a?.ToFullDto(),
+                "A2" => packet.A2?.ToFullDto(),
+                "A3" => packet.A3?.ToFullDto(),
+                "A4" => packet.A4?.ToFullDto(),
+                "A4a" => packet.A4a?.ToFullDto(),
+                "A5D2" => packet.A5D2?.ToFullDto(),
+                "B1" => packet.B1?.ToFullDto(),
+                "B3" => packet.B3?.ToFullDto(),
+                "B4" => packet.B4?.ToFullDto(),
+                "B5" => packet.B5?.ToFullDto(),
+                "B6" => packet.B6?.ToFullDto(),
+                "B7" => packet.B7?.ToFullDto(),
+                "B8" => packet.B8?.ToFullDto(),
+                "B9" => packet.B9?.ToFullDto(),
+                "C2" => packet.C2?.ToFullDto(),
+                "D1a" => packet.D1a?.ToFullDto(),
+                "D1b" => packet.D1b?.ToFullDto(),
+                _ => new FormDto()
+            };
+        }
         public static VisitDto ToDto(this Packet packet, string formKind)
         {
             var dto = ConvertVisitToDto(packet);
