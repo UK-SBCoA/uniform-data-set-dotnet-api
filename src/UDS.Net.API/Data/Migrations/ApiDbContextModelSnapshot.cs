@@ -4618,6 +4618,333 @@ namespace UDS.Net.API.Data.Migrations
                     b.ToTable("tbl_D1bs");
                 });
 
+            modelBuilder.Entity("UDS.Net.API.Entities.D1c", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("FormId")
+                        .HasColumnOrder(0);
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("AACRITMET")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("AB42AB40AY")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("AB42AB40IT")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("AB42AB40RS")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ADMIN")
+                        .HasColumnType("int")
+                        .HasColumnName("ADMIN")
+                        .HasColumnOrder(10);
+
+                    b.Property<int?>("APETANLYS")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("APETINT")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("APETQUANT")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("APETRS")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("APETVIS")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ASYNANLYSX")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<int?>("ASYNASSAY")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ASYNASSAYX")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<int?>("ASYNINT")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ASYNRS")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BIOSTAGE")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("C1AB42AB40")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CLINSTAGE")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CR1APET")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CR1OTH")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CR1OTHX")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<int?>("CR1PCPT217")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CR1PT181AB")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CR1PTAU217")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CR1TTABETA")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("D1CNOT")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DXAB42AB40")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DXAPET")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DXASYN")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DXCSFBIO")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DXOTHCSF")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DXOTHCSFX")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<int?>("DXOTHPLSMA")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DXOTHPLSMX")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<int?>("DXPCPT217")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DXPLSMABIO")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DXPT181AB")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DXPTAU217")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DXTAUPET")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DXTAUPTINT")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DXTTABETA")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("FRMDATE")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("FRMDATE")
+                        .HasColumnOrder(3);
+
+                    b.Property<DateTime?>("FRMDATED1C")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("IMGRSINF")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("IMGRSINFCT")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("IMGRSINFLC")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("IMGRSINT")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("IMGRSMICR")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("IMGRSOTH")
+                        .HasColumnType("int");
+
+                    b.Property<string>("IMGRSOTHX")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<int?>("IMGRSSPSID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("IMGRSWMH")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("INFORISCH")
+                        .HasColumnType("int");
+
+                    b.Property<string>("INITIALS")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)")
+                        .HasColumnName("INITIALS")
+                        .HasColumnOrder(4);
+
+                    b.Property<string>("INITIALSD1C")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("LANG")
+                        .HasColumnType("int")
+                        .HasColumnName("LANG")
+                        .HasColumnOrder(5);
+
+                    b.Property<int?>("LANGD1C")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MODE")
+                        .HasColumnType("int")
+                        .HasColumnName("MODE")
+                        .HasColumnOrder(6);
+
+                    b.Property<int?>("MODED1C")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("NOT")
+                        .HasColumnType("int")
+                        .HasColumnName("NOT")
+                        .HasColumnOrder(9);
+
+                    b.Property<int?>("OCSFANLYS")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("OCSFINT")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("OPLSMAINT")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("OPLSMANLYS")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("OTHCSFRS")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("OTHPLSMARS")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PCPT217INT")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PCPT217RS")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PT181ABAYS")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PT181ABINT")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PT181ABRS")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PT217ANLYS")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PT217INT")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PTAU217RS")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PacketId")
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
+
+                    b.Property<int?>("RMMODE")
+                        .HasColumnType("int")
+                        .HasColumnName("RMMODE")
+                        .HasColumnOrder(8);
+
+                    b.Property<int?>("RMREAS")
+                        .HasColumnType("int")
+                        .HasColumnName("RMREASON")
+                        .HasColumnOrder(7);
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnOrder(2);
+
+                    b.Property<int?>("TPETMTLAYS")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TPETMTLQNT")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TPETMTLRS")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TPETMTLVIS")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TPETNEOAYS")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TPETNEOQNT")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TPETNEORS")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TPETNEOVIS")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TTABETAINT")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TTABETARS")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PacketId")
+                        .IsUnique();
+
+                    b.ToTable("tbl_D1cs");
+                });
+
             modelBuilder.Entity("UDS.Net.API.Entities.DrugCodeLookup", b =>
                 {
                     b.Property<int>("RxNormId")
@@ -7122,6 +7449,17 @@ namespace UDS.Net.API.Data.Migrations
                     b.Navigation("Packet");
                 });
 
+            modelBuilder.Entity("UDS.Net.API.Entities.D1c", b =>
+                {
+                    b.HasOne("UDS.Net.API.Entities.Packet", "Packet")
+                        .WithOne("D1c")
+                        .HasForeignKey("UDS.Net.API.Entities.D1c", "PacketId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Packet");
+                });
+
             modelBuilder.Entity("UDS.Net.API.Entities.FormStatus", b =>
                 {
                     b.HasOne("UDS.Net.API.Entities.Packet", "Packet")
@@ -7259,6 +7597,9 @@ namespace UDS.Net.API.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("D1b")
+                        .IsRequired();
+
+                    b.Navigation("D1c")
                         .IsRequired();
 
                     b.Navigation("FormStatuses");

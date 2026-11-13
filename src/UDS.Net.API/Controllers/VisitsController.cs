@@ -291,6 +291,8 @@ namespace UDS.Net.API.Controllers
                         formKind = "D1a";
                     else if (form is D1bDto)
                         formKind = "D1b";
+                    else if (form is D1cDto)
+                        formKind = "D1c";
                 }
             }
             return formKind;
@@ -461,6 +463,15 @@ namespace UDS.Net.API.Controllers
                 if (d1b != null)
                     visit.D1b = d1b;
             }
+            else if (formKind == "D1c") // clinician diagnosis
+            {
+                var d1c = await _context.D1cs
+                    .Where(a => a.PacketId == packetId)
+                    .FirstOrDefaultAsync();
+
+                if (d1c != null)
+                    visit.D1c = d1c;
+            }
         }
 
         private void CreateOrUpdateFormInModel(Packet visit, FormDto formDto)
@@ -620,6 +631,12 @@ namespace UDS.Net.API.Controllers
                 if (visit.D1b == null)
                     visit.D1b = new D1b();
                 visit.D1b.Update((D1bDto)formDto);
+            }
+            else if (formDto is D1cDto)
+            {
+                if (visit.D1c == null)
+                    visit.D1c = new D1c();
+                visit.D1c.Update((D1cDto)formDto);
             }
         }
 

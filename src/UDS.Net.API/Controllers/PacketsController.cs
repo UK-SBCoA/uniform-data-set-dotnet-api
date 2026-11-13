@@ -93,6 +93,7 @@ namespace UDS.Net.API.Controllers
                     .Include(v => v.C2)
                     .Include(v => v.D1a)
                     .Include(v => v.D1b)
+                    .Include(v => v.D1c)
                     .Where(v => v.Id == id)
                     .AsNoTracking()
                     .FirstOrDefaultAsync();
@@ -118,6 +119,7 @@ namespace UDS.Net.API.Controllers
                     dto.Forms.Add(visit.C2.ToFullDto());
                     dto.Forms.Add(visit.D1a.ToFullDto());
                     dto.Forms.Add(visit.D1b.ToFullDto());
+                    dto.Forms.Add(visit.D1c.ToFullDto());
                 }
                 if (dto.PacketSubmissions != null && dto.PacketSubmissions.Count() > 0)
                 {
@@ -144,6 +146,7 @@ namespace UDS.Net.API.Controllers
                         submission.Forms.Add(visit.C2.ToFullDto());
                         submission.Forms.Add(visit.D1a.ToFullDto());
                         submission.Forms.Add(visit.D1b.ToFullDto());
+                        submission.Forms.Add(visit.D1c.ToFullDto());
                     }
                 }
             }
@@ -184,6 +187,7 @@ namespace UDS.Net.API.Controllers
                 .Include(v => v.C2)
                 .Include(v => v.D1a)
                 .Include(v => v.D1b)
+                .Include(v => v.D1c)
                 .Where(v => ids.Contains(v.Id))
                 .AsNoTracking()
                 .ToListAsync();
@@ -212,7 +216,8 @@ namespace UDS.Net.API.Controllers
                    visit.B9?.ToFullDto(),
                    visit.C2?.ToFullDto(),
                    visit.D1a?.ToFullDto(),
-                   visit.D1b?.ToFullDto()
+                   visit.D1b?.ToFullDto(),
+                   visit.D1c?.ToFullDto()
                 }.Where(f => f != null).ToList();
 
                 dto.Forms.AddRange(forms);

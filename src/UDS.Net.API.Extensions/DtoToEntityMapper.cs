@@ -1628,6 +1628,97 @@ namespace UDS.Net.API.Extensions
             return false;
         }
 
+        public static bool Update(this D1c entity, D1cDto dto)
+        {
+            if (entity.Id == dto.Id)
+            {
+                entity.SetBaseProperties(dto);
+
+                entity.FRMDATED1C = dto.FRMDATED1C;
+                entity.INITIALSD1C = dto.INITIALSD1C;
+                entity.LANGD1C = dto.LANGD1C;
+                entity.MODED1C = dto.MODED1C;
+                entity.D1CNOT = dto.D1CNOT;
+                entity.DXPLSMABIO = dto.DXPLSMABIO;
+                entity.DXPTAU217 = dto.DXPTAU217;
+                entity.PTAU217RS = dto.PTAU217RS;
+                entity.PT217ANLYS = dto.PT217ANLYS;
+                entity.PT217INT = dto.PT217INT;
+                entity.DXPCPT217 = dto.DXPCPT217;
+                entity.PCPT217RS = dto.PCPT217RS;
+                entity.PCPT217INT = dto.PCPT217INT;
+                entity.DXOTHPLSMA = dto.DXOTHPLSMA;
+                entity.DXOTHPLSMX = dto.DXOTHPLSMX;
+                entity.OTHPLSMARS = dto.OTHPLSMARS;
+                entity.OPLSMANLYS = dto.OPLSMANLYS;
+                entity.OPLSMAINT = dto.OPLSMAINT;
+                entity.DXCSFBIO = dto.DXCSFBIO;
+                entity.DXPT181AB = dto.DXPT181AB;
+                entity.PT181ABRS = dto.PT181ABRS;
+                entity.PT181ABAYS = dto.PT181ABAYS;
+                entity.PT181ABINT = dto.PT181ABINT;
+                entity.DXTTABETA = dto.DXTTABETA;
+                entity.TTABETARS = dto.TTABETARS;
+                entity.TTABETAINT = dto.TTABETAINT;
+                entity.DXAB42AB40 = dto.DXAB42AB40;
+                entity.AB42AB40RS = dto.AB42AB40RS;
+                entity.AB42AB40AY = dto.AB42AB40AY;
+                entity.AB42AB40IT = dto.AB42AB40IT;
+                entity.DXOTHCSF = dto.DXOTHCSF;
+                entity.DXOTHCSFX = dto.DXOTHCSFX;
+                entity.OTHCSFRS = dto.OTHCSFRS;
+                entity.OCSFANLYS = dto.OCSFANLYS;
+                entity.OCSFINT = dto.OCSFINT;
+                entity.DXAPET = dto.DXAPET;
+                entity.APETRS = dto.APETRS;
+                entity.APETVIS = dto.APETVIS;
+                entity.APETQUANT = dto.APETQUANT;
+                entity.APETANLYS = dto.APETANLYS;
+                entity.APETINT = dto.APETINT;
+                entity.DXTAUPET = dto.DXTAUPET;
+                entity.TPETMTLRS = dto.TPETMTLRS;
+                entity.TPETMTLVIS = dto.TPETMTLVIS;
+                entity.TPETMTLQNT = dto.TPETMTLQNT;
+                entity.TPETMTLAYS = dto.TPETMTLAYS;
+                entity.TPETNEORS = dto.TPETNEORS;
+                entity.TPETNEOVIS = dto.TPETNEOVIS;
+                entity.TPETNEOQNT = dto.TPETNEOQNT;
+                entity.TPETNEOAYS = dto.TPETNEOAYS;
+                entity.DXTAUPTINT = dto.DXTAUPTINT;
+                entity.INFORISCH = dto.INFORISCH;
+                entity.IMGRSINF = dto.IMGRSINF;
+                entity.IMGRSINFLC = dto.IMGRSINFLC;
+                entity.IMGRSINFCT = dto.IMGRSINFCT;
+                entity.IMGRSMICR = dto.IMGRSMICR;
+                entity.IMGRSWMH = dto.IMGRSWMH;
+                entity.IMGRSSPSID = dto.IMGRSSPSID;
+                entity.IMGRSOTH = dto.IMGRSOTH;
+                entity.IMGRSOTHX = dto.IMGRSOTHX;
+                entity.IMGRSINT = dto.IMGRSINT;
+                entity.DXASYN = dto.DXASYN;
+                entity.ASYNRS = dto.ASYNRS;
+                entity.ASYNASSAY = dto.ASYNASSAY;
+                entity.ASYNASSAYX = dto.ASYNASSAYX;
+                entity.ASYNANLYSX = dto.ASYNANLYSX;
+                entity.ASYNINT = dto.ASYNINT;
+                entity.AACRITMET = dto.AACRITMET;
+                entity.CR1APET = dto.CR1APET;
+                entity.CR1PTAU217 = dto.CR1PTAU217;
+                entity.CR1PCPT217 = dto.CR1PCPT217;
+                entity.CR1PT181AB = dto.CR1PT181AB;
+                entity.CR1TTABETA = dto.CR1TTABETA;
+                entity.C1AB42AB40 = dto.C1AB42AB40;
+                entity.CR1OTH = dto.CR1OTH;
+                entity.CR1OTHX = dto.CR1OTHX;
+                entity.BIOSTAGE = dto.BIOSTAGE;
+                entity.CLINSTAGE = dto.CLINSTAGE;
+
+                return true;
+            }
+
+            return false;
+        }
+
         public static DrugCodeLookup ToEntity(this DrugCodeDto dto)
         {
             return new DrugCodeLookup
