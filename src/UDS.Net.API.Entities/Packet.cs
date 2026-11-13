@@ -74,6 +74,8 @@ namespace UDS.Net.API.Entities
 
         public virtual D1b D1b { get; set; } = default!; // D1b required at least for IVP
 
+        public virtual D1c D1c { get; set; } = default!; // D1b required at least for IVP
+
         public List<PacketSubmission> PacketSubmissions { get; set; } = new List<PacketSubmission>();
     }
 }

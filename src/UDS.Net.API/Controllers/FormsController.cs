@@ -56,6 +56,8 @@ namespace UDS.Net.API.Controllers
                     return await _context.D1as.CountAsync();
                 case "D1b":
                     return await _context.D1bs.CountAsync();
+                case "D1c":
+                    return await _context.D1cs.CountAsync();
                 default:
                     break;
             }
@@ -186,6 +188,13 @@ namespace UDS.Net.API.Controllers
                         .Take(pageSize)
                         .Select(a => a.ToFullDto())
                         .ToListAsync();
+                case "D1c":
+                    return await _context.D1cs
+                        .AsNoTracking()
+                        .Skip((pageIndex - 1) * pageSize)
+                        .Take(pageSize)
+                        .Select(a => a.ToFullDto())
+                        .ToListAsync();
                 default:
                     break;
             }
@@ -311,6 +320,13 @@ namespace UDS.Net.API.Controllers
                         .ToListAsync();
                 case "D1b":
                     return await _context.D1bs
+                        .AsNoTracking()
+                        .Skip((pageIndex - 1) * pageSize)
+                        .Take(pageSize)
+                        .Select(a => a.ToSummaryDto(kind))
+                        .ToListAsync();
+                case "D1c":
+                    return await _context.D1cs
                         .AsNoTracking()
                         .Skip((pageIndex - 1) * pageSize)
                         .Take(pageSize)
